@@ -1,5 +1,8 @@
 # PowerShell_profile
 
+# Configure PowerShell Execution Policy First!
+`Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
+
 # PowerShell 5.1.x Profile Path 
 ### Default 
 'C:\Users\\$Env:USERNAME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1'
