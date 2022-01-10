@@ -70,13 +70,13 @@ Import-Module -Name 'PackageManagement'
 Import-Module -Name 'PowerShellGet'
 
 Write-Warning -Message 'Installing... Oh-My-Posh'
-Install-Module -Repository 'PSGallery' -Name 'Oh-My-Posh' -Force
+Install-Module -Repository 'PSGallery' -Name 'Oh-My-Posh' -Scope AllUsers  -Force 
 
 Write-Warning -Message 'Installing... Posh-Git'
-Install-Module -Repository 'PSGallery' -Name 'Posh-Git' -Force
+Install-Module -Repository 'PSGallery' -Name 'Posh-Git' -Scope AllUsers -Force
 
 Write-Warning -Message 'Installing... PSReadLine'
-Install-Module -Repository 'PSGallery' -Name 'PSReadLine' -AllowPrerelease -Force
+ Install-Module -Repository 'PSGallery' -Name 'PSReadLine' -Scope AllUsers -AllowPrerelease -Force
 
 # Section Title
 Write-Output ''
