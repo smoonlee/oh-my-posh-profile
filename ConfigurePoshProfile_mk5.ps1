@@ -90,7 +90,7 @@ Write-Output '=============================================='
 "# Import Modules
 $("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\oh-my-posh\6.44.1\oh-my-posh.psd1" | Import-Module)
 $("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\posh-git\1.0.0\posh-git.psd1" | Import-Module)
-PS>$("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\PSReadLine\2.2.0\PSReadLine.psd1" | Import-Module -RequiredVersion 2.2.0)
+$("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\PSReadLine\2.2.0\PSReadLine.psd1" | Import-Module -RequiredVersion 2.2.0)
 
 # Define PSReadLine Configuration
 Set-PSReadLineOption -PredictionSource History
