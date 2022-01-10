@@ -70,13 +70,13 @@ Import-Module -Name 'PackageManagement'
 Import-Module -Name 'PowerShellGet'
 
 Write-Warning -Message 'Installing... Oh-My-Posh'
-Install-Module -Repository 'PSGallery' -Name 'Oh-My-Posh' -Scope AllUsers  -Force 
+Install-Module -Repository 'PSGallery' -Name 'Oh-My-Posh' -Force
 
 Write-Warning -Message 'Installing... Posh-Git'
-Install-Module -Repository 'PSGallery' -Name 'Posh-Git' -Scope AllUsers -Force
+Install-Module -Repository 'PSGallery' -Name 'Posh-Git' -Force
 
 Write-Warning -Message 'Installing... PSReadLine'
- Install-Module -Repository 'PSGallery' -Name 'PSReadLine' -Scope AllUsers -AllowPrerelease -Force
+Install-Module -Repository 'PSGallery' -Name 'PSReadLine' -AllowPrerelease -Force
 
 # Section Title
 Write-Output ''
@@ -88,9 +88,9 @@ Write-Output '=============================================='
 
 # Configure Profile
 "# Import Modules
-$("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\oh-my-posh\6.44.1\oh-my-posh.psd1" | Import-Module)
-$("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\posh-git\1.0.0\posh-git.psd1" | Import-Module)
-$("$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\PSReadLine\2.2.0\PSReadLine.psd1" | Import-Module -RequiredVersion 2.2.0)
+'C:\Program Files\WindowsPowerShell\Modules\PSReadline\2.2.0\PSReadLine.psd1' | Import-Module
+'C:\Program Files\WindowsPowerShell\Modules\oh-my-posh\6.44.1\oh-my-posh.psd1' | Import-Module
+'C:\Program Files\WindowsPowerShell\Modules\posh-git\1.0.0\posh-git.psd1' | Import-Module
 
 # Define PSReadLine Configuration
 Set-PSReadLineOption -PredictionSource History
