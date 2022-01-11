@@ -17,6 +17,11 @@ Download the below file to check PowerShellGet and PackageManagement are Up-To-D
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Check-PowerShellGet.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Check-PowerShellGet.ps1"
 ```
 
+#### Execute Get-PowerShellGet.ps1 Script
+```
+& "$([Environment]::GetFolderPath("Desktop"))\Check-PowerShellGet.ps1"
+```
+
 ![gif_animation](/content/graphic_check-powershellget.gif)
 
 ### Reset PSProfile Environment | Reset-PSProfile.ps1
@@ -27,6 +32,10 @@ If you have issues with your PSProfile configuation, You can download and execut
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Reset-PSProfileEnv.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Reset-PSProfileEnv.ps1"
 ```
 
+#### Execute Get-PowerShellGet.ps1 Script
+```
+& "$([Environment]::GetFolderPath("Desktop"))\Reset-PSProfileEnv.ps1"
+```
 
 ![gif_animation](/content/graphic_reset-psprofileenv.gif)
 
@@ -36,6 +45,11 @@ Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_pr
 
 ```
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Install-PSProfile_NoNerdFonts.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Install-PSProfile_NoNerdFonts.ps1"
+```
+
+#### Execute Get-PowerShellGet.ps1 Script
+```
+& "$([Environment]::GetFolderPath("Desktop"))\Install-PSProfile_NoNerdFonts.ps1"
 ```
 
 ![gif_animation](/content/graphic_install-psprofile_pwsh7.gif)
