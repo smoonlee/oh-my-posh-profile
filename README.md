@@ -15,6 +15,12 @@ Download the below file to check PowerShellGet and PackageManagement are Up-To-D
 
 ### Install-PSProfile.ps1
 
+#### Reset-PSProfile
+If you have issues with your PSProfile configuation, You can download and execute this script. It will remove the following modules.
+<p>'Oh-My-Posh, Posh-Git, PSReadLines (2.2.0)'</p>
+
+```Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Reset-PSProfileEnv.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Reset-PSProfileEnv.ps1"```
+
 #### PSProfile Script without NerdFont Assisted Installation (Requires manual Font installation from: [NerdFonts](https://www.nerdfonts.com/).
 
 ```Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Install-PSProfile_NoNerdFonts.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Install-PSProfile_NoNerdFonts.ps1"```
