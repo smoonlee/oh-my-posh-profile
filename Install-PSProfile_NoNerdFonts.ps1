@@ -11,6 +11,7 @@
     2022.01.11 - Script Debugged - version: 1.0
     2022.01.11 - Added extra SymbolicLink Clean up Logic - version: 1.1
     2022.01.11 - Rewrote Module Install Section, With better Logic - version: 1.1.1
+    2022.01.11 - BugFixes - PSReadLine - version 1.1.2
 #>
 
 # Script Title
@@ -229,25 +230,25 @@ if ($host.version -like '7.*') {
         Write-Output ''
     }    
 
-    if (!(Test-Path -Path 'C:\Program Files\PowerShell\Modules\PSReadLine')) {
+    if (!(Test-Path -Path 'C:\Program Files\PowerShell\Modules\PSReadLine\2.2.0')) {
         # Install PowerShell Module - PSReadLine
         Write-Warning -Message 'Installing... PSReadLine'
         Install-Module -Repository 'PSGallery' -Scope 'AllUsers' -Name 'PSReadLine' -AllowPrerelease  -Force
     
         # Provision Symlboic Link
-        if (Test-Path -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine') {
-            if ((Get-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine').LinkType -like 'SymbolicLink') {
-                (Get-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine').Delete()
+        if (Test-Path -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0') {
+            if ((Get-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0').LinkType -like 'SymbolicLink') {
+                (Get-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0').Delete()
             }
             Else {
-                Remove-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine' -Force -Recurse
+                Remove-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0' -Force -Recurse
             }
-            New-Item -ItemType SymbolicLink -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine' -Target 'C:\Program Files\PowerShell\Modules\PSReadLine'  -Force | Out-Null
+            New-Item -ItemType SymbolicLink -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0' -Target 'C:\Program Files\PowerShell\Modules\PSReadLine\2.2.0'  -Force | Out-Null
             Write-Warning -Message 'PSReadLine Symbolic Link Created.'
             Write-Output ''
         }
         else {
-            New-Item -ItemType SymbolicLink -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine' -Target 'C:\Program Files\PowerShell\Modules\PSReadLine'  -Force | Out-Null
+            New-Item -ItemType SymbolicLink -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0' -Target 'C:\Program Files\PowerShell\Modules\PSReadLine\2.2.0'  -Force | Out-Null
             Write-Warning -Message 'PSReadLine Symbolic Link Created.'
             Write-Output ''
         }
