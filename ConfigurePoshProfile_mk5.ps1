@@ -70,13 +70,27 @@ Import-Module -Name 'PackageManagement'
 Import-Module -Name 'PowerShellGet'
 
 Write-Warning -Message 'Installing... Oh-My-Posh'
-Install-Module -Repository 'PSGallery' -Name 'Oh-My-Posh' -Force
+Install-Module -Scope AllUsers -Repository 'PSGallery' -Name 'Oh-My-Posh' -Force
 
 Write-Warning -Message 'Installing... Posh-Git'
-Install-Module -Repository 'PSGallery' -Name 'Posh-Git' -Force
+Install-Module -Scope AllUsers -Repository 'PSGallery' -Name 'Posh-Git' -Force
 
 Write-Warning -Message 'Installing... PSReadLine'
-Install-Module -Repository 'PSGallery' -Name 'PSReadLine' -AllowPrerelease -Force
+Install-Module -Scope AllUsers -Repository 'PSGallery' -Name 'PSReadLine' -AllowPrerelease -Force
+
+# Create Module SynbolicLinks 
+If ($host.version -like '5.*') { 
+New-Item -ItemType SymbolicLink -Target 'C:\Program Files\WindowsPowerShell\Modules\oh-my-posh' -Path 'C:\Program Files\PowerShell\Modules\oh-my-posh' -Force | Out-Null
+New-Item -ItemType SymbolicLink -Target 'C:\Program Files\WindowsPowerShell\Modules\posh-git' -Path 'C:\Program Files\PowerShell\Modules\posh-git' -Force | Out-Null
+New-Item -ItemType SymbolicLink -Target 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0' -Path 'C:\Program Files\PowerShell\Modules\PSReadLine\2.2.0' -Force | Out-Null
+}
+
+If ($host.version -like '7.*') { 
+New-Item -ItemType SymbolicLink -Target 'C:\Program Files\PowerShell\Modules\oh-my-posh' -Path 'C:\Program Files\WindowsPowerShell\Modules\oh-my-posh' -Force | Out-Null
+New-Item -ItemType SymbolicLink -Target 'C:\Program Files\PowerShell\Modules\posh-git' -Path 'C:\Program Files\WindowsPowerShell\Modules\posh-git' -Force | Out-Null
+New-Item -ItemType SymbolicLink -Target 'C:\Program Files\PowerShell\Modules\PSReadLine\2.2.0' -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0' -Force | Out-Null
+}
+
 
 # Section Title
 Write-Output ''
@@ -88,9 +102,12 @@ Write-Output '=============================================='
 
 # Configure Profile
 "# Import Modules
-'C:\Program Files\WindowsPowerShell\Modules\PSReadline\2.2.0\PSReadLine.psd1' | Import-Module
-'C:\Program Files\WindowsPowerShell\Modules\oh-my-posh\6.44.1\oh-my-posh.psd1' | Import-Module
-'C:\Program Files\WindowsPowerShell\Modules\posh-git\1.0.0\posh-git.psd1' | Import-Module
+#Import-Module -Name 'PSReadLine'
+If ($host).version -like '5.*') { 
+'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0\PSReadLine.psd1' | Import-Module
+} 
+Import-Module -Name 'Oh-My-Posh'
+Import-Module -Name 'Posh-Git'
 
 # Define PSReadLine Configuration
 Set-PSReadLineOption -PredictionSource History
@@ -99,7 +116,6 @@ Set-PSReadLineOption -EditMode Windows
 
 # Configure Oh-My-Posh Prompt
 Set-PoshPrompt -Theme paradox
-
 " | Set-Content -Path $ProfilePath
     (Get-Content $ProfilePath).Trim() | Set-Content $ProfilePath
 
