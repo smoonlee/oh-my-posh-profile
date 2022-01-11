@@ -13,6 +13,16 @@ Download the below file to check PowerShellGet and PackageManagement are Up-To-D
 
 ```Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Check-PowerShellGet.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Check-PowerShellGet.ps1"```
 
+### Install-PSProfile.ps1
+
+#### PSProfile Script without NerdFont Assisted Installation (Requires manual Font installation from: [NerdFonts](https://www.nerdfonts.com/).
+
+```Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_profile/main/Install-PSProfile_NoNerdFonts.ps1' -OutFile "$([Environment]::GetFolderPath("Desktop"))\Install-PSProfile_NoNerdFonts.ps"```
+
+#### PSProfile Script with NerdFont Assisted Installation
+``` Coming Soon ```
+
+
 # > PowerShell Profile Path Locations
 ## PowerShell 5.1.x Profile Path 
 ### Default 
