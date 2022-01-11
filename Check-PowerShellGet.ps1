@@ -1,5 +1,4 @@
 If ($host.version -like '5.*') {
-
     if ((Get-Module -ListAvailable PowerShellGet).version -Join "*.*" -eq '1.0.0.1') {
         Write-Warning -Message 'PackageManagement and PowerShelGet Out-Of-Date!'
         Write-Warning -Message 'Installing... NuGet'	
