@@ -103,15 +103,15 @@ Write-Output '=============================================='
 # Configure Profile
 "# Import Modules
 #Import-Module -Name 'PSReadLine'
-If ($host).version -like '5.*') { 
+If ((Get-Variable Host).Value.Version -like '5.*') { 
 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine\2.2.0\PSReadLine.psd1' | Import-Module
 } 
 Import-Module -Name 'Oh-My-Posh'
 Import-Module -Name 'Posh-Git'
 
 # Define PSReadLine Configuration
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -PredictionSource History | Out-Null
+Set-PSReadLineOption -PredictionViewStyle ListView | Out-Null
 Set-PSReadLineOption -EditMode Windows
 
 # Configure Oh-My-Posh Prompt
@@ -122,5 +122,3 @@ Set-PoshPrompt -Theme paradox
 # Verbose - Setup Complete
 Write-Output ''
 Write-Output 'Windows Terminal - PowerShell Profile Configured!'
-. $Profile
-exit
