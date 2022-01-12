@@ -10,7 +10,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
 
 ### Module Version Support | Get-PowerShellGet.ps1
-Must have PowerShellGet Module above 1.6.0 - Otherwisew PowerShell 5.1 configuration fails to run.
+Must have PowerShellGet Module above 1.6.0 - Otherwise PowerShell 5.1 configuration fails to run.
 Download the below file to check PowerShellGet and PackageManagement are Up-To-Date.
 
 ```
@@ -98,7 +98,7 @@ Coming Soon
 'C:\Users\\$Env:USERNAME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1'
 ```
 
-### PowerShell Path
+#### PowerShell Path
 ```
 "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 ```
