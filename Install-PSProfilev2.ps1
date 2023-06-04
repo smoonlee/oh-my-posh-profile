@@ -10,7 +10,7 @@ Write-Output "=================================================="
 
 $MasterProfile = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 7 Profile
 $Pwsh5Profile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 5 Profile
-$PwshVSCodeProfile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.VSCode_profile.ps1" # VSCode Profile
+$PwshVSCodeProfile = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1" # VSCode Profile
 
 # Remove Old Profile Config Files
 if ($ResetProfile) {
