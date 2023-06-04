@@ -128,7 +128,7 @@ $TerminalProfileContent | Set-Content $TerminalProfileConfig
 
 # Download Custom Oh-My-Posh Profile (Github Gist)
 Write-Output "Downloading Oh-My-Posh Profile Json"
-$PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/1932a53fc755fcca226c93b21de3c9eef99a05cc/quick-term-smoon.omp.json"
+$PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/ce08239eff61bcd50d6671be028906047e554f9f/quick-term-smoon.omp.json"
 $PoshProfileName = Split-Path -Path $PoshProfileGistUrl -Leaf
 Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES_PATH\$PoshProfileName"
 
@@ -136,7 +136,7 @@ Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES_PATH\$Posh
 $PSProfileConfig = @'
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
-Import-Module -Name 'PSReadLine'
+Import-Module -Name 'PSReadLine' -MinimumVersion '2.1.0'
 
 # PSReadLine Config
 Set-PSReadLineOption -EditMode Windows
