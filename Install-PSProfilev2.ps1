@@ -10,7 +10,7 @@ Write-Output "=================================================="
 
 $MasterProfile = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 7 Profile
 $Pwsh5Profile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 5 Profile
-$PwshVSCodeProfile = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1" # VSCode Profile
+$PwshVSCodeProfile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.VSCode_profile.ps1" # VSCode Profile
 
 # Remove Old Profile Config Files
 if ($ResetProfile) {
@@ -128,7 +128,7 @@ $TerminalProfileContent | Set-Content $TerminalProfileConfig
 
 # Download Custom Oh-My-Posh Profile (Github Gist)
 Write-Output "Downloading Oh-My-Posh Profile Json"
-$PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/ce08239eff61bcd50d6671be028906047e554f9f/quick-term-smoon.omp.json"
+$PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/8e45860da5fa66a57a6852f95f8892181340b07a/quick-term-smoon.omp.json"
 $PoshProfileName = Split-Path -Path $PoshProfileGistUrl -Leaf
 Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES_PATH\$PoshProfileName"
 
