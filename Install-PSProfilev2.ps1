@@ -25,11 +25,10 @@ if ($ResetProfile) {
     }
 }
 
-
 If ($InstallNerdFont) {
     # Download and Install Nerd Font
     $NerdFontPackageName = 'CascadiaCode.zip'
-    $NerdFontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/$NerdFontPackageName"
+    $NerdFontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$NerdFontPackageName"
 
     Write-Output "Downloading Nerd Font: $($NerdFontPackageName.TrimEnd('.zip'))"
     Invoke-WebRequest -Uri $NerdFontUrl -OutFile "$Env:Temp\$NerdFontPackageName"
