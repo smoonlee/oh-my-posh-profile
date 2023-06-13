@@ -74,7 +74,7 @@ If ($InstallNerdFont) {
 $wingetArgs = @(
     @{ Name = 'JanDeDobbeleer.OhMyPosh'; Description = 'Oh-My-Posh'; },
     @{ Name = 'Git.Git'; Description = 'Git'; },
-    @{ Name = 'Microsoft.AzureCLI'; Description = 'Microsoft Azure CLI'; }
+    @{ Name = 'Microsoft.AzureCLI'; Description = 'Microsoft Azure CLI'; },
     @{ Name = 'Kubernetes.kubectl'; Description = 'Kubectl'; }
 )
 
@@ -89,8 +89,8 @@ foreach ($App in $wingetArgs) {
 $modules = @('Posh-Git','Az')
 foreach ($module in $modules) {
     if (!(Get-Module -ListAvailable -Name $module)) {
-    Write-Output "Downloading Module: $module"
-    Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules' -Force
+        Write-Output "Downloading Module: $module"
+        Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules' -Force
     }
 }
 
@@ -99,12 +99,12 @@ if ((Get-InstalledModule -Name 'PSReadLine' -ErrorAction SilentlyContinue).Versi
 }
 
 # Configure Windows Terminal Profile
-Write-Output `r "Configuring Windows Terminal Profile"
+Write-Output "`rConfiguring Windows Terminal Profile"
 
 # Create Code Folder
 If (!(Test-Path -Path C:\Code)) {
-New-Item -ItemType Directory -Path C:\Code | Out-Null
-Write-Output "Created C:\Code"
+    New-Item -ItemType Directory -Path C:\Code | Out-Null
+    Write-Output "Created C:\Code"
 }
 
 # Terminal Config
@@ -129,48 +129,4 @@ $TerminalProfileContent | Set-Content $TerminalProfileConfig
 Write-Output "Downloading Oh-My-Posh Profile Json"
 $PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/e6e4e743bb0f743da18baf732e3bce4dc33757b9/quick-term-smoon.omp.json"
 $PoshProfileName = Split-Path -Path $PoshProfileGistUrl -Leaf
-Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES_PATH\$PoshProfileName"
-
-# Configure Windows Terminal Font
-$PSProfileConfig = @'
-# Import PowerShell Modules
-Import-Module -Name 'Posh-Git'
-Import-Module -Name 'PSReadLine' -MinimumVersion '2.1.0'
-
-# PSReadLine Config
-Set-PSReadLineOption -EditMode Windows
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -HistoryNoDuplicates:$True
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-
-(@(& "$Env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\{0}" --print) -join "`n") | Invoke-Expression
-
-# Oh-My-Posh Configuration
-$env:POSH_AZURE_ENABLED = $true
-$env:POSH_GIT_ENABLED = $true
-'@
-
-$PSProfileConfig = $PSProfileConfig -f $PoshProfileName
-$PSProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
-$PSProfileConfig | Set-Content -Path $PSProfilePath -Force
-
-# Create Symbolic Links
-Write-Output "Creating Synbolic Links for PowerShell 5 and VSCode Profiles"
-If (!(Test-Path $Pwsh5Profile)) {
-    New-Item -ItemType SymbolicLink -Path $Pwsh5Profile -Target $MasterProfile -Force | Out-Null
-    Write-Output "Created $Pwsh5Profile"
-}
-
-If (!(Test-Path $PwshVSCodeProfile)) {
-    New-Item -ItemType SymbolicLink -Path $PwshVSCodeProfile -Target $MasterProfile -Force | Out-Null
-    Write-Output "Created $PwshVSCodeProfile"
-}
-
-# Reload Shell Window
-. $PSProfilePath
-
-#
-Write-Output "PSProfile Setup, Completed"
+Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES
