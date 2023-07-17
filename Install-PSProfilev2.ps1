@@ -1,34 +1,93 @@
-Param (
-    [switch]$InstallNerdFont,
-    [switch]$ResetProfile
+
+#Requires -RunAsAdministrator
+
+Write-Output "#################################"
+Write-Output "     New Device Setup Script     "
+Write-Output "#################################"
+
+# Configure PowerShell Execution Policy 
+# PowerShell 7
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
+
+# PowerShell 5
+& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
+
+# Configure PSGallery 
+$PSGalleryInstallationPolicy = (Get-PSRepository -Name 'PSGallery').InstallationPolicy 
+If ($PSGalleryInstallationPolicy -eq 'Untrusted') {
+    Write-Warning "New System Configurtion, Currently PSGallery InstallatinPolicy is: Untrusted"
+    Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
+}
+
+# 
+If ($PSGalleryInstallationPolicy -eq 'Trusted') {
+    Write-Output "PSGallery InstallationPolicy : Trusted"
+}
+
+# Checking PowerShell 5 Modules
+Write-Output "Checking Legacy PowerShell5 Modules"
+$Pwsh5Modules = @(
+    'PackageManagement',
+    'PowerShellGet',
+    'PSReadLine'
 )
 
-# Welcome Message
-Write-Output "=================================================="
-Write-Output "    Welcome to the PS Profile Installer [2.0]     "
-Write-Output "=================================================="
-
-$MasterProfile = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 7 Profile
-$Pwsh5Profile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 5 Profile
-$PwshVSCodeProfile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.VSCode_profile.ps1" # VSCode Profile
-
-# Remove Old Profile Config Files
-if ($ResetProfile) {
-    Write-Warning "Resetting PSProfile, removing all existing profile files"
-
-    $profiles = @($MasterProfile, $Pwsh5Profile, $PwshVSCodeProfile)
-    foreach ($profile in $profiles) {
-        if (Test-Path -Path $profile -ErrorAction SilentlyContinue) {
-            Remove-Item -Path $profile -Force
-            Write-Output "Removed $profile"
-        }
+ForEach ($Module in $Pwsh5Modules) {
+    Write-Output "Checking PowerShell Module [ $Module ] version"
+    $ModuleVersion = (Find-Module -Repository 'PSGallery' -Name $Module).Version 
+    If ((Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module).Name -notcontains $ModuleVersion.ToString()) {
+        Write-Output "Downloading $Module version: $ModuleVersion to $env:ProgramFiles\WindowsPowerShell\Modules\$Module"
+        Save-Module -Repository 'PSGallery' -Name $Module -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force
     }
 }
 
-If ($InstallNerdFont) {
-    # Download and Install Nerd Font
-    $NerdFontPackageName = 'CascadiaCode.zip'
-    $NerdFontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$NerdFontPackageName"
+# Create Symbolic Link for PowerShell Modules from PowerShell 7 to PowerShell 5
+If ((Get-Item -Path $("$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell")).LinkType -eq $Null) {
+Write-Warning "Moving WindowsPowerShell to WindowsPowerShell.Old and creating SymbolicLink from $([Environment]::GetFolderPath("MyDocuments"))\PowerShell"
+Move-Item -Path "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell" -Destination "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell.Old" 
+New-Item -ItemType SymbolicLink -Target "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\" -Path "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\" | Out-Null
+Write-Output "Created Symbolic Link Target"
+}
+
+Write-Output `r "Checking PowerShell Modules"
+# Install PowerShell Modules
+$Pwsh7Modules = @(
+    'Posh-Git',
+    'Az'
+)
+
+ForEach ($Module in $Pwsh7Modules) {
+    Write-Output "Checking PowerShell Module [ $Module ] version"
+    $ModuleVersion = (Find-Module -Repository 'PSGallery' -Name $Module).Version 
+    If ((Get-ChildItem -Path "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Modules\$Module" -ErrorAction SilentlyContinue).Name -notcontains $ModuleVersion.ToString()) {
+        Write-Output "Downloading $Module version: $ModuleVersion to $env:ProgramFiles\WindowsPowerShell\Modules\$Module"
+        Install-Module -Repository 'PSGallery' -Name $Module -Force
+    }
+}
+
+# Install Winget Modules
+Write-Output `r "Chekcing Winget Modules"
+$WinGetModules = @(
+    'JanDeDobbeleer.OhMyPosh',
+    'Git.Git',
+    'Microsoft.AzureCLI',
+    'Kubernetes.kubectl',
+    'Helm.Helm'
+)
+
+
+# Nerd Font Installation Variables
+$NerdFontPackageName = 'CascadiaCode.zip'
+$NerdFontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$NerdFontPackageName"
+$NerdFontName = 'CaskaydiaCoveNerdFont-Regular.ttf'
+$FilePath = "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))\$NerdFontName"
+$FontName = [System.IO.Path]::GetFileNameWithoutExtension($FilePath)
+$DestinationPath = "C:\Windows\Fonts\$FontName.ttf"
+
+If (!(Test-Path -Path $DestinationPath)) {
+
+    # Verbose
+    Write-Output `r "Starting Installation of Nerd Font [ $($NerdFontPackageName.Trim('.zip')) ]"
 
     Write-Output "Downloading Nerd Font: $($NerdFontPackageName.TrimEnd('.zip'))"
     Invoke-WebRequest -Uri $NerdFontUrl -OutFile "$Env:Temp\$NerdFontPackageName"
@@ -36,12 +95,6 @@ If ($InstallNerdFont) {
     # Extract Nerd Font
     Write-Output "Extracting: $($NerdFontPackageName.TrimEnd('.zip'))"
     Expand-Archive -Path "$Env:Temp\$NerdFontPackageName" -DestinationPath "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))" -Force
-
-    # Install Nerd Font
-    $NerdFontName = 'CaskaydiaCoveNerdFont-Regular.ttf'
-    $FilePath = "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))\$NerdFontName"
-    $FontName = [System.IO.Path]::GetFileNameWithoutExtension($FilePath)
-    $DestinationPath = "C:\Windows\Fonts\$FontName.ttf"
 
     # Copy the font file to the Windows Fonts directory
     Copy-Item -Path $FilePath -Destination $DestinationPath -Force
@@ -63,52 +116,20 @@ If ($InstallNerdFont) {
     if (Test-Path $FontCachePath) {
         Remove-Item $FontCachePath -Force
     }
-
-    # Verify Nerd Font Installed
-    if (Test-Path -Path $DestinationPath) {
-        Write-Output "$NerdFontName : Installed" `r
-    }
 }
 
-# Install Oh-My-Posh, Git, and Azure CLI
-$wingetArgs = @(
-    @{ Name = 'JanDeDobbeleer.OhMyPosh'; Description = 'Oh-My-Posh'; },
-    @{ Name = 'Git.Git'; Description = 'Git'; },
-    @{ Name = 'Microsoft.AzureCLI'; Description = 'Microsoft Azure CLI'; },
-    @{ Name = 'Kubernetes.kubectl'; Description = 'Kubectl'; }
-)
-
-foreach ($App in $wingetArgs) {
-    If (!(winget.exe -list $App)) {
-        Write-Output "Installing $($app.Description) (WinGet)"
-        Start-Process -Wait -NoNewWindow -FilePath 'winget.exe' -ArgumentList "install $($app.Name) --accept-source-agreements --accept-package-agreements"
-    }
+# Verify Nerd Font Installed
+if (Test-Path -Path $DestinationPath) {
+    Write-Output "$NerdFontName : Installed" `r
 }
 
-# Download PowerShell Modules
-$modules = @('Posh-Git','Az')
-foreach ($module in $modules) {
-    if (!(Get-Module -ListAvailable -Name $module)) {
-        Write-Output "Downloading Module: $module"
-        Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules' -Force
-    }
-}
-
-if ((Get-InstalledModule -Name 'PSReadLine' -ErrorAction SilentlyContinue).Version -lt '2.1.0') {
-    Save-Module -Name 'PSReadLine' -MinimumVersion '2.1.0' -Path 'C:\Program Files\WindowsPowerShell\Modules' -Force
-}
-
-# Configure Windows Terminal Profile
-Write-Output "`rConfiguring Windows Terminal Profile"
-
-# Create Code Folder
+# Create Local Code Folder 
 If (!(Test-Path -Path C:\Code)) {
-    New-Item -ItemType Directory -Path C:\Code | Out-Null
-    Write-Output "Created C:\Code"
+    New-Item -ItemType 'Directory' -Path C:\Code
 }
 
-# Terminal Config
-$TerminalProfileConfig = "C:\Users\$Env:USERNAME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+# Configure Windows Terminal 
+$TerminalProfileConfig = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 $TerminalProfileContent = Get-Content $TerminalProfileConfig
 $TerminalProfileContent = $TerminalProfileContent -replace '("defaults": {})', @"
         "defaults": 
@@ -156,6 +177,10 @@ $env:POSH_GIT_ENABLED = $true
 $PSProfileConfig = $PSProfileConfig -f $PoshProfileName
 $PSProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
 $PSProfileConfig | Set-Content -Path $PSProfilePath -Force
+
+$MasterProfile = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 7 Profile
+$Pwsh5Profile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" # PowerShell 5 Profile
+$PwshVSCodeProfile = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.VSCode_profile.ps1" # VSCode Profile
 
 # Create Symbolic Links
 Write-Output "Creating Synbolic Links for PowerShell 5 and VSCode Profiles"
