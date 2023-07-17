@@ -15,7 +15,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
 # Configure PSGallery 
 $PSGalleryInstallationPolicy = (Get-PSRepository -Name 'PSGallery').InstallationPolicy 
 If ($PSGalleryInstallationPolicy -eq 'Untrusted') {
-    Write-Warning "New System Configurtion, Currently PSGallery InstallatinPolicy is: Untrusted"
+    Write-Warning "New System Configuration, Currently PSGallery InstallationPolicy is: Untrusted"
     Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 }
 
@@ -43,10 +43,10 @@ ForEach ($Module in $Pwsh5Modules) {
 
 # Create Symbolic Link for PowerShell Modules from PowerShell 7 to PowerShell 5
 If ((Get-Item -Path $("$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell")).LinkType -eq $Null) {
-Write-Warning "Moving WindowsPowerShell to WindowsPowerShell.Old and creating SymbolicLink from $([Environment]::GetFolderPath("MyDocuments"))\PowerShell"
-Move-Item -Path "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell" -Destination "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell.Old" 
-New-Item -ItemType SymbolicLink -Target "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\" -Path "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\" | Out-Null
-Write-Output "Created Symbolic Link Target"
+    Write-Warning "Moving WindowsPowerShell to WindowsPowerShell.Old and creating SymbolicLink from $([Environment]::GetFolderPath("MyDocuments"))\PowerShell"
+    Move-Item -Path "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell" -Destination "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell.Old" 
+    New-Item -ItemType SymbolicLink -Target "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\" -Path "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\" | Out-Null
+    Write-Output "Created Symbolic Link Target"
 }
 
 Write-Output `r "Checking PowerShell Modules"
@@ -74,6 +74,25 @@ $WinGetModules = @(
     'Kubernetes.kubectl',
     'Helm.Helm'
 )
+
+ForEach ($Module in $WinGetModules) {
+    Write-Output "Checking Winget Module [ $Module ] version"
+    $listResult = winget list --query $Module --exact
+    $lastLine = $listResult[-1]
+    # $lastLine
+
+    If (!$lastLine.Contains($Module)) {
+        Write-Output "Installing $Module..."
+        winget install $Module --silent --exact
+
+    }
+
+    Else {
+        Write-Output "$Module already installed, upgrading to latest version"
+        winget upgrade --query $Module --silent --exact
+
+    }
+}
 
 
 # Nerd Font Installation Variables
@@ -120,7 +139,7 @@ If (!(Test-Path -Path $DestinationPath)) {
 
 # Verify Nerd Font Installed
 if (Test-Path -Path $DestinationPath) {
-    Write-Output "$NerdFontName : Installed" `r
+    Write-Output `r "$NerdFontName : Installed" `r
 }
 
 # Create Local Code Folder 
