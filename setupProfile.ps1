@@ -62,7 +62,7 @@ Write-Output "Configure PowerShell Execution Policy [RemoteSigned]"
 
 # Configure PowerShell Modules and Profile Folder
 If (!(Test-Path -Path $Pwsh5ProfilePath)) {
-    New-Item -ItemType 'Directory' -Path $Pwsh5ProfilePath  | Out-Null
+    New-Item -ItemType 'Directory' -Path $Pwsh5ConfigPath  | Out-Null
 }
 
 
