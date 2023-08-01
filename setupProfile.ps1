@@ -20,10 +20,9 @@ $Pwsh7ConfigPath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell"
 $Pwsh5ConfigPath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell"
 
 # PowerShell Profile Paths 
-$VsCodeProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Microsoft.VSCode_profile.ps1"
 $Pwsh7ProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Microsoft.PowerShell_profile.ps1"
 $Pwsh5ProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-
+$VsCodeProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\Microsoft.VSCode_profile.ps1"
 
 # Clear Screen
 Clear-Host
@@ -291,3 +290,6 @@ Write-Output "Created SymbolicLink for VS Code Profile"
 Write-Output `r "-------------------------------------------------------"
 Write-Output "  Windows PowerShell Profile Configuration Complete!  "
 Write-Output "-------------------------------------------------------"
+
+# Finally, Launch Oh-My-Posh
+. $PROFILE
