@@ -1,8 +1,21 @@
+<#
+.Name 
+    New-PsProfile.ps1
+
+.Author
+    Simon Lee   
+    @smoon_lee
+
+.ChangeLog
+    2021-03-01 - Initial Version
+
+#>
+
 
 # Check Folder Path 
-# PowerShell 7.0 : C:\Users\MSFTAdmin\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-# PowerShell 5.0 : C:\Users\MSFTAdmin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-# VSCode         : C:\Users\MSFTAdmin\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+# PowerShell 7.0 : C:\Users\Default\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+# PowerShell 5.0 : C:\Users\Default\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# VSCode         : C:\Users\Default\Documents\PowerShell\Microsoft.VSCode_profile.ps1
 
 #Requires -RunAsAdministrator
 
@@ -23,7 +36,6 @@ $Pwsh5ConfigPath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerS
 $VsCodeProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Microsoft.VSCode_profile.ps1"
 $Pwsh7ProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Microsoft.PowerShell_profile.ps1"
 $Pwsh5ProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-
 
 # Clear Screen
 Clear-Host
