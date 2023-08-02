@@ -1,3 +1,0 @@
-New-Item -ItemType 'Directory' -Path C:\Temp
-Invoke-WebRequest -Uri 'https://github.com/microsoft/terminal/releases/download/v1.11.3471.0/Microsoft.WindowsTerminal_1.11.3471.0_8wekyb3d8bbwe.msixbundle' -OutFile 'C:\Temp\Microsoft.WindowsTerminal_1.11.3471.0_8wekyb3d8bbwe.msixbundle'
-Add-AppxPackage -Path C:\Temp\Microsoft.WindowsTerminal_1.11.3471.0_8wekyb3d8bbwe.msixbundle ; Remove-Item C:\Temp -Recurse -Force
