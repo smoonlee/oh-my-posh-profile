@@ -262,7 +262,7 @@ catch {
 Write-Output `r "Configuring PowerShell Oh-My-Posh Theme"
 
 Write-Output "Downloading Oh-My-Posh Profile: [quick-term-smoon] Json"
-$PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/e6e4e743bb0f743da18baf732e3bce4dc33757b9/quick-term-smoon.omp.json"
+$PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/44c5e75016bef8f4ab2a9fff7d7be810569fc60c/quick-term-smoon.omp.json"
 $PoshProfileName = Split-Path -Path $PoshProfileGistUrl -Leaf
 Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES_PATH\$PoshProfileName"
 
