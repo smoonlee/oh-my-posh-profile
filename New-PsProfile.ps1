@@ -25,7 +25,7 @@ function Update-PowerShellModule {
         $OnlineModule = (Find-Module -Repository 'PSGallery' -Name $Module -ErrorAction Stop).Version 
         $LocalModule = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select -Last 1
         if ($LocalModule -eq $OnlineModule) {
-            Write-Output "PowerShell Module [$ModuleName] is up to date (Local: $($LocalModule), Online: $($OnlineModule))"
+            Write-Output "PowerShell Module [$ModuleName] is up to date [Local: $($LocalModule), Online: $($OnlineModule)]"
         }
         else {
             Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule.Version)"
