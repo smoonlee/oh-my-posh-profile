@@ -11,6 +11,78 @@
 
 #>
 
+param (
+    [Parameter()]
+    [switch] $ResetProfile
+)
+
+function Update-PowerShellModule {
+    param (
+        [string] $ModuleName
+    )
+
+    try {
+        $OnlineModule = (Find-Module -Repository 'PSGallery' -Name $Module -ErrorAction Stop).Version 
+        $LocalModule = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select -Last 1
+        if ($LocalModule -eq $OnlineModule) {
+            Write-Output "PowerShell Module [$ModuleName] is up to date (Local: $($LocalModule), Online: $($OnlineModule))"
+        }
+        else {
+            Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule.Version)"
+            Save-Module -Repository 'PSGallery' -Name $ModuleName  -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force -ErrorAction Stop
+        }
+    }
+    catch {
+        Write-Warning "Failed to update module [$ModuleName]. Error: $_"
+    }
+}
+
+function Install-NerdFont {
+    $NerdFontPackageName = 'CascadiaCode.zip'
+    $NerdFontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$NerdFontPackageName"
+    $NerdFontName = 'CaskaydiaCoveNerdFont-Regular.ttf'
+    $FilePath = "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))\$NerdFontName"
+    $FontName = [System.IO.Path]::GetFileNameWithoutExtension($FilePath)
+    $DestinationPath = "C:\Windows\Fonts\$FontName.ttf"
+
+    if (!(Test-Path -Path $DestinationPath)) {
+        Write-Output "> Starting Installation of Nerd Font [ $($NerdFontPackageName.Trim('.zip')) ]"
+
+        try {
+            Write-Output "Downloading Nerd Font: $($NerdFontPackageName.TrimEnd('.zip'))"
+            Invoke-WebRequest -Uri $NerdFontUrl -OutFile "$Env:Temp\$NerdFontPackageName"
+
+            Write-Output "Extracting: $($NerdFontPackageName.TrimEnd('.zip'))"
+            Expand-Archive -Path "$Env:Temp\$NerdFontPackageName" -DestinationPath "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))" -Force
+
+            Copy-Item -Path $FilePath -Destination $DestinationPath -Force
+
+            $FontRegistryPath = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
+            $FontEntry = "$FontName (TrueType)" # Modify this if the font is not TrueType
+            New-ItemProperty -Path $FontRegistryPath -Name $FontEntry -PropertyType String -Value $DestinationPath -Force | Out-Null
+
+            $wshShell = New-Object -ComObject WScript.Shell
+            $FontCachePath = "$env:SystemRoot\System32\FNTCACHE.DAT"
+            $wshShell.AppActivate('Font Viewer') | Out-Null
+            Start-Sleep -Milliseconds 500
+            $wshShell.SendKeys('{F5}')
+            Start-Sleep -Milliseconds 500
+            $wshShell.SendKeys('{TAB}{ENTER}')
+            Start-Sleep -Milliseconds 500
+            if (Test-Path $FontCachePath) {
+                Remove-Item $FontCachePath -Force
+            }
+
+            Write-Output "Nerd Font [$NerdFontName] Installed"
+        }
+        catch {
+            Write-Warning "Failed to install Nerd Font. Error: $_"
+        }
+    }
+    else {
+        Write-Output "Nerd Font [$NerdFontName] is already installed"
+    }
+}
 
 # Check Folder Path 
 # PowerShell 7.0 : C:\Users\Default\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
@@ -19,23 +91,18 @@
 
 #Requires -RunAsAdministrator
 
-param (
-    [Parameter()]
-    [switch] $ResetProfile
-)
-
 # PowerShell Application Paths
 $Pwsh7App = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"
 $Pwsh5App = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
 
 # PowerShell Modules Path 
-$Pwsh7ConfigPath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell"
-$Pwsh5ConfigPath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell"
+$Pwsh7ConfigPath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell"
+$Pwsh5ConfigPath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell"
 
 # PowerShell Profile Paths 
-$VsCodeProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Microsoft.VSCode_profile.ps1"
-$Pwsh7ProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\PowerShell\Microsoft.PowerShell_profile.ps1"
-$Pwsh5ProfilePath = "$([Environment]::GetFolderPath("MyDocuments"))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+$VsCodeProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1"
+$Pwsh7ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
+$Pwsh5ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 # Clear Screen
 Clear-Host
@@ -45,7 +112,6 @@ Write-Output "-------------------------------------------------------"
 Write-Output "    Windows PowerShell Profile Configuration Script    "
 Write-Output "-------------------------------------------------------"
 
-
 # Reset PowerShell Modules and PSProfile
 if ($ResetProfile) {
     Write-Warning "Resetting Windows PowerShell Profile"
@@ -54,7 +120,7 @@ if ($ResetProfile) {
         Write-Output "Removing PowerShell 7 Modules and Profile"
         Remove-Item -Path $Pwsh7ConfigPath -Force -Recurse
     }
-    Else {
+    else {
         Write-Output "No PowerShell 7 Profile Configured"
     }
  
@@ -62,7 +128,7 @@ if ($ResetProfile) {
         Write-Output "Removing PowerShell 5 Modules and Profile" `r
         Remove-Item -Path $Pwsh5ConfigPath -Force -Recurse
     }
-    Else {
+    else {
         Write-Output "No PowerShell 5 Profile Configured" `r
     }
 }
@@ -77,7 +143,6 @@ If (!(Test-Path -Path $Pwsh5ProfilePath)) {
     New-Item -ItemType 'Directory' -Path $Pwsh5ConfigPath  | Out-Null
 }
 
-
 # Update Local PowerShell Modules
 Write-Output `r "> Checking PowerShell 5 Modules"
 $Pwsh5Modules = @(
@@ -88,13 +153,7 @@ $Pwsh5Modules = @(
 )
 
 ForEach ($Module in $Pwsh5Modules) {
-    $OnlineModuleVersion = (Find-Module -Repository 'PSGallery' -Name $Module).Version 
-    $LocalModuleVersion = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select -Last 1
-    Write-Output "Checking PowerShell Module [ $Module ] Online: $OnlineModuleVersion, Local: $LocalModuleVersion"
-    if ((Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name -notcontains $OnlineModuleVersion.ToString()) {
-        Write-Output "Downloading $Module version: $ModuleVersion to $env:ProgramFiles\WindowsPowerShell\Modules\$Module"
-        Save-Module -Repository 'PSGallery' -Name $Module -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force
-    }
+    Update-PowerShellModule -ModuleName $Module
 }
 
 # Update Local PowerShell Modules
@@ -105,13 +164,7 @@ $Pwsh7Modules = @(
 )
 
 ForEach ($Module in $Pwsh7Modules) {
-    $OnlineModuleVersion = (Find-Module -Repository 'PSGallery' -Name $Module).Version 
-    $LocalModuleVersion = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select -Last 1
-    Write-Output "Checking PowerShell Module [ $Module ] Online: $OnlineModuleVersion, Local: $LocalModuleVersion"
-    if ((Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name -notcontains $OnlineModuleVersion.ToString()) {
-        Write-Output "Downloading $Module version: $ModuleVersion to $env:ProgramFiles\WindowsPowerShell\Modules\$Module"
-        Save-Module -Repository 'PSGallery' -Name $Module -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force
-    }
+    Update-PowerShellModule -ModuleName $Module
 }
 
 # Configure WinGet 
@@ -121,12 +174,11 @@ $WinGetModules = @(
     'Git.Git',
     'GitHub.cli',
     'Microsoft.AzureCLI',
-    'Microsoft.Azure.Kubelogin'
+    'Microsoft.Azure.Kubelogin',
     'Kubernetes.kubectl',
     'Helm.Helm'
 )
 
-# Check Module 
 ForEach ($Module in $WinGetModules) {
     Write-Output "Checking for [$Module]"
 
@@ -136,54 +188,9 @@ ForEach ($Module in $WinGetModules) {
     }
 }
 
-
-# Download Nerd Font and Install
-# Nerd Font Installation Variables
-$NerdFontPackageName = 'CascadiaCode.zip'
-$NerdFontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$NerdFontPackageName"
-$NerdFontName = 'CaskaydiaCoveNerdFont-Regular.ttf'
-$FilePath = "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))\$NerdFontName"
-$FontName = [System.IO.Path]::GetFileNameWithoutExtension($FilePath)
-$DestinationPath = "C:\Windows\Fonts\$FontName.ttf"
-
-If (!(Test-Path -Path $DestinationPath)) {
-
-    # Verbose
-    Write-Output `r "> Starting Installation of Nerd Font [ $($NerdFontPackageName.Trim('.zip')) ]"
-
-    Write-Output "Downloading Nerd Font: $($NerdFontPackageName.TrimEnd('.zip'))"
-    Invoke-WebRequest -Uri $NerdFontUrl -OutFile "$Env:Temp\$NerdFontPackageName"
-
-    # Extract Nerd Font
-    Write-Output "Extracting: $($NerdFontPackageName.TrimEnd('.zip'))"
-    Expand-Archive -Path "$Env:Temp\$NerdFontPackageName" -DestinationPath "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))" -Force
-
-    # Copy the font file to the Windows Fonts directory
-    Copy-Item -Path $FilePath -Destination $DestinationPath -Force
-
-    # Register the font in the Windows registry
-    $FontRegistryPath = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
-    $FontEntry = "$FontName (TrueType)" # Modify this if the font is not TrueType
-    New-ItemProperty -Path $FontRegistryPath -Name $FontEntry -PropertyType String -Value $DestinationPath -Force | Out-Null
-
-    # Send a message to update the font cache
-    $wshShell = New-Object -ComObject WScript.Shell
-    $FontCachePath = "$env:SystemRoot\System32\FNTCACHE.DAT"
-    $wshShell.AppActivate('Font Viewer') | Out-Null
-    Start-Sleep -Milliseconds 500
-    $wshShell.SendKeys('{F5}')
-    Start-Sleep -Milliseconds 500
-    $wshShell.SendKeys('{TAB}{ENTER}')
-    Start-Sleep -Milliseconds 500
-    if (Test-Path $FontCachePath) {
-        Remove-Item $FontCachePath -Force
-    }
-}
-
-# Verify Nerd Font Installed
-if (Test-Path -Path $DestinationPath) {
-    Write-Output `r "$NerdFontName : Installed" `r
-}
+# Download and Install Nerd Font
+Write-Output "" # Required for verbose script formatting
+Install-NerdFont
 
 # Create Local Code Folder
 $RootCodeFolder = "C:\Code"
@@ -192,22 +199,21 @@ If (!(Test-Path -Path $RootCodeFolder)) {
     Write-Output "Created Code Folder : $RootCodeFolder"
 }
 
-
 # Windows Terminal Config 
-$settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"  # Update this with the actual path to your settings.json file
-$desiredOrder = @("PowerShell", "Windows PowerShell", "Azure Cloud Shell", "Command Prompt" )  # Update this array with the desired order of profile names
+$settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"  
+$desiredOrder = @("PowerShell", "Windows PowerShell", "Azure Cloud Shell", "Command Prompt" )  
 
 try {
     # Load the content of the settings.json file
     $settingsContent = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 
     # Get the list of existing profiles
-    $profiles = $settingsContent.profiles.list
+    $winTermprofiles = $settingsContent.profiles.list
 
     # Create a hashtable to map profile name to profile data
     $profileData = @{}
-    foreach ($profile in $profiles) {
-        $profileData[$profile.name] = $profile
+    foreach ($winTermprofile in $winTermprofiles) {
+        $profileData[$winTermprofile.name] = $winTermprofile
     }
 
     # Create a list to hold the reordered profiles
@@ -301,7 +307,7 @@ Write-Output "Created SymbolicLink for VS Code Profile"
 
 # Setup Complete
 Write-Output `r "-------------------------------------------------------"
-Write-Output "  Windows PowerShell Profile Configuration Complete!  "
+Write-Output "  Windows PowerShell Profile Configuration Complete!   "
 Write-Output "-------------------------------------------------------"
 
 # Finally, Launch Oh-My-Posh
