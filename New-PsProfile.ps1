@@ -28,7 +28,7 @@ function Update-PowerShellModule {
             Write-Output "PowerShell Module [$ModuleName] is up to date [Local: $($LocalModule), Online: $($OnlineModule)]"
         }
         else {
-            Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule.Version)"
+            Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule)"
             Save-Module -Repository 'PSGallery' -Name $ModuleName  -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force -ErrorAction Stop
         }
     }
