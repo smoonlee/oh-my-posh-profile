@@ -7,14 +7,80 @@
     @smoon_lee
 
 .ChangeLog
-    2021-03-01 - Initial Version
-
+    2022-01-10 - Version 1.0 - Inital Script Created
+    2023-08-01 - Version 1.1 - Recreated Script
+    2023-08-04 - Version 1.1.1 - Added PowreShell 7 Path Check and Pre-Flight Check (For New OS Install)
 #>
+
+# Check Folder Path 
+# PowerShell 7.0 : C:\Users\Default\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+# PowerShell 5.0 : C:\Users\Default\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# VSCode         : C:\Users\Default\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+
+#Requires -RunAsAdministrator
 
 param (
     [Parameter()]
     [switch] $ResetProfile
 )
+
+# Clear Screen
+Clear-Host
+
+# PowerShell Profile Setup Verbose Message
+Write-Output "-------------------------------------------------------"
+Write-Output "    Windows PowerShell Profile  Pre Flight Check       "
+Write-Output "-------------------------------------------------------"
+
+# Prerequisite Application Check
+$CoreApps = @(
+    'Microsoft.PowerShell',
+    'Microsoft.WindowsTerminal',
+    'Microsoft.VisualStudioCode'
+)
+
+ForEach ($CoreApp in $CoreApps) {
+    Write-Output "Checking for [$CoreApp]"
+
+    $CoreAppCheck = winget.exe list --exact --query $CoreApp --accept-source-agreements
+    If ($CoreAppCheck[-1] -notmatch $CoreApp) {
+        winget.exe install --silent --exact --query $CoreApp --accept-source-agreements
+    }
+}
+
+#
+# PowerShell Profile Script Variables
+# 
+
+# PowerShell Application Paths
+$Pwsh7App_1 = "$env:ProgramFiles\PowerShell\7\pwsh.exe"
+$Pwsh7App_2 = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"
+
+# Test each path using Test-Path
+if (Test-Path $Pwsh7App_1) {
+    $Pwsh7App = $Pwsh7App_1
+    Write-Output "PowerShell 7 Path: $Pwsh7App"
+} 
+
+if (Test-Path $Pwsh7App_2) {
+    $Pwsh7App = $Pwsh7App_2
+    Write-Output "PowerShell 7 Path: $Pwsh7App"
+} 
+
+$Pwsh5App = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+
+# PowerShell Modules Path 
+$Pwsh7ConfigPath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell"
+$Pwsh5ConfigPath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell"
+
+# PowerShell Profile Paths 
+$VsCodeProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1"
+$Pwsh7ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
+$Pwsh5ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+
+#
+# PowerShell Profiles Functions
+#
 
 function Update-PowerShellModule {
     param (
@@ -84,28 +150,9 @@ function Install-NerdFont {
     }
 }
 
-# Check Folder Path 
-# PowerShell 7.0 : C:\Users\Default\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-# PowerShell 5.0 : C:\Users\Default\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-# VSCode         : C:\Users\Default\Documents\PowerShell\Microsoft.VSCode_profile.ps1
-
-#Requires -RunAsAdministrator
-
-# PowerShell Application Paths
-$Pwsh7App = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"
-$Pwsh5App = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-
-# PowerShell Modules Path 
-$Pwsh7ConfigPath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell"
-$Pwsh5ConfigPath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell"
-
-# PowerShell Profile Paths 
-$VsCodeProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1"
-$Pwsh7ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
-$Pwsh5ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-
-# Clear Screen
-Clear-Host
+#
+# Variable and Function Configuraiton End
+####
 
 # PowerShell Profile Setup Verbose Message
 Write-Output "-------------------------------------------------------"
@@ -134,7 +181,7 @@ if ($ResetProfile) {
 }
 
 # Configure PowerShell Execution Policy 
-Write-Output "Configure PowerShell Execution Policy [RemoteSigned]"
+Write-Output `r "Configure PowerShell Execution Policy [RemoteSigned]"
 & "$Pwsh7App" -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
 & "$Pwsh5App" -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
 
@@ -201,7 +248,7 @@ If (!(Test-Path -Path $RootCodeFolder)) {
 
 # Windows Terminal Config 
 $settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"  
-$desiredOrder = @("PowerShell", "Windows PowerShell", "Azure Cloud Shell", "Command Prompt" )  
+$desiredOrder = @("PowerShell", "Windows PowerShell", "Azure Cloud Shell", "Command Prompt")  
 
 try {
     # Load the content of the settings.json file
@@ -270,7 +317,7 @@ Write-Output `r "Configuring PowerShell Oh-My-Posh Theme"
 Write-Output "Downloading Oh-My-Posh Profile: [quick-term-smoon] Json"
 $PoshProfileGistUrl = "https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/44c5e75016bef8f4ab2a9fff7d7be810569fc60c/quick-term-smoon.omp.json"
 $PoshProfileName = Split-Path -Path $PoshProfileGistUrl -Leaf
-Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$env:POSH_THEMES_PATH\$PoshProfileName"
+Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\$PoshProfileName"
 
 # PowerShell_Profile
 $PSProfileConfig = @'
