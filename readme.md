@@ -4,17 +4,17 @@
 #### Prerequisites for powershell_profile 
  Install the Microsoft Windows Terminal Application
 ```
- winget.exe install --exact --id Microsoft.WindowsTerminal
+ winget.exe install --silent --exact --id Microsoft.WindowsTerminal
 ```
 
  Install the Microsoft Visual Studio Code Application
  ```
- winget.exe install --exact --id Microsoft.VisualStudioCode --scope machine
+ winget.exe install --silent --exact --id Microsoft.VisualStudioCode --scope machine
  ```
 
  Install the PowerShell 7.0
  ```
- winget.exe install --exact --id Microsoft.PowerShell
+ winget.exe install --silent --exact --id Microsoft.PowerShell
 ```
 
 #### VSCode : Editor: Font Family 
