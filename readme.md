@@ -40,8 +40,9 @@ During the setup of the PsProfile Script the following Packages will be installe
  - PowerShellGet [PowerShell 5.0]
  - PSReadLine [PowerShell 5.0]
  - Pester [PowerShell 5.0]
- - Posh-Git [PowerShell 7.0]
- - Az [PowerShell 7.0]
+ - Posh-Git [PowerShell 7.0] [PowerShell 5.0]
+ - Terminal-Icons [PowerShell 7.0] [PowerShell 5.0]
+ - Az [PowerShell 7.0] [PowerShell 5.0]
 
 During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
 this allows for cross version module import from PowerShell 5.1 and PowerShell 7.0
