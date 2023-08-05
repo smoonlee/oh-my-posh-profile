@@ -1,6 +1,6 @@
 ![psprofile-automated-installation-script-header-png](content/github_psprofile_v2_header.png)
 
-# Welcome to the PSProfile - Two &#9679; Point Two &#9679; Zero
+# Welcome to the PSProfile - Two &#9679; Point &#9679; Zero
 
 ### Pre-requites Applications required: 
 > Microsoft.WindowsTerminal \
