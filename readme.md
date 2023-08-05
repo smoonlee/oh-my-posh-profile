@@ -86,7 +86,7 @@ Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\powersh
 
 ## PsProfile Reset 
 
-### PSA - WARNING
+### [⚠️] -  WARNING - What the Profile Reset removes 
 During the Profile Reset, The cleanup script will remove the source PowerShell folders from your Documents folder and reset the Windows Terminal settings.json file.
 
  - PowerShell 7.0 \
