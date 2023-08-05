@@ -1,22 +1,68 @@
-# Windows Terminal and Visual Studio Code : Profile Script
+![psprofile-automated-installation-script-header-png](content/github_psprofile_v2_header.png)
 
-#### VSCode : Editor: Font Family 
+# Welcome to the PSProfile Generation Two Point Zero Setup Repository
+
+### Pre-requites Applications required: 
+> Microsoft.WindowsTerminal \
+> Microsoft.PowerShell \
+> Microsoft.VisualStudioCode 
+> 
+<details>
+<summary>Manual Installation of Packages</summary>
+
+#### Microsoft.WindowsTerminal 
 ```
-Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
+winget.exe install --exact --silent --id Microsoft.WindowsTerminal
 ```
 
-## powershell_profile Setup
+#### Microsoft.PowerShell
+```
+winget.exe install --exact --silent --id Microsoft.PowerShell
+```
 
-Download the Github repository
+#### Microsoft.VisualStudioCode
+```
+winget.exe install --exact --silent --id Microsoft.VisualStudioCode --scope machine
+```
+</details>
 
+## New Computer Setup (Fresh OS Deployment)
+#### Download zip file and extract 
+```
+Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile $([Environment]::GetFolderPath("Desktop"))\psprofile.zip
+```
+
+#### Extract Zip file
+```
+Expand-Archive -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile.zip" -DestinationPath "$([Environment]::GetFolderPath("Desktop"))\psprofile"
+```
+
+```
+Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\powershell_profile-main"
+```
+
+#### Execute New-PsProfile Script
+```
+.\New-PsProfile.ps1
+```
+
+## PsProfile Reset 
+
+#### Clone Github Repository
 ```
 git clone https://github.com/smoonlee/powershell_profile.git
 ```
 
-Execute
+#### Enter Github Repository Folder
 ```
-.\New-PsProfile.ps1 
+Set-Location -Path <path-to-git-clone-folder>
 ```
 
-Close Windows Terminal, and Edit VSCode Font Family 🥳
+#### Execute PsProfile
+```
+New-PsProfile.ps1 -ResetProfile
+```
 
+### Windows Terminal Preview 
+
+![windows-termianl-psprfile-example](content/windows-terminal-psprpfile-pwsh7.png)
