@@ -11,6 +11,7 @@
     2023-08-01 - Version 1.1 - Recreated Script
     2023-08-04 - Version 1.1.1 - Added PowerShell 7 Path Check and Pre-Flight Check (For New OS Install)
     2023-08-05 - Version 1.1.2 - Updated Windows Terminal Configuration Cursor: _
+    2023-08-05 - Version 1.2 - Added Terminal-Icons https://github.com/devblackops/Terminal-Icons
 #>
 
 # Check Folder Path 
@@ -211,6 +212,7 @@ ForEach ($Module in $Pwsh5Modules) {
 Write-Output `r "> Checking PowerShell 7 Modules"
 $Pwsh7Modules = @(
     'Posh-Git',
+    'Terminal-Icons'
     'Az'
 )
 
@@ -328,6 +330,7 @@ Invoke-WebRequest -Uri $PoshProfileGistUrl -OutFile "$Env:LOCALAPPDATA\Programs\
 $PSProfileConfig = @'
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
+Import-Module -Name 'Terminal-Icons'
 Import-Module -Name 'PSReadLine' -MinimumVersion '2.1.0'
 
 # PSReadLine Config
