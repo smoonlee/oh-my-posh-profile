@@ -7,9 +7,10 @@
     @smoon_lee
 
 .ChangeLog
-    2022-01-10 - Version 1.0 - Inital Script Created
+    2022-01-10 - Version 1.0 - Initial Script Created
     2023-08-01 - Version 1.1 - Recreated Script
-    2023-08-04 - Version 1.1.1 - Added PowreShell 7 Path Check and Pre-Flight Check (For New OS Install)
+    2023-08-04 - Version 1.1.1 - Added PowerShell 7 Path Check and Pre-Flight Check (For New OS Install)
+    2023-08-05 - Version 1.1.2 - Updated Windows Terminal Configuration Cursor: _
 #>
 
 # Check Folder Path 
@@ -89,7 +90,7 @@ function Update-PowerShellModule {
 
     try {
         $OnlineModule = (Find-Module -Repository 'PSGallery' -Name $Module -ErrorAction Stop).Version 
-        $LocalModule = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select -Last 1
+        $LocalModule = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select-Object -Last 1
         if ($LocalModule -eq $OnlineModule) {
             Write-Output "PowerShell Module [$ModuleName] is up to date [Local: $($LocalModule), Online: $($OnlineModule)]"
         }
@@ -151,7 +152,7 @@ function Install-NerdFont {
 }
 
 #
-# Variable and Function Configuraiton End
+# Variable and Function Configuration End
 ####
 
 # PowerShell Profile Setup Verbose Message
@@ -163,6 +164,9 @@ Write-Output "-------------------------------------------------------"
 if ($ResetProfile) {
     Write-Warning "Resetting Windows PowerShell Profile"
  
+    # Remove Windows Terminal Settings.Json
+    Remove-Item -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
     if (Test-Path -Path $Pwsh7ConfigPath) {
         Write-Output "Removing PowerShell 7 Modules and Profile"
         Remove-Item -Path $Pwsh7ConfigPath -Force -Recurse
@@ -172,11 +176,11 @@ if ($ResetProfile) {
     }
  
     if (Test-Path -Path $Pwsh5ConfigPath) {
-        Write-Output "Removing PowerShell 5 Modules and Profile" `r
+        Write-Output "Removing PowerShell 5 Modules and Profile"
         Remove-Item -Path $Pwsh5ConfigPath -Force -Recurse
     }
     else {
-        Write-Output "No PowerShell 5 Profile Configured" `r
+        Write-Output "No PowerShell 5 Profile Configured"
     }
 }
 
