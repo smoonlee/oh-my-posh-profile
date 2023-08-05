@@ -294,6 +294,7 @@ try {
         "defaults": 
         {
             "colorScheme": "One Half Dark",
+            "cursorShape": "underscore",
             "elevate": true,
             "font": 
             {
