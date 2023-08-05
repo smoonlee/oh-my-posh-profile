@@ -65,6 +65,8 @@ For the VSCode Font Family settings you will want to use:
 Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
 ```
 
+### Installation Time
+
 #### Download zip file and extract 
 ```
 Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile $([Environment]::GetFolderPath("Desktop"))\psprofile.zip
