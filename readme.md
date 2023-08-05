@@ -27,6 +27,44 @@ winget.exe install --exact --silent --id Microsoft.VisualStudioCode --scope mach
 </details>
 
 ## New Computer Setup (Fresh OS Deployment)
+During the setup of the PsProfile Script the following Packages will be installed on your local machine 
+
+### Pre-requsite checks - winget modules (This will probably already be installed)
+ - Microsoft.WindowsTerminal
+ - Microsoft.PowerShell*
+ - Microsoft.VisualStudioCode \
+'*' If installed from winget it installs under `"C:\Program Files\PowerShell\7\pwsh.exe"`
+
+### PowerShell Modules
+ - PackageManagement [PowerShell 5.0]
+ - PowerShellGet [PowerShell 5.0]
+ - PSReadLine [PowerShell 5.0]
+ - Pester [PowerShell 5.0]
+ - Posh-Git [PowerShell 7.0]
+ - Az [PowerShell 7.0]
+
+During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
+this allows for cross version module import from PowerShell 5.1 and PowerShell 7.0
+
+### Winget Modules
+ - JanDeDobbeleer.OhMyPosh
+ - Git.Git
+ - Github.Cli
+ - Microsoft.AzureCLI
+ - Microsoft.Azure.Kubelogin
+ - Kubernetes.kubectl
+ - Helm.Helm
+
+### Nerd Font Installation
+Oviosuly using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font-downloads) of choice. \
+For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
+Specially this ttf font style: *CaskaydiaCoveNerdFont-Regular.ttf*
+
+For the VSCode Font Family settings you will want to use:
+```
+Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
+```
+
 #### Download zip file and extract 
 ```
 Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile $([Environment]::GetFolderPath("Desktop"))\psprofile.zip
@@ -47,6 +85,18 @@ Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\powersh
 ```
 
 ## PsProfile Reset 
+
+### PSA - WARNING
+During the Profile Reset, The cleanup script will remove the source PowerShell folders from your Documents folder and reset the Windows Terminal settings.json file.
+
+ - PowerShell 7.0 \
+    `%USERPROFILE%\Documents\PowerShell`
+
+- PowerShell 5.1 \
+    `%USERPROFILE%\Documents\WindowsPowershell`
+
+- Windows Terminal (settings.json) \
+    `%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json`
 
 #### Clone Github Repository
 ```
