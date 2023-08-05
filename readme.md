@@ -1,6 +1,6 @@
 ![psprofile-automated-installation-script-header-png](content/github_psprofile_v2_header.png)
 
-# Welcome to the PSProfile Generation Two Point Zero Setup Repository
+# Welcome to the PSProfile Generation Two Point Zero
 
 ### Pre-requites Applications required: 
 > Microsoft.WindowsTerminal \
