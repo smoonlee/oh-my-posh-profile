@@ -12,6 +12,7 @@
     2023-08-04 - Version 1.1.1 - Added PowerShell 7 Path Check and Pre-Flight Check (For New OS Install)
     2023-08-05 - Version 1.1.2 - Updated Windows Terminal Configuration Cursor: _
     2023-08-05 - Version 1.2 - Added Terminal-Icons https://github.com/devblackops/Terminal-Icons
+    2023-08-08 - Version 1.2.1 - added verbose mesasge for Windows Terminal removing (Under $ResetProfile)
 #>
 
 # Check Folder Path 
@@ -166,7 +167,8 @@ if ($ResetProfile) {
     Write-Warning "Resetting Windows PowerShell Profile"
  
     # Remove Windows Terminal Settings.Json
-    Remove-Item -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    Remove-Item -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" -Force
+    Write-Output "Removing Windows Terminal Settings"
 
     if (Test-Path -Path $Pwsh7ConfigPath) {
         Write-Output "Removing PowerShell 7 Modules and Profile"
