@@ -2,7 +2,7 @@
 
 Update Local Packages and install Brew
 ```
-apt update && apt install build-essentials -y
+sudo apt update && apt sudo install build-essentials -y
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
