@@ -2,7 +2,8 @@
 
 Update Local Packages and install Brew
 ```
-sudo apt update && apt sudo install build-essentials -y
+sudo apt update && sudo apt install build-essential -y
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/smooney/.profile
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -26,4 +27,8 @@ add this to the last line
 eval "$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/quick-term-smoon.omp.json)"
 ```
 
-Close and reload profile
+Close and reload the profile
+
+```
+. ~/.profile
+```
