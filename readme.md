@@ -15,11 +15,11 @@ Author: [Jan De Dobbeleer](https://twitter.com/JanDeDobbeleer)
 
 
 ### Base Theme 
-The theme, I've adapted is the [quick-term](https://ohmyposh.dev/docs/themes#quick-term) theme created by [SokLay](https://github.com/soklaysam)
+The base theme I've adapted is the [quick-term](https://ohmyposh.dev/docs/themes#quick-term) theme created by [SokLay](https://github.com/soklaysam)
 
 ![Alt text](content/quick-term-default-profile.png)
 
-the added customisation is supporting `Azure Cli` `PowerShell` and `Azure Kubernetes` Contexts
+the added customisation is supporting `Azure Cli` `PowerShell` and `Azure Kubernetes` Contexts - which makes to alot easier when working with multiple customers and subscriptions and contexts.
 
 ## How to install Oh-My-Posh
 ### Windows
@@ -28,7 +28,8 @@ Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-pr
 ```
 ### Linux
 ``` bash
-wget https://raw.githubusercontent.com/smoonlee/oh-my-posh/main/New-BashProfile.sh -O - | bash
+wget https://raw.githubusercontent.com/smoonlee/oh-my-posh/main/New-BashProfile.sh -O /tmp/New-BashProfile.sh && sudo sh ./tmp/New-BashProfile.sh
+```
 ```
 
 ## Oh-My-Posh Profile Configuration and Breakdown 
