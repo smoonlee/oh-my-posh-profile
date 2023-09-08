@@ -28,7 +28,7 @@ Close and reload the profile
 . ~/.profile
 ```
 
-# Configure Kubernetes Config File 
+## Configure Kubernetes Config File 
 
 ```
 mkdir -p ~/.kube
