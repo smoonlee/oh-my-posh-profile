@@ -1,6 +1,39 @@
-![psprofile-automated-installation-script-header-png](content/github_psprofile_v2_header.png)
 
-# Welcome to the PSProfile - Two &#9679; Point &#9679; Zero
+
+
+# Welcome to my Oh-My-Posh profile 2.1
+We now have support for Windows and Linux and the setup steps to configure your terminal are now easier than ever. 🥳
+
+## What is Oh-My-Posh?
+Oh-My-Posh is a theme engine for any terminal that is able to display text. It was created to be easy to install and configure.
+
+### Useful Links
+Main Website: [https://ohmyposh.dev](https://ohmyposh.dev/) \
+Oh-My-Posh Docs: [https://ohmyposh.dev/docs](https://ohmyposh.dev/docs/) \
+Oh-My-Posh Themes: [https://ohmyposh.dev/docs/themes](https://ohmyposh.dev/docs/themes) \
+Author: [Jan De Dobbeleer](https://twitter.com/JanDeDobbeleer)
+
+
+### Base Theme 
+The theme, I've adapted is the [quick-term](https://ohmyposh.dev/docs/themes#quick-term) theme created by [SokLay](https://github.com/soklaysam)
+
+![Alt text](content/quick-term-default-profile.png)
+
+the added customisation is supporting `Azure Cli` `PowerShell` and `Azure Kubernetes` Contexts
+
+## How to install Oh-My-Posh
+### Windows
+``` PowerShell
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1' -OutFile $Temp\New-PsProfile.ps1
+```
+### Linux
+``` bash
+wget https://raw.githubusercontent.com/smoonlee/oh-my-posh/main/New-BashProfile.sh -O - | bash
+```
+
+## Oh-My-Posh Profile Configuration and Breakdown 
+<details>
+<summary> Oh-My-Posh - Windows </summary>
 
 ### Pre-requites Applications required: 
 > Microsoft.WindowsTerminal \
@@ -119,3 +152,54 @@ New-PsProfile.ps1 -ResetProfile
 ### Windows Terminal Preview 
 
 ![windows-termianl-psprfile-example](content/windows-terminal-psprpfile-pwsh7.png)
+
+...
+</details>
+<br>
+
+<details>
+<summary> Oh-My-Posh - Linux </summary>
+
+### Install Oh-My-Posh on Linux
+
+
+Update Local Packages and install Brew
+```
+sudo apt update && sudo apt install build-essential -y
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/smooney/.profile
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Install Oh-My-Posh
+```
+brew install jandedobbeleer/oh-my-posh/oh-my-posh
+```
+
+Download Simon's Theme
+```
+wget https://gist.githubusercontent.com/smoonlee/437a1a69a658a704928db5e8bd13a5b5/raw/44c5e75016bef8f4ab2a9fff7d7be810569fc60c/quick-term-smoon.omp.json -O $(brew --prefix oh-my-posh)/themes/quick-term-smoon.omp.json
+```
+
+Update Profile with Oh-My-Posh config
+
+```
+echo 'eval "$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/quick-term-smoon.omp.json)"' >> /home/smooney/.profile
+```
+Close and reload the profile
+
+```
+. ~/.profile
+```
+
+## Configure Kubernetes Config File 
+
+```
+mkdir -p ~/.kube
+```
+
+```
+ln -sf "/mnt/c/users/$UserName/.kube/config" ~/.kube/config
+```
+
+...
+</details>
