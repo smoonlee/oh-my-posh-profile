@@ -45,7 +45,7 @@ During the setup of the PsProfile Script the following Packages will be installe
  - Az [PowerShell 7.0] [PowerShell 5.0]
 
 During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
-this allows for cross version module import from PowerShell 5.1 and PowerShell 7.0
+this allows for cross-version module import from PowerShell 5.1 and PowerShell 7.0
 
 ### Winget Modules
  - JanDeDobbeleer.OhMyPosh
@@ -57,9 +57,9 @@ this allows for cross version module import from PowerShell 5.1 and PowerShell 7
  - Helm.Helm
 
 ### Nerd Font Installation
-Oviosuly using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font-downloads) of choice. \
+Obviously using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font-downloads) of choice. \
 For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
-Specially this ttf font style: *CaskaydiaCoveNerdFont-Regular.ttf*
+Specially this ttf font style: `*CaskaydiaCoveNerdFont-Regular.ttf*`
 
 For the VSCode Font Family settings you will want to use:
 ```
@@ -68,7 +68,7 @@ Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
 
 ### Installation Time
 
-#### Download zip file and extract 
+#### Download the zip file and extract 
 ```
 Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile $([Environment]::GetFolderPath("Desktop"))\psprofile.zip
 ```
