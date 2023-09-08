@@ -27,3 +27,13 @@ Close and reload the profile
 ```
 . ~/.profile
 ```
+
+# Configure Kubernetes Config File 
+
+```
+mkdir -p ~/.kube
+```
+
+```
+ln -sf "/mnt/c/users/$UserName/.kube/config" ~/.kube/config
+```
