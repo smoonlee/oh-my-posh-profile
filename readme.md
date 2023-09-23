@@ -76,3 +76,15 @@ Execute Script
 ```
 
 ## Oh-My-Posh :: Linux
+
+### New Profile Setup 
+``` bash
+curl https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-BashProfile.sh -O $HOME/New-BashProfile.sh
+```
+
+Execute Script
+``` bash
+sh New-BashProfile.sh
+```
+
+## WSL :: Bash :: Kubernetes 
