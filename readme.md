@@ -1,7 +1,8 @@
 ![github-header-image](content/github-header-imager.png)
 
 ## Oh-My-Posh :: Overview
-### Pre-requisite checks - winget modules (This will probably already be installed)
+This repository contains my PowerShell Profile and the scripts to install the profile for Windows and Linux
+### Pre-requisite checks - winget modules
  - Microsoft.WindowsTerminal
  - Microsoft.PowerShell*
  - Microsoft.VisualStudioCode \
@@ -11,10 +12,10 @@
  - PackageManagement [PowerShell 5.0]
  - PowerShellGet [PowerShell 5.0]
  - PSReadLine [PowerShell 5.0]
- - Pester [PowerShell 5.0]
- - Posh-Git [PowerShell 7.0] [PowerShell 5.0]
- - Terminal-Icons [PowerShell 7.0] [PowerShell 5.0]
- - Az [PowerShell 7.0] [PowerShell 5.0]
+ - Pester [PowerShell 5.0] [PowerShell 7.0]
+ - Posh-Git [PowerShell 5.0] [PowerShell 7.0]
+ - Terminal-Icons [PowerShell 5.0] [PowerShell 7.0]
+ - Az [PowerShell 5.0] [PowerShell 7.0]
 
 During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
 this allows for cross-version module import from PowerShell 5.1 and PowerShell 7.0
