@@ -1,7 +1,10 @@
 ![github-header-image](content/github-header-imager.png)
 
 ## Oh-My-Posh :: Overview
-This repository contains my PowerShell Profile and the scripts to install the profile for Windows and Linux
+This repository contains my PowerShell Profile and the scripts to install the profile for Windows and Linux.
+
+![windows-terminal-exmaple](content/windows-terminal-example.png)
+
 ### Pre-requisite checks - winget modules
  - Microsoft.WindowsTerminal
  - Microsoft.PowerShell*
