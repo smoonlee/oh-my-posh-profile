@@ -97,7 +97,8 @@ bash New-BashProfile.sh
 ```
 </details>
 
-WSL :: Kubernetes
+<details>
+<summary> WSL :: Kubernetes </summary>
 
 You might need to create the `.kube` folder first
 ```
@@ -108,3 +109,4 @@ Then create a symbolic link to the Windows `.kube` folder
 ```
 ln -sf /mnt/c/Users/simon/.kube/config $HOME/.kube/config
 ```
+</details>
