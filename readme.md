@@ -44,7 +44,9 @@ Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
 
 ## Oh-My-Posh :: Windows
 
-### New Device Setup 
+<details>
+<summary> New Device Setup </summary>
+ 
 Check PowerShell Execution Policy - If Execution Policy is `Default` update to `RemoteSigned`
 ``` powershell
 Get-ExecutionPolicy
@@ -63,8 +65,10 @@ Execute Script
 ``` powershell
 .\New-PsProfile.ps1
 ```
+</details>
 
-### Reset Profile 
+<details>
+<summary> Reset Profile </summary>
 
 Download PsProfile Script 
 ``` powershell
@@ -74,6 +78,10 @@ Execute Script
 ``` powershell
 .\New-PsProfile.ps1 -ResetProfile
 ```
+
+
+</details>
+
 
 ## Oh-My-Posh :: Linux
 
