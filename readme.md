@@ -70,7 +70,7 @@ Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
 
 #### Download the zip file and extract 
 ```
-Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile $([Environment]::GetFolderPath("Desktop"))\psprofile.zip
+Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile "$([Environment]::GetFolderPath("Desktop"))\psprofile.zip"
 ```
 
 #### Extract Zip file
@@ -79,7 +79,7 @@ Expand-Archive -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile.zip" 
 ```
 
 ```
-Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\powershell_profile-main"
+Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\oh-my-posh-profile-main"
 ```
 
 #### Execute New-PsProfile Script
