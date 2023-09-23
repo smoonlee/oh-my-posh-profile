@@ -69,13 +69,22 @@ configure_oh_my_posh() {
         theme_config="$(brew --prefix oh-my-posh)/themes/$ProfileThemeName"
 
         # Append the command to initialize oh-my-posh with the theme config to .profile
-        echo "eval \"\$(oh-my-posh init bash --config $theme_config)\"" >> "$HOME/.profile"
+        echo "eval \"\$(oh-my-posh init bash --config $theme_config)\"" >>"$HOME/.profile"
     fi
+}
+
+# Function to install required modules
+install_modules(){
+    # Install Azure CLI
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    
+    # Install Kubectl
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 }
 
 # Function to update Bash Profile
 update_bash_profile() {
-
     echo "Reloading Bash Profile"
     . $HOME/.profile
 }
@@ -105,10 +114,7 @@ configure_oh_my_posh
 # Install Modules
 echo ""
 echo "-> Installing Modules"
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
+install_modules
 
 # Update Local Profile
 echo ""
