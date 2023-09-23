@@ -102,6 +102,14 @@ echo ""
 echo "-> Installing Oh-My-Posh"
 configure_oh_my_posh
 
+# Install Modules
+echo ""
+echo "-> Installing Modules"
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+
 # Update Local Profile
 echo ""
 echo "-> Update Bash profile"
