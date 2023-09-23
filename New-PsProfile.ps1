@@ -36,13 +36,18 @@ function Update-PowerShellModule {
     try {
         $OnlineModule = (Find-Module -Repository 'PSGallery' -Name $Module -ErrorAction Stop).Version 
         $LocalModule = (Get-ChildItem -Path $env:ProgramFiles\WindowsPowerShell\Modules\$Module -ErrorAction SilentlyContinue).Name | Select-Object -Last 1
-        if ($LocalModule -eq $OnlineModule) {
+        If ($LocalModule -eq $OnlineModule) {
             Write-Output "PowerShell Module [$ModuleName] is up to date [Local: $($LocalModule), Online: $($OnlineModule)]"
         }
-        else {
+        If (!($LocalModule)) {
+            Write-Output "Installing PowerShell Module [$ModuleName] version $($OnlineModule)"
+            Save-Module -Repository 'PSGallery' -Name $ModuleName  -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force -ErrorAction Stop
+        }
+        ElseIf ($LocalModule -ne $OnlineModule) {
             Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule)"
             Save-Module -Repository 'PSGallery' -Name $ModuleName  -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force -ErrorAction Stop
         }
+
     }
     catch {
         Write-Warning "Failed to update module [$ModuleName]. Error: $_"
@@ -101,7 +106,14 @@ ForEach ($CoreApp in $CoreApps) {
 
     $CoreAppCheck = winget.exe list --exact --query $CoreApp --accept-source-agreements
     If ($CoreAppCheck[-1] -notmatch $CoreApp) {
-        winget.exe install --silent --exact --query $CoreApp --Scope machine --accept-source-agreements
+        If ($CoreApp -eq 'Microsoft.VisualStudioCode') {
+            winget.exe install --silent --exact --query $CoreApp --Scope machine --accept-source-agreements
+        }
+        Else {
+            winget.exe install --silent --exact --query $CoreApp --accept-source-agreements
+        }
+        
+        Write-Output "" # Required for script spacing
     }
 }
 
@@ -136,6 +148,37 @@ $VsCodeProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\
 $Pwsh7ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
 $Pwsh5ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
+# Reset PowerShell Modules and PSProfile
+if ($ResetProfile) {
+    Write-Warning "Resetting Windows PowerShell Profile"
+
+    # Remove Windows Terminal Settings.Json
+    $SettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    If (Test-Path -Path $SettingsPath) {
+        Remove-Item -Path $SettingsPath -Force
+        Write-Output "[RESET] > Removing Windows Terminal Settings"
+    }
+    else {
+        Write-Output "No Windows Terminal Settings Configured"
+    }
+
+    if (Test-Path -Path $Pwsh7ConfigPath) {
+        Write-Output "[RESET] > Removing PowerShell 7 Modules and Profile"
+        Remove-Item -Path $Pwsh7ConfigPath -Force -Recurse
+    }
+    else {
+        Write-Output "No PowerShell 7 Profile Configured"
+    }
+
+    if (Test-Path -Path $Pwsh5ConfigPath) {
+        Write-Output "[RESET] > Removing PowerShell 5 Modules and Profile"
+        Remove-Item -Path $Pwsh5ConfigPath -Force -Recurse
+    }
+    else {
+        Write-Output "No PowerShell 5 Profile Configured" `r
+    }
+}
+
 # Verbose Message
 Write-Output "-------------------------------------------------------"
 Write-Output "        Oh My Posh Profile ::  Pwsh Module Install     "
@@ -145,7 +188,7 @@ Write-Output "-------------------------------------------------------"
 Write-Output `r "-> Configure PowerShell Execution Policy [RemoteSigned]"
 & "$Pwsh7App" -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
 & "$Pwsh5App" -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
-
+Write-Output "Execution Policy Set: [RemoteSigned] :: Scope: [Current User]"
 
 # Update Local PowerShell Modules
 Write-Output `r "-> Checking PowerShell 5 Modules"
@@ -172,13 +215,11 @@ ForEach ($Module in $Pwsh7Modules) {
     Update-PowerShellModule -ModuleName $Module
 }
 
-
 # Verbose Message
 Write-Output "" # Required for verbose script formatting
 Write-Output "-------------------------------------------------------"
 Write-Output "        Oh My Posh Profile ::  Winget Module Install   "
 Write-Output "-------------------------------------------------------"
-
 
 # Configure WinGet 
 Write-Output `r "-> Checking Winget Modules"
@@ -197,11 +238,10 @@ ForEach ($Module in $WinGetModules) {
 
     $ModuleCheck = winget.exe list --exact --query $Module --accept-source-agreements
     If ($ModuleCheck[-1] -notmatch $Module) {
-        winget.exe install --silent --exact --query $Module --Scope machine --accept-source-agreements
+        winget.exe install --silent --exact --query $Module --accept-source-agreements
         Write-Output "" # Required for script spacing
     }
 }
-
 
 # Verbose Message
 Write-Output "" # Required for verbose script formatting
@@ -225,7 +265,6 @@ if (!(Test-Path -Path $DestinationPath)) {
 
         Write-Output "Extracting: $($NerdFontPackageName.TrimEnd('.zip'))"
         Expand-Archive -Path "$Env:Temp\$NerdFontPackageName" -DestinationPath "$Env:Temp\$($NerdFontPackageName.TrimEnd('.zip'))" -Force
-
         Copy-Item -Path $FilePath -Destination $DestinationPath -Force
 
         $FontRegistryPath = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
@@ -244,7 +283,7 @@ if (!(Test-Path -Path $DestinationPath)) {
             Remove-Item $FontCachePath -Force
         }
 
-        Write-Output "Nerd Font [$NerdFontName] Installed" `r
+        Write-Output "Nerd Font [$NerdFontName] Installed"
     }
     catch {
         Write-Warning "Failed to install Nerd Font. Error: $_"
@@ -289,7 +328,7 @@ try {
                 "face": "CaskaydiaCove Nerd Font",
                 "size": 10.0
             },
-            "startingDirectory": "c:\\code"
+            "startingDirectory": "C:\\Code"
         }
 "@
     $updatedConfig = $settingsContent -replace '("defaults": {})', $terminalConfigDefaults
@@ -301,11 +340,11 @@ try {
 
     # Create Hash Table for current Console profiles
     $profileData = @{}
-    ForEach ($profile in $defaultProfileList) {
-        $profileData[$profile.name] = $profile
+    ForEach ($shellProfile in $defaultProfileList) {
+        $profileData[$shellProfile.name] = $shellProfile
     }
 
-    # Update Prioty of Console profiles
+    # Update Priority of Console profiles
     $reorderedProfiles = @()
 
     # Reorder the profiles based on the desired order
