@@ -79,13 +79,14 @@ Execute Script
 .\New-PsProfile.ps1 -ResetProfile
 ```
 
-
 </details>
 
 
 ## Oh-My-Posh :: Linux
 
-### New Profile Setup 
+<details>
+<summary> New Device Setup </summary>
+
 ``` bash
 curl -s https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-BashProfile.sh -o $HOME/New-BashProfile.sh
 ```
@@ -94,3 +95,5 @@ Execute Script
 ``` bash
 bash New-BashProfile.sh
 ```
+
+</details>
