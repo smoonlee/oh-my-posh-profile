@@ -79,12 +79,10 @@ Execute Script
 
 ### New Profile Setup 
 ``` bash
-curl https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-BashProfile.sh -O $HOME/New-BashProfile.sh
+curl -s https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-BashProfile.sh -o $HOME/New-BashProfile.sh
 ```
 
 Execute Script
 ``` bash
-sh New-BashProfile.sh
+bash New-BashProfile.sh
 ```
-
-## WSL :: Bash :: Kubernetes 
