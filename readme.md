@@ -1,35 +1,11 @@
-![psprofile-automated-installation-script-header-png](content/github_psprofile_v2_header.png)
+![github-header-image](content/github-header-imager.png)
 
-# Welcome to the PSProfile - Two &#9679; Point &#9679; Zero
+## Oh-My-Posh :: Overview
+This repository contains my PowerShell Profile and the scripts to install the profile for Windows and Linux.
 
-### Pre-requites Applications required: 
-> Microsoft.WindowsTerminal \
-> Microsoft.PowerShell \
-> Microsoft.VisualStudioCode 
-> 
-<details>
-<summary>Manual Installation of Packages</summary>
+![windows-terminal-exmaple](content/windows-terminal-example.png)
 
-#### Microsoft.WindowsTerminal 
-```
-winget.exe install --exact --silent --id Microsoft.WindowsTerminal
-```
-
-#### Microsoft.PowerShell
-```
-winget.exe install --exact --silent --id Microsoft.PowerShell
-```
-
-#### Microsoft.VisualStudioCode
-```
-winget.exe install --exact --silent --id Microsoft.VisualStudioCode --scope machine
-```
-</details>
-
-## New Computer Setup (Fresh OS Deployment)
-During the setup of the PsProfile Script the following Packages will be installed on your local machine 
-
-### Pre-requsite checks - winget modules (This will probably already be installed)
+### Pre-requisite checks - winget modules
  - Microsoft.WindowsTerminal
  - Microsoft.PowerShell*
  - Microsoft.VisualStudioCode \
@@ -39,10 +15,10 @@ During the setup of the PsProfile Script the following Packages will be installe
  - PackageManagement [PowerShell 5.0]
  - PowerShellGet [PowerShell 5.0]
  - PSReadLine [PowerShell 5.0]
- - Pester [PowerShell 5.0]
- - Posh-Git [PowerShell 7.0] [PowerShell 5.0]
- - Terminal-Icons [PowerShell 7.0] [PowerShell 5.0]
- - Az [PowerShell 7.0] [PowerShell 5.0]
+ - Pester [PowerShell 5.0] [PowerShell 7.0]
+ - Posh-Git [PowerShell 5.0] [PowerShell 7.0]
+ - Terminal-Icons [PowerShell 5.0] [PowerShell 7.0]
+ - Az [PowerShell 5.0] [PowerShell 7.0]
 
 During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
 this allows for cross-version module import from PowerShell 5.1 and PowerShell 7.0
@@ -61,67 +37,63 @@ Obviously using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font
 For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
 Specially this ttf font style: `*CaskaydiaCoveNerdFont-Regular.ttf*`
 
-For the VSCode Font Family settings you will want to use:
+For the VSCode Font Family settings, you will want to use:
 ```
 Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
 ```
 
-### Installation Time
+## Oh-My-Posh :: Windows
 
-#### Download the zip file and extract 
-```
-Invoke-WebRequest -Uri "https://github.com/smoonlee/powershell_profile/archive/refs/heads/main.zip" -Outfile "$([Environment]::GetFolderPath("Desktop"))\psprofile.zip"
-```
-
-#### Extract Zip file
-```
-Expand-Archive -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile.zip" -DestinationPath "$([Environment]::GetFolderPath("Desktop"))\psprofile"
+<details>
+<summary> New Device Setup </summary>
+ 
+Check PowerShell Execution Policy - If Execution Policy is `Default` update to `RemoteSigned`
+``` powershell
+Get-ExecutionPolicy
 ```
 
-```
-Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\oh-my-posh-profile-main"
-```
-
-### Note: New PC Setup
-You might need to change the PowerShell Execution Policy
-```
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolucy Bypass
+Update Execution Policy
+``` powershell
+Set-ExecutionPolicy -Scope CurrentUser-ExecutionPolicy RemoteSigned 
 ```
 
-#### Execute New-PsProfile Script
+Download PsProfile Script 
+``` powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$([Environment]::GetFolderPath("Desktop"))\New-PsProfile.ps1" 
 ```
+Execute Script
+``` powershell
 .\New-PsProfile.ps1
 ```
+</details>
 
-## PsProfile Reset 
+<details>
+<summary> Reset Profile </summary>
 
-### ⚠️ -  WARNING - What the Profile Reset removes 
-During the Profile Reset, The cleanup script will remove the source PowerShell folders from your Documents folder and reset the Windows Terminal settings.json file.
-
- - PowerShell 7.0 \
-    `%USERPROFILE%\Documents\PowerShell`
-
-- PowerShell 5.1 \
-    `%USERPROFILE%\Documents\WindowsPowershell`
-
-- Windows Terminal (settings.json) \
-    `%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json`
-
-#### Clone Github Repository
+Download PsProfile Script 
+``` powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$([Environment]::GetFolderPath("Desktop"))\New-PsProfile.ps1" 
 ```
-git clone https://github.com/smoonlee/powershell_profile.git
+Execute Script
+``` powershell
+.\New-PsProfile.ps1 -ResetProfile
 ```
 
-#### Enter Github Repository Folder
-```
-Set-Location -Path <path-to-git-clone-folder>
+</details>
+
+
+## Oh-My-Posh :: Linux
+
+<details>
+<summary> New Device Setup </summary>
+
+``` bash
+curl -s https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-BashProfile.sh -o $HOME/New-BashProfile.sh
 ```
 
-#### Execute PsProfile
-```
-New-PsProfile.ps1 -ResetProfile
+Execute Script
+``` bash
+bash New-BashProfile.sh
 ```
 
-### Windows Terminal Preview 
-
-![windows-termianl-psprfile-example](content/windows-terminal-psprpfile-pwsh7.png)
+</details>
