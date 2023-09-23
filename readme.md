@@ -95,5 +95,16 @@ Execute Script
 ``` bash
 bash New-BashProfile.sh
 ```
-
 </details>
+
+WSL :: Kubernetes
+
+You might need to create the `.kube` folder first
+```
+mkdir $HOME/.kube
+```
+
+Then create a symbolic link to the Windows `.kube` folder
+```
+ln -sf /mnt/c/Users/simon/.kube/config $HOME/.kube/config
+```
