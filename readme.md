@@ -82,6 +82,12 @@ Expand-Archive -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile.zip" 
 Set-Location -Path "$([Environment]::GetFolderPath("Desktop"))\psprofile\oh-my-posh-profile-main"
 ```
 
+### Note: New PC Setup
+You might need to change the PowerShell Execution Policy
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolucy Bypass
+```
+
 #### Execute New-PsProfile Script
 ```
 .\New-PsProfile.ps1
