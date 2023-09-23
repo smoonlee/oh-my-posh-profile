@@ -1,12 +1,4 @@
 #!/bin/bash
-set -e
-
-clear
-
-# Display a header message
-echo "###############################"
-echo " Oh My Posh - Installer Script "
-echo "###############################"
 
 # Function to update local package repositories
 update_local_system() {
