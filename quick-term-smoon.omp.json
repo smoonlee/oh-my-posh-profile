@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{.UserName}}{{if .Root}} :: root{{end}} :: {{.Shell}}",
   "blocks": [
     {
       "alignment": "left",
@@ -89,7 +90,7 @@
         },
         {
           "style": "powerline",
-          "template": "[ \udb84\udcfe : {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} ]",
+          "template": " \udb84\udcfe : {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
           "type": "kubectl"
         },
         {
@@ -101,7 +102,7 @@
         {
           "style": "powerline",
           "foreground": "#fffff",
-          "template": "[ \uebd8 : {{ .Name }} ]",
+          "template": " \uebd8 : {{ .Name }} ",
           "type": "az"
         },
         {
@@ -113,7 +114,7 @@
         {
           "style": "powerline",
           "foreground": "#fffff",
-          "template": "[ \uebc7 : {{ .Name }} ] ",
+          "template": " \uebc7 : {{ .Name }} ",
           "type": "az",
           "properties": {
             "source": "pwsh"
