@@ -6,13 +6,6 @@
     Simon Lee   
     @smoon_lee
 
-.ChangeLog
-    2022-01-10 - Version 1.0 - Initial Script Created
-    2023-08-01 - Version 1.1 - Recreated Script
-    2023-08-04 - Version 1.1.1 - Added PowerShell 7 Path Check and Pre-Flight Check (For New OS Install)
-    2023-08-05 - Version 1.1.2 - Updated Windows Terminal Configuration Cursor: _
-    2023-08-05 - Version 1.2 - Added Terminal-Icons https://github.com/devblackops/Terminal-Icons
-    2023-08-08 - Version 1.2.1 - added verbose mesasge for Windows Terminal removing (Under $ResetProfile)
 #>
 
 # Check Folder Path 
@@ -32,7 +25,7 @@ Clear-Host
 
 # PowerShell Profile Setup Verbose Message
 Write-Output "-------------------------------------------------------"
-Write-Output "    Windows PowerShell Profile  Pre Flight Check       "
+Write-Output "    Windows PowerShell Profile ::  Pre Flight Check       "
 Write-Output "-------------------------------------------------------"
 
 # Prerequisite Application Check
