@@ -79,6 +79,37 @@
       "type": "prompt"
     },
     {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#e4e4e4",
+          "foreground": "#585858",
+          "properties": {
+            "style": "austin",
+            "always_enabled": true
+          },
+          "invert_powerline": true,
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "template": " \ueba2 {{ .FormattedMs }} ",
+          "type": "executiontime"
+        },
+        {
+          "background": "#d75f00",
+          "foreground": "#f2f3f8",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "invert_powerline": true,
+          "style": "diamond",
+          "template": " \uf073 {{ .CurrentDate | date .Format }} ",
+          "trailing_diamond": "\ue0b0",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },    
+    {
       "alignment": "left",
       "newline": true,
       "segments": [
@@ -119,37 +150,6 @@
           "properties": {
             "source": "pwsh"
           }
-        }
-      ],
-      "type": "prompt"
-    },
-    {
-      "alignment": "right",
-      "segments": [
-        {
-          "background": "#e4e4e4",
-          "foreground": "#585858",
-          "properties": {
-            "style": "austin",
-            "always_enabled": true
-          },
-          "invert_powerline": true,
-          "style": "powerline",
-          "powerline_symbol": "\ue0b2",
-          "template": " \ueba2 {{ .FormattedMs }} ",
-          "type": "executiontime"
-        },
-        {
-          "background": "#d75f00",
-          "foreground": "#f2f3f8",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "invert_powerline": true,
-          "style": "diamond",
-          "template": " \uf073 {{ .CurrentDate | date .Format }} ",
-          "trailing_diamond": "\ue0b0",
-          "type": "time"
         }
       ],
       "type": "prompt"
