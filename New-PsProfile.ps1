@@ -299,7 +299,7 @@ Write-Output "        Oh My Posh Profile ::  WinTerm Configuration   "
 Write-Output "-------------------------------------------------------"
 
 # Create Local Code Folder
-$RootCodeFolder = "C:\Code"
+$RootCodeFolder = "C:\code"
 If (!(Test-Path -Path $RootCodeFolder)) {
     New-Item -ItemType 'Directory' -Path $RootCodeFolder | Out-Null
     Write-Output "Created Code Folder : $RootCodeFolder"
@@ -328,7 +328,7 @@ try {
                 "face": "CaskaydiaCove Nerd Font",
                 "size": 10.0
             },
-            "startingDirectory": "C:\\Code"
+            "startingDirectory": "C:\\code"
         }
 "@
     $updatedConfig = $settingsContent -replace '("defaults": {})', $terminalConfigDefaults
