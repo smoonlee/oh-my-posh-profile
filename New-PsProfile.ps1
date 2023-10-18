@@ -54,25 +54,16 @@ function Update-PowerShellModule {
     }
 }
 
-#
-# Pre Flight Check, Core Modules Installation - Pwsh7, VSCode, Windows Terminal
-#
-
-Write-Output "-------------------------------------------------------"
-Write-Output "        Oh My Posh Profile ::  Pre Flight Check        "
-Write-Output "-------------------------------------------------------"
-
-# Verbose OS Display
-$OsCaptionName = (Get-CimInstance -ClassName Win32_OperatingSystem).Caption
-Write-Output "OS Caption: $OsCaptionName" `r
-
-# Windows 10: Windows Package Manager Installation Check
-# https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget
-If ($OsCaptionName -match 'Microsoft Windows 10') {
+function Update-WinGetPackage {
     Write-Output "-> Checking for: Windows Package Manager - (winget)"
-    if (!(Get-Command -Name "winget" -ErrorAction SilentlyContinue)) {
-        Write-Warning "Winget Missing from System, Installing now!"
+    # Get Latest release from GitHub
+    $wingetapiUrl = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
+    $releaseInfo = Invoke-RestMethod -Uri $wingetapiUrl
+    $latestwingetversion = $releaseInfo.tag_name
+    $currentwingetversion = winget.exe --version
 
+    # WinGet Missing, Install WinGetCLI
+    If (!(winget.exe)) {
         $progressPreference = 'silentlyContinue'
         Write-Information "Downloading WinGet and its dependencies..."
         Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
@@ -88,10 +79,43 @@ If ($OsCaptionName -match 'Microsoft Windows 10') {
         Remove-Item -Path "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
     }
 
-    if (Get-Command -Name "winget") {
-        Write-Output "Found: winget.exe" `r
+    # If Winget detected, Update AppxPackage
+    If ($currentwingetversion -notmatch $lastestwingetversion) {
+        Write-Output "Update for Winget Found! [$currentwingetversion] -> [$latestwingetversion]"
+        $progressPreference = 'silentlyContinue'
+        
+        # Download WingetCLI 
+        Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+        
+        # Instal WingetCLI 
+        Write-Output "winget Package Manager Update, Complete!" `r
+        Add-AppxPackage -Path "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+        Remove-Item -Path "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+
+        # update WinGet Packages
+        winget source update
+        Write-Output '' `r # Required for verbose formatting
+    }
+
+    if ($currentwingetversion -match $lastestwingetversion) {
+        Write-Output "winget Package Manager is up to date [$currentwingetversion]" `r
     }
 }
+
+#
+# Pre Flight Check, Core Modules Installation - Pwsh7, VSCode, Windows Terminal
+#
+
+Write-Output "-------------------------------------------------------"
+Write-Output "        Oh My Posh Profile ::  Pre Flight Check        "
+Write-Output "-------------------------------------------------------"
+
+# Verbose OS Display
+$OsCaptionName = (Get-CimInstance -ClassName Win32_OperatingSystem).Caption
+Write-Output "OS Caption: $OsCaptionName" `r
+
+# WinGetPackage Function 
+Update-WinGetPackage
 
 # Prerequisite Application Check
 Write-Output "-> Checking Prerequisite Applications"
