@@ -54,7 +54,7 @@ Get-ExecutionPolicy
 
 Update Execution Policy
 ``` powershell
-Set-ExecutionPolicy -Scope CurrentUser-ExecutionPolicy RemoteSigned 
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned 
 ```
 
 Download PsProfile Script 
