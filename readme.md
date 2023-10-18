@@ -32,21 +32,14 @@ this allows for cross-version module import from PowerShell 5.1 and PowerShell 7
  - Kubernetes.kubectl
  - Helm.Helm
 
-### Nerd Font Installation
-Obviously using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font-downloads) of choice. \
-For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
-Specially this ttf font style: `*CaskaydiaCoveNerdFont-Regular.ttf*`
-
-For the VSCode Font Family settings, you will want to use:
-```
-Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
-```
-
 ## Oh-My-Posh :: Windows
 
 <details>
 <summary> New Device Setup </summary>
  
+> NEW DEVICE SETUP \
+Please open Powershell 5.1 as Administrator and run the following commands
+
 Check PowerShell Execution Policy - If Execution Policy is `Default` update to `RemoteSigned`
 ``` powershell
 Get-ExecutionPolicy
@@ -55,6 +48,16 @@ Get-ExecutionPolicy
 Update Execution Policy
 ``` powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned 
+```
+Accept the Execution Policy Change: [A] Yes to all
+
+``` powershell
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
+you to the security risks described in the about_Execution_Policies help topic at
+https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+
 ```
 
 Download PsProfile Script 
@@ -110,3 +113,13 @@ Then create a symbolic link to the Windows `.kube` folder
 ln -sf /mnt/c/Users/simon/.kube/config $HOME/.kube/config
 ```
 </details>
+
+## Oh-My-Posh :: VSCode Nerd Font Installation
+Obviously using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font-downloads) of choice. \
+For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
+Specially this ttf font style: `*CaskaydiaCoveNerdFont-Regular.ttf*`
+
+For the VSCode Font Family settings, you will want to use:
+```
+Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
+```

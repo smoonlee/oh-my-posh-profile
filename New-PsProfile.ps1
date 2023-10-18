@@ -1,11 +1,47 @@
 <#
-.Name 
-    New-PsProfile.ps1
+.SYNOPSIS 
+    Oh-My-Posh Profile Configuration Script
 
-.Author
-    Simon Lee   
-    @smoon_lee
+.DESCRIPTION
+    Automate the installation of Oh-My-Posh/Windows Terminal environment from a single file. 
+    Modules which are installed are 
 
+    -> PowerShell 5.1
+        'PackageManagement',
+        'PowerShellGet',
+        'PSReadLine',
+        'Pester'
+
+    -> PowerShell
+        'Posh-Git',
+        'Terminal-Icons'
+        'Az'    
+
+    Please note - All modules due to being installed under: C:\Program Files\WindowsPowerShell\Modules, are accessible from both pwsh prompts!
+
+.PARAMETER ResetProfile
+    Reset the PowerShell Profile, by removing all PowerShell Modules and Profile files.
+
+.EXAMPLE 
+    .\New-PsProfile.ps1
+
+    New PowerShell Profile, with Oh-My-Posh configuration.
+.EXAMPLE
+        .\New-PsProfile.ps1 -ResetProfile
+    
+    This will remove Windows Terminal Settings, PowerShell Modules and PowerShell Profile files.
+
+    -> Windows Terminal Settings Location:
+    "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
+    -> PowerShell Modules Location:
+    C:\Program Files\WindowsPowerShell\Modules
+
+.NOTES
+    Author: Simon Lee
+    Twitter: @smoon_lee
+    GitHub: @smoon_lee
+    
 #>
 
 # Check Folder Path 
@@ -47,7 +83,6 @@ function Update-PowerShellModule {
             Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule)"
             Save-Module -Repository 'PSGallery' -Name $ModuleName  -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force -ErrorAction Stop
         }
-
     }
     catch {
         Write-Warning "Failed to update module [$ModuleName]. Error: $_"
@@ -64,6 +99,8 @@ function Update-WinGetPackage {
 
     # WinGet Missing, Install WinGetCLI
     If (!(winget.exe)) {
+        Write-Output "WinGetLCI, not found - Installing now..."
+        
         $progressPreference = 'silentlyContinue'
         Write-Information "Downloading WinGet and its dependencies..."
         Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
@@ -80,7 +117,7 @@ function Update-WinGetPackage {
     }
 
     # If Winget detected, Update AppxPackage
-    If ($currentwingetversion -notmatch $lastestwingetversion) {
+    If ($currentwingetversion -notmatch $latestwingetversion) {
         Write-Output "Update for Winget Found! [$currentwingetversion] -> [$latestwingetversion]"
         $progressPreference = 'silentlyContinue'
         
@@ -94,10 +131,9 @@ function Update-WinGetPackage {
 
         # update WinGet Packages
         winget source update
-        Write-Output '' `r # Required for verbose formatting
     }
 
-    if ($currentwingetversion -match $lastestwingetversion) {
+    if ($currentwingetversion -eq $latestwingetversion) {
         Write-Output "winget Package Manager is up to date [$currentwingetversion]" `r
     }
 }
