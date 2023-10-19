@@ -268,8 +268,7 @@ Write-Output `r "-> Checking PowerShell 7 Modules"
 $Pwsh7Modules = @(
     'Posh-Git',
     'Terminal-Icons',
-    'Az',
-    'Az.Tools.Predictor'
+    'Az'
 )
 
 ForEach ($Module in $Pwsh7Modules) {
@@ -445,11 +444,10 @@ $PSProfileConfig = @'
 Import-Module -Name 'Posh-Git'
 Import-Module -Name 'Terminal-Icons'
 Import-Module -Name 'PSReadLine'
-Import-Module -Name 'Az.Tools.Predictor'
 
 # PSReadLine Config
 Set-PSReadLineOption -EditMode Windows
-Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -HistoryNoDuplicates:$True
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd

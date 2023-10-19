@@ -19,7 +19,6 @@ This repository contains my PowerShell Profile and the scripts to install the pr
  - [Posh-Git](https://www.powershellgallery.com/packages/posh-git) [PowerShell 5.0] [PowerShell 7.0]
  - [Terminal-Icons](https://www.powershellgallery.com/packages/Terminal-Icons) [PowerShell 5.0] [PowerShell 7.0]
  - [Az](https://www.powershellgallery.com/packages/Az) [PowerShell 5.0] [PowerShell 7.0]
- - [Az.Tools.Predictor](https://www.powershellgallery.com/packages/Az.Tools.Predictor) [PowerShell 5.0] [PowerShell 7.0]
 
 During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
 this allows for cross-version module import from PowerShell 5.1 and PowerShell 7.0
