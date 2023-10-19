@@ -443,7 +443,7 @@ $PSProfileConfig = @'
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
 Import-Module -Name 'Terminal-Icons'
-Import-Module -Name 'PSReadLine' -MinimumVersion '2.1.0'
+Import-Module -Name 'PSReadLine'
 
 # PSReadLine Config
 Set-PSReadLineOption -EditMode Windows
