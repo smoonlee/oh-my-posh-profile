@@ -1,11 +1,47 @@
 <#
-.Name 
-    New-PsProfile.ps1
+.SYNOPSIS 
+    Oh-My-Posh Profile Configuration Script
 
-.Author
-    Simon Lee   
-    @smoon_lee
+.DESCRIPTION
+    Automate the installation of Oh-My-Posh/Windows Terminal environment from a single file. 
+    Modules which are installed are 
 
+    -> PowerShell 5.1
+        'PackageManagement',
+        'PowerShellGet',
+        'PSReadLine',
+        'Pester'
+
+    -> PowerShell
+        'Posh-Git',
+        'Terminal-Icons'
+        'Az'    
+
+    Please note - All modules due to being installed under: C:\Program Files\WindowsPowerShell\Modules, are accessible from both pwsh prompts!
+
+.PARAMETER ResetProfile
+    Reset the PowerShell Profile, by removing all PowerShell Modules and Profile files.
+
+.EXAMPLE 
+    .\New-PsProfile.ps1
+
+    New PowerShell Profile, with Oh-My-Posh configuration.
+.EXAMPLE
+        .\New-PsProfile.ps1 -ResetProfile
+    
+    This will remove Windows Terminal Settings, PowerShell Modules and PowerShell Profile files.
+
+    -> Windows Terminal Settings Location:
+    "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
+    -> PowerShell Modules Location:
+    C:\Program Files\WindowsPowerShell\Modules
+
+.NOTES
+    Author: Simon Lee
+    Twitter: @smoon_lee
+    GitHub: @smoon_lee
+    
 #>
 
 # Check Folder Path 
@@ -47,32 +83,24 @@ function Update-PowerShellModule {
             Write-Output "Updating PowerShell Module [$ModuleName] to version $($OnlineModule)"
             Save-Module -Repository 'PSGallery' -Name $ModuleName  -Path $env:ProgramFiles\WindowsPowerShell\Modules -Force -ErrorAction Stop
         }
-
     }
     catch {
         Write-Warning "Failed to update module [$ModuleName]. Error: $_"
     }
 }
 
-#
-# Pre Flight Check, Core Modules Installation - Pwsh7, VSCode, Windows Terminal
-#
-
-Write-Output "-------------------------------------------------------"
-Write-Output "        Oh My Posh Profile ::  Pre Flight Check        "
-Write-Output "-------------------------------------------------------"
-
-# Verbose OS Display
-$OsCaptionName = (Get-CimInstance -ClassName Win32_OperatingSystem).Caption
-Write-Output "OS Caption: $OsCaptionName" `r
-
-# Windows 10: Windows Package Manager Installation Check
-# https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget
-If ($OsCaptionName -match 'Microsoft Windows 10') {
+function Update-WinGetPackage {
     Write-Output "-> Checking for: Windows Package Manager - (winget)"
-    if (!(Get-Command -Name "winget" -ErrorAction SilentlyContinue)) {
-        Write-Warning "Winget Missing from System, Installing now!"
+    # Get Latest release from GitHub
+    $wingetapiUrl = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
+    $releaseInfo = Invoke-RestMethod -Uri $wingetapiUrl
+    $latestwingetversion = $releaseInfo.tag_name
+    $currentwingetversion = winget.exe --version
 
+    # WinGet Missing, Install WinGetCLI
+    If (!(winget.exe)) {
+        Write-Output "WinGetLCI, not found - Installing now..."
+        
         $progressPreference = 'silentlyContinue'
         Write-Information "Downloading WinGet and its dependencies..."
         Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
@@ -88,10 +116,42 @@ If ($OsCaptionName -match 'Microsoft Windows 10') {
         Remove-Item -Path "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
     }
 
-    if (Get-Command -Name "winget") {
-        Write-Output "Found: winget.exe" `r
+    # If Winget detected, Update AppxPackage
+    If ($currentwingetversion -notmatch $latestwingetversion) {
+        Write-Output "Update for Winget Found! [$currentwingetversion] -> [$latestwingetversion]"
+        $progressPreference = 'silentlyContinue'
+        
+        # Download WingetCLI 
+        Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+        
+        # Instal WingetCLI 
+        Write-Output "winget Package Manager Update, Complete!" `r
+        Add-AppxPackage -Path "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+        Remove-Item -Path "$Env:Temp\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+
+        # update WinGet Packages
+        winget source update
+    }
+
+    if ($currentwingetversion -eq $latestwingetversion) {
+        Write-Output "winget Package Manager is up to date [$currentwingetversion]" `r
     }
 }
+
+#
+# Pre Flight Check, Core Modules Installation - Pwsh7, VSCode, Windows Terminal
+#
+
+Write-Output "-------------------------------------------------------"
+Write-Output "        Oh My Posh Profile ::  Pre Flight Check        "
+Write-Output "-------------------------------------------------------"
+
+# Verbose OS Display
+$OsCaptionName = (Get-CimInstance -ClassName Win32_OperatingSystem).Caption
+Write-Output "OS Caption: $OsCaptionName" `r
+
+# WinGetPackage Function 
+Update-WinGetPackage
 
 # Prerequisite Application Check
 Write-Output "-> Checking Prerequisite Applications"
@@ -207,7 +267,7 @@ ForEach ($Module in $Pwsh5Modules) {
 Write-Output `r "-> Checking PowerShell 7 Modules"
 $Pwsh7Modules = @(
     'Posh-Git',
-    'Terminal-Icons'
+    'Terminal-Icons',
     'Az'
 )
 
@@ -383,7 +443,7 @@ $PSProfileConfig = @'
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
 Import-Module -Name 'Terminal-Icons'
-Import-Module -Name 'PSReadLine' -MinimumVersion '2.1.0'
+Import-Module -Name 'PSReadLine'
 
 # PSReadLine Config
 Set-PSReadLineOption -EditMode Windows
