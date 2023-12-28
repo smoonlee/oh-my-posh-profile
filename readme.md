@@ -62,7 +62,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the executi
 
 Download PsProfile Script 
 ``` powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$([Environment]::GetFolderPath("Desktop"))\New-PsProfile.ps1" 
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$PWD\New-PsProfile.ps1" 
 ```
 Execute Script
 ``` powershell
@@ -75,7 +75,7 @@ Execute Script
 
 Download PsProfile Script 
 ``` powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$([Environment]::GetFolderPath("Desktop"))\New-PsProfile.ps1" 
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$PWD\New-PsProfile.ps1" 
 ```
 Execute Script
 ``` powershell
