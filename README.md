@@ -3,7 +3,7 @@
 #
   
 ### Configure PowerShell Execution Policy.
-If running script on a fresh installation of Windows, This MUST be run on PowerShell 5 and PowerShell 7.x
+If running the script on a fresh installation of Windows, This MUST be run on PowerShell 5 and PowerShell 7.x
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
