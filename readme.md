@@ -120,7 +120,7 @@ Obviously using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font
 For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
 Specially this ttf font style: `*CaskaydiaCoveNerdFont-Regular.ttf*`
 
-For the VSCode Font Family settings, you will want to use: \
+For the VSCode Font Family settings, you will want to use: 
 
 `File > Preferences > Settings` Search for `Font Family` > Edit in settings.json
 ```
