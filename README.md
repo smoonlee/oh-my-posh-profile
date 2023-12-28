@@ -25,7 +25,7 @@ Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_pr
 ![gif_animation](/content/graphic_check-powershellget.gif)
 
 ### Reset PSProfile Environment | Reset-PSProfile.ps1
-If you have issues with your PSProfile configuation, You can download and execute this script. It will remove the following modules.
+If you have issues with your PSProfile configuration, You can download and execute this script. It will remove the following modules.
 <p>'Oh-My-Posh, Posh-Git, PSReadLines (2.2.0)'</p>
 
 ```
@@ -59,7 +59,7 @@ Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/smoonlee/powershell_pr
 Coming Soon 
 ```
 
-##  Current Windows Termianal Configuration
+##  Current Windows Terminal Configuration
 ![WindowsTermianl-PowerShell7](content/windows_terminal_powershell_7.png "WindowsTermianl-PowerShell7")
 
 #### Current Shells
@@ -70,7 +70,7 @@ Coming Soon
  * Ubuntu (WSL)
 
 #### Terminal Appearance 
--  Text : Colour Scheme : One Half Dark
+-  Text : Colour Scheme: One Half Dark
 -  Text : Font Face : [Agave (Nerd Font)](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Agave.zip)
 -  Text : Font Size : 10px
 -  Text : Font Weight : Normal
