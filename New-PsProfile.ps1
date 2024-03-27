@@ -13,22 +13,22 @@ param (
 # PowerShell 7 (Machine) Path: "$Env:ProgramFiles\PowerShell\7\pwsh.exe"
 
 # PowerShell Profile Paths 
-$VsCodeProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1"
 $Pwsh7ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
 $Pwsh5ProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+$VsCodeProfilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.VSCode_profile.ps1"
 
 function Reset-PSProfile {
     # Stage Heading
     Write-Output `r "[ PS Profile Reset ] : Resetting Windows Terminal and PS Profile!"
 
-    if (Test-Path -Path "$Env:UserProfile\Documents\Powershell" ) {
+    if (Test-Path -Path "$([Environment]::GetFolderPath('MyDocuments'))\Powershell" ) {
         Write-Output "[ PS Profile Reset ] : Resetting 'PowerShell' Directory"
-        Remove-Item -Path "$Env:UserProfile\Documents\Powershell" -Recurse -Force 
+        Remove-Item -Path "$([Environment]::GetFolderPath('MyDocuments'))\Powershell" -Recurse -Force 
     }
     
-    if (Test-Path -Path "$Env:UserProfile\Documents\WindowsPowershell" ) {
+    if (Test-Path -Path "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowershell" ) {
         Write-Output "[ PS Profile Reset ] : Resetting 'WindowsPowerShell' Directory"
-        Remove-Item -Path "$Env:UserProfile\Documents\WindowsPowershell" -Recurse -Force
+        Remove-Item -Path "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowershell" -Recurse -Force
     }
     
     if (Test-Path -Path "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe" ) {
@@ -134,7 +134,7 @@ function Install-PwshModules {
     )
 
     $pwshModules = @(
-        #'Az',
+        'Az',
         'Posh-Git',
         'PSReadLine',
         'Pester',
@@ -173,12 +173,13 @@ function Install-PwshModules {
 
     forEach ($pwshModule in $pwshModules) {
         Write-Output "[  Module Install  ] : Checking for [$pwshModule]"
-        $localModule = (Get-Module -ListAvailable -Name $pwshModule -ErrorAction SilentlyContinue).version | Select-Object -Last 1
+        $localModule = (Get-Module -ListAvailable -Name $pwshModule -ErrorAction SilentlyContinue).version | Select-Object -First 1
         $onlineModule = (Find-Module -Repository PSGallery -Name $pwshModule ).version
 
         if (([string]::IsNullOrEmpty($localModule))) {
             Write-Output "[  Module Install  ] : Installing [$pwshModule] version [$onlineModule]"
             Install-Module -Repository 'PSGallery' -Scope $installScope -Name $pwshModule -SkipPublisherCheck -Force
+
         } elseif ($localModule -ne $onlineModule) {
             Write-Output "[  Module Install  ] : Updating [$pwshModule] to version [$onlineModule]"
             Install-Module -Repository 'PSGallery' -Scope $installScope -Name $pwshModule -SkipPublisherCheck -Force
@@ -249,7 +250,8 @@ function Install-NerdFontPackage {
 function Set-WindowsTerminalConfig {
     
     $localCodePath = 'C:\Code'
-    $settingsDefault = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/windows-terminal-default-settings.json"
+    #$settingsDefault = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/windows-terminal-default-settings.json"
+    $terminalJsonSettings = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/profileupdate/windows-terminal-settings.json"
     $settingsPath = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"  
     $desiredOrder = @("PowerShell", "Windows PowerShell", "Azure Cloud Shell", "Command Prompt")  
 
@@ -265,65 +267,66 @@ function Set-WindowsTerminalConfig {
     #
     Write-Output "[  Profile Config  ] : Configure Windows Terminal Settings"
     
-    If (!(Test-Path -Path $settingsPath)) {
-        Invoke-WebRequest -Uri $settingsDefault -OutFile $settingsPath
+    If (Test-Path -Path $settingsPath) {
+        #Invoke-WebRequest -Uri $settingsDefault -OutFile $settingsPath
+        Invoke-WebRequest -Uri $terminalJsonSettings -OutFile $settingsPath 
     }
 
-    try {
-        # Import Windows Terminal Settings.json file
-        $settingsContent = Get-Content -Path $settingsPath
+#     try {
+#         # Import Windows Terminal Settings.json file
+#         $settingsContent = Get-Content -Path $settingsPath
     
-        # Apply Windows Terminal Defaults 
-        $terminalConfigDefaults = @"
-        "defaults": {
-            "colorScheme": "One Half Dark",
-            "cursorShape": "underscore",
-            "elevate": false,
-            "font": {
-                "face": "CaskaydiaCove Nerd Font",
-                "size": 10.0
-            },
-            "startingDirectory": "C:\\code"
-        }
-"@
-        $updatedConfig = $settingsContent -replace '("defaults": {})', $terminalConfigDefaults
-        $updatedConfig | Set-content $settingsPath
+#         # Apply Windows Terminal Defaults 
+#         $terminalConfigDefaults = @"
+#         "defaults": {
+#             "colorScheme": "One Half Dark",
+#             "cursorShape": "underscore",
+#             "elevate": false,
+#             "font": {
+#                 "face": "CaskaydiaCove Nerd Font",
+#                 "size": 10.0
+#             },
+#             "startingDirectory": "C:\\code"
+#         }
+# "@
+#         $updatedConfig = $settingsContent -replace '("defaults": {})', $terminalConfigDefaults
+#         $updatedConfig | Set-content $settingsPath
 
-        # Import Winodws Terminal Settings.json file
-        $settingsContent = Get-Content -Path $settingsPath | ConvertFrom-Json
-        $defaultProfileList = $settingsContent.profiles.list
+#         # Import Winodws Terminal Settings.json file
+#         $settingsContent = Get-Content -Path $settingsPath | ConvertFrom-Json
+#         $defaultProfileList = $settingsContent.profiles.list
 
-        # Create Hash Table for current Console profiles
-        $profileData = @{}
-        ForEach ($shellProfile in $defaultProfileList) {
-            $profileData[$shellProfile.name] = $shellProfile
-        }
+#         # Create Hash Table for current Console profiles
+#         $profileData = @{}
+#         ForEach ($shellProfile in $defaultProfileList) {
+#             $profileData[$shellProfile.name] = $shellProfile
+#         }
 
-        # Update Priority of Console profiles
-        $reorderedProfiles = @()
+#         # Update Priority of Console profiles
+#         $reorderedProfiles = @()
 
-        # Reorder the profiles based on the desired order
-        ForEach ($profileName in $desiredOrder) {
-            if ($profileData.ContainsKey($profileName)) {
-                $reorderedProfiles += $profileData[$profileName]
-                $profileData.Remove($profileName)
-            }
-        }
+#         # Reorder the profiles based on the desired order
+#         ForEach ($profileName in $desiredOrder) {
+#             if ($profileData.ContainsKey($profileName)) {
+#                 $reorderedProfiles += $profileData[$profileName]
+#                 $profileData.Remove($profileName)
+#             }
+#         }
 
-        # Append any remaining profiles (not found in the desired order)
-        foreach ($remainingProfile in $profileData.Values) {
-            $reorderedProfiles += $remainingProfile
-        }
+#         # Append any remaining profiles (not found in the desired order)
+#         foreach ($remainingProfile in $profileData.Values) {
+#             $reorderedProfiles += $remainingProfile
+#         }
 
-        # Update the profiles list in the settings
-        $settingsContent.profiles.list = $reorderedProfiles
-        $updatedConfig = $settingsContent | ConvertTo-Json -Depth 100
-        $updatedConfig | Set-content $settingsPath
+#         # Update the profiles list in the settings
+#         $settingsContent.profiles.list = $reorderedProfiles
+#         $updatedConfig = $settingsContent | ConvertTo-Json -Depth 100
+#         $updatedConfig | Set-content $settingsPath
 
-    }
-    catch {
-        Write-Host "An error occurred: $_"
-    }    
+#     }
+#     catch {
+#         Write-Host "An error occurred: $_"
+#     }    
 
     Write-Output "[  Profile Config  ] : Configure PowerShell Profile"
     Write-Output "[  Profile Config  ] : Downloading Posh Profile 'quick-term-smoon.omp.json'"
@@ -347,13 +350,12 @@ Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-# Oh My Posh Configuration
-$env:POSH_AZURE_ENABLED = $true
-$env:POSH_GIT_ENABLED = $true
-
 # Load Oh My Posh Theme
 (@(& "$Env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\{0}" --print) -join "`n") | Invoke-Expression
 
+# Oh My Posh Configuration
+$env:POSH_AZURE_ENABLED = $true
+$env:POSH_GIT_ENABLED = $true
 
 '@
 
@@ -407,7 +409,7 @@ function Set-CrossPlatformModuleSupport {
         }
         
         # Target - Source Folder # Path - Link Folder
-        New-Item -ItemType 'SymbolicLink' -Target 'C:\Users\Simon\Documents\WindowsPowerShell\Modules' -Path 'C:\Users\Simon\Documents\PowerShell\Modules' -Force | Out-Null
+        New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Modules" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Modules" -Force | Out-Null
         Write-Output "[  Cross Platform  ] : Symbolic Link Created from 'WindowsPowerShell' to 'PowerShell' Modules"
     }
 
@@ -417,7 +419,7 @@ function Set-CrossPlatformModuleSupport {
         }
 
         # Target - Source Folder # Path - Link Folder
-        New-Item -ItemType 'SymbolicLink' -Target 'C:\Users\Simon\Documents\PowerShell\Modules' -Path 'C:\Users\Simon\Documents\WindowsPowerShell\Modules' -Force | Out-Null
+        New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Modules" -Path "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Modules" -Force | Out-Null
         Write-Output "[  Cross Platform  ] : Symbolic Link Created from 'PowerShell' to 'WindowsPowerShell' Modules"
     }
 }
