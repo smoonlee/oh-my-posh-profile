@@ -227,9 +227,11 @@ $env:POSH_GIT_ENABLED = $true
 function setWindowsTerminal {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Terminal Configuration"
 
-    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/settings.json"
+    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/profile-v3/windows-terminal-settings.json"
     $localSettingsPath = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     Invoke-WebRequest -Uri $settingJsonUrl -OutFile $localSettingsPath
+
+    Write-Warning "Please restart Windows Terminal to apply the new settings"
 }
 
 function setCrossPlatformModuleSupport {
