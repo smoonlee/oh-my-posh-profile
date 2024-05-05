@@ -32,6 +32,7 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
  - [Microsoft.Azure.Kubelogin](https://winstall.app/apps/Microsoft.Azure.Kubelogin)
  - [Kubernetes.kubectl](https://winstall.app/apps/Kubernetes.kubectl)
  - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
+ - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
 
 ## Windows Terminal Nerd Font 
 Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular ‘iconic fonts’
@@ -43,6 +44,33 @@ If you want to add this support to Visual Studio Code, you can update the Font F
 
 ```
 Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
+```
+
+## Pre Device Setup
+
+> [!IMPORTANT]
+> If you've used the v2 setup, You'll manually need to remove Modules from \
+> pwsh7 :: C:\Program Files\PowerShell\Modules \
+> pwsh5 :: C:\Program Files\WindowsPowerShell\Modules
+
+### Powershell 5 default modules
+
+``` powershell
+Directory: C:\Program Files\WindowsPowerShell\Modules
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07/05/2022     06:42                Microsoft.PowerShell.Operation.Validation
+d-----        07/05/2022     06:42                PackageManagement
+d-----        07/05/2022     06:42                Pester
+d-----        07/05/2022     06:42                PowerShellGet
+d-----        07/05/2022     06:42                PSReadLine
+```
+
+### PowerShell 7 default Modules
+
+``` powershell
+
 ```
 
 

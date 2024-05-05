@@ -258,7 +258,8 @@ function installWinGetApplications {
         'Microsoft.AzureCLI',
         'Microsoft.Azure.Kubelogin',
         'Kubernetes.kubectl',
-        'Helm.Helm'
+        'Helm.Helm',
+        'Ookla.Speedtest.CLI'
     )
 
     ForEach ($app in $winGetApps) {
@@ -268,6 +269,9 @@ function installWinGetApplications {
             $wingetPath = "$Env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
             Start-Process -Wait -NoNewWindow -FilePath $wingetPath -ArgumentList "install" , "--silent", "--exact", "--query $app", "--accept-source-agreements"
             Write-Output "" # Required for script spacing
+        }
+        else {
+            Write-Output "[OhMyPoshProfile $scriptVersion] :: [$app] is already installed"
         }
     }
 
@@ -341,14 +345,15 @@ function Get-AzSystemUptime {
     )
 
     if (`$subscriptionId) {
-        Set-AzContext -SubscriptionId `$subscriptionId
-        Write-Output "Setting Azure Subscription to `$subscriptionId"
+        Set-AzContext -SubscriptionId `$subscriptionId | Out-Null
+        `$subFriendlyName = (Get-AzContext).Subscription.Name
+        Write-Output "[Azure] :: Setting Azure Subscription to `$subFriendlyName "
     }
 
     `$osType = (Get-AzVM -ResourceGroupName `$resourceGroup -Name `$vmName).StorageProfile.OsDisk.OsType
 
     if (`$osType -eq 'Windows') {
-        Write-Output ``r "Getting System Uptime for `$vmName in `$resourceGroup..."
+        Write-Output "[Azure] :: Getting System Uptime for `$vmName in `$resourceGroup..."
         Write-Warning "This may take up to 35 seconds"
         `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunPowerShellScript' -ScriptString '
         
@@ -377,27 +382,28 @@ function Get-AzSystemUptime {
         `$lastRebootTime = `$operatingSystem.LastBootUpTime
 
         # Display the results
-        Write-Output "Hostname: `$hostname"
-        Write-Output "Uptime: `$uptime"
-        Write-Output "Last Reboot Time: `$lastRebootTime"
+        Write-Output " " # Required for script spacing
+        Write-Output "[Azure] :: Hostname: `$hostname"
+        Write-Output "[Azure] :: Uptime: `$uptime"
+        Write-Output "[Azure] :: Last Reboot Time: `$lastRebootTime"
         '
 
         `$response.Value[0].Message
     }
 
     if (`$osType -eq 'Linux') {
-        Write-Output ``r "Getting System Uptime for `$vmName in `$resourceGroup..."
+        Write-Output "[Azure] :: Getting System Uptime for `$vmName in `$resourceGroup..."
         Write-Warning "This may take up to 35 seconds"
         `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunShellScript' -ScriptString '
-        echo "Hostname: `$(hostname)"
-        echo "Uptime: `$(uptime -p )"
-        echo "Last Reboot Time: `$(uptime -s)"
+        echo "[Azure] :: Hostname: `$(hostname)"
+        echo "[Azure] :: Uptime: `$(uptime -p )"
+        echo "[Azure] :: Last Reboot Time: `$(uptime -s)"
         '
 
         `$pattern = '\[stdout\]([\s\S]*?)\[stderr\]'
         if (`$response.value[0].Message -match `$pattern) {
             `$stdoutText = `$matches[1].Trim()
-            Write-Output `$stdoutText
+            Write-Output ``r `$stdoutText
         }
     }
 }
@@ -462,15 +468,15 @@ function setCrossPlatformModuleSupport {
         # Target - Source Folder # Path - Link Folder
         # PowerShell Module Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Modules" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Modules" -Force | Out-Null
-        Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'WindowsPowerShell' to 'PowerShell' Modules"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'WindowsPowerShell' to 'PowerShell' Modules"
 
         # PowerShell Profile Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" -Force | Out-Null
-        Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'WindowsPowerShell' to 'PowerShell' Profile"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'WindowsPowerShell' to 'PowerShell' Profile"
 
         # VSCode Profile Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1" -Force | Out-Null
-        Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'WindowsPowerShell' to 'VSCode' Profile"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'WindowsPowerShell' to 'VSCode' Profile"
 
     }
 
@@ -482,15 +488,15 @@ function setCrossPlatformModuleSupport {
         # Target - Source Folder # Path - Link Folder
         # PowerShell Module Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Modules" -Path "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Modules" -Force | Out-Null
-        Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'WindowsPowerShell' Modules"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'WindowsPowerShell' Modules"
 
         # PowerShell 5 Profile Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" -Path "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Force | Out-Null
-        Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'WindowsPowerShell' Profile"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'WindowsPowerShell' Profile"
 
         # VSCode Profile Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1" -Force | Out-Null
-        Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'VSCode' Profile"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'VSCode' Profile"
     }
 }
 
