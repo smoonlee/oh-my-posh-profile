@@ -17,7 +17,6 @@ Author: Simon Lee
 Version: 3.0 - May 2024
 #>
 
-
 #Requires -RunAsAdministrator
 
 # Script Variables
@@ -349,7 +348,7 @@ function Get-AzSystemUptime {
     `$osType = (Get-AzVM -ResourceGroupName `$resourceGroup -Name `$vmName).StorageProfile.OsDisk.OsType
 
     if (`$osType -eq 'Windows') {
-        Write-Output `r "Getting System Uptime for `$vmName in `$resourceGroup..."
+        Write-Output ``r "Getting System Uptime for `$vmName in `$resourceGroup..."
         Write-Warning "This may take up to 35 seconds"
         `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunPowerShellScript' -ScriptString '
         
@@ -381,14 +380,13 @@ function Get-AzSystemUptime {
         Write-Output "Hostname: `$hostname"
         Write-Output "Uptime: `$uptime"
         Write-Output "Last Reboot Time: `$lastRebootTime"
-        
-        ' # End ScriptString
+        '
 
         `$response.Value[0].Message
     }
 
     if (`$osType -eq 'Linux') {
-        Write-Output `r "Getting System Uptime for `$vmName in `$resourceGroup..."
+        Write-Output ``r "Getting System Uptime for `$vmName in `$resourceGroup..."
         Write-Warning "This may take up to 35 seconds"
         `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunShellScript' -ScriptString '
         echo "Hostname: `$(hostname)"
@@ -404,7 +402,7 @@ function Get-AzSystemUptime {
     }
 }
 
-
+# Register PowerShell Profile
 function Register-PSProfile {
     & `$PROFILE
     Write-Warning "Powershell Profile Reloaded!"
@@ -539,8 +537,4 @@ updateVSCodePwshModule
 setWindowsTerminal
 
 # Set Cross Platform Module Support
-<<<<<<< HEAD
 setCrossPlatformModuleSupport 
-=======
-setCrossPlatformModuleSupport 
->>>>>>> 07c6529a2b91094c7799289c82d2092e0ef68adb
