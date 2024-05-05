@@ -524,4 +524,8 @@ updateVSCodePwshModule
 setWindowsTerminal
 
 # Set Cross Platform Module Support
+<<<<<<< HEAD
 setCrossPlatformModuleSupport 
+=======
+setCrossPlatformModuleSupport 
+>>>>>>> 07c6529a2b91094c7799289c82d2092e0ef68adb
