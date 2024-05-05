@@ -1,7 +1,22 @@
 <#
+.SYNOPSIS
+This script creates a new OhMyPosh profile.
 
+.DESCRIPTION
+The New-OhMyPoshProfile.ps1 script is used to create a new OhMyPosh profile. OhMyPosh is a theme engine for PowerShell that provides a customizable prompt with various features and themes.
 
+.PARAMETER None
+This script does not accept any parameters.
+
+.EXAMPLE
+.\New-OhMyPoshProfile.ps1
+Creates a new OhMyPosh profile.
+
+.NOTES
+Author: Simon Lee
+Version: 3.0 - May 2024
 #>
+
 
 #Requires -RunAsAdministrator
 
