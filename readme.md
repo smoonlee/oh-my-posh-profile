@@ -3,6 +3,7 @@
 # Oh-My-Posh :: Overview :: Mk3
 
 ![terminal-preview](assets/windows-terminal-preview.png)
+![alt text](image.png)
 
 > [!IMPORTANT]
 > #Requires -RunAsAdministrator \
