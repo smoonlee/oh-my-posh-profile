@@ -87,7 +87,7 @@ Get-AzSystemUptime - Example (Windows)
 ``` powershell
 [Azure] :: Getting System Uptime for windows01 in rg-bwc-sandbox-weu...
 WARNING: This may take up to 35 seconds
- 
+
 [Azure] :: Hostname: windows01
 [Azure] :: Uptime: 15 days, 4 hours, 25 minutes, 46 seconds
 [Azure] :: Last Reboot Time: 05/06/2024 13:19:45
@@ -102,6 +102,35 @@ WARNING: This may take up to 35 seconds
 [Azure] :: Hostname: vm-learn-linux-weu
 [Azure] :: Uptime: up 1 day, 1 hour, 54 minutes
 [Azure] :: Last Reboot Time: 2024-05-05 11:27:17
+```
+
+[x]> Reload PowerShell Profile
+
+``` powershell
+Register-PSProfile
+```
+
+Register-PSProfile - Example
+
+``` powershel
+WARNING: Powershell Profile Reloaded!
+```
+
+[x]> Update Windows Applications (Using WinGet)
+
+``` powershell
+Update-WindowsApps
+```
+
+Update-WindowsApps - Examples
+
+``` powershell
+Updating Windows Applications...
+
+Name            Id                 Version Available Source
+-----------------------------------------------------------
+Hugo (Extended) Hugo.Hugo.Extended 0.125.5 0.125.6   winget
+1 upgrades available.
 ```
 
 ## Windows Terminal Nerd Font
