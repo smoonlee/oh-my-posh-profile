@@ -23,7 +23,7 @@ Since the release of the Mk2 Profile back in August 2023, I've learnt and realis
 Having completed a lot of testing with some virtual machines, I worked out that you can use: `C:\Users\%UserName%\Documents\PowerShell\Modules` or `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules`\
  By creating symbolic links between the two folder paths, you can import modules across both PowerShell versions.
 
-While doing some research as well around `$PROFILE` tips and tricks, I found some super interesting links.
+While doing some research as well around `$PROFILE` tips and tricks, I found some super interesting links:
 
 [Chris Titus Tech - Pretty PowerShell](https://github.com/ChrisTitusTech/powershell-profile) \
 [Scott Hanselman - My Ultimate PowerShell Prompt](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) \
