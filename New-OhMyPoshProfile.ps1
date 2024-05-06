@@ -19,6 +19,7 @@ Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine stat
 Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source folder and return is missing
 Version: 3.1.1.1 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
 Version: 3.1.1.2 - May 2024 | Created Update-WindowsApps functions, Wrapper for winget upgrade --all --include-unknown --force
+Version: 3.1.1.3 - May 2024 | Created Remove-GitBranch function, Wrapper for git branch -D and PSPROFILE reflow
 
 #>
 
@@ -319,6 +320,28 @@ function setPwshProfile {
     }
 
     $pwshProfile = @"
+# Import PowerShell Modules
+Import-Module -Name 'Posh-Git'
+Import-Module -Name 'Terminal-Icons'
+Import-Module -Name 'PSReadLine'
+
+# PSReadLine Config
+Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -HistoryNoDuplicates:`$True
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+# Load Oh My Posh Application
+(@(& "`$Env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="`$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\themeNameHere" --print) -join "`n") | Invoke-Expression
+
+# Local Oh-My-Posh Configuration
+`$env:POSH_AZURE_ENABLED = `$true
+`$env:POSH_GIT_ENABLED = `$true
+
 # Function - Get Public IP Address
 function Get-PublicIPAddress {
     `$ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
@@ -447,27 +470,32 @@ function Update-WindowsApps {
     winget upgrade --all --include-unknown --force
 }
 
-# Import PowerShell Modules
-Import-Module -Name 'Posh-Git'
-Import-Module -Name 'Terminal-Icons'
-Import-Module -Name 'PSReadLine'
+# Function - Clean Git Branches
+function Remove-GitBranch {
+    param (
+        [string] `$branchName,
+        [switch] `$all
+    )
 
-# PSReadLine Config
-Set-PSReadLineOption -EditMode Windows
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -HistoryNoDuplicates:`$True
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+    # Remove all branches in repository
+    if (`$all) {
+        Write-Output "" # Required for script spacing
+        Write-Warning "This will remove all local branches in the repository!"
+        Write-Output 'Press any key to continue...';
+        `$null = `$Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 
-# Load Oh My Posh Application
-(@(& "`$Env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="`$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\themeNameHere" --print) -join "`n") | Invoke-Expression
+        Write-Output ``r "[Git] :: Moving to main branch"
+        git checkout main
 
-# Local Oh-My-Posh Configuration
-`$env:POSH_AZURE_ENABLED = `$true
-`$env:POSH_GIT_ENABLED = `$true
+        Write-Output ``r "[Git] :: Starting Branch Cleanse"
+        `$allBranches = git branch
+        `$allBranches.Trim('main').Trim('master').Trim('*').Trim('') | ForEach-Object { git branch -D `$_.Trim() }
+    }
+    else {
+        # Remove specific branch
+        git branch -D `$branchName
+    }
+}
 "@
     $pwshProfile = $pwshProfile.Replace('themeNameHere', $poshThemeName)
     $pwshProfile | Set-Content -Path $pwshProfilePath -Force
