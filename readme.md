@@ -78,7 +78,7 @@ Last Reboot Time: 05/06/2024 10:10:32
 [x]> Get Uptime of Virtual Machine in Azure
 
 ``` powershell
-Get-AzSystemUptime -resourceGroup <> -vmName <> -subscriptionId <>
+Get-AzSystemUptime -resourceGroup <resourceGroup> -vmName <vmName> -subscriptionId <subscriptionId>
 ```
 
 Get-AzSystemUptime - Example (Windows)
