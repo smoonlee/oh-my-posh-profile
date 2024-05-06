@@ -520,19 +520,21 @@ function setCrossPlatformModuleSupport {
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1" -Force | Out-Null
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'VSCode' Profile"
     }
+
+    Write-Output "" # Required for script spacing
 }
 
 function updateVSCodePwshModule {
+    Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
     $psReadLineVersion = $(Find-Module -Name 'PSReadLine' | Select-Object Version).version.ToString()
     $folderName = $(Get-ChildItem -Path "$Env:UserProfile\.vscode\extensions" -ErrorAction SilentlyContinue | Where-Object 'Name' -like 'ms-vscode.powershell*').name
     if ([string]::IsNullOrEmpty($folderName)) {
-        Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module not found"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module not found, Skipping patch!"
         return
     }
 
     $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
 
-    Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
     Write-Output "The PowerShell Module Extension [$folderName], Uses PSReadline 2.4.0 Beta."
     Write-Output "Using 2.4.0 Beta you get this error: 'Assembly with same name is already loaded'"
     Write-Output "The OhMyPoshProfile setup scripts installs the latest stable version of PSReadline [$psReadLineVersion]"
@@ -571,4 +573,4 @@ updateVSCodePwshModule
 setWindowsTerminal
 
 # Set Cross Platform Module Support
-setCrossPlatformModuleSupport 
+setCrossPlatformModuleSupport
