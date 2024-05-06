@@ -60,7 +60,7 @@ Get-PublicIPAddress
 Get-SystemUptime
 ```
 
-Get-SystemUptime - Example 
+Get-SystemUptime - Example
 ``` powershell
 Hostname: XPS9510-SL
 Uptime: 0 days, 4 hours, 6 minutes, 47 seconds
@@ -94,7 +94,7 @@ WARNING: This may take up to 35 seconds
 
 ## Windows Terminal Nerd Font
 
-Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular ‘iconic fonts’
+Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts'
 You can get yours here: [Nerd Font](https://www.nerdfonts.com/font-downloads)
 
 Using the `New-OhMyPoshProfile.ps1` it will auto install the `Cascadia Code` Font. \
