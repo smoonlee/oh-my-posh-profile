@@ -20,8 +20,8 @@ Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source f
 Version: 3.1.2 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
 Version: 3.1.3 - May 2024 | Created Update-WindowsApps functions, Wrapper for winget upgrade --all --include-unknown --force
 Version: 3.1.4 - May 2024 | Created Remove-GitBranch function, Wrapper for git branch -D and PSPROFILE reflow
-Version: 3.1.5 - May 2014 | Corrected dateTime stamp for last reboot time in Get-SystemUptime Get-AzSystemUptime function
-
+Version: 3.1.5 - May 2024 | Corrected dateTime stamp for last reboot time in Get-SystemUptime Get-AzSystemUptime function
+Version: 3.1.5.1 - May 2024 | Fix Type for Remove-GitBranch Function to remove '* main' and '* master'
 #>
 
 #Requires -RunAsAdministrator
@@ -492,7 +492,7 @@ function Remove-GitBranch {
 
         Write-Output ``r "[Git] :: Starting Branch Cleanse"
         `$allBranches = git branch
-        `$allBranches.Trim('main').Trim('master').Trim('*').Trim('') | ForEach-Object { git branch -D `$_.Trim() }
+        `$allBranches.`Replace('* main','','* master','') | ForEach-Object { git branch -D `$_.Trim() }
     }
     else {
         # Remove specific branch
