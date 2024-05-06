@@ -1,29 +1,49 @@
-![github-header-image](content/github-header-imager.png)
+![header-image](assets/github-header-imager.png)
 
-## Oh-My-Posh :: Overview
-This repository contains my PowerShell Profile and the scripts to install the profile for Windows and Linux.
+# Oh-My-Posh :: Overview :: Mk3
 
-![windows-terminal-exmaple](content/windows-terminal-example.png)
+![terminal-preview](assets/windows-terminal-preview.png)
 
-### Pre-requisite checks - winget modules
- - [Microsoft.WindowsTerminal](https://winstall.app/apps/Microsoft.WindowsTerminal)
- - [Microsoft.PowerShell](https://winstall.app/apps/Microsoft.PowerShell) *
- - [Microsoft.VisualStudioCode](https://winstall.app/apps/Microsoft.VisualStudioCode) \
-'*' If installed from winget it installs under `"C:\Program Files\PowerShell\7\pwsh.exe"`
+> [!IMPORTANT]
+> #Requires -RunAsAdministrator \
+> This script requires execution as Administrator, for Nerd Font Installation!
+
+## Release Notes
+
+> **MAY 2024** \
+> Rebuilt Functions for Installation \
+> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime \
+> Added Support for AKS Clusters \
+> Move PowerShell Modules back to User Documents \
+> Rebuilt WSL/Linux bash script
+
+## Improvements Over Mk2
+
+Since the release of the Mk2 Profile back in August 2023, I've learnt and realised that the PowerShell modules don't need to be installed directly in the `C:\Program Files\WindowsPowerShell\Modules` folder to get cross platform/version support.
+Having completed a lot of testing with some virtual machines, I worked out that you can use: `C:\Users\%UserName%\Documents\PowerShell\Modules` or `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules`\
+ By creating symbolic links between the two folder paths, you can import modules across both PowerShell versions.
+
+While doing some research as well around `$PROFILE` tips and tricks, I found some super interesting links:
+
+[Chris Titus Tech - Pretty PowerShell](https://github.com/ChrisTitusTech/powershell-profile) \
+[Scott Hanselman - My Ultimate PowerShell Prompt](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) \
+[Scott Hanselman - Customizing you Powershell prompt with PSReadLine](https://www.hanselman.com/blog/you-should-be-customizing-your-powershell-prompt-with-psreadline) \
+[Anit Jha - Elevate your Windows PowerShell](https://blog.anit.dev/elevate-your-windows-powershell-my-personal-customization-guide)
+
+## Modules, Functions and Applications Overview
 
 ### PowerShell Modules
- - [PackageManagement](https://www.powershellgallery.com/packages/PackageManagement) [PowerShell 5.0] 
- - [PowerShellGet](https://www.powershellgallery.com/packages/PowerShellGet) [PowerShell 5.0]
- - [PSReadLine](https://www.powershellgallery.com/packages/PSReadLine) [PowerShell 5.0]
- - [Pester](https://www.powershellgallery.com/packages/Pester) [PowerShell 5.0] [PowerShell 7.0]
- - [Posh-Git](https://www.powershellgallery.com/packages/posh-git) [PowerShell 5.0] [PowerShell 7.0]
- - [Terminal-Icons](https://www.powershellgallery.com/packages/Terminal-Icons) [PowerShell 5.0] [PowerShell 7.0]
- - [Az](https://www.powershellgallery.com/packages/Az) [PowerShell 5.0] [PowerShell 7.0]
 
-During the installation of the PowerShell Modules they are installed to the `"%PROGRAMFILES%\WindowsPowerShell\Modules"` \
-this allows for cross-version module import from PowerShell 5.1 and PowerShell 7.0
+ - [PackageManagement](https://www.powershellgallery.com/packages/PackageManagement)
+ - [PowerShellGet](https://www.powershellgallery.com/packages/PowerShellGet)
+ - [PSReadLine](https://www.powershellgallery.com/packages/PSReadLine)
+ - [Pester](https://www.powershellgallery.com/packages/Pester)
+ - [Posh-Git](https://www.powershellgallery.com/packages/posh-git)
+ - [Terminal-Icons](https://www.powershellgallery.com/packages/Terminal-Icons)
+ - [Az](https://www.powershellgallery.com/packages/Az)
 
 ### Winget Modules
+
  - [JanDeDobbeleer.OhMyPosh](https://winstall.app/apps/JanDeDobbeleer.OhMyPosh)
  - [Git.Git](https://winstall.app/apps/Git.Git)
  - [Github.Cli](https://winstall.app/apps/GitHub.cli)
@@ -31,98 +51,149 @@ this allows for cross-version module import from PowerShell 5.1 and PowerShell 7
  - [Microsoft.Azure.Kubelogin](https://winstall.app/apps/Microsoft.Azure.Kubelogin)
  - [Kubernetes.kubectl](https://winstall.app/apps/Kubernetes.kubectl)
  - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
+ - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
 
-## Oh-My-Posh :: Windows
+### PowerShell Functions
 
-<details>
-<summary> New Device Setup </summary>
+[x]> Get your current Public IP Address
+
+``` powershell
+Get-PublicIPAddress
+```
+
+[x]> Get Local System Uptime
+
+``` powershell
+Get-SystemUptime
+```
+
+Get-SystemUptime - Example
+
+``` powershell
+Hostname: XPS9510-SL
+Uptime: 0 days, 4 hours, 6 minutes, 47 seconds
+Last Reboot Time: 05/06/2024 10:10:32
+```
+
+[x]> Get Uptime of Virtual Machine in Azure
+
+``` powershell
+Get-AzSystemUptime -resourceGroup <resourceGroup> -vmName <vmName> -subscriptionId <subscriptionId>
+```
+
+Get-AzSystemUptime - Example (Windows)
+
+``` powershell
+[Azure] :: Getting System Uptime for windows01 in rg-bwc-sandbox-weu...
+WARNING: This may take up to 35 seconds
  
-> NEW DEVICE SETUP \
-Please open Powershell 5.1 as Administrator and run the following commands
-
-Check PowerShell Execution Policy - If Execution Policy is `Default` update to `RemoteSigned`
-``` powershell
-Get-ExecutionPolicy
+[Azure] :: Hostname: windows01
+[Azure] :: Uptime: 15 days, 4 hours, 25 minutes, 46 seconds
+[Azure] :: Last Reboot Time: 05/06/2024 13:19:45
 ```
 
-Update Execution Policy
-``` powershell
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned 
-```
-Accept the Execution Policy Change: [A] Yes to all
+Get-AzSystemUptime - Example (Linux)
 
 ``` powershell
-Execution Policy Change
-The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
-you to the security risks described in the about_Execution_Policies help topic at
-https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+[Azure] :: Getting System Uptime for vm-learn-linux-weu in rg-learn-linux-weu...
+WARNING: This may take up to 35 seconds
 
+[Azure] :: Hostname: vm-learn-linux-weu
+[Azure] :: Uptime: up 1 day, 1 hour, 54 minutes
+[Azure] :: Last Reboot Time: 2024-05-05 11:27:17
 ```
 
-Download PsProfile Script 
+## Windows Terminal Nerd Font
+
+Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts'
+You can get yours here: [Nerd Font](https://www.nerdfonts.com/font-downloads)
+
+Using the `New-OhMyPoshProfile.ps1` it will auto install the `Cascadia Code` Font. \
+The font file which is installed is the: `CaskaydiaCoveNerdFont-Regular.ttf` \
+If you want to add this support to Visual Studio Code, you can update the Font Family:
+
 ``` powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$PWD\New-PsProfile.ps1" 
+'Consolas', 'Courier New', 'CaskaydiaCove Nerd Font'
 ```
-Execute Script
+
+## Pre Device Setup
+
+> [!IMPORTANT]
+> If you've used the v2 setup, You'll manually need to remove Modules from \
+> pwsh7 :: C:\Program Files\PowerShell\Modules \
+> pwsh5 :: C:\Program Files\WindowsPowerShell\Modules
+
+### Powershell 5 default modules
+
 ``` powershell
-.\New-PsProfile.ps1
-```
-</details>
+Directory: C:\Program Files\WindowsPowerShell\Modules
 
-<details>
-<summary> Reset Profile </summary>
-
-Download PsProfile Script 
-``` powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-PsProfile.ps1" -OutFile "$PWD\New-PsProfile.ps1" 
-```
-Execute Script
-``` powershell
-.\New-PsProfile.ps1 -ResetProfile
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07/05/2022     06:42                Microsoft.PowerShell.Operation.Validation
+d-----        07/05/2022     06:42                PackageManagement
+d-----        07/05/2022     06:42                Pester
+d-----        07/05/2022     06:42                PowerShellGet
+d-----        07/05/2022     06:42                PSReadLine
 ```
 
-</details>
+## Profile Setup
 
-
-## Oh-My-Posh :: Linux
+### -> Windows
 
 <details>
 <summary> New Device Setup </summary>
+<br>
+Ensure that you can execute scripts on your local machine
+<br>
 
-``` bash
-curl -s https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-BashProfile.sh -o $HOME/New-BashProfile.sh
+``` powershell
+Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned'
 ```
 
-Execute Script
-``` bash
-bash New-BashProfile.sh
+Download and execute the New-PSProfile.ps1 script.
+
+``` powershell
+$setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/New-OhMyPoshProfile.ps1'
+Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
+.\New-OhMyPoshProfile.ps1
 ```
+
+</details>
+
+### -> Linux
+
+<details>
+<summary> New Device Setup </summary>
+<br>
+
+``` bash
+setupUrl='https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/New-OhMyPoshProfile.sh'
+curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | sudo bash New-OhMyPoshProfile.sh
+```
+
 </details>
 
 <details>
 <summary> WSL :: Kubernetes </summary>
+<br>
 
-You might need to create the `.kube` folder first
-```
+> **NOTE** \
+> Since Mk3, This is built into the setup script!
+
+You might need to create the `.kube` folder first.
+
+``` bash
 mkdir $HOME/.kube
 ```
 
-Then create a symbolic link to the Windows `.kube` folder
-> NOTE: Please update the Users folder to match your Windows User folder
-```
+Then create a symbolic link to the Windows `.kube` folder.
+
+> **NOTE** \
+> Please update the Users folder to match your Windows User folder
+
+``` bash
 ln -sf /mnt/c/Users/<username>/.kube/config $HOME/.kube/config
 ```
+
 </details>
-
-## Oh-My-Posh :: VSCode Nerd Font Installation
-Obviously using Oh-My-Posh required a [Nerd Font](https://www.nerdfonts.com/font-downloads) of choice. \
-For this setup script, my chosen font is: [CaskaydiaCove Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) \
-Specially this ttf font style: `*CaskaydiaCoveNerdFont-Regular.ttf*`
-
-For the VSCode Font Family settings, you will want to use: 
-
-`File > Preferences > Settings` Search for `Font Family` > Edit in settings.json
-```
-Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
-```
