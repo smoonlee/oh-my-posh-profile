@@ -6,10 +6,11 @@
 
 ## Release Notes
 > **MAY 2024** \
-> Rebuilt PowerShell Functions \
+> Rebuilt Functions for Installation \
+> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime \
 > Added Support for AKS Clusters \
 > Move PowerShell Modules back to User Documents \
-> Rebuilt WSL/Liunx bash script
+> Rebuilt WSL/Linux bash script
 
 ## Improvements Over Mk2
 
@@ -47,7 +48,7 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
  - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
  - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
 
-## PowerShell Functions 
+## PowerShell Functions
 
 [x]> Get your current Public IP Address
 ``` powershell
@@ -77,7 +78,7 @@ Get-AzSystemUptime - Example (Windows)
 WARNING: This may take up to 35 seconds
  
 [Azure] :: Hostname: windows01
-[Azure] :: Uptime: 0 days, 4 hours, 25 minutes, 46 seconds
+[Azure] :: Uptime: 15 days, 4 hours, 25 minutes, 46 seconds
 [Azure] :: Last Reboot Time: 05/06/2024 13:19:45
 ```
 

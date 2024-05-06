@@ -14,7 +14,9 @@ Creates a new OhMyPosh profile.
 
 .NOTES
 Author: Simon Lee
-Version: 3.0 - May 2024
+Version: 3.0 - May 2024 | Mk3 Profile Script Created
+Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline] 
+
 #>
 
 #Requires -RunAsAdministrator
@@ -348,6 +350,12 @@ function Get-AzSystemUptime {
         Set-AzContext -SubscriptionId `$subscriptionId | Out-Null
         `$subFriendlyName = (Get-AzContext).Subscription.Name
         Write-Output "[Azure] :: Setting Azure Subscription to `$subFriendlyName "
+    }
+
+    `$vmState = (Get-AzVM -ResourceGroupName `$resourceGroup -Name `$vmName -Status).Statuses.DisplayStatus[1]
+    if (`$vmState -ne 'VM running') {
+        Write-Warning "[Azure] :: `$vmName is not running. Please start the VM and try again."
+        return
     }
 
     `$osType = (Get-AzVM -ResourceGroupName `$resourceGroup -Name `$vmName).StorageProfile.OsDisk.OsType
