@@ -3,7 +3,14 @@
 # Oh-My-Posh :: Overview :: Mk3
 ![terminal-preview](assets/windows-terminal-preview.png)
 
-## Improvement Over Mk2
+## Release Notes
+> **MAY 2024** \
+> Rebuilt PowerShell Functions \
+> Added Support for AKS Clusters \
+> Move PowerShell Modules back to User Documents \
+> Rebuilt WSL/Liunx bash script
+
+## Improvements Over Mk2
 Since the release of the Mk2 Profile back in August 2023, I've learnt and realised that the PowerShell modules don't need to be installed directly in the `C:\Program Files\WindowsPowerShell\Modules` folder to get cross platform/version support.
 Having completed a lot of testing with some virtual machines, I worked out that you can use the `C:\Users\%UserName%\Documents\PowerShell\Modules` or `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules` and by creating symbolic links between the two folder paths, you can import modules across both PowerShell versions. - neat right! 🧐
 
@@ -67,13 +74,6 @@ d-----        07/05/2022     06:42                PowerShellGet
 d-----        07/05/2022     06:42                PSReadLine
 ```
 
-### PowerShell 7 default Modules
-
-``` powershell
-
-```
-
-
 ## Device Setup
 
 ### -> Windows
@@ -89,7 +89,7 @@ Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned'
 Download and execute the New-PSProfile.ps1 script.
 
 ``` powershell
-$setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/profile-v3/New-OhMyPoshProfile.ps1'
+$setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/New-OhMyPoshProfile.ps1'
 Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
 .\New-OhMyPoshProfile.ps1
 ```
@@ -99,4 +99,29 @@ Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
 <details>
 <summary> New Device Setup </summary>
 
+``` bash
+setupUrl=''https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/New-OhMyPoshProfile.sh'
+curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | sudo bash New-OhMyPoshProfile.sh
+```
+
+</details>
+
 <details>
+<summary> WSL :: Kubernetes </summary>
+
+> [!NOTE]
+> Since Mk3, This is built into the setup script!
+
+You might need to create the `.kube` folder first
+``` bash
+mkdir $HOME/.kube
+```
+
+Then create a symbolic link to the Windows `.kube` folder
+> [!NOTE]
+> Please update the Users folder to match your Windows User folder
+
+``` bash
+ln -sf /mnt/c/Users/<username>/.kube/config $HOME/.kube/config
+```
+</details>
