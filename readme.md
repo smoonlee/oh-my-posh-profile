@@ -13,7 +13,9 @@
 ## Improvements Over Mk2
 Since the release of the Mk2 Profile back in August 2023, I've learnt and realised that the PowerShell modules don't need to be installed directly in the `C:\Program Files\WindowsPowerShell\Modules` folder to get cross platform/version support.
 Having completed a lot of testing with some virtual machines. \
-I worked out that you can use the `C:\Users\%UserName%\Documents\PowerShell\Modules` or `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules` and by creating symbolic links between the two folder paths, you can import modules across both PowerShell versions. - neat right! 🧐
+I worked out that you can use: \
+ `C:\Users\%UserName%\Documents\PowerShell\Modules` or \ `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules`\
+ By creating symbolic links between the two folder paths, you can import modules across both PowerShell versions. - neat right! 🧐
 
 While doing some research as well around other peoples `$PROFILE` setups, I came across a couple of interesting links.
 
