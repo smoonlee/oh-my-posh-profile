@@ -211,8 +211,20 @@ function installPowerShellModules {
 
     $coreModules = @('PackageManagement', 'PowerShellGet')
     forEach ($module in $coreModules) {
+        $onlineModule = Find-Module -Repository 'PSGallery' -Name $module 
+        $moduleCheck = Get-Module -ListAvailable -Name $module
+        if ($moduleCheck) {
+            $localModuleVersion = $(Get-Module -ListAvailable -Name $module | Select-Object 'Version' -First 1).Version.ToString()
+        }
+
+        if ($onlineModule.version -eq $localModuleVersion) {
+            Write-Output "[OhMyPoshProfile $scriptVersion] :: Core PowerShell Module [$module] is up to date"
+        }
+
+        if ($onlineModule.version -ne $localModuleVersion) {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing Core PowerShell Module [$module]"
         Install-Module -Repository 'PSGallery' -Scope 'AllUsers' -Name $module -Force
+        }
     }
 
     # Set PSGallery as a trusted repository
@@ -241,11 +253,13 @@ function installPowerShellModules {
         if ($onlineModule.version -ne $localModuleVersion) {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing PowerShell Module [$module]"
             Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -SkipPublisherCheck -Force
+
+            if ($module -eq 'PSReadLine') {
+                Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+            }
         }
 
-        if ($module -eq 'PSReadLine') {
-            Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
-        }
+
     }
 }
 
@@ -453,7 +467,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 function setWindowsTerminal {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Terminal Configuration"
 
-    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/profile-v3/windows-terminal-settings.json"
+    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/windows-terminal-settings.json"
     $localSettingsPath = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     Invoke-WebRequest -Uri $settingJsonUrl -OutFile $localSettingsPath
 
@@ -514,8 +528,9 @@ function updateVSCodePwshModule {
     $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
-    Write-Output "The PowerShell Module Extension [$folderName], Uses PSReadline 2.4.0 Beta. Which gives an assembly warning on Import"
-    Write-Output "The OhMyPoshProfile setup scripts installed the latest stable version of PSReadline [$psReadLineVersion]"
+    Write-Output "The PowerShell Module Extension [$folderName], Uses PSReadline 2.4.0 Beta."
+    Write-Output "Using 2.4.0 Beta you get this error: 'Assembly with same name is already loaded'"
+    Write-Output "The OhMyPoshProfile setup scripts installs the latest stable version of PSReadline [$psReadLineVersion]"
 
     if (Test-Path -Path "$vsCodeModulePath\modules\PSReadLine" ) {
         Remove-Item -Path "$vsCodeModulePath\modules\PSReadLine" -Recurse -Force
