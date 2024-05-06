@@ -170,6 +170,7 @@ mkdir $HOME/.kube
 ```
 
 Then create a symbolic link to the Windows `.kube` folder
+
 > [!NOTE]
 > Please update the Users folder to match your Windows User folder
 
