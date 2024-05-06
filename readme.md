@@ -12,7 +12,7 @@
 
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
-> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime, Register-PSProfile, Update-WindowsApps \
+> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime, Register-PSProfile, Update-WindowsApps, Remove-GitBranch \
 > Added Support for AKS Clusters \
 > Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete)
 > Move PowerShell Modules back to User Documents \
@@ -131,6 +131,45 @@ Name            Id                 Version Available Source
 -----------------------------------------------------------
 Hugo (Extended) Hugo.Hugo.Extended 0.125.5 0.125.6   winget
 1 upgrades available.
+```
+
+[x]> Remove-GitBranch (Singe Branch)
+
+``` powershell
+Remove-GitBranch -branchName <branchname>
+```
+
+Remove-GitBranch -branchName - Example
+
+``` powershell
+Deleted branch branch1 (was b7ef979).
+```
+
+[x]> Remove-GitBranch (All Branches)
+> This excludes 'main' and 'master' branches
+
+``` powershell
+Remove-GitBranch -all
+```
+
+Remove-GitBranch -all - Example
+
+``` powershell
+WARNING: This will remove all local branches in the repository!
+Press any key to continue...
+
+[Git] :: Moving to main branch
+Switched to branch 'main'
+Your branch and 'origin/main' have diverged,
+and have 8 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+[Git] :: Starting Branch Cleanse
+Deleted branch branch1 (was b7ef979).
+Deleted branch branch2 (was b7ef979).
+Deleted branch branch3 (was b7ef979).
+Deleted branch branch4 (was b7ef979).
+Deleted branch branch5 (was b7ef979).
 ```
 
 ## Windows Terminal Nerd Font
