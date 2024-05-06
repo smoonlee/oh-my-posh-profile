@@ -160,6 +160,7 @@ curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | sudo bash New-OhMyPoshProfil
 
 <details>
 <summary> WSL :: Kubernetes </summary>
+<br>
 
 > **NOTE** \
 > Since Mk3, This is built into the setup script!
