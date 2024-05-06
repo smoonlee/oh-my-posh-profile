@@ -17,6 +17,7 @@ Author: Simon Lee
 Version: 3.0 - May 2024 | Mk3 Profile Script Created
 Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline] 
 Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source folder and return is missing
+Version: 3.1.1.1 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
 
 #>
 
@@ -254,12 +255,12 @@ function installPowerShellModules {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing PowerShell Module [$module]"
             Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -SkipPublisherCheck -Force
 
-            if ($module -eq 'PSReadLine') {
-                Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
-            }
         }
 
-
+        if ($module -eq 'PSReadLine') {
+            Write-Output "[OhMyPoshProfile $scriptVersion] :: Updating PSReadLine for PowerShell 5"
+            Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+        }
     }
 }
 
