@@ -161,7 +161,7 @@ curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | sudo bash New-OhMyPoshProfil
 <details>
 <summary> WSL :: Kubernetes </summary>
 
-> [!NOTE]
+> **NOTE** \
 > Since Mk3, This is built into the setup script!
 
 You might need to create the `.kube` folder first
@@ -171,7 +171,7 @@ mkdir $HOME/.kube
 
 Then create a symbolic link to the Windows `.kube` folder
 
-> [!NOTE]
+> **NOTE** \
 > Please update the Users folder to match your Windows User folder
 
 ``` bash
