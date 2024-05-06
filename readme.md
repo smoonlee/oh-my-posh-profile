@@ -132,7 +132,7 @@ d-----        07/05/2022     06:42                PSReadLine
 
 <details>
 <summary> New Device Setup </summary>
-
+<br>
 Ensure that you can execute scripts on your local machine
 <br>
 
