@@ -175,7 +175,7 @@ function installNerdFont {
         # Install Nerd Font
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing Nerd Font [$nerdFontFileName]"
         $fontFile = Get-ChildItem -Path $Env:Temp\$folderName | Where-Object 'Name' -like "*NerdFont-Regular.ttf"
-        Copy-Item -Path "$Env:Temp\$folderName\$($fontFile.Name)" -Destination 'C:\Windows\Fonts'
+        Copy-Item -Path "$Env:Temp\$folderName\$($fontFile.Name)" -Destination $windowsFontPath
     
         $fontRegistryPath = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
         $fontEntry = $fontFile.Name # Modify this if the font is not TrueType

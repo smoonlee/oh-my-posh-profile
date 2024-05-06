@@ -3,13 +3,13 @@
 # Oh-My-Posh :: Overview :: Mk3
 
 ![terminal-preview](assets/windows-terminal-preview.png)
-![alt text](image.png)
 
 > [!IMPORTANT]
 > #Requires -RunAsAdministrator \
 > This script requires execution as Administrator, for Nerd Font Installation
 
 ## Release Notes
+
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
 > Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime \
@@ -28,10 +28,11 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
 
 [Chris Titus Tech - Pretty PowerShell](https://github.com/ChrisTitusTech/powershell-profile) \
 [Scott Hanselman - My Ultimate PowerShell Prompt](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) \
-[Scott Hanselman - Customizing you Powershell prompt with PSReadLine ](https://www.hanselman.com/blog/you-should-be-customizing-your-powershell-prompt-with-psreadline) \
+[Scott Hanselman - Customizing you Powershell prompt with PSReadLine](https://www.hanselman.com/blog/you-should-be-customizing-your-powershell-prompt-with-psreadline) \
 [Anit Jha - Elevate your Windows PowerShell](https://blog.anit.dev/elevate-your-windows-powershell-my-personal-customization-guide)
 
 ## Modules, Functions and Applications Overview
+
 ### PowerShell Modules
 
  - [PackageManagement](https://www.powershellgallery.com/packages/PackageManagement)
@@ -56,16 +57,19 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
 ## PowerShell Functions
 
 [x]> Get your current Public IP Address
+
 ``` powershell
 Get-PublicIPAddress
 ```
 
 [x]> Get Local System Uptime
+
 ``` powershell
 Get-SystemUptime
 ```
 
 Get-SystemUptime - Example
+
 ``` powershell
 Hostname: XPS9510-SL
 Uptime: 0 days, 4 hours, 6 minutes, 47 seconds
@@ -73,11 +77,13 @@ Last Reboot Time: 05/06/2024 10:10:32
 ```
 
 [x]> Get Uptime of Virtual Machine in Azure
+
 ``` powershell
 Get-AzSystemUptime -resourceGroup <> -vmName <> -subscriptionId <>
 ```
 
 Get-AzSystemUptime - Example (Windows)
+
 ``` powershell
 [Azure] :: Getting System Uptime for windows01 in rg-bwc-sandbox-weu...
 WARNING: This may take up to 35 seconds
@@ -88,6 +94,7 @@ WARNING: This may take up to 35 seconds
 ```
 
 Get-AzSystemUptime - Example (Linux)
+
 ``` powershell
 [Azure] :: Getting System Uptime for vm-learn-linux-weu in rg-learn-linux-weu...
 WARNING: This may take up to 35 seconds
@@ -152,6 +159,7 @@ $setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/featu
 Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
 .\New-OhMyPoshProfile.ps1
 ```
+
 </details>
 
 ### -> Linux
@@ -175,6 +183,7 @@ curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | sudo bash New-OhMyPoshProfil
 > Since Mk3, This is built into the setup script!
 
 You might need to create the `.kube` folder first.
+
 ``` bash
 mkdir $HOME/.kube
 ```
@@ -187,4 +196,5 @@ Then create a symbolic link to the Windows `.kube` folder.
 ``` bash
 ln -sf /mnt/c/Users/<username>/.kube/config $HOME/.kube/config
 ```
+
 </details>
