@@ -16,6 +16,7 @@ Creates a new OhMyPosh profile.
 Author: Simon Lee
 Version: 3.0 - May 2024 | Mk3 Profile Script Created
 Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline] 
+Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source folder and return is missing
 
 #>
 
@@ -39,7 +40,6 @@ function getSystemRequirements {
     }
     else {
         Write-Warning "[OhMyPoshProfile $scriptVersion] :: Visual Studio Code not found"
-        Exit 1
     }
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking PowerShell 7 Installation Location"
@@ -222,8 +222,8 @@ function installPowerShellModules {
         }
 
         if ($onlineModule.version -ne $localModuleVersion) {
-        Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing Core PowerShell Module [$module]"
-        Install-Module -Repository 'PSGallery' -Scope 'AllUsers' -Name $module -Force
+            Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing Core PowerShell Module [$module]"
+            Install-Module -Repository 'PSGallery' -Scope 'AllUsers' -Name $module -Force
         }
     }
 
@@ -524,7 +524,12 @@ function setCrossPlatformModuleSupport {
 
 function updateVSCodePwshModule {
     $psReadLineVersion = $(Find-Module -Name 'PSReadLine' | Select-Object Version).version.ToString()
-    $folderName = $(Get-ChildItem -Path "$Env:UserProfile\.vscode\extensions" | Where-Object 'Name' -like 'ms-vscode.powershell*').name
+    $folderName = $(Get-ChildItem -Path "$Env:UserProfile\.vscode\extensions" -ErrorAction SilentlyContinue | Where-Object 'Name' -like 'ms-vscode.powershell*').name
+    if ([string]::IsNullOrEmpty($folderName)) {
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module not found"
+        return
+    }
+
     $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
