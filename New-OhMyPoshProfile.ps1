@@ -15,9 +15,10 @@ Creates a new OhMyPosh profile.
 .NOTES
 Author: Simon Lee
 Version: 3.0 - May 2024 | Mk3 Profile Script Created
-Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline] 
+Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline]
 Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source folder and return is missing
 Version: 3.1.1.1 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
+Version: 3.1.1.2 - May 2024 | Created Update-WindowsApps functions, Wrapper for winget upgrade --all --include-unknown --force
 
 #>
 
@@ -50,7 +51,7 @@ function getSystemRequirements {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: PowerShell 7 System Path: $pwsh7SystemPath"
         & $pwsh7SystemPath -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Updated Execution Policy for PowerShell 7 'RemoteSigned'"
-    }   
+    }
     elseif (Test-Path $pwsh7UserPath) {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: PowerShell 7 User Path: $pwsh7UserPath"
         & $pwsh7UserPath -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
@@ -68,7 +69,7 @@ function getSystemRequirements {
 }
 
 function updateWinGetVersion {
-    Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking WinGet Version" 
+    Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking WinGet Version"
 
     #
     $wingetLocalVersion = winget --version
@@ -76,7 +77,7 @@ function updateWinGetVersion {
     $wingetLatestVersion = $(Invoke-RestMethod -Uri $wingetGitHubUrl).tag_name
 
     if ($wingetLocalVersion -match $wingetLatestVersion) {
-        Write-Output "[OhMyPoshProfile $scriptVersion] :: WinGet Fine [$wingetLocalVersion], Skipping Update"  
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: WinGet Fine [$wingetLocalVersion], Skipping Update"
     }
 
     if ($wingetLocalVersion -notmatch $wingetLatestVersion) {
@@ -89,28 +90,28 @@ function updateWinGetVersion {
         $downloadFileArray = @($msftVCLibsx64, $msftVCLibsx86, $msftDesktopAppLic, $msftDesktopAppInstaller)
 
         # Download Files
-        Write-Output `r "[Device Setup] -> Downloading WinGet Setup Files"    
+        Write-Output `r "[Device Setup] -> Downloading WinGet Setup Files"
         forEach ($file in $downloadFileArray) {
             $fileName = $(Split-Path -Leaf $file)
             $outFile = "$Env:Temp\$fileName"
 
-            Write-Output "[Device Setup] -> Downloading [$fileName]"  
-            
+            Write-Output "[Device Setup] -> Downloading [$fileName]"
+
             $wc = New-Object net.webclient
-            $wc.downloadFile($file, $outFile) 
+            $wc.downloadFile($file, $outFile)
 
             # Install files
             if ($fileName -like '*appx') {
- 
+
                 $filePath = $outFile
                 $fileVersion = (Get-ItemProperty -Path $filePath).VersionInfo.ProductVersion
-                $highestInstalledVersion = Get-AppxPackage -Name Microsoft.VCLibs* | 
+                $highestInstalledVersion = Get-AppxPackage -Name Microsoft.VCLibs* |
                 Sort-Object -Property Version | Select-Object -ExpandProperty Version -Last 1
 
                 if ($highestInstalledVersion -lt $fileVersion ) {
                     Write-Output "[Device Setup] -> Installing [$fileName]"
                     Add-AppxPackage $filePath
-                } 
+                }
 
                 if ($highestInstalledVersion -ge $fileVersion) {
                     Write-Warning "[Device Setup] -> Skipping [$fileName], Newer Version Installed [$highestInstalledVersion]"
@@ -123,8 +124,8 @@ function updateWinGetVersion {
             if ($fileName -like '*msixbundle') {
                 Write-Output "[Device Setup] -> Installing [$fileName]"
                 $appFile = $(Get-ChildItem -Path $Env:Temp | Where-Object 'Name' -like '*msixbundle').Name
-                $appLicXml = $(Get-ChildItem -Path $Env:Temp | Where-Object 'Name' -like '*xml').Name 
-    
+                $appLicXml = $(Get-ChildItem -Path $Env:Temp | Where-Object 'Name' -like '*xml').Name
+
                 Add-AppProvisionedPackage -Online -PackagePath $Env:Temp\$appFile -LicensePath $Env:Temp\$appLicXml | Out-Null
                 Remove-Item -Path $Env:Temp\$appFile -Force ; Remove-Item -Path $Env:Temp\$appLicXml -Force
             }
@@ -133,7 +134,7 @@ function updateWinGetVersion {
 
 
     }
-           
+
     # WinGet CLI Update
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Package Manager Cache (WinGet)"
     $wingetPath = "$Env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
@@ -143,7 +144,7 @@ function updateWinGetVersion {
 
 function installNerdFont {
     param (
-        $nerdFontFileName 
+        $nerdFontFileName
     )
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking for Nerd Font [$nerdFontFileName]"
@@ -159,7 +160,7 @@ function installNerdFont {
     if (Get-ChildItem -Path C:\Windows\Fonts | Where-Object 'Name' -like "*NerdFont-Regular.ttf") {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Nerd Font [$nerdFontFileName] is already installed"
     }
-    
+
     if (!(Get-ChildItem -Path C:\Windows\Fonts | Where-Object 'Name' -like "*NerdFont-Regular.ttf")) {
         # Download Nerd Font
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Downloading Nerd Font [$nerdFontFileName]"
@@ -169,15 +170,15 @@ function installNerdFont {
         $downloadUrl = $nerdFont.browser_download_url
         $outFile = "$Env:Temp\$nerdFontZipName"
         $wc = New-Object net.webclient
-        $wc.downloadFile($downloadUrl, $outFile) 
-    
+        $wc.downloadFile($downloadUrl, $outFile)
+
         Expand-Archive -Path $outFile -DestinationPath $Env:Temp\$folderName
 
         # Install Nerd Font
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing Nerd Font [$nerdFontFileName]"
         $fontFile = Get-ChildItem -Path $Env:Temp\$folderName | Where-Object 'Name' -like "*NerdFont-Regular.ttf"
         Copy-Item -Path "$Env:Temp\$folderName\$($fontFile.Name)" -Destination $windowsFontPath
-    
+
         $fontRegistryPath = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
         $fontEntry = $fontFile.Name # Modify this if the font is not TrueType
         $dataValue = "C:\Windows\Fonts\$($fontFile.Name)"
@@ -198,21 +199,21 @@ function installNerdFont {
 
         # Remove Zip Font Folder
         Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Cleaning Up Nerd Font [$nerdFontFileName]"
-        Remove-Item -Path $outFile -Force 
+        Remove-Item -Path $outFile -Force
         Remove-Item -Path "$Env:Temp\$folderName" -Recurse -Force
     }
 }
 
 function installPowerShellModules {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: PowerShell Module Installation"
-    
+
     if ($host.version.Major -eq '5') {
         Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
     }
 
     $coreModules = @('PackageManagement', 'PowerShellGet')
     forEach ($module in $coreModules) {
-        $onlineModule = Find-Module -Repository 'PSGallery' -Name $module 
+        $onlineModule = Find-Module -Repository 'PSGallery' -Name $module
         $moduleCheck = Get-Module -ListAvailable -Name $module
         if ($moduleCheck) {
             $localModuleVersion = $(Get-Module -ListAvailable -Name $module | Select-Object 'Version' -First 1).Version.ToString()
@@ -231,7 +232,7 @@ function installPowerShellModules {
     # Set PSGallery as a trusted repository
     Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 
-    $pwshModule = @( 
+    $pwshModule = @(
         'Az'
         'Posh-Git',
         'Terminal-Icons',
@@ -241,7 +242,7 @@ function installPowerShellModules {
 
     forEach ($module in $pwshModule) {
         Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking PowerShell Module [$module]"
-        $onlineModule = Find-Module -Repository 'PSGallery' -Name $module 
+        $onlineModule = Find-Module -Repository 'PSGallery' -Name $module
         $moduleCheck = Get-Module -ListAvailable -Name $module
         if ($moduleCheck) {
             $localModuleVersion = $(Get-Module -ListAvailable -Name $module | Select-Object 'Version' -First 1).Version.ToString()
@@ -250,7 +251,7 @@ function installPowerShellModules {
         if ($onlineModule.version -eq $localModuleVersion) {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: PowerShell Module [$module] is up to date"
         }
-        
+
         if ($onlineModule.version -ne $localModuleVersion) {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing PowerShell Module [$module]"
             Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -SkipPublisherCheck -Force
@@ -266,7 +267,7 @@ function installPowerShellModules {
 
 function installWinGetApplications {
 
-    # Configure WinGet 
+    # Configure WinGet
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking Winget Modules"
     $winGetApps = @(
         'JanDeDobbeleer.OhMyPosh',
@@ -318,11 +319,13 @@ function setPwshProfile {
     }
 
     $pwshProfile = @"
+# Function - Get Public IP Address
 function Get-PublicIPAddress {
     `$ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
     `$ip.Content
 }
 
+# Function - Get System Uptime
 function Get-SystemUptime {
     function ConvertToReadableTime {
         param (
@@ -354,6 +357,7 @@ function Get-SystemUptime {
     Write-Output "Last Reboot Time: `$lastRebootTime"
 }
 
+# Function - Get Azure Virtual Machine System Uptime
 function Get-AzSystemUptime {
     param (
         [string] `$subscriptionId,
@@ -379,7 +383,7 @@ function Get-AzSystemUptime {
         Write-Output "[Azure] :: Getting System Uptime for `$vmName in `$resourceGroup..."
         Write-Warning "This may take up to 35 seconds"
         `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunPowerShellScript' -ScriptString '
-        
+
         function ConvertToReadableTime {
             param (
                 [int]`$uptimeSeconds
@@ -431,10 +435,16 @@ function Get-AzSystemUptime {
     }
 }
 
-# Register PowerShell Profile
+# Function - Register PowerShell Profile
 function Register-PSProfile {
     & `$PROFILE
     Write-Warning "Powershell Profile Reloaded!"
+}
+
+# Function - Update WinGet Applications
+function Update-WindowsApps {
+    Write-Output "Updating Windows Applications..." ``r
+    winget upgrade --all --include-unknown --force
 }
 
 # Import PowerShell Modules
@@ -487,7 +497,7 @@ function setCrossPlatformModuleSupport {
         if (Test-Path -Path "$Env:UserProfile\Documents\PowerShell\Modules") {
             Remove-Item -Path "$Env:UserProfile\Documents\PowerShell\Modules" -Recurse -Force
         }
-        
+
         # Target - Source Folder # Path - Link Folder
         # PowerShell Module Link
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Modules" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Modules" -Force | Out-Null
