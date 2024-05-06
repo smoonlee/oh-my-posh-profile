@@ -467,7 +467,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 function setWindowsTerminal {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Terminal Configuration"
 
-    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/windows-terminal-settings.json"
+    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/windows-terminal-settings.json"
     $localSettingsPath = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     Invoke-WebRequest -Uri $settingJsonUrl -OutFile $localSettingsPath
 
