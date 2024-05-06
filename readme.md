@@ -132,7 +132,9 @@ d-----        07/05/2022     06:42                PSReadLine
 
 <details>
 <summary> New Device Setup </summary>
+
 Ensure that you can execute scripts on your local machine
+<br>
 
 ``` powershell
 Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned'
@@ -148,8 +150,10 @@ Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
 </details>
 
 ### -> Linux
+
 <details>
 <summary> New Device Setup </summary>
+<br>
 
 ``` bash
 setupUrl=''https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/New-OhMyPoshProfile.sh'
@@ -165,12 +169,12 @@ curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | sudo bash New-OhMyPoshProfil
 > **NOTE** \
 > Since Mk3, This is built into the setup script!
 
-You might need to create the `.kube` folder first
+You might need to create the `.kube` folder first.
 ``` bash
 mkdir $HOME/.kube
 ```
 
-Then create a symbolic link to the Windows `.kube` folder
+Then create a symbolic link to the Windows `.kube` folder.
 
 > **NOTE** \
 > Please update the Users folder to match your Windows User folder
