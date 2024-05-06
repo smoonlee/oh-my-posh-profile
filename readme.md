@@ -4,6 +4,10 @@
 
 ![terminal-preview](assets/windows-terminal-preview.png)
 
+> [!IMPORTANT]
+> #Requires -RunAsAdministrator \
+> This script requires execution as Administrator, for Nerd Font Installation
+
 ## Release Notes
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
