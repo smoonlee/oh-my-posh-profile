@@ -53,7 +53,7 @@ While doing some research as well around `$PROFILE` tips and tricks, I found som
  - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
  - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
 
-## PowerShell Functions
+### PowerShell Functions
 
 [x]> Get your current Public IP Address
 
