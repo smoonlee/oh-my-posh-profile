@@ -90,7 +90,7 @@ WARNING: This may take up to 35 seconds
 
 [Azure] :: Hostname: windows01
 [Azure] :: Uptime: 15 days, 4 hours, 25 minutes, 46 seconds
-[Azure] :: Last Reboot Time: 05/06/2024 13:19:45
+[Azure] :: Last Reboot Time: 06/05/2024 13:19:45
 ```
 
 Get-AzSystemUptime - Example (Linux)

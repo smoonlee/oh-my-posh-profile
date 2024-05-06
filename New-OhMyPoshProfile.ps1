@@ -17,9 +17,10 @@ Author: Simon Lee
 Version: 3.0 - May 2024 | Mk3 Profile Script Created
 Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline]
 Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source folder and return is missing
-Version: 3.1.1.1 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
-Version: 3.1.1.2 - May 2024 | Created Update-WindowsApps functions, Wrapper for winget upgrade --all --include-unknown --force
-Version: 3.1.1.3 - May 2024 | Created Remove-GitBranch function, Wrapper for git branch -D and PSPROFILE reflow
+Version: 3.1.2 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
+Version: 3.1.3 - May 2024 | Created Update-WindowsApps functions, Wrapper for winget upgrade --all --include-unknown --force
+Version: 3.1.4 - May 2024 | Created Remove-GitBranch function, Wrapper for git branch -D and PSPROFILE reflow
+Version: 3.1.5 - May 2014 | Corrected dateTime stamp for last reboot time in Get-SystemUptime Get-AzSystemUptime function
 
 #>
 
@@ -373,6 +374,7 @@ function Get-SystemUptime {
 
     # Get the last reboot time
     `$lastRebootTime = `$operatingSystem.LastBootUpTime
+    `$lastRebootTime = `$lastRebootTime.ToString("dd/MM/yyyy HH:mm:ss")
 
     # Display the results
     Write-Output "Hostname: `$hostname"
@@ -430,6 +432,7 @@ function Get-AzSystemUptime {
 
         # Get the last reboot time
         `$lastRebootTime = `$operatingSystem.LastBootUpTime
+        `$lastRebootTime = `$lastRebootTime.ToString("dd/MM/yyyy HH:mm:ss")
 
         # Display the results
         Write-Output " " # Required for script spacing
