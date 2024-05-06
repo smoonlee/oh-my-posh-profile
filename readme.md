@@ -1,6 +1,7 @@
 ![header-image](assets/github-header-imager.png)
 
 # Oh-My-Posh :: Overview :: Mk3
+
 ![terminal-preview](assets/windows-terminal-preview.png)
 
 ## Release Notes
@@ -11,10 +12,10 @@
 > Rebuilt WSL/Liunx bash script
 
 ## Improvements Over Mk2
+
 Since the release of the Mk2 Profile back in August 2023, I've learnt and realised that the PowerShell modules don't need to be installed directly in the `C:\Program Files\WindowsPowerShell\Modules` folder to get cross platform/version support.
 Having completed a lot of testing with some virtual machines. \
-I worked out that you can use: \
- `C:\Users\%UserName%\Documents\PowerShell\Modules` or `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules`\
+I worked out that you can use: `C:\Users\%UserName%\Documents\PowerShell\Modules` or `C:\Users\%UserName%\Documents\WindowsPowerShell\Modules`\
  By creating symbolic links between the two folder paths, you can import modules across both PowerShell versions. - neat right! 🧐
 
 While doing some research as well around other peoples `$PROFILE` setups, I came across a couple of interesting links.
@@ -24,8 +25,9 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
 [Scott Hanselman - Customizing you Powershell prompt with PSReadLine ](https://www.hanselman.com/blog/you-should-be-customizing-your-powershell-prompt-with-psreadline) \
 [Anit Jha - Elevate your Windows PowerShell](https://blog.anit.dev/elevate-your-windows-powershell-my-personal-customization-guide)
 
-## Modules and Applications Overview
+## Modules, Functions and Applications Overview
 ### PowerShell Modules
+
  - [PackageManagement](https://www.powershellgallery.com/packages/PackageManagement)
  - [PowerShellGet](https://www.powershellgallery.com/packages/PowerShellGet)
  - [PSReadLine](https://www.powershellgallery.com/packages/PSReadLine)
@@ -35,6 +37,7 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
  - [Az](https://www.powershellgallery.com/packages/Az)
 
 ### Winget Modules
+
  - [JanDeDobbeleer.OhMyPosh](https://winstall.app/apps/JanDeDobbeleer.OhMyPosh)
  - [Git.Git](https://winstall.app/apps/Git.Git)
  - [Github.Cli](https://winstall.app/apps/GitHub.cli)
@@ -44,7 +47,52 @@ While doing some research as well around other peoples `$PROFILE` setups, I came
  - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
  - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
 
-## Windows Terminal Nerd Font 
+## PowerShell Functions 
+
+[x]> Get your current Public IP Address
+``` powershell
+Get-PublicIPAddress
+```
+
+[x]> Get Local System Uptime
+``` powershell
+Get-SystemUptime
+```
+
+Get-SystemUptime - Example 
+``` powershell
+Hostname: XPS9510-SL
+Uptime: 0 days, 4 hours, 6 minutes, 47 seconds
+Last Reboot Time: 05/06/2024 10:10:32
+```
+
+[x]> Get Uptime of Virtual Machine in Azure
+``` powershell
+Get-AzSystemUptime -resourceGroup <> -vmName <> -subscriptionId <>
+```
+
+Get-AzSystemUptime - Example (Windows)
+``` powershell
+[Azure] :: Getting System Uptime for windows01 in rg-bwc-sandbox-weu...
+WARNING: This may take up to 35 seconds
+ 
+[Azure] :: Hostname: windows01
+[Azure] :: Uptime: 0 days, 4 hours, 25 minutes, 46 seconds
+[Azure] :: Last Reboot Time: 05/06/2024 13:19:45
+```
+
+Get-AzSystemUptime - Example (Linux)
+``` powershell
+[Azure] :: Getting System Uptime for vm-learn-linux-weu in rg-learn-linux-weu...
+WARNING: This may take up to 35 seconds
+
+[Azure] :: Hostname: vm-learn-linux-weu
+[Azure] :: Uptime: up 1 day, 1 hour, 54 minutes
+[Azure] :: Last Reboot Time: 2024-05-05 11:27:17
+```
+
+## Windows Terminal Nerd Font
+
 Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular ‘iconic fonts’
 You can get yours here: [Nerd Font](https://www.nerdfonts.com/font-downloads)
 
@@ -52,8 +100,8 @@ Using the `New-OhMyPoshProfile.ps1` it will auto install the `Cascadia Code` Fon
 The font file which is installed is the: `CaskaydiaCoveNerdFont-Regular.ttf` \
 If you want to add this support to Visual Studio Code, you can update the Font Family:
 
-```
-Consolas, 'Courier New', 'CaskaydiaCove Nerd Font'
+``` powershell
+'Consolas', 'Courier New', 'CaskaydiaCove Nerd Font'
 ```
 
 ## Pre Device Setup
