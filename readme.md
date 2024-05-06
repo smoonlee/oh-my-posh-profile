@@ -137,7 +137,7 @@ d-----        07/05/2022     06:42                PowerShellGet
 d-----        07/05/2022     06:42                PSReadLine
 ```
 
-## Device Setup
+## Profile Setup
 
 ### -> Windows
 
