@@ -12,8 +12,9 @@
 
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
-> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime \
+> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime, Register-PSProfile, Update-WindowsApps \
 > Added Support for AKS Clusters \
+> Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete)
 > Move PowerShell Modules back to User Documents \
 > Rebuilt WSL/Linux bash script
 
