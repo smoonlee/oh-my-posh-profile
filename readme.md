@@ -223,7 +223,7 @@ Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned'
 Download and execute the New-PSProfile.ps1 script.
 
 ``` powershell
-$setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/feature/main/New-OhMyPoshProfile.ps1'
+$setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-OhMyPoshProfile.ps1'
 Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
 .\New-OhMyPoshProfile.ps1
 ```
