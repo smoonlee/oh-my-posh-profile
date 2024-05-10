@@ -238,7 +238,7 @@ Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
 
 ``` bash
 setupUrl='https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-OhMyPoshProfile.sh'
-curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh | bash New-OhMyPoshProfile.sh
+curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh ; bash New-OhMyPoshProfile.sh
 ```
 
 </details>
