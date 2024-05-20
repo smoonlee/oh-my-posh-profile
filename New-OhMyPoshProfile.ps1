@@ -23,6 +23,7 @@ Version: 3.1.4 - May 2024 | Created Remove-GitBranch function, Wrapper for git b
 Version: 3.1.5 - May 2024 | Corrected dateTime stamp for last reboot time in Get-SystemUptime Get-AzSystemUptime function
 Version: 3.1.5.1 - May 2024 | Fix Type for Remove-GitBranch Function to remove '* main' and '* master'
 Version: 3.1.6 - May 2024 | Fixed AzCLI AutoTab (added missing function back - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
+Version: 3.1.7 - May 2024 | Fixed updateVSCodePwshModule, Renamed to patchVSCodePwshModule and updated FolderName to get only latest folder
 #>
 
 #Requires -RunAsAdministrator
@@ -586,23 +587,31 @@ function setCrossPlatformModuleSupport {
     Write-Output "" # Required for script spacing
 }
 
-function updateVSCodePwshModule {
+function patchVSCodePwshModule {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
+    $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
     $psReadLineVersion = $(Find-Module -Name 'PSReadLine' | Select-Object Version).version.ToString()
-    $folderName = $(Get-ChildItem -Path "$Env:UserProfile\.vscode\extensions" -ErrorAction SilentlyContinue | Where-Object 'Name' -like 'ms-vscode.powershell*').name
+    $folderName = $(Get-ChildItem -Path "$Env:UserProfile\.vscode\extensions" -ErrorAction SilentlyContinue | Where-Object 'Name' -like 'ms-vscode.powershell*').name | Select-Object -Last 1
     if ([string]::IsNullOrEmpty($folderName)) {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module not found, Skipping patch!"
         return
     }
 
-    $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
+    Write-Output "[OhMyPoshProfile $scriptVersion] :: Checking if VSCode is running..."
+    $vsCodeProcess = Get-Process -Name Code -ErrorAction SilentlyContinue
+    if ($vsCodeProcess) {
+        Write-Warning "Please close Visual Studio Code before continuing, Skipping VSCode PowerShell Module patch!!"
+        return
+    }
 
+    Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode not running, Patching PowerShell Module [$folderName]" `r
     Write-Output "The PowerShell Module Extension [$folderName], Uses PSReadline 2.4.0 Beta."
     Write-Output "Using 2.4.0 Beta you get this error: 'Assembly with same name is already loaded'"
     Write-Output "The OhMyPoshProfile setup scripts installs the latest stable version of PSReadline [$psReadLineVersion]"
 
     if (Test-Path -Path "$vsCodeModulePath\modules\PSReadLine" ) {
-        Remove-Item -Path "$vsCodeModulePath\modules\PSReadLine" -Recurse -Force
+        Remove-Item -Path "$vsCodeModulePath\modules\PSReadLine\2.4.0" -Recurse -Force
+        Save-Module -Name 'PSReadLine' -Path "$vsCodeModulePath\modules" -Force
     }
 }
 
@@ -628,8 +637,7 @@ installWinGetApplications
 setPwshProfile
 
 # Patch VSCode PowerShell Module
-# Removed PSReadLine Beta Module
-updateVSCodePwshModule
+patchVSCodePwshModule
 
 # Set Windows Terminal Configuration
 setWindowsTerminal
