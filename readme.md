@@ -56,6 +56,10 @@ While doing some research as well around `$PROFILE` tips and tricks, I found som
 
 ### PowerShell Functions
 
+[x] Azure CLI Tab Completion \
+<br>
+Microsoft Docs Link: [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
+
 [x]> Get your current Public IP Address
 
 ``` powershell

@@ -22,6 +22,7 @@ Version: 3.1.3 - May 2024 | Created Update-WindowsApps functions, Wrapper for wi
 Version: 3.1.4 - May 2024 | Created Remove-GitBranch function, Wrapper for git branch -D and PSPROFILE reflow
 Version: 3.1.5 - May 2024 | Corrected dateTime stamp for last reboot time in Get-SystemUptime Get-AzSystemUptime function
 Version: 3.1.5.1 - May 2024 | Fix Type for Remove-GitBranch Function to remove '* main' and '* master'
+Version: 3.1.6 - May 2024 | Fixed AzCLI AutoTab (added missing function back - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
 #>
 
 #Requires -RunAsAdministrator
@@ -347,6 +348,25 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 function Get-PublicIPAddress {
     `$ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
     `$ip.Content
+}
+
+# Function - Azure CLI Tab Completion
+Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
+    param(`$commandName, `$wordToComplete, `$cursorPosition)
+    `$completion_file = New-TemporaryFile
+    `$env:ARGCOMPLETE_USE_TEMPFILES = 1
+    `$env:_ARGCOMPLETE_STDOUT_FILENAME = `$completion_file
+    `$env:COMP_LINE = `$wordToComplete
+    `$env:COMP_POINT = `$cursorPosition
+    `$env:_ARGCOMPLETE = 1
+    `$env:_ARGCOMPLETE_SUPPRESS_SPACE = 0
+    `$env:_ARGCOMPLETE_IFS = "`n"
+    `$env:_ARGCOMPLETE_SHELL = 'powershell'
+    az 2>&1 | Out-Null
+    Get-Content `$completion_file | Sort-Object | ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new(`$_, `$_, "ParameterValue", `$_)
+    }
+    Remove-Item `$completion_file, Env:\_ARGCOMPLETE_STDOUT_FILENAME, Env:\ARGCOMPLETE_USE_TEMPFILES, Env:\COMP_LINE, Env:\COMP_POINT, Env:\_ARGCOMPLETE, Env:\_ARGCOMPLETE_SUPPRESS_SPACE, Env:\_ARGCOMPLETE_IFS, Env:\_ARGCOMPLETE_SHELL
 }
 
 # Function - Get System Uptime
