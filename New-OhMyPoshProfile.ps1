@@ -24,6 +24,7 @@ Version: 3.1.5 - May 2024 | Corrected dateTime stamp for last reboot time in Get
 Version: 3.1.5.1 - May 2024 | Fix Type for Remove-GitBranch Function to remove '* main' and '* master'
 Version: 3.1.6 - May 2024 | Fixed AzCLI AutoTab (added missing function back - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
 Version: 3.1.7 - May 2024 | Fixed updateVSCodePwshModule, Renamed to patchVSCodePwshModule and updated FolderName to get only latest folder
+Version: 3.1.8 - June 2024 | Adding Get-DnsResult Function 
 #>
 
 #Requires -RunAsAdministrator
@@ -520,6 +521,21 @@ function Remove-GitBranch {
         git branch -D `$branchName
     }
 }
+
+# Function - Get DNS Record Information
+function Get-DnsResult {
+    param (
+        [Parameter(Mandatory = `$true)]
+        [ValidateSet('UNKNOWN', 'A_AAAA', 'A', 'NS', 'MD', 'MF', 'CNAME', 'SOA', 'MB', 'MG', 'MR', 'NULL', 'WKS', 'PTR', 'HINFO', 'MINFO', 'MX', 'TXT', 'RP', 'AFSDB', 'X25', 'ISDN', 'RT', 'AAAA', 'SRV', 'DNAME', 'OPT', 'DS', 'RRSIG', 'NSEC', 'DNSKEY', 'DHCID', 'NSEC3', 'NSEC3PARAM', 'ANY', 'ALL', 'WINS')]
+        [string]`$recordType,
+
+        [Parameter(Mandatory = `$true)]
+        [string]`$domain
+    )
+
+    Resolve-DnsName -Name `$domain -Type `$recordType
+}
+
 "@
     $pwshProfile = $pwshProfile.Replace('themeNameHere', $poshThemeName)
     $pwshProfile | Set-Content -Path $pwshProfilePath -Force
