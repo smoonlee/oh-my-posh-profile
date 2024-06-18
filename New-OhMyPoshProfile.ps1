@@ -25,6 +25,7 @@ Version: 3.1.5.1 - May 2024 | Fix Type for Remove-GitBranch Function to remove '
 Version: 3.1.6 - May 2024 | Fixed AzCLI AutoTab (added missing function back - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
 Version: 3.1.7 - May 2024 | Fixed updateVSCodePwshModule, Renamed to patchVSCodePwshModule and updated FolderName to get only latest folder
 Version: 3.1.8 - June 2024 | Adding Get-DnsResult Function 
+Version: 3.1.8.1 - June 2024 | Rename Get-PublicIPAddress to Get-MyPublicIP
 #>
 
 #Requires -RunAsAdministrator
@@ -347,7 +348,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 `$env:POSH_GIT_ENABLED = `$true
 
 # Function - Get Public IP Address
-function Get-PublicIPAddress {
+function Get-MyPublicIP {
     `$ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
     `$ip.Content
 }
