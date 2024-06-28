@@ -10,6 +10,10 @@
 
 ## Release Notes
 
+> **JUNE 2024** \
+> Added Get-DnsResult Function \
+> Renamed Get-PublicIPAddress to Get-MyPublicIP 
+>
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
 > Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime, Register-PSProfile, Update-WindowsApps, Remove-GitBranch \
@@ -176,6 +180,31 @@ Deleted branch branch4 (was b7ef979).
 Deleted branch branch5 (was b7ef979).
 ```
 
+[x] Get-DnsReuslt
+> Query DNS direct from the shell 👌
+
+``` powershell
+Get-DnsResult -domain builtwithcaffeine.cloud -recordType NS
+```
+
+Get-DnsResults - Example
+``` powershell
+Name                           Type   TTL   Section    NameHost
+----                           ----   ---   -------    --------
+builtwithcaffeine.cloud        NS     86400 Answer     ns1-02.azure-dns.com
+builtwithcaffeine.cloud        NS     86400 Answer     ns2-02.azure-dns.net
+builtwithcaffeine.cloud        NS     86400 Answer     ns3-02.azure-dns.org
+builtwithcaffeine.cloud        NS     86400 Answer     ns4-02.azure-dns.info
+```
+
+Supported RecordTypes:
+>
+> A           ALL         DNAME       ISDN        MG          NS          NULL        RRSIG       X25 \
+> A_AAAA      ANY         DNSKEY      MB          MINFO       NSEC        OPT         RT          TXT \
+> AAAA        CNAME       DS          MD          MR          NSEC3       PTR         SOA         WINS \
+> AFSDB       DHCID       HINFO       MF          MX          NSEC3PARAM  RP          SRV         WKS
+>
+
 ## Windows Terminal Nerd Font
 
 Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts'
@@ -196,7 +225,7 @@ If you want to add this support to Visual Studio Code, you can update the Font F
 > pwsh7 :: C:\Program Files\PowerShell\Modules \
 > pwsh5 :: C:\Program Files\WindowsPowerShell\Modules
 
-### Powershell 5 default modules
+### PowerShell 5 default modules
 
 ``` powershell
 Directory: C:\Program Files\WindowsPowerShell\Modules
@@ -268,5 +297,4 @@ Then create a symbolic link to the Windows `.kube` folder.
 ``` bash
 ln -sf /mnt/c/Users/<username>/.kube/config $HOME/.kube/config
 ```
-
 </details>
