@@ -63,7 +63,7 @@ Microsoft Docs Link: [here](https://learn.microsoft.com/en-us/cli/azure/install-
 [x]> Get your current Public IP Address
 
 ``` powershell
-Get-PublicIPAddress
+Get-MyPublicIp
 ```
 
 [x]> Get Local System Uptime
