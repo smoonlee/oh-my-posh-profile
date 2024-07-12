@@ -509,25 +509,25 @@ function Remove-GitBranch {
     if (`$all) {
         Write-Output "" # Required for script spacing
         Write-Warning "This will remove all local branches in the repository!"
-        Write-Output 'Press any key to continue...';
-        `$null = `$Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+        Write-Output 'Press any key to continue...'
+        `$null = `$Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
 
-        Write-Output `r "[Git] :: Moving to main branch"
-        git checkout dev-main
+        Write-Output ``r "[Git] :: Moving to main branch"
+        git checkout main
 
-        Write-Output `r "[Git] :: Starting Branch Cleanse"
-	    `$allBranches = git branch | ForEach-Object { `$_.Trim() }
-    	`$allBranches = `$allBranches -replace '^\* ', ''
-	    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' -and `$_ -notmatch 'dev-main' -and `$_ -notmatch 'master' }
-	    foreach (`$branch in `$allBranches) {
-        	git branch -D `$branch
-	    }
-    }
-    else {
+        Write-Output ``r "[Git] :: Starting Branch Cleanse"
+        `$allBranches = git branch | ForEach-Object { `$_.Trim() }
+        `$allBranches = `$allBranches -replace '^\* ', ''
+        `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' -and `$_ -notmatch 'dev-main' -and `$_ -notmatch 'master' }
+        foreach (`$branch in `$allBranches) {
+            git branch -D `$branch
+        }
+    } else {
         # Remove specific branch
         git branch -D `$branchName
     }
 }
+
 
 
 # Function - Get DNS Record Information
