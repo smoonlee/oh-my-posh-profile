@@ -27,6 +27,7 @@ Version: 3.1.7 - May 2024 | Fixed updateVSCodePwshModule, Renamed to patchVSCode
 Version: 3.1.8 - June 2024 | Adding Get-DnsResult Function
 Version: 3.1.8.1 - June 2024 | Rename Get-PublicIPAddress to Get-MyPublicIP
 Version: 3.1.9 - July 2024 | Created Get AKS Version Function
+Version: 3.1.10 - July 2024 | Updated Remove-GitBranch Function
 #>
 
 #Requires -RunAsAdministrator
@@ -511,18 +512,23 @@ function Remove-GitBranch {
         Write-Output 'Press any key to continue...';
         `$null = `$Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 
-        Write-Output ``r "[Git] :: Moving to main branch"
-        git checkout main
+        Write-Output `r "[Git] :: Moving to main branch"
+        git checkout dev-main
 
-        Write-Output ``r "[Git] :: Starting Branch Cleanse"
-        `$allBranches = git branch
-        `$allBranches.`Replace('* main','','* master','') | ForEach-Object { git branch -D `$_.Trim() }
+        Write-Output `r "[Git] :: Starting Branch Cleanse"
+	    `$allBranches = git branch | ForEach-Object { `$_.Trim() }
+    	`$allBranches = `$allBranches -replace '^\* ', ''
+	    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' -and `$_ -notmatch 'dev-main' -and `$_ -notmatch 'master' }
+	    foreach (`$branch in `$allBranches) {
+        	git branch -D `$branch
+	    }
     }
     else {
         # Remove specific branch
         git branch -D `$branchName
     }
 }
+
 
 # Function - Get DNS Record Information
 function Get-DnsResult {
