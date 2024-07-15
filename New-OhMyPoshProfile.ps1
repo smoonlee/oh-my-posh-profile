@@ -505,7 +505,7 @@ function Remove-GitBranch {
 
     `$allBranches = git branch | ForEach-Object { `$_.Trim() }
     `$allBranches = `$allBranches -replace '^\* ', ''
-    if (-not($defaultBranch) {
+    if (-not(`$defaultBranch) {
     `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' }
     } else {
     `$allBranches = `$allBranches | Where-Object { `$_ -notmatch `$defaultBranch }
