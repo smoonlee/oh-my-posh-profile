@@ -29,6 +29,8 @@ Version: 3.1.8.1 - June 2024 | Rename Get-PublicIPAddress to Get-MyPublicIP
 Version: 3.1.9 - July 2024 | Created Get AKS Version Function
 Version: 3.1.10 - July 2024 | Updated Remove-GitBranch Function (Code Clean Up with ChatGPT)
 Version: 3.1.10.1 - July 2024 | Updated Remove-GitBranch Function (added defaultBranch paramater) + Code Formatting Clean Up
+Version: 3.1.10.2 - July 2024 | Code Formatting Patch
+Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branch CleanUp - deafultBranch x main
 #>
 
 #Requires -RunAsAdministrator
@@ -503,8 +505,11 @@ function Remove-GitBranch {
 
     `$allBranches = git branch | ForEach-Object { `$_.Trim() }
     `$allBranches = `$allBranches -replace '^\* ', ''
-    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' -and `$_ -notmatch 'dev-main' -and `$_ -notmatch 'master' }
-
+    if (-not($defaultBranch) {
+    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' }
+    } else {
+    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch `$defaultBranch }
+    }
     #
     if (([string]::IsNullOrEmpty(`$allBranches))) {
         Write-Output "" # Required for script spacing
