@@ -146,6 +146,13 @@ Hugo (Extended) Hugo.Hugo.Extended 0.125.5 0.125.6   winget
 1 upgrades available.
 ```
 
+[x]> Remove-GitBranch (Singe Branch) (custom Default Branch) \
+For example, If you are not using `main`
+
+``` powershell
+Remove-GitBranch -branchName <branchname> -defaultBranch <deafultBranch>
+```
+
 [x]> Remove-GitBranch (Singe Branch)
 
 ``` powershell
