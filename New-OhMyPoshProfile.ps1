@@ -27,7 +27,8 @@ Version: 3.1.7 - May 2024 | Fixed updateVSCodePwshModule, Renamed to patchVSCode
 Version: 3.1.8 - June 2024 | Adding Get-DnsResult Function
 Version: 3.1.8.1 - June 2024 | Rename Get-PublicIPAddress to Get-MyPublicIP
 Version: 3.1.9 - July 2024 | Created Get AKS Version Function
-Version: 3.1.10 - July 2024 | Updated Remove-GitBranch Function
+Version: 3.1.10 - July 2024 | Updated Remove-GitBranch Function (Code Clean Up with ChatGPT)
+Version: 3.1.10.1 - July 2024 | Updated Remove-GitBranch Function (added defaultBranch paramater) + Code Formatting Clean Up
 #>
 
 #Requires -RunAsAdministrator
@@ -73,7 +74,6 @@ function getSystemRequirements {
     $pwsh5SystemPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
     & $pwsh5SystemPath -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned"
     Write-Output "[OhMyPoshProfile $scriptVersion] :: Updated Execution Policy for PowerShell 5 'RemoteSigned'"
-
 }
 
 function updateWinGetVersion {
@@ -138,9 +138,6 @@ function updateWinGetVersion {
                 Remove-Item -Path $Env:Temp\$appFile -Force ; Remove-Item -Path $Env:Temp\$appLicXml -Force
             }
         }
-
-
-
     }
 
     # WinGet CLI Update
@@ -263,7 +260,6 @@ function installPowerShellModules {
         if ($onlineModule.version -ne $localModuleVersion) {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing PowerShell Module [$module]"
             Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -SkipPublisherCheck -Force
-
         }
 
         if ($module -eq 'PSReadLine') {
@@ -300,7 +296,6 @@ function installWinGetApplications {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: [$app] is already installed"
         }
     }
-
 }
 
 function setPwshProfile {
@@ -326,7 +321,7 @@ function setPwshProfile {
         }
     }
 
-    $pwshProfile = @"
+$pwshProfile = @"
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
 Import-Module -Name 'Terminal-Icons'
@@ -501,6 +496,7 @@ function Update-WindowsApps {
 # Function - Clean Git Branches
 function Remove-GitBranch {
     param (
+        [string] `$defaultBranch,
         [string] `$branchName,
         [switch] `$all
     )
@@ -513,7 +509,11 @@ function Remove-GitBranch {
         `$null = `$Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
 
         Write-Output ``r "[Git] :: Moving to main branch"
-        git checkout main
+        if (`$defaultBranch) {
+            git checkout `$defaultBranch
+        } else {
+            git checkout main
+        }
 
         Write-Output ``r "[Git] :: Starting Branch Cleanse"
         `$allBranches = git branch | ForEach-Object { `$_.Trim() }
@@ -527,8 +527,6 @@ function Remove-GitBranch {
         git branch -D `$branchName
     }
 }
-
-
 
 # Function - Get DNS Record Information
 function Get-DnsResult {
@@ -559,10 +557,8 @@ function Get-AksVersion {
             "norwayeast", "norwaywest")]
         [string]`$location
     )
-
     az aks get-versions --location `$location --output table
 }
-
 "@
     $pwshProfile = $pwshProfile.Replace('themeNameHere', $poshThemeName)
     $pwshProfile | Set-Content -Path $pwshProfilePath -Force
@@ -626,7 +622,6 @@ function setCrossPlatformModuleSupport {
         New-Item -ItemType 'SymbolicLink' -Target "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1" -Path "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.VSCode_profile.ps1" -Force | Out-Null
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Symbolic Link Created from 'PowerShell' to 'VSCode' Profile"
     }
-
     Write-Output "" # Required for script spacing
 }
 
