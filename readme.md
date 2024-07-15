@@ -10,6 +10,11 @@
 
 ## Release Notes
 
+> **JULY 2024** \
+> Added Get-AksVersion Function \
+> Updated Remove-GitBranch \
+> Script Formatting Improvements 
+>
 > **JUNE 2024** \
 > Added Get-DnsResult Function \
 > Renamed Get-PublicIPAddress to Get-MyPublicIP 
