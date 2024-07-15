@@ -321,7 +321,7 @@ function setPwshProfile {
         }
     }
 
-$pwshProfile = @"
+    $pwshProfile = @"
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
 Import-Module -Name 'Terminal-Icons'
@@ -501,6 +501,20 @@ function Remove-GitBranch {
         [switch] `$all
     )
 
+    `$allBranches = git branch | ForEach-Object { `$_.Trim() }
+    `$allBranches = `$allBranches -replace '^\* ', ''
+    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' -and `$_ -notmatch 'dev-main' -and `$_ -notmatch 'master' }
+
+    #
+    if (([string]::IsNullOrEmpty(`$allBranches))) {
+        Write-Output "" # Required for script spacing
+        `$defaultBranchName = `$(git remote show origin | Select-String -Pattern 'HEAD branch:').ToString().Split(':')[-1].Trim()
+        Write-Output "Default Branch: `$defaultBranchName"
+        Write-Warning "No additional branches found"
+
+        return
+    }
+
     # Remove all branches in repository
     if (`$all) {
         Write-Output "" # Required for script spacing
@@ -516,9 +530,6 @@ function Remove-GitBranch {
         }
 
         Write-Output ``r "[Git] :: Starting Branch Cleanse"
-        `$allBranches = git branch | ForEach-Object { `$_.Trim() }
-        `$allBranches = `$allBranches -replace '^\* ', ''
-        `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' -and `$_ -notmatch 'dev-main' -and `$_ -notmatch 'master' }
         foreach (`$branch in `$allBranches) {
             git branch -D `$branch
         }
