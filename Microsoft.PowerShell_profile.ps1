@@ -45,12 +45,12 @@ Version: 3.1.10.2 - July 2024 | Code Formatting Patch
 Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branch CleanUp - defaultBranch x main
 Version: 3.1.11 - July 2024 | Created Update-PSProfile Function, Script Refactor and YAML Release Pipeline created for Profile Versioning
 Version: 3.1.12 - July 2024 | YAML Release Pipeline for Profile Versioning, Added Profile Update Checker
-version: 3.1.12.1 - July 2024 | Minor Script Fixes, From Development to Production Repoistory
-version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Production Repoistory
+version: 3.1.12.1 - July 2024 | Minor Script Fixes, From Development to Production Repository
+version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Production Repository
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.2'
+$profileVersion = '3.1.12.2-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases/latest"
@@ -227,25 +227,55 @@ function Register-PSProfile {
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
 }
 
-# Function - Update PowerShell Profile
-function Update-PSProfile {
+# Function - Download PSProfile [Prod] or [Dev] Release
+function Get-PSProfileUpdate {
+    param (
+        [string] $profileRelease,
+        [string] $profileDownloadUrl
+    )
+
+    # Get Current Pwsh Theme
+    $pwshThemeName = Split-Path $Env:POSH_THEME -Leaf
+
     Write-Output "Updating PowerShell Profile..." `r
     Write-Output "Current Profile Version: $profileVersion"
-    Write-Output "New Profile Version: $newProfileReleaseTag"
+    Write-Output "New Profile Version: $profileRelease"
 
     Write-Output "Updating Profile..."
-    Invoke-WebRequest -Uri $newProfileReleaseUrl -OutFile $PROFILE
+    Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
 
     $pwshProfile = Get-Content -Path $PROFILE
-    $pwshThemeName = Split-Path $Env:POSH_THEME -Leaf
     $pwshProfile = $pwshProfile.Replace('themeNameHere', $pwshThemeName)
     $pwshProfile | Set-Content -Path $PROFILE -Force
 
-    # Reading Time
+    #
     Start-Sleep -Seconds '4'
 
     # Reload PowerShell Profile
     Register-PSProfile
+}
+
+# Function - Update PowerShell Profile
+function Update-PSProfile {
+    param (
+        [switch] $devMode
+    )
+
+    if ($devMode) {
+        Write-Warning "[Oh My Posh] - Development Build Profile Update!!"
+        $newProfileReleases = Invoke-RestMethod -Uri $gitRepositoryUrl
+        $newProfilePreRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Property published_at -Descending
+        $newProfilePreReleaseTag = $newProfilePreRelease[0].tag_name
+        $newProfilePreReleaseUrl = $newProfilePreRelease[0].assets.browser_download_url
+
+        # Get Latest Profile Release
+        Get-PSProfileUpdate -profileRelease $newProfilePreReleaseTag -profileDownloadUrl $newProfilePreReleaseUrl
+
+        return
+    }
+
+    # Get Latest Profile Release
+    Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl
 }
 
 # Function - Update WinGet Applications
