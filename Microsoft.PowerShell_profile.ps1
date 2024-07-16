@@ -46,8 +46,9 @@ Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branc
 Version: 3.1.11 - July 2024 | Created Update-PSProfile Function, Script Refactor and YAML Release Pipeline created for Profile Versioning
 VersionL 3.1.12 - July 2024 | YAML Release Pipeline for Profile Versioning, Added Profile Update Checker
 #>
+
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12-upload'
+$profileVersion = '3.1.12-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/dev-posh-profile-updater/releases/latest"
