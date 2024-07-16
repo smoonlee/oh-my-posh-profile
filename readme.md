@@ -124,7 +124,7 @@ WARNING: This may take up to 35 seconds
 ``` powershell
 Register-PSProfile
 ```
-[x]> Update PowerShell Profile
+[x]> Update PowerShell Profile \
 Get the latest release, The PoshProfile now has a warning alert when a new update is pending. 
 
 ``` powershell
