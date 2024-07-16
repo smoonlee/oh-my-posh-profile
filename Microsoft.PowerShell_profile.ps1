@@ -48,7 +48,7 @@ VersionL 3.1.12 - July 2024 | YAML Release Pipeline for Profile Versioning, Adde
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12'
+$profileVersion = '3.1.12.1'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/dev-posh-profile-updater/releases/latest"
@@ -237,7 +237,7 @@ function Update-PSProfile {
     $pwshProfile = Get-Content -Path $PROFILE
     $pwshThemeName = Split-Path $Env:POSH_THEME -Leaf
     $pwshProfile = $pwshProfile.Replace('themeNameHere', $pwshThemeName)
-    $pwshProfile | Set-Content -Path $pwshProfilePath -Force
+    $pwshProfile | Set-Content -Path $PROFILE -Force
 
     # Reading Time
     Start-Sleep -Seconds '4'
