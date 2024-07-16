@@ -1,0 +1,42 @@
+name: 'Action - Auto Release Scheduler' 
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create_release:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            Microsoft.PowerShell_profile.ps1
+          sparse-checkout-cone-mode: false
+          
+      - name: Check Directory Contents
+        run: |
+          pwd
+          ls
+
+      - name: Extract profileVersion
+        id: extract_version
+        run: |
+          profileVersion=$(grep -o "\$profileVersion = '[^']*'" Microsoft.PowerShell_profile.ps1 | sed "s/\$profileVersion = '//; s/'//")
+          echo "profileVersion=${profileVersion}"
+          echo "profileVersion=${profileVersion}" >> $GITHUB_ENV
+
+      - name: Upload binaries to release
+        if: contains(github.event.pull_request.labels.*.name, 'updated-profile-release-dev') || contains(github.event.pull_request.labels.*.name, 'updated-profile-release-prod')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.AUTH_TOKEN }}
+          release_name: ${{ env.profileVersion }}
+          tag: ${{ env.profileVersion }}
+          file: Microsoft.PowerShell_profile.ps1
+          asset_name: Microsoft.PowerShell_profile.ps1
+          body: ${{ github.event.pull_request.body }}
+          prerelease: ${{ contains(github.event.pull_request.labels.*.name, 'updated-profile-release-dev') }}
+          overwrite: ${{ contains(github.event.pull_request.labels.*.name, 'updated-profile-release-dev') }}
