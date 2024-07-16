@@ -44,14 +44,15 @@ Version: 3.1.10.1 - July 2024 | Updated Remove-GitBranch Function (added default
 Version: 3.1.10.2 - July 2024 | Code Formatting Patch
 Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branch CleanUp - defaultBranch x main
 Version: 3.1.11 - July 2024 | Created Update-PSProfile Function, Script Refactor and YAML Release Pipeline created for Profile Versioning
-VersionL 3.1.12 - July 2024 | YAML Release Pipeline for Profile Versioning, Added Profile Update Checker
+Version: 3.1.12 - July 2024 | YAML Release Pipeline for Profile Versioning, Added Profile Update Checker
+version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Production Repoistory
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.1'
+$profileVersion = '3.1.12.3-dev'
 
 # GitHub Repository Details
-$gitRepositoryUrl = "https://api.github.com/repos/smoonlee/dev-posh-profile-updater/releases/latest"
+$gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases/latest"
 $newProfileReleaseTag = $(Invoke-RestMethod -Uri $gitRepositoryUrl).tag_name
 $newProfileReleaseUrl = $(Invoke-RestMethod -Uri $gitRepositoryUrl).assets.browser_download_url
 
