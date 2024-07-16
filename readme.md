@@ -11,6 +11,8 @@
 ## Release Notes
 
 > **JULY 2024** \
+> Created Release Pipeline for Production and Development \
+> Added Update-PSProfile & Register-PSProfile \
 > Added Get-AksVersion Function \
 > Updated Remove-GitBranch \
 > Script Formatting Improvements 
@@ -122,12 +124,16 @@ WARNING: This may take up to 35 seconds
 ``` powershell
 Register-PSProfile
 ```
+[x]> Update PowerShell Profile
+Get the latest release, The PoshProfile now has a warning alert when a new update is pending. 
 
-Register-PSProfile - Example
+``` powershell
+Update-PSProfile
+``` powershell
 
-``` powershel
-WARNING: Powershell Profile Reloaded!
-```
+``` powershell
+Update-PSProfile -devMode
+``` powershell
 
 [x]> Update Windows Applications (Using WinGet)
 
