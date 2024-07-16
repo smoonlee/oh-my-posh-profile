@@ -49,7 +49,7 @@ version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Producti
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.3-dev'
+$profileVersion = '3.1.12.3.1-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases/latest"
