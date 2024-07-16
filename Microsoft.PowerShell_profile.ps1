@@ -53,9 +53,9 @@ version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Producti
 $profileVersion = '3.1.12.2-dev'
 
 # GitHub Repository Details
-$gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases/latest"
-$newProfileReleaseTag = $(Invoke-RestMethod -Uri $gitRepositoryUrl).tag_name
-$newProfileReleaseUrl = $(Invoke-RestMethod -Uri $gitRepositoryUrl).assets.browser_download_url
+$gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
+$newProfileReleaseTag = $(Invoke-RestMethod -Uri $gitRepositoryUrl/latest).tag_name
+$newProfileReleaseUrl = $(Invoke-RestMethod -Uri $gitRepositoryUrl/latest).assets.browser_download_url
 
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
