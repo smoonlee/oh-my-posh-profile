@@ -5,7 +5,7 @@ on:
     types: [opened, edited, reopened]
 
 jobs:
-  add-tag:
+  add_tag:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
