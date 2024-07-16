@@ -1,36 +1,21 @@
 <#
 .SYNOPSIS
-This script creates a new OhMyPosh profile.
+This script performs system validation and installs necessary dependencies for Oh My Posh.
 
 .DESCRIPTION
-The New-OhMyPoshProfile.ps1 script is used to create a new OhMyPosh profile. OhMyPosh is a theme engine for PowerShell that provides a customizable prompt with various features and themes.
+The script checks the installation locations of Visual Studio Code and PowerShell 7. It also checks the version of WinGet and installs the latest version if necessary. Additionally, it installs a Nerd Font and PowerShell modules required by Oh My Posh.
 
-.PARAMETER None
-This script does not accept any parameters.
+.PARAMETER nerdFontFileName
+The name of the Nerd Font file to be installed.
 
 .EXAMPLE
-.\New-OhMyPoshProfile.ps1
-Creates a new OhMyPosh profile.
+.\New-OhMyPoshProfile.ps1 -nerdFontFileName 'CascadiaCode.zip'
+This example runs the script and installs the Nerd Font with the specified file name.
 
 .NOTES
-Author: Simon Lee
-Version: 3.0 - May 2024 | Mk3 Profile Script Created
-Version: 3.1 - May 2024 | Updated Get-AzSystemUptime Function check Machine state [Running] [Offline]
-Version: 3.1.1 - May 2024 | Updated updateVSCodePwshModule to check for source folder and return is missing
-Version: 3.1.2 - May 2024 | Fixed PSReadLine Module Update for PowerShell 5, Moved code block to wrong location 🤦‍♂️
-Version: 3.1.3 - May 2024 | Created Update-WindowsApps functions, Wrapper for winget upgrade --all --include-unknown --force
-Version: 3.1.4 - May 2024 | Created Remove-GitBranch function, Wrapper for git branch -D and PSPROFILE reflow
-Version: 3.1.5 - May 2024 | Corrected dateTime stamp for last reboot time in Get-SystemUptime Get-AzSystemUptime function
-Version: 3.1.5.1 - May 2024 | Fix Type for Remove-GitBranch Function to remove '* main' and '* master'
-Version: 3.1.6 - May 2024 | Fixed AzCLI AutoTab (added missing function back - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
-Version: 3.1.7 - May 2024 | Fixed updateVSCodePwshModule, Renamed to patchVSCodePwshModule and updated FolderName to get only latest folder
-Version: 3.1.8 - June 2024 | Adding Get-DnsResult Function
-Version: 3.1.8.1 - June 2024 | Rename Get-PublicIPAddress to Get-MyPublicIP
-Version: 3.1.9 - July 2024 | Created Get AKS Version Function
-Version: 3.1.10 - July 2024 | Updated Remove-GitBranch Function (Code Clean Up with ChatGPT)
-Version: 3.1.10.1 - July 2024 | Updated Remove-GitBranch Function (added defaultBranch paramater) + Code Formatting Clean Up
-Version: 3.1.10.2 - July 2024 | Code Formatting Patch
-Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branch CleanUp - deafultBranch x main
+Author: Simon Lee - @smoonlee
+Date: July 2024
+Version: Oh My Posh - Setup Script v3
 #>
 
 #Requires -RunAsAdministrator
@@ -39,7 +24,7 @@ Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branc
 $scriptVersion = 'v3'
 $nerdFontFileName = 'CascadiaCode.zip'
 
-function getSystemRequirements {
+function Get-SystemRequirements {
 
     Write-Output "[OhMyPoshProfile $scriptVersion] :: Oh My Posh - System Validation"
     Write-Output "[OhMyPoshProfile $scriptVersion] :: Checking VSCode Installation Location"
@@ -78,7 +63,7 @@ function getSystemRequirements {
     Write-Output "[OhMyPoshProfile $scriptVersion] :: Updated Execution Policy for PowerShell 5 'RemoteSigned'"
 }
 
-function updateWinGetVersion {
+function Update-WinGetVersion {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking WinGet Version"
 
     #
@@ -149,7 +134,7 @@ function updateWinGetVersion {
     Start-Process -Wait -FilePath $wingetPath -ArgumentList 'source update' -NoNewWindow
 }
 
-function installNerdFont {
+function Install-NerdFont {
     param (
         $nerdFontFileName
     )
@@ -211,7 +196,7 @@ function installNerdFont {
     }
 }
 
-function installPowerShellModules {
+function Install-PowerShellModules {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: PowerShell Module Installation"
 
     if ($host.version.Major -eq '5') {
@@ -271,7 +256,7 @@ function installPowerShellModules {
     }
 }
 
-function installWinGetApplications {
+function Install-WinGetApplications {
 
     # Configure WinGet
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking Winget Modules"
@@ -300,12 +285,9 @@ function installWinGetApplications {
     }
 }
 
-function setPwshProfile {
-    $poshThemeUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-smoon.omp.json"
-    $poshThemeName = Split-Path -Path $poshThemeUrl -Leaf
-
-    Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Downloading Oh-My-Posh Profile: [$poshThemeName]"
-    Invoke-WebRequest -Uri $poshThemeUrl -OutFile "$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\$poshThemeName"
+function Set-PwshProfile {
+    $pwshTheme = "$PSScriptRoot\quick-term-smoon.omp.json"
+    $pwshThemeName = Split-Path -Path $pwshTheme -Leaf
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Creating PowerShell Profile"
 
@@ -323,271 +305,18 @@ function setPwshProfile {
         }
     }
 
-    $pwshProfile = @"
-# Import PowerShell Modules
-Import-Module -Name 'Posh-Git'
-Import-Module -Name 'Terminal-Icons'
-Import-Module -Name 'PSReadLine'
-
-# PSReadLine Config
-Set-PSReadLineOption -EditMode Windows
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -HistoryNoDuplicates:`$True
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-
-# Load Oh My Posh Application
-(@(& "`$Env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="`$Env:LOCALAPPDATA\Programs\oh-my-posh\themes\themeNameHere" --print) -join "`n") | Invoke-Expression
-
-# Local Oh-My-Posh Configuration
-`$env:POSH_AZURE_ENABLED = `$true
-`$env:POSH_GIT_ENABLED = `$true
-
-# Function - Get Public IP Address
-function Get-MyPublicIP {
-    `$ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
-    `$ip.Content
-}
-
-# Function - Azure CLI Tab Completion
-Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
-    param(`$commandName, `$wordToComplete, `$cursorPosition)
-    `$completion_file = New-TemporaryFile
-    `$env:ARGCOMPLETE_USE_TEMPFILES = 1
-    `$env:_ARGCOMPLETE_STDOUT_FILENAME = `$completion_file
-    `$env:COMP_LINE = `$wordToComplete
-    `$env:COMP_POINT = `$cursorPosition
-    `$env:_ARGCOMPLETE = 1
-    `$env:_ARGCOMPLETE_SUPPRESS_SPACE = 0
-    `$env:_ARGCOMPLETE_IFS = "`n"
-    `$env:_ARGCOMPLETE_SHELL = 'powershell'
-    az 2>&1 | Out-Null
-    Get-Content `$completion_file | Sort-Object | ForEach-Object {
-        [System.Management.Automation.CompletionResult]::new(`$_, `$_, "ParameterValue", `$_)
-    }
-    Remove-Item `$completion_file, Env:\_ARGCOMPLETE_STDOUT_FILENAME, Env:\ARGCOMPLETE_USE_TEMPFILES, Env:\COMP_LINE, Env:\COMP_POINT, Env:\_ARGCOMPLETE, Env:\_ARGCOMPLETE_SUPPRESS_SPACE, Env:\_ARGCOMPLETE_IFS, Env:\_ARGCOMPLETE_SHELL
-}
-
-# Function - Get System Uptime
-function Get-SystemUptime {
-    function ConvertToReadableTime {
-        param (
-            [int]`$uptimeSeconds
-        )
-        `$uptime = New-TimeSpan -Seconds `$uptimeSeconds
-        "{0} days, {1} hours, {2} minutes, {3} seconds" -f `$uptime.Days, `$uptime.Hours, `$uptime.Minutes, `$uptime.Seconds
-    }
-
-    # Get the hostname
-    `$hostname = [System.Net.Dns]::GetHostName()
-
-    # Get the operating system information
-    `$operatingSystem = Get-CimInstance Win32_OperatingSystem
-
-    # Get the uptime in seconds
-    `$uptimeSeconds = (Get-Date) - `$operatingSystem.LastBootUpTime
-    `$uptimeSeconds = `$uptimeSeconds.TotalSeconds
-
-    # Convert uptime to a readable format
-    `$uptime = ConvertToReadableTime -uptimeSeconds `$uptimeSeconds
-
-    # Get the last reboot time
-    `$lastRebootTime = `$operatingSystem.LastBootUpTime
-    `$lastRebootTime = `$lastRebootTime.ToString("dd/MM/yyyy HH:mm:ss")
-
-    # Display the results
-    Write-Output "Hostname: `$hostname"
-    Write-Output "Uptime: `$uptime"
-    Write-Output "Last Reboot Time: `$lastRebootTime"
-}
-
-# Function - Get Azure Virtual Machine System Uptime
-function Get-AzSystemUptime {
-    param (
-        [string] `$subscriptionId,
-        [string] `$resourceGroup,
-        [string] `$vmName
-    )
-
-    if (`$subscriptionId) {
-        Set-AzContext -SubscriptionId `$subscriptionId | Out-Null
-        `$subFriendlyName = (Get-AzContext).Subscription.Name
-        Write-Output "[Azure] :: Setting Azure Subscription to `$subFriendlyName "
-    }
-
-    `$vmState = (Get-AzVM -ResourceGroupName `$resourceGroup -Name `$vmName -Status).Statuses.DisplayStatus[1]
-    if (`$vmState -ne 'VM running') {
-        Write-Warning "[Azure] :: `$vmName is not running. Please start the VM and try again."
-        return
-    }
-
-    `$osType = (Get-AzVM -ResourceGroupName `$resourceGroup -Name `$vmName).StorageProfile.OsDisk.OsType
-
-    if (`$osType -eq 'Windows') {
-        Write-Output "[Azure] :: Getting System Uptime for `$vmName in `$resourceGroup..."
-        Write-Warning "This may take up to 35 seconds"
-        `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunPowerShellScript' -ScriptString '
-
-        function ConvertToReadableTime {
-            param (
-                [int]`$uptimeSeconds
-            )
-            `$uptime = New-TimeSpan -Seconds `$uptimeSeconds
-            "{0} days, {1} hours, {2} minutes, {3} seconds" -f `$uptime.Days, `$uptime.Hours, `$uptime.Minutes, `$uptime.Seconds
-        }
-
-        # Get the hostname
-        `$hostname = [System.Net.Dns]::GetHostName()
-
-        # Get the operating system information
-        `$operatingSystem = Get-CimInstance Win32_OperatingSystem
-
-        # Get the uptime in seconds
-        `$uptimeSeconds = (Get-Date) - `$operatingSystem.LastBootUpTime
-        `$uptimeSeconds = `$uptimeSeconds.TotalSeconds
-
-        # Convert uptime to a readable format
-        `$uptime = ConvertToReadableTime -uptimeSeconds `$uptimeSeconds
-
-        # Get the last reboot time
-        `$lastRebootTime = `$operatingSystem.LastBootUpTime
-        `$lastRebootTime = `$lastRebootTime.ToString("dd/MM/yyyy HH:mm:ss")
-
-        # Display the results
-        Write-Output " " # Required for script spacing
-        Write-Output "[Azure] :: Hostname: `$hostname"
-        Write-Output "[Azure] :: Uptime: `$uptime"
-        Write-Output "[Azure] :: Last Reboot Time: `$lastRebootTime"
-        '
-
-        `$response.Value[0].Message
-    }
-
-    if (`$osType -eq 'Linux') {
-        Write-Output "[Azure] :: Getting System Uptime for `$vmName in `$resourceGroup..."
-        Write-Warning "This may take up to 35 seconds"
-        `$response = Invoke-AzVMRunCommand -ResourceGroupName `$resourceGroup -Name `$vmName -CommandId 'RunShellScript' -ScriptString '
-        echo "[Azure] :: Hostname: `$(hostname)"
-        echo "[Azure] :: Uptime: `$(uptime -p )"
-        echo "[Azure] :: Last Reboot Time: `$(uptime -s)"
-        '
-
-        `$pattern = '\[stdout\]([\s\S]*?)\[stderr\]'
-        if (`$response.value[0].Message -match `$pattern) {
-            `$stdoutText = `$matches[1].Trim()
-            Write-Output ``r `$stdoutText
-        }
-    }
-}
-
-# Function - Register PowerShell Profile
-function Register-PSProfile {
-    & `$PROFILE
-    Write-Warning "Powershell Profile Reloaded!"
-}
-
-# Function - Update WinGet Applications
-function Update-WindowsApps {
-    Write-Output "Updating Windows Applications..." ``r
-    winget upgrade --all --include-unknown --force
-}
-
-# Function - Clean Git Branches
-function Remove-GitBranch {
-    param (
-        [string] `$defaultBranch,
-        [string] `$branchName,
-        [switch] `$all
-    )
-
-    `$allBranches = git branch | ForEach-Object { `$_.Trim() }
-    `$allBranches = `$allBranches -replace '^\* ', ''
-    if (-not(`$defaultBranch)) {
-    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch 'main' }
-    } else {
-    `$allBranches = `$allBranches | Where-Object { `$_ -notmatch `$defaultBranch }
-    }
-    #
-    if (([string]::IsNullOrEmpty(`$allBranches))) {
-        Write-Output "" # Required for script spacing
-        `$defaultBranchName = `$(git remote show origin | Select-String -Pattern 'HEAD branch:').ToString().Split(':')[-1].Trim()
-        Write-Output "Default Branch: `$defaultBranchName"
-        Write-Warning "No additional branches found"
-
-        return
-    }
-
-    # Remove all branches in repository
-    if (`$all) {
-        Write-Output "" # Required for script spacing
-        Write-Warning "This will remove all local branches in the repository!"
-        Write-Output 'Press any key to continue...'
-        `$null = `$Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
-
-        Write-Output ``r "[Git] :: Moving to main branch"
-        if (`$defaultBranch) {
-            git checkout `$defaultBranch
-        } else {
-            git checkout main
-        }
-
-        Write-Output ``r "[Git] :: Starting Branch Cleanse"
-        foreach (`$branch in `$allBranches) {
-            git branch -D `$branch
-        }
-    } else {
-        # Remove specific branch
-        git branch -D `$branchName
-    }
-}
-
-# Function - Get DNS Record Information
-function Get-DnsResult {
-    param (
-        [Parameter(Mandatory = `$true)]
-        [ValidateSet('UNKNOWN', 'A_AAAA', 'A', 'NS', 'MD', 'MF', 'CNAME', 'SOA', 'MB', 'MG', 'MR', 'NULL', 'WKS', 'PTR', 'HINFO', 'MINFO', 'MX', 'TXT', 'RP', 'AFSDB', 'X25', 'ISDN', 'RT', 'AAAA', 'SRV', 'DNAME', 'OPT', 'DS', 'RRSIG', 'NSEC', 'DNSKEY', 'DHCID', 'NSEC3', 'NSEC3PARAM', 'ANY', 'ALL', 'WINS')]
-        [string]`$recordType,
-        [Parameter(Mandatory = `$true)]
-        [string]`$domain
-    )
-
-    Resolve-DnsName -Name `$domain -Type `$recordType
-}
-
-# Function - Get Azure Kubernetes Service Version
-function Get-AksVersion {
-    param (
-        [Parameter(Mandatory = `$true)]
-        [ValidateSet("eastus", "eastus2", "southcentralus", "westus", "northcentralus",
-            "westus2", "centralus", "westcentralus", "canadacentral", "canadaeast",
-            "brazilsouth", "northeurope", "westeurope", "uksouth", "ukwest",
-            "francecentral", "francesouth", "australiaeast", "australiasoutheast",
-            "australiacentral", "australiacentral2", "centralindia", "southindia",
-            "westindia", "japaneast", "japanwest", "koreacentral", "koreasouth",
-            "southeastasia", "eastasia", "centraluseuap", "eastus2euap",
-            "southafricanorth", "southafricawest", "uaenorth", "uaecentral",
-            "switzerlandnorth", "switzerlandwest", "germanynorth", "germanywestcentral",
-            "norwayeast", "norwaywest")]
-        [string]`$location
-    )
-    az aks get-versions --location `$location --output table
-}
-"@
-    $pwshProfile = $pwshProfile.Replace('themeNameHere', $poshThemeName)
+    $pwshProfile = Get-Content -Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1"
+    $pwshProfile = $pwshProfile.Replace('themeNameHere', $pwshThemeName)
     $pwshProfile | Set-Content -Path $pwshProfilePath -Force
 
-    . $PROFILE
 }
 
-function setWindowsTerminal {
+function Set-WindowsTerminal {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Terminal Configuration"
 
-    $settingJsonUrl = "https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/windows-terminal-settings.json"
+    $settingJson = "$PSScriptRoot\windows-terminal-settings.json"
     $localSettingsPath = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-    Invoke-WebRequest -Uri $settingJsonUrl -OutFile $localSettingsPath
+    Copy-Item -Path $settingJson -Destination $localSettingsPath -Force
 
     $startDirectory = 'C:\Code'
     if (!(Test-Path -Path $startDirectory)) {
@@ -597,7 +326,7 @@ function setWindowsTerminal {
     Write-Warning "Please restart Windows Terminal to apply the new settings"
 }
 
-function setCrossPlatformModuleSupport {
+function Set-CrossPlatformModuleSupport {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: PowerShell Module Cross Version Support"
 
     if ($host.Version.Major -eq '5') {
@@ -641,7 +370,7 @@ function setCrossPlatformModuleSupport {
     Write-Output "" # Required for script spacing
 }
 
-function patchVSCodePwshModule {
+function Update-VSCodePwshModule {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
     $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
     $psReadLineVersion = $(Find-Module -Name 'PSReadLine' | Select-Object Version).version.ToString()
@@ -669,32 +398,41 @@ function patchVSCodePwshModule {
     }
 }
 
+function Register-PSProfile {
+    Clear-Host
+    # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
+    Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
+}
+
 # Clear Terminal
 Clear-Host
 
 # Check System Requirements
-getSystemRequirements
+Get-SystemRequirements
 
 # Update WinGet CLI
-updateWinGetVersion
+Update-WinGetVersion
 
 # Install Nerd Font
-installNerdFont -nerdFontFileName $nerdFontFileName
+Install-NerdFont -nerdFontFileName $nerdFontFileName
 
 # Install PowerShell Modules
-installPowerShellModules
+Install-PowerShellModules
 
 # Install WinGet Applications
-installWinGetApplications
+Install-WinGetApplications
 
 # Set PowerShell Profile
-setPwshProfile
+Set-PwshProfile
 
 # Patch VSCode PowerShell Module
-patchVSCodePwshModule
+Update-VSCodePwshModule
 
 # Set Windows Terminal Configuration
-setWindowsTerminal
+Set-WindowsTerminal
 
 # Set Cross Platform Module Support
-setCrossPlatformModuleSupport
+Set-CrossPlatformModuleSupport
+
+# Load PowerShell Profile
+Register-PSProfile
