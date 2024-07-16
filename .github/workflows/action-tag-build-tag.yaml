@@ -34,7 +34,7 @@ jobs:
 
       - name: Merge Pull Request
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
           MERGE_RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
