@@ -16,7 +16,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
-          BRANCH_NAME=${{ github.event.pull_request.head.ref }}
+          BRANCH_NAME=${{ github.event.pull_request.title  }}
           
           if [[ "$BRANCH_NAME" == *"dev"* ]]; then
             TAG="updated-profile-release-dev"
