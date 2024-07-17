@@ -52,7 +52,7 @@ Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.4-dev'
+$profileVersion = '3.1.12.4'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
