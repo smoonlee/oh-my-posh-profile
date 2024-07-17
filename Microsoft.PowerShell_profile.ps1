@@ -45,13 +45,14 @@ Version: 3.1.10.2 - July 2024 | Code Formatting Patch
 Version: 3.1.10.3 - July 2024 | Updated Remove-GitBranch Function - Update Branch CleanUp - defaultBranch x main
 Version: 3.1.11 - July 2024 | Created Update-PSProfile Function, Script Refactor and YAML Release Pipeline created for Profile Versioning
 Version: 3.1.12 - July 2024 | YAML Release Pipeline for Profile Versioning, Added Profile Update Checker
-version: 3.1.12.1 - July 2024 | Minor Script Fixes, From Development to Production Repository
-version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Production Repository
-version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Production Repository
+Version: 3.1.12.1 - July 2024 | Minor Script Fixes, From Development to Production Repository
+Version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Production Repository
+Version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Production Repository
+Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.3'
+$profileVersion = '3.1.12.4-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -69,7 +70,7 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -HistoryNoDuplicates:$True
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
@@ -101,7 +102,7 @@ Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
     $env:COMP_POINT = $cursorPosition
     $env:_ARGCOMPLETE = 1
     $env:_ARGCOMPLETE_SUPPRESS_SPACE = 0
-    $env:_ARGCOMPLETE_IFS = ""
+    $env:_ARGCOMPLETE_IFS = "`n"
     $env:_ARGCOMPLETE_SHELL = 'powershell'
     az 2>&1 | Out-Null
     Get-Content $completion_file | Sort-Object | ForEach-Object {
