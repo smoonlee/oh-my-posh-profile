@@ -263,6 +263,7 @@ d-----        07/05/2022     06:42                PSReadLine
 
 <details>
 <summary> New Device Setup </summary>
+ 
 <br>
 Ensure that you can execute scripts on your local machine
 <br>
@@ -274,8 +275,7 @@ Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned'
 Download and execute the New-PSProfile.ps1 script.
 
 ``` powershell
-$setupUrl = 'https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-OhMyPoshProfile.ps1'
-Invoke-WebRequest -Uri $setupUrl -OutFile $Pwd\New-OhMyPoshProfile.ps1
+git clone https://github.com/smoonlee/oh-my-posh-profile.git ; Set-Location oh-my-posh-profile
 .\New-OhMyPoshProfile.ps1
 ```
 
