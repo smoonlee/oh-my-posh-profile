@@ -49,10 +49,11 @@ Version: 3.1.12.1 - July 2024 | Minor Script Fixes, From Development to Producti
 Version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Production Repository
 Version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Production Repository
 Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
+Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.4'
+$profileVersion = '3.1.12.5-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -247,7 +248,7 @@ function Get-PSProfileUpdate {
     Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
 
     $pwshProfile = Get-Content -Path $PROFILE
-    $pwshProfile = $pwshProfile.Replace('themeNameHere', $pwshThemeName)
+    $pwshProfile = $pwshProfile.Replace('$env:POSH_THEMES_PATH\themeNameHere', $env:POSH_THEMES_PATH\$pwshThemeName)
     $pwshProfile | Set-Content -Path $PROFILE -Force
 
     #
