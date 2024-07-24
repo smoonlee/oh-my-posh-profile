@@ -55,10 +55,11 @@ Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
 Version: 3.1.13.1 - Added Get-NetAddressSpace Function
 Version: 3.1.13.2 - Updated Get-NetAddressSpace Function Formatting
 Version: 3.1.14 - Get-NetAddressSpace Function GA
+Version: 3.1.14.1 - Updated Get-NetAddressSpace with IP Class and Subnet Mask.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.14-prod'
+$profileVersion = '3.1.14.1-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -379,7 +380,7 @@ function Get-AksVersion {
     az aks get-versions --location $location --output table
 }
 
-# Function - Get Network Addpress 
+# Function - Get Network Address Space
 function Get-NetAddressSpace {
     param (
         [Parameter(Mandatory = $true)]
@@ -426,11 +427,37 @@ function Get-NetAddressSpace {
         return $ipAddr.ToString()
     }
 
+    # Function to convert prefix length to IPv4 subnet mask
+    function ConvertTo-SubnetMaskIPv4 {
+        param ($prefix)
+        $maskInt = ([math]::Pow(2, $prefix) - 1) * [math]::Pow(2, 32 - $prefix)
+        ConvertTo-IPv4 -int $maskInt
+    }
+
+    # Function to convert prefix length to IPv6 subnet mask
+    function ConvertTo-SubnetMaskIPv6 {
+        param ($prefix)
+        $maskInt = [System.Numerics.BigInteger]::Pow(2, 128) - [System.Numerics.BigInteger]::Pow(2, 128 - $prefix)
+        ConvertTo-IPv6 -int $maskInt
+    }
+
+    # Function to determine IPv4 class
+    function Get-IPv4Class {
+        param ($ip)
+        $firstOctet = [int]$ip.Split('.')[0]
+        switch ($firstOctet) {
+            { $_ -ge 1 -and $_ -le 126 } { return 'A' }
+            { $_ -ge 128 -and $_ -le 191 } { return 'B' }
+            { $_ -ge 192 -and $_ -le 223 } { return 'C' }
+            default { return 'Unknown' }
+        }
+    }
+
     # Extract base IP and prefix length
-    $baseIP, $prefix = $CIDR -split '/'
+    $baseIP, $prefix = $cidr -split '/'
     $prefix = [int]$prefix
 
-    # Determine if IP is IPv4 or IPv6
+    # Determine if IP is IPv6 or IPv4
     $isIPv6 = $baseIP.Contains(':')
 
     if ($isIPv6) {
@@ -450,12 +477,14 @@ function Get-NetAddressSpace {
 
         # Output results
         [PSCustomObject]@{
-            CIDR             = $CIDR
+            IPClass          = 'N/A'  # Class not applicable to IPv6
+            CIDR             = $cidr
             NetworkAddress   = ConvertTo-IPv6 -int $networkInt
             FirstUsableIP    = $firstUsableIP
             LastUsableIP     = $lastUsableIP
             BroadcastAddress = ConvertTo-IPv6 -int $broadcastInt
             UsableHostCount  = ($lastUsableInt - $firstUsableInt + 1).ToString()
+            SubnetMask       = ConvertTo-SubnetMaskIPv6 -prefix $prefix
         }
     }
     else {
@@ -473,14 +502,18 @@ function Get-NetAddressSpace {
         $firstUsableIP = ConvertTo-IPv4 -int $firstUsableInt
         $lastUsableIP = ConvertTo-IPv4 -int $lastUsableInt
 
+        $ipClass = Get-IPv4Class -ip $baseIP
+
         # Output results
         [PSCustomObject]@{
-            CIDR             = $CIDR
+            IPClass          = $ipClass
+            CIDR             = $cidr
             NetworkAddress   = ConvertTo-IPv4 -int $networkInt
             FirstUsableIP    = $firstUsableIP
             LastUsableIP     = $lastUsableIP
             BroadcastAddress = ConvertTo-IPv4 -int $broadcastInt
             UsableHostCount  = $lastUsableInt - $firstUsableInt + 1
+            SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
         }
     }
 }
