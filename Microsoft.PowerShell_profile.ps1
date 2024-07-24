@@ -53,10 +53,11 @@ Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
 Version: 3.1.13.1 - Added Get-NetAddressSpace Function
+Version: 3.1.13.2 - Updated Get-NetAddressSpace Function Formatting
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.13.1-dev'
+$profileVersion = '3.1.13.2-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -450,12 +451,13 @@ function Get-NetAddressSpace {
         [PSCustomObject]@{
             CIDR             = $CIDR
             NetworkAddress   = ConvertTo-IPv6 -int $networkInt
-            BroadcastAddress = ConvertTo-IPv6 -int $broadcastInt
             FirstUsableIP    = $firstUsableIP
             LastUsableIP     = $lastUsableIP
+            BroadcastAddress = ConvertTo-IPv6 -int $broadcastInt
             UsableHostCount  = ($lastUsableInt - $firstUsableInt + 1).ToString()
         }
-    } else {
+    }
+    else {
         # IPv4 logic
         $baseInt = ConvertTo-IntIPv4 -ip $baseIP
         $networkSize = [math]::Pow(2, 32 - $prefix)
@@ -474,9 +476,9 @@ function Get-NetAddressSpace {
         [PSCustomObject]@{
             CIDR             = $CIDR
             NetworkAddress   = ConvertTo-IPv4 -int $networkInt
-            BroadcastAddress = ConvertTo-IPv4 -int $broadcastInt
             FirstUsableIP    = $firstUsableIP
             LastUsableIP     = $lastUsableIP
+            BroadcastAddress = ConvertTo-IPv4 -int $broadcastInt
             UsableHostCount  = $lastUsableInt - $firstUsableInt + 1
         }
     }
