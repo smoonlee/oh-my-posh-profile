@@ -287,7 +287,8 @@ function Install-WinGetApplications {
 
 function Set-PwshProfile {
     $pwshTheme = "$PSScriptRoot\quick-term-azure.omp.json"
-    $pwshThemeName = Split-Path -Path $pwshTheme -Leaf
+    $pwshThemeName = Split-Path -Leaf $pwshTheme
+    Copy-Item -Path $pwshTheme -Destination "$env:POSH_THEMES_PATH\quick-term-azure.omp.json"
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Creating PowerShell Profile"
 
