@@ -52,15 +52,16 @@ Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
-Version: 3.1.13.1 - Added Get-NetAddressSpace Function
-Version: 3.1.13.2 - Updated Get-NetAddressSpace Function Formatting
-Version: 3.1.14 - Get-NetAddressSpace Function GA
-Version: 3.1.14.1 - Updated Get-NetAddressSpace with IP Class and Subnet Mask.
-Version: 3.1.14.2 - Updated Update-WindowsApps, Required Administrator elevation to skip UAC.
+Version: 3.1.13.1 - July 2024 | Added Get-NetAddressSpace Function
+Version: 3.1.13.2 - July 2024 | Updated Get-NetAddressSpace Function Formatting
+Version: 3.1.14 - July 2024 | Get-NetAddressSpace Function GA
+Version: 3.1.14.1 - July 2024 | Updated Get-NetAddressSpace with IP Class and Subnet Mask.
+Version: 3.1.14.2 - July 2024 | Updated Update-WindowsApps, Required Administrator elevation to skip UAC.
+Version: 3.1.14.3 - July 2024 | Updated Update-PSProfile, added Return Happy check if $profileVersion -match $profileRelease
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.14.2-prod'
+$profileVersion = '3.1.14.3-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -88,7 +89,7 @@ if ($profileVersion -ne $newProfileReleaseTag) {
 }
 
 # Load Oh My Posh Application
-oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\themeNameHere" | Invoke-Expression
+oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\quick-term-smoon.omp.json" | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
 $env:POSH_AZURE_ENABLED = $true
@@ -231,6 +232,7 @@ function Get-AzSystemUptime {
     }
 }
 
+# Function - Reload PowerShell Session, Keeping Windows Terminal running. 
 function Register-PSProfile {
     Clear-Host
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
@@ -248,25 +250,32 @@ function Get-PSProfileUpdate {
     Write-Output "Current Profile Version: $profileVersion"
     Write-Output "New Profile Version: $profileRelease"
 
+    # Check if the profile is already up to date
+    if ($profileVersion -match $profileRelease) {
+        Write-Output "" # Required for script spacing
+        Write-Warning "[Oh My Posh] - PSProfile is already up to date!"
+        return
+    }
+
     # Get Current Pwsh Theme
     $pwshThemeName = Split-Path $env:POSH_THEME -Leaf
 
     Write-Output "Updating Profile..."
     # Download the new profile
     Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
-    
+
     # Read the profile content
     $pwshProfile = Get-Content -Path $PROFILE -Raw
 
     # Replace 'themeNameHere' with the current theme name, but only once
     [regex]$pattern = "themeNameHere"
     $pwshProfile = $pattern.replace($pwshProfile, $pwshThemeName , 1)
-    
+
     # Write the updated content back to the profile
     $pwshProfile | Set-Content -Path $PROFILE -Force
-    
+
     # Wait for a few seconds
-    Start-Sleep -Seconds 4 
+    Start-Sleep -Seconds 4
 
     # Reload PowerShell Profile
     Register-PSProfile
