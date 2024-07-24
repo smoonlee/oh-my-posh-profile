@@ -54,10 +54,11 @@ Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
 Version: 3.1.13.1 - Added Get-NetAddressSpace Function
 Version: 3.1.13.2 - Updated Get-NetAddressSpace Function Formatting
+Version: 3.1.14 - Get-NetAddressSpace Function GA
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.13.2.1-dev'
+$profileVersion = '3.1.14-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
