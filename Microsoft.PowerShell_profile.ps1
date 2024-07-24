@@ -51,11 +51,11 @@ Version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Producti
 Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
-
+Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.17-dev'
+$profileVersion = '3.1.13-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
