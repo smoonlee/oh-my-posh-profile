@@ -33,7 +33,7 @@
 > Update-WindowsApps, \
 > Remove-GitBranch \
 > Added Support for AKS Clusters \
-> Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete)
+> Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete) \
 > Move PowerShell Modules back to User Documents \
 > Rebuilt WSL/Linux bash script
 
