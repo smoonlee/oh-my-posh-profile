@@ -57,7 +57,7 @@ Version: 3.1.13.2 - Updated Get-NetAddressSpace Function Formatting
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.13.2-dev'
+$profileVersion = '3.1.13.2.1-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
