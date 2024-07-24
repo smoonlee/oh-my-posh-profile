@@ -80,7 +80,6 @@ While doing some research as well around `$PROFILE` tips and tricks, I found som
 Microsoft Docs Link: [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli#enable-tab-completion-in-powershell)
 
 [x]> Get your current Public IP Address
-
 ``` powershell
 Get-MyPublicIp
 ```
@@ -91,8 +90,7 @@ Get-MyPublicIp
 Get-SystemUptime
 ```
 
-Get-SystemUptime - Example
-
+[x]> Get-SystemUptime - Example
 ``` powershell
 Hostname: XPS9510-SL
 Uptime: 0 days, 4 hours, 6 minutes, 47 seconds
@@ -105,8 +103,7 @@ Last Reboot Time: 05/06/2024 10:10:32
 Get-AzSystemUptime -resourceGroup <resourceGroup> -vmName <vmName> -subscriptionId <subscriptionId>
 ```
 
-Get-AzSystemUptime - Example (Windows)
-
+[x]> Get-AzSystemUptime - Example (Windows)
 ``` powershell
 [Azure] :: Getting System Uptime for windows01 in rg-bwc-sandbox-weu...
 WARNING: This may take up to 35 seconds
@@ -116,8 +113,7 @@ WARNING: This may take up to 35 seconds
 [Azure] :: Last Reboot Time: 06/05/2024 13:19:45
 ```
 
-Get-AzSystemUptime - Example (Linux)
-
+[x]> Get-AzSystemUptime - Example (Linux)
 ``` powershell
 [Azure] :: Getting System Uptime for vm-learn-linux-weu in rg-learn-linux-weu...
 WARNING: This may take up to 35 seconds
@@ -139,7 +135,7 @@ Update PSProfile to Latest Production Release
 Update-PSProfile
 ```
 
-Update PSProfile to Latest Development Release
+[x]> Update PSProfile to Latest Development Release
 ``` powershell
 Update-PSProfile -devMode
 ```
@@ -150,7 +146,7 @@ Update-PSProfile -devMode
 Update-WindowsApps
 ```
 
-Update-WindowsApps - Examples
+[x]> Update-WindowsApps - Examples
 
 ``` powershell
 Updating Windows Applications...
@@ -161,21 +157,20 @@ Hugo (Extended) Hugo.Hugo.Extended 0.125.5 0.125.6   winget
 1 upgrades available.
 ```
 
-[x]> Remove-GitBranch (Singe Branch) (custom Default Branch) \
-For example, If you are not using `main`
+[x]> Remove-GitBranch (Singe Branch) (custom Default Branch) 
+<br>
 
+For example, If you are not using `main`
 ``` powershell
 Remove-GitBranch -branchName <branchname> -defaultBranch <deafultBranch>
 ```
 
 [x]> Remove-GitBranch (Singe Branch)
-
 ``` powershell
 Remove-GitBranch -branchName <branchname>
 ```
 
-Remove-GitBranch -branchName - Example
-
+[x]> Remove-GitBranch -branchName - Example
 ``` powershell
 Deleted branch branch1 (was b7ef979).
 ```
@@ -187,8 +182,7 @@ Deleted branch branch1 (was b7ef979).
 Remove-GitBranch -all
 ```
 
-Remove-GitBranch -all - Example
-
+[x]> Remove-GitBranch -all - Example
 ``` powershell
 WARNING: This will remove all local branches in the repository!
 Press any key to continue...
@@ -214,7 +208,7 @@ Deleted branch branch5 (was b7ef979).
 Get-DnsResult -domain builtwithcaffeine.cloud -recordType NS
 ```
 
-Get-DnsResults - Example
+[x]> Get-DnsResults - Example
 ``` powershell
 Name                           Type   TTL   Section    NameHost
 ----                           ----   ---   -------    --------
@@ -305,16 +299,14 @@ Ensure that you can execute scripts on your local machine
 <br>
 
 ``` powershell
-Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned'
+Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned' -Force
 ```
 
 Download and execute the New-PSProfile.ps1 script.
 
 ``` powershell
-git clone https://github.com/smoonlee/oh-my-posh-profile.git ; Set-Location oh-my-posh-profile
-.\New-OhMyPoshProfile.ps1
+git clone https://github.com/smoonlee/oh-my-posh-profile.git ; Set-Location oh-my-posh-profile ; .\New-OhMyPoshProfile.ps1
 ```
-
 </details>
 
 ### -> Linux
