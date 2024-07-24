@@ -55,7 +55,7 @@ Version: 3.1.12.5.1-4 - July 2024 | Patched Update-PSProfile find and replace.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.4-dev'
+$profileVersion = '3.1.12.5.5-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -234,36 +234,42 @@ function Register-PSProfile {
 
 # Function - Download PSProfile [Prod] or [Dev] Release
 function Get-PSProfileUpdate {
-param (
-    [string] $profileRelease,
-    [string] $profileDownloadUrl
-)
+    param (
+        [string] $profileRelease,
+        [string] $profileDownloadUrl
+    )
 
-# Get Current Pwsh Theme
-$pwshThemeName = Split-Path $env:POSH_THEME -Leaf
+    # Get Current Pwsh Theme
+    $pwshThemeName = Split-Path $env:POSH_THEME -Leaf
 
-Write-Output "Updating PowerShell Profile..." `r
-Write-Output "Current Profile Version: $profileVersion"
-Write-Output "New Profile Version: $profileRelease"
+    Write-Output "Updating PowerShell Profile..." `r
+    Write-Output "Current Profile Version: $profileVersion"
+    Write-Output "New Profile Version: $profileRelease"
 
-Write-Output "Updating Profile..."
-# Download the new profile
-Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
+    Write-Output "Updating Profile..."
+    # Download the new profile
+    Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
 
-# Read the profile content
-$pwshProfile = Get-Content -Path $PROFILE -Raw
+    # Read the profile content line by line
+    $pwshProfileLines = Get-Content -Path $PROFILE
 
-# Replace 'themeNameHere' with the current theme name
-$pwshProfile = [regex]::Replace($pwshProfile, 'themeNameHere', $pwshThemeName, [System.Text.RegularExpressions.RegexOptions]::None, 1)
+    # Replace 'themeNameHere' with the current theme name, but only once
+    $replacementDone = $false
+    for ($i = 0; $i -lt $pwshProfileLines.Length; $i++) {
+        if ($pwshProfileLines[$i] -match 'themeNameHere' -and -not $replacementDone) {
+            $pwshProfileLines[$i] = $pwshProfileLines[$i] -replace 'themeNameHere', $pwshThemeName
+            $replacementDone = $true
+        }
+    }
 
-# Write the updated content back to the profile
-Set-Content -Path $PROFILE -Value $pwshProfile -Force
+    # Write the updated content back to the profile
+    $pwshProfileLines | Set-Content -Path $PROFILE -Force
 
-# Wait for a few seconds
-Start-Sleep -Seconds 4
+    # Wait for a few seconds
+    Start-Sleep -Seconds 4
 
-# Reload PowerShell Profile
-Register-PSProfile
+    # Reload PowerShell Profile
+    Register-PSProfile
 }
 
 # Function - Update PowerShell Profile
