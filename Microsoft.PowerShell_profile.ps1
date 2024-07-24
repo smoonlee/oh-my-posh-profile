@@ -56,10 +56,11 @@ Version: 3.1.13.1 - Added Get-NetAddressSpace Function
 Version: 3.1.13.2 - Updated Get-NetAddressSpace Function Formatting
 Version: 3.1.14 - Get-NetAddressSpace Function GA
 Version: 3.1.14.1 - Updated Get-NetAddressSpace with IP Class and Subnet Mask.
+Version: 3.1.14.2 - Updated Update-WindowsApps, Required Administrator elevation to skip UAC.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.14.1-prod'
+$profileVersion = '3.1.14.2-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -296,8 +297,13 @@ function Update-PSProfile {
 
 # Function - Update WinGet Applications
 function Update-WindowsApps {
+    if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
+        Write-Warning "This function must be run as an administrator."
+        return
+    }
+
     Write-Output "Updating Windows Applications..." `r
-    winget upgrade --all --include-unknown --force
+    winget upgrade --include-unknown --all --silent --force
 }
 
 # Function - Clean Git Branches
