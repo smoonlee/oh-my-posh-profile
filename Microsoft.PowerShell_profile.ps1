@@ -23,7 +23,7 @@ Runs the script to update and configure the PowerShell profile.
 .NOTES
 - This script requires an internet connection to retrieve the latest Oh My Posh profile from GitHub.
 - Make sure to have the required PowerShell modules (Posh-Git, Terminal-Icons, PSReadLine) installed before running this script.
-- The script assumes that the Oh My Posh theme file is located in the specified path: $Env:LOCALAPPDATA\Programs\oh-my-posh\themes.
+- The script assumes that the Oh My Posh theme file is located in the specified path: %LOCALAPPDATA%\Programs\oh-my-posh\themes.
 
 Author: Simon Lee
 Version: 3.0 - May 2024 | Mk3 Profile Script Created
@@ -55,7 +55,7 @@ Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.10-dev'
+$profileVersion = '3.1.12.5.11-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -255,7 +255,7 @@ function Get-PSProfileUpdate {
 
     # Replace 'themeNameHere' with the current theme name, but only once
     [regex]$pattern = "themeNameHere"
-    $pattern.replace($pwshProfile, $pwshThemeName, 1)
+    [regex]::Replace($pwshProfile, $pattern, $pwshThemeName, 1)
 
     # Write the updated content back to the profile
     $pwshProfile | Set-Content -Path $PROFILE -Force
