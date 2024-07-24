@@ -11,6 +11,8 @@
 ## Release Notes
 
 > **JULY 2024** \
+> Added Get-NetAddressSpace Function \
+> Fixed Update-PSProfile Function \
 > Created Release Pipeline for Production and Development \
 > Added Update-PSProfile & Register-PSProfile \
 > Added Get-AksVersion Function \
@@ -23,7 +25,13 @@
 >
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
-> Added custom PowerShell Functions -  Get-PublicIP, Get-SystemUptime, Get-AzSystemUptime, Register-PSProfile, Update-WindowsApps, Remove-GitBranch \
+> Added custom PowerShell Functions: \
+> Get-PublicIP, \
+> Get-SystemUptime, \
+> Get-AzSystemUptime, \
+> Register-PSProfile, \
+> Update-WindowsApps, \
+> Remove-GitBranch \
 > Added Support for AKS Clusters \
 > Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete)
 > Move PowerShell Modules back to User Documents \
@@ -199,7 +207,7 @@ Deleted branch branch4 (was b7ef979).
 Deleted branch branch5 (was b7ef979).
 ```
 
-[x] Get-DnsReuslt
+[x]> Get-DnsReuslt
 > Query DNS direct from the shell 👌
 
 ``` powershell
@@ -223,6 +231,33 @@ Supported RecordTypes:
 > AAAA        CNAME       DS          MD          MR          NSEC3       PTR         SOA         WINS \
 > AFSDB       DHCID       HINFO       MF          MX          NSEC3PARAM  RP          SRV         WKS
 >
+
+[x]> Get-NetAddressSpace \
+Ever wanted to quickly check an address space for IPv4 or IPv6? Well now you can 🫡
+
+``` powershell
+Get-NetAddressSpace -cidr  "192.168.0.0/21"
+```
+
+> IPv4
+``` powershell
+CIDR             : 192.168.0.0/21
+NetworkAddress   : 192.168.0.0
+FirstUsableIP    : 192.168.0.1
+LastUsableIP     : 192.168.7.254
+BroadcastAddress : 192.168.7.255
+UsableHostCount  : 2046
+```
+
+> IPv6
+``` powershell
+CIDR             : 2001:db8::/64
+NetworkAddress   : ::
+FirstUsableIP    : ::1
+LastUsableIP     : ::ffff:ffff:ffff:fffe
+BroadcastAddress : ::ffff:ffff:ffff:ffff
+UsableHostCount  : 18446744073709551614
+```
 
 ## Windows Terminal Nerd Font
 
