@@ -52,10 +52,11 @@ Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
+Version: 3.1.13.1 - Added Get-NetAddressSpace Function
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.13-prod'
+$profileVersion = '3.1.13.1-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -374,4 +375,109 @@ function Get-AksVersion {
         [string]$location
     )
     az aks get-versions --location $location --output table
+}
+
+# Function - Get Network Addpress 
+function Get-NetAddressSpace {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$cidr
+    )
+
+    # Load the System.Numerics assembly for BigInteger support
+    Add-Type -AssemblyName 'System.Numerics'
+
+    # Function to convert IPv4 address to integer
+    function ConvertTo-IntIPv4 {
+        param ($ip)
+        $i = 0
+        $ip.Split('.') | ForEach-Object { [int]$_ } | ForEach-Object { $_ -shl 8 * (3 - $i++) } | Measure-Object -Sum | Select-Object -ExpandProperty Sum
+    }
+
+    # Function to convert integer to IPv4 address
+    function ConvertTo-IPv4 {
+        param ($int)
+        $bytes = 3..0 | ForEach-Object { ($int -shr 8 * $_) -band 255 }
+        return ($bytes -join '.')
+    }
+
+    # Function to convert IPv6 address to BigInteger
+    function ConvertTo-IntIPv6 {
+        param ($ip)
+        $ipAddr = [System.Net.IPAddress]::Parse($ip)
+        $bytes = $ipAddr.GetAddressBytes()
+        [Array]::Reverse($bytes)
+        $int = [System.Numerics.BigInteger]::Zero
+        $bytes | ForEach-Object { $int = ($int -shl 8) -bor $_ }
+        return $int
+    }
+
+    # Function to convert BigInteger to IPv6 address
+    function ConvertTo-IPv6 {
+        param ($int)
+        $bytes = New-Object 'System.Collections.Generic.List[byte]'
+        for ($i = 0; $i -lt 16; $i++) {
+            $bytes.Insert(0, [byte]($int -band 0xFF))
+            $int = $int -shr 8
+        }
+        $ipAddr = [System.Net.IPAddress]::new($bytes.ToArray())
+        return $ipAddr.ToString()
+    }
+
+    # Extract base IP and prefix length
+    $baseIP, $prefix = $CIDR -split '/'
+    $prefix = [int]$prefix
+
+    # Determine if IP is IPv4 or IPv6
+    $isIPv6 = $baseIP.Contains(':')
+
+    if ($isIPv6) {
+        # IPv6 logic
+        $baseInt = ConvertTo-IntIPv6 -ip $baseIP
+        $networkSize = [System.Numerics.BigInteger]::Pow(2, 128 - $prefix)
+        $subnetMask = ([System.Numerics.BigInteger]::Pow(2, 128) - [System.Numerics.BigInteger]::Pow(2, 128 - $prefix))
+
+        $networkInt = $baseInt -band $subnetMask
+        $broadcastInt = $networkInt + $networkSize - 1
+
+        $firstUsableInt = $networkInt + 1
+        $lastUsableInt = $broadcastInt - 1
+
+        $firstUsableIP = ConvertTo-IPv6 -int $firstUsableInt
+        $lastUsableIP = ConvertTo-IPv6 -int $lastUsableInt
+
+        # Output results
+        [PSCustomObject]@{
+            CIDR             = $CIDR
+            NetworkAddress   = ConvertTo-IPv6 -int $networkInt
+            BroadcastAddress = ConvertTo-IPv6 -int $broadcastInt
+            FirstUsableIP    = $firstUsableIP
+            LastUsableIP     = $lastUsableIP
+            UsableHostCount  = ($lastUsableInt - $firstUsableInt + 1).ToString()
+        }
+    } else {
+        # IPv4 logic
+        $baseInt = ConvertTo-IntIPv4 -ip $baseIP
+        $networkSize = [math]::Pow(2, 32 - $prefix)
+        $subnetMask = ([math]::Pow(2, 32) - [math]::Pow(2, 32 - $prefix))
+
+        $networkInt = $baseInt -band $subnetMask
+        $broadcastInt = $networkInt + $networkSize - 1
+
+        $firstUsableInt = $networkInt + 1
+        $lastUsableInt = $broadcastInt - 1
+
+        $firstUsableIP = ConvertTo-IPv4 -int $firstUsableInt
+        $lastUsableIP = ConvertTo-IPv4 -int $lastUsableInt
+
+        # Output results
+        [PSCustomObject]@{
+            CIDR             = $CIDR
+            NetworkAddress   = ConvertTo-IPv4 -int $networkInt
+            BroadcastAddress = ConvertTo-IPv4 -int $broadcastInt
+            FirstUsableIP    = $firstUsableIP
+            LastUsableIP     = $lastUsableIP
+            UsableHostCount  = $lastUsableInt - $firstUsableInt + 1
+        }
+    }
 }
