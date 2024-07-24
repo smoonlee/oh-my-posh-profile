@@ -58,10 +58,11 @@ Version: 3.1.14 - July 2024 | Get-NetAddressSpace Function GA
 Version: 3.1.14.1 - July 2024 | Updated Get-NetAddressSpace with IP Class and Subnet Mask.
 Version: 3.1.14.2 - July 2024 | Updated Update-WindowsApps, Required Administrator elevation to skip UAC.
 Version: 3.1.14.3 - July 2024 | Updated Update-PSProfile, added Return Happy check if $profileVersion -match $profileRelease
+Version: 3.1.14.4 - July 2024 | Updated Update-PSProfile, Changed Inital Function Write-Output to 'Checking for PSProfile Release.'
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.14.3-prod'
+$profileVersion = '3.1.14.4-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -246,7 +247,7 @@ function Get-PSProfileUpdate {
         [string] $profileDownloadUrl
     )
 
-    Write-Output "Updating PowerShell Profile..." `r
+    Write-Output "Checking for PSProfile Release..." `r
     Write-Output "Current Profile Version: $profileVersion"
     Write-Output "New Profile Version: $profileRelease"
 
