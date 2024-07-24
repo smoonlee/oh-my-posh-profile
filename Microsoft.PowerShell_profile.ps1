@@ -55,7 +55,7 @@ Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.8-dev'
+$profileVersion = '3.1.12.5.9-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -251,14 +251,14 @@ function Get-PSProfileUpdate {
     Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
 
     # Read the profile content
-    $pwshProfileContent = Get-Content -Path $PROFILE -Raw
+    $pwshProfile = Get-Content -Path $PROFILE -Raw
 
     # Replace 'themeNameHere' with the current theme name, but only once
     $pattern = [regex]::Escape('themeNameHere')
-    $pwshProfileContent = [regex]::Replace($pwshProfileContent, $pattern, $pwshThemeName, 0)
+    $pwshProfile = $pattern.replace($pwshProfile, $pwshThemeName, 1)
 
     # Write the updated content back to the profile
-    $pwshProfileContent | Set-Content -Path $PROFILE -Force
+    $pwshProfile | Set-Content -Path $PROFILE -Force
 
     # Wait for a few seconds
     Start-Sleep -Seconds 4
