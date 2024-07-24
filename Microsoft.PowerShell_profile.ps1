@@ -55,7 +55,7 @@ Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.13-dev'
+$profileVersion = '3.1.12.5.14-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -239,17 +239,20 @@ function Get-PSProfileUpdate {
         [string] $profileDownloadUrl
     )
 
-    # Get Current Pwsh Theme
-    $pwshThemeName = Split-Path $env:POSH_THEME -Leaf
-
     Write-Output "Updating PowerShell Profile..." `r
     Write-Output "Current Profile Version: $profileVersion"
     Write-Output "New Profile Version: $profileRelease"
+
+    # Get Current Pwsh Theme
+    $pwshThemeName = Split-Path $env:POSH_THEME -Leaf
 
     Write-Output "Updating Profile..."
     # Download the new profile
     Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
 
+    # Wait for a few seconds, Allow download to complete
+    Start-Sleep -Seconds 2
+    
     # Read the profile content
     $pwshProfile = Get-Content -Path $PROFILE -Raw
 
