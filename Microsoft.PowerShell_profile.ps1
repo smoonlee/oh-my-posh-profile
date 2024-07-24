@@ -50,12 +50,12 @@ Version: 3.1.12.2 - July 2024 | Minor Script Fixes, From Development to Producti
 Version: 3.1.12.3 - July 2024 | Minor Script Fixes, From Development to Production Repository
 Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
-Version: 3.1.12.5.1-7 - July 2024 | Patched Update-PSProfile find and replace.
+Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.7-dev'
+$profileVersion = '3.1.12.5.8-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -255,18 +255,7 @@ function Get-PSProfileUpdate {
 
     # Replace 'themeNameHere' with the current theme name, but only once
     $pattern = [regex]::Escape('themeNameHere')
-    $pwshProfileContent = [regex]::Replace($pwshProfileContent, $pattern, $pwshThemeName, 1)
-    
-    # Replace only the first occurrence using regex
-    $replacementDone = $false
-    $updatedContent = [regex]::Replace($pwshProfileContent, $pattern, {
-        if (-not $replacementDone) {
-            $replacementDone = $true
-            $pwshThemeName
-        } else {
-            $args[0]
-        }
-    })
+    $pwshProfileContent = [regex]::Replace($pwshProfileContent, $pattern, $pwshThemeName, 0)
 
     # Write the updated content back to the profile
     $pwshProfileContent | Set-Content -Path $PROFILE -Force
