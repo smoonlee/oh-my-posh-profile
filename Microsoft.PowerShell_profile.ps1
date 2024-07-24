@@ -55,7 +55,7 @@ Version: 3.1.12.5.2 - July 2024 | Patched Update-PSProfile find and replace.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.12.5.2-dev'
+$profileVersion = '3.1.12.5.3-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
