@@ -60,10 +60,11 @@ Version: 3.1.14.2 - July 2024 | Updated Update-WindowsApps, Required Administrat
 Version: 3.1.14.3 - July 2024 | Updated Update-PSProfile, added Return Happy check if $profileVersion -match $profileRelease
 Version: 3.1.14.4 - July 2024 | Updated Update-PSProfile, Changed Initial Function Write-Output to 'Checking for PSProfile Release.'
 Version: 3.1.15 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation and showSubnet and IPv6 Support
+Version: 3.1.15.1 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation and showSubnet and IPv6 Support (Small fixes)
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.15-dev'
+$profileVersion = '3.1.15.1-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
