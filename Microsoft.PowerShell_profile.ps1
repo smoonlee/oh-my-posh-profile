@@ -63,7 +63,7 @@ Version: 3.1.15 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.15-dev'
+$profileVersion = '3.1.15.1-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
