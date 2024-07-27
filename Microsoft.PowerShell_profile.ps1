@@ -52,17 +52,18 @@ Version: 3.1.12.4 - July 2024 | Fixed Azure CLI Tab Completion Function
 Version: 3.1.12.5 - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.12.5.* - July 2024 | Patched Update-PSProfile find and replace.
 Version: 3.1.13 - July 2024 | Update-PSProfile Function FIXED! 🥳
-Version: 3.1.13.1 - July 2024 | Added Get-NetAddressSpace Function
-Version: 3.1.13.2 - July 2024 | Updated Get-NetAddressSpace Function Formatting
-Version: 3.1.14 - July 2024 | Get-NetAddressSpace Function GA
-Version: 3.1.14.1 - July 2024 | Updated Get-NetAddressSpace with IP Class and Subnet Mask.
+Version: 3.1.13.1 - July 2024 | Added Get-NetConfig Function
+Version: 3.1.13.2 - July 2024 | Updated Get-NetConfig Function Formatting
+Version: 3.1.14 - July 2024 | Get-NetConfig Function GA
+Version: 3.1.14.1 - July 2024 | Updated Get-NetConfig with IP Class and Subnet Mask.
 Version: 3.1.14.2 - July 2024 | Updated Update-WindowsApps, Required Administrator elevation to skip UAC.
 Version: 3.1.14.3 - July 2024 | Updated Update-PSProfile, added Return Happy check if $profileVersion -match $profileRelease
-Version: 3.1.14.4 - July 2024 | Updated Update-PSProfile, Changed Inital Function Write-Output to 'Checking for PSProfile Release.'
+Version: 3.1.14.4 - July 2024 | Updated Update-PSProfile, Changed Initial Function Write-Output to 'Checking for PSProfile Release.'
+Version: 3.1.15 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation and showSubnet and IPv6 Support
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.14.4-prod'
+$profileVersion = '3.1.15-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -90,7 +91,7 @@ if ($profileVersion -ne $newProfileReleaseTag) {
 }
 
 # Load Oh My Posh Application
-oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\quick-term-smoon.omp.json" | Invoke-Expression
+oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\themeNameHere" | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
 $env:POSH_AZURE_ENABLED = $true
@@ -233,7 +234,7 @@ function Get-AzSystemUptime {
     }
 }
 
-# Function - Reload PowerShell Session, Keeping Windows Terminal running. 
+# Function - Reload PowerShell Session, Keeping Windows Terminal running.
 function Register-PSProfile {
     Clear-Host
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
@@ -397,10 +398,13 @@ function Get-AksVersion {
 }
 
 # Function - Get Network Address Space
-function Get-NetAddressSpace {
+function Get-NetConfig {
     param (
-        [Parameter(Mandatory = $true)]
-        [string]$cidr
+        [string]$cidr,
+
+        [switch]$showSubnets,
+
+        [switch]$showIpv4CidrTable
     )
 
     # Load the System.Numerics assembly for BigInteger support
@@ -469,12 +473,57 @@ function Get-NetAddressSpace {
         }
     }
 
+    # Function to generate a CIDR table
+    function New-CidrTable {
+        param (
+            [string]$baseIp,
+            [int]$basePrefix
+        )
+
+        # Convert base IP to integer
+        $baseInt = if ($baseIp.Contains(':')) {
+            ConvertTo-IntIPv6 -ip $baseIp
+        }
+        else {
+            ConvertTo-IntIPv4 -ip $baseIp
+        }
+
+        # Generate CIDR table
+        $cidrTable = @()
+
+        for ($prefix = $basePrefix; $prefix -le 32; $prefix++) {
+            $subnetSize = [math]::Pow(2, (32 - $prefix))
+            $networkInt = $baseInt -band (([math]::Pow(2, 32) - 1) - ([math]::Pow(2, 32 - $prefix) - 1))
+            $subnetMask = ConvertTo-SubnetMaskIPv4 -prefix $prefix
+            $totalHosts = [int]($subnetSize - 2)  # Remove leading zeros
+
+            $cidrTable += [PSCustomObject]@{
+                CIDR       = "$baseIp/$prefix"
+                SubnetMask = $subnetMask
+                TotalHosts = $totalHosts
+            }
+        }
+
+        $cidrTable
+    }
+
     # Extract base IP and prefix length
     $baseIP, $prefix = $cidr -split '/'
     $prefix = [int]$prefix
 
     # Determine if IP is IPv6 or IPv4
     $isIPv6 = $baseIP.Contains(':')
+
+    if ($showIpv4CidrTable) {
+        if ($isIPv6) {
+            Write-Output "CIDR Table for IPv6 is not fully supported in this function."
+        }
+        else {
+            # Generate CIDR table for IPv4
+            New-CidrTable -baseIp $baseIP -basePrefix $prefix | Format-Table -AutoSize
+        }
+        return
+    }
 
     if ($isIPv6) {
         # IPv6 logic
@@ -483,24 +532,40 @@ function Get-NetAddressSpace {
         $subnetMask = ([System.Numerics.BigInteger]::Pow(2, 128) - [System.Numerics.BigInteger]::Pow(2, 128 - $prefix))
 
         $networkInt = $baseInt -band $subnetMask
-        $broadcastInt = $networkInt + $networkSize - 1
 
-        $firstUsableInt = $networkInt + 1
-        $lastUsableInt = $broadcastInt - 1
+        if ($showSubnets) {
+            # Show subnets within this range
+            $subnetPrefix = 64  # Example prefix length for subnets
+            $subnetSize = [System.Numerics.BigInteger]::Pow(2, 128 - $subnetPrefix)
+            $subnetMask = ([System.Numerics.BigInteger]::Pow(2, 128) - [System.Numerics.BigInteger]::Pow(2, 128 - $subnetPrefix))
 
-        $firstUsableIP = ConvertTo-IPv6 -int $firstUsableInt
-        $lastUsableIP = ConvertTo-IPv6 -int $lastUsableInt
+            $currentSubnetInt = $networkInt
+            while ($currentSubnetInt -lt $networkInt + $networkSize) {
+                $subnetStart = $currentSubnetInt
+                $subnetEnd = [System.Numerics.BigInteger]::Min($currentSubnetInt + $subnetSize - 1, $networkInt + $networkSize - 1)
 
-        # Output results
-        [PSCustomObject]@{
-            IPClass          = 'N/A'  # Class not applicable to IPv6
-            CIDR             = $cidr
-            NetworkAddress   = ConvertTo-IPv6 -int $networkInt
-            FirstUsableIP    = $firstUsableIP
-            LastUsableIP     = $lastUsableIP
-            BroadcastAddress = ConvertTo-IPv6 -int $broadcastInt
-            UsableHostCount  = ($lastUsableInt - $firstUsableInt + 1).ToString()
-            SubnetMask       = ConvertTo-SubnetMaskIPv6 -prefix $prefix
+                if ($subnetEnd -gt $subnetStart) {
+                    $subnetStartIP = ConvertTo-IPv6 -int $subnetStart
+                    $subnetEndIP = ConvertTo-IPv6 -int $subnetEnd
+
+                    Write-Output "Subnet: $subnetStartIP - $subnetEndIP"
+                }
+
+                $currentSubnetInt = $currentSubnetInt + $subnetSize
+            }
+        }
+        else {
+            # Output results
+            [PSCustomObject]@{
+                IPClass          = 'N/A'  # Class not applicable to IPv6
+                CIDR             = $cidr
+                NetworkAddress   = ConvertTo-IPv6 -int $networkInt
+                FirstUsableIP    = ConvertTo-IPv6 -int ($networkInt + 1)
+                LastUsableIP     = ConvertTo-IPv6 -int ($networkInt + $networkSize - 2)
+                BroadcastAddress = ConvertTo-IPv6 -int ($networkInt + $networkSize - 1)
+                UsableHostCount  = ($networkSize - 2).ToString()
+                SubnetMask       = ConvertTo-SubnetMaskIPv6 -prefix $prefix
+            }
         }
     }
     else {
@@ -510,26 +575,40 @@ function Get-NetAddressSpace {
         $subnetMask = ([math]::Pow(2, 32) - [math]::Pow(2, 32 - $prefix))
 
         $networkInt = $baseInt -band $subnetMask
-        $broadcastInt = $networkInt + $networkSize - 1
 
-        $firstUsableInt = $networkInt + 1
-        $lastUsableInt = $broadcastInt - 1
+        if ($showSubnets) {
+            # Show subnets within this range
+            $subnetPrefix = 24  # Example prefix length for subnets
+            $subnetSize = [math]::Pow(2, 32 - $subnetPrefix)
+            $subnetMask = ([math]::Pow(2, 32) - [math]::Pow(2, 32 - $subnetPrefix))
 
-        $firstUsableIP = ConvertTo-IPv4 -int $firstUsableInt
-        $lastUsableIP = ConvertTo-IPv4 -int $lastUsableInt
+            $currentSubnetInt = $networkInt
+            while ($currentSubnetInt -lt $networkInt + $networkSize) {
+                $subnetStart = $currentSubnetInt
+                $subnetEnd = [math]::Min($currentSubnetInt + $subnetSize - 1, $networkInt + $networkSize - 1)
 
-        $ipClass = Get-IPv4Class -ip $baseIP
+                if ($subnetEnd -gt $subnetStart) {
+                    $subnetStartIP = ConvertTo-IPv4 -int ($subnetStart + 1)
+                    $subnetEndIP = ConvertTo-IPv4 -int ($subnetEnd - 1)
 
-        # Output results
-        [PSCustomObject]@{
-            IPClass          = $ipClass
-            CIDR             = $cidr
-            NetworkAddress   = ConvertTo-IPv4 -int $networkInt
-            FirstUsableIP    = $firstUsableIP
-            LastUsableIP     = $lastUsableIP
-            BroadcastAddress = ConvertTo-IPv4 -int $broadcastInt
-            UsableHostCount  = $lastUsableInt - $firstUsableInt + 1
-            SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
+                    Write-Output "Subnet: $subnetStartIP - $subnetEndIP"
+                }
+
+                $currentSubnetInt = $currentSubnetInt + $subnetSize
+            }
+        }
+        else {
+            # Output results
+            [PSCustomObject]@{
+                IPClass          = Get-IPv4Class -ip $baseIP
+                CIDR             = $cidr
+                NetworkAddress   = ConvertTo-IPv4 -int $networkInt
+                FirstUsableIP    = ConvertTo-IPv4 -int ($networkInt + 1)
+                LastUsableIP     = ConvertTo-IPv4 -int ($networkInt + $networkSize - 2)
+                BroadcastAddress = ConvertTo-IPv4 -int ($networkInt + $networkSize - 1)
+                UsableHostCount  = ($networkSize - 2).ToString()
+                SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
+            }
         }
     }
 }
