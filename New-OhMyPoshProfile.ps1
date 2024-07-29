@@ -88,7 +88,7 @@ function Update-WinGetVersion {
         Write-Output `r "[Device Setup] -> Downloading WinGet Setup Files"
         forEach ($file in $downloadFileArray) {
             $fileName = $(Split-Path -Leaf $file)
-            $outFile = "$Env:Temp\$fileName"
+            $outFile = "$env:Temp\$fileName"
 
             Write-Output "[Device Setup] -> Downloading [$fileName]"
 
@@ -118,18 +118,18 @@ function Update-WinGetVersion {
 
             if ($fileName -like '*msixbundle') {
                 Write-Output "[Device Setup] -> Installing [$fileName]"
-                $appFile = $(Get-ChildItem -Path $Env:Temp | Where-Object 'Name' -like '*msixbundle').Name
-                $appLicXml = $(Get-ChildItem -Path $Env:Temp | Where-Object 'Name' -like '*xml').Name
+                $appFile = $(Get-ChildItem -Path $env:Temp | Where-Object 'Name' -like '*msixbundle').Name
+                $appLicXml = $(Get-ChildItem -Path $env:Temp | Where-Object 'Name' -like '*xml').Name
 
-                Add-AppProvisionedPackage -Online -PackagePath $Env:Temp\$appFile -LicensePath $Env:Temp\$appLicXml | Out-Null
-                Remove-Item -Path $Env:Temp\$appFile -Force ; Remove-Item -Path $Env:Temp\$appLicXml -Force
+                Add-AppProvisionedPackage -Online -PackagePath $env:Temp\$appFile -LicensePath $env:Temp\$appLicXml | Out-Null
+                Remove-Item -Path $env:Temp\$appFile -Force ; Remove-Item -Path $env:Temp\$appLicXml -Force
             }
         }
     }
 
     # WinGet CLI Update
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Package Manager Cache (WinGet)"
-    $wingetPath = "$Env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
+    $wingetPath = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
     Start-Process -Wait -FilePath $wingetPath -ArgumentList 'source reset --force' -NoNewWindow
     Start-Process -Wait -FilePath $wingetPath -ArgumentList 'source update' -NoNewWindow
 }
@@ -160,16 +160,16 @@ function Install-NerdFont {
         $folderName = $nerdFontFileName.Replace('.zip', '')
 
         $downloadUrl = $nerdFont.browser_download_url
-        $outFile = "$Env:Temp\$nerdFontZipName"
+        $outFile = "$env:Temp\$nerdFontZipName"
         $wc = New-Object net.webclient
         $wc.downloadFile($downloadUrl, $outFile)
 
-        Expand-Archive -Path $outFile -DestinationPath $Env:Temp\$folderName
+        Expand-Archive -Path $outFile -DestinationPath $env:Temp\$folderName
 
         # Install Nerd Font
         Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing Nerd Font [$nerdFontFileName]"
-        $fontFile = Get-ChildItem -Path $Env:Temp\$folderName | Where-Object 'Name' -like "*NerdFont-Regular.ttf"
-        Copy-Item -Path "$Env:Temp\$folderName\$($fontFile.Name)" -Destination $windowsFontPath
+        $fontFile = Get-ChildItem -Path $env:Temp\$folderName | Where-Object 'Name' -like "*NerdFont-Regular.ttf"
+        Copy-Item -Path "$env:Temp\$folderName\$($fontFile.Name)" -Destination $windowsFontPath
 
         $fontRegistryPath = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
         $fontEntry = $fontFile.Name # Modify this if the font is not TrueType
@@ -192,7 +192,7 @@ function Install-NerdFont {
         # Remove Zip Font Folder
         Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Cleaning Up Nerd Font [$nerdFontFileName]"
         Remove-Item -Path $outFile -Force
-        Remove-Item -Path "$Env:Temp\$folderName" -Recurse -Force
+        Remove-Item -Path "$env:Temp\$folderName" -Recurse -Force
     }
 }
 
@@ -275,7 +275,7 @@ function Install-WinGetApplications {
         $appCheck = winget.exe list --exact --query $app --accept-source-agreements
         If ($appCheck[-1] -notmatch $app) {
             Write-Output "[OhMyPoshProfile $scriptVersion] :: Installing [$app]"
-            $wingetPath = "$Env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
+            $wingetPath = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
             Start-Process -Wait -NoNewWindow -FilePath $wingetPath -ArgumentList "install" , "--silent", "--exact", "--query $app", "--accept-source-agreements"
             Write-Output "" # Required for script spacing
         }
@@ -288,7 +288,7 @@ function Install-WinGetApplications {
 function Set-PwshProfile {
     $pwshTheme = "$PSScriptRoot\quick-term-azure.omp.json"
     $pwshThemeName = Split-Path -Leaf $pwshTheme
-    Copy-Item -Path $pwshTheme -Destination "$env:POSH_THEMES_PATH\quick-term-azure.omp.json"
+    Copy-Item -Path $pwshTheme -Destination "$env:POSH_THEMES_PATH"
 
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Creating PowerShell Profile"
 
@@ -316,7 +316,7 @@ function Set-WindowsTerminal {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Updating Windows Terminal Configuration"
 
     $settingJson = "$PSScriptRoot\windows-terminal-settings.json"
-    $localSettingsPath = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    $localSettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     Copy-Item -Path $settingJson -Destination $localSettingsPath -Force
 
     $startDirectory = 'C:\Code'
@@ -331,8 +331,8 @@ function Set-CrossPlatformModuleSupport {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: PowerShell Module Cross Version Support"
 
     if ($host.Version.Major -eq '5') {
-        if (Test-Path -Path "$Env:UserProfile\Documents\PowerShell\Modules") {
-            Remove-Item -Path "$Env:UserProfile\Documents\PowerShell\Modules" -Recurse -Force
+        if (Test-Path -Path "$env:UserProfile\Documents\PowerShell\Modules") {
+            Remove-Item -Path "$env:UserProfile\Documents\PowerShell\Modules" -Recurse -Force
         }
 
         # Target - Source Folder # Path - Link Folder
@@ -351,8 +351,8 @@ function Set-CrossPlatformModuleSupport {
     }
 
     if ($host.Version.Major -eq '7') {
-        if (Test-Path -Path "$Env:UserProfile\Documents\WindowsPowerShell\Modules" ) {
-            Remove-Item -Path "$Env:UserProfile\Documents\WindowsPowerShell\Modules" -Recurse -Force
+        if (Test-Path -Path "$env:UserProfile\Documents\WindowsPowerShell\Modules" ) {
+            Remove-Item -Path "$env:UserProfile\Documents\WindowsPowerShell\Modules" -Recurse -Force
         }
 
         # Target - Source Folder # Path - Link Folder
@@ -373,13 +373,13 @@ function Set-CrossPlatformModuleSupport {
 
 function Update-VSCodePwshModule {
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Patching VSCode PowerShell Module"
-    $vsCodeModulePath = "$Env:UserProfile\.vscode\extensions\$folderName"
     $psReadLineVersion = $(Find-Module -Name 'PSReadLine' | Select-Object Version).version.ToString()
-    $folderName = $(Get-ChildItem -Path "$Env:UserProfile\.vscode\extensions" -ErrorAction SilentlyContinue | Where-Object 'Name' -like 'ms-vscode.powershell*').name | Select-Object -Last 1
+    $folderName = $(Get-ChildItem -Path "$env:UserProfile\.vscode\extensions" -ErrorAction SilentlyContinue | Where-Object 'Name' -like 'ms-vscode.powershell*').name | Select-Object -Last 1
     if ([string]::IsNullOrEmpty($folderName)) {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module not found, Skipping patch!"
         return
     }
+    $vsCodeModulePath = "$env:UserProfile\.vscode\extensions\$folderName"
 
     Write-Output "[OhMyPoshProfile $scriptVersion] :: Checking if VSCode is running..."
     $vsCodeProcess = Get-Process -Name Code -ErrorAction SilentlyContinue
@@ -400,7 +400,6 @@ function Update-VSCodePwshModule {
 }
 
 function Register-PSProfile {
-    Clear-Host
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
 }
