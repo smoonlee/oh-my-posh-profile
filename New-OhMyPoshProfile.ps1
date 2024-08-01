@@ -225,7 +225,8 @@ function Install-PowerShellModules {
     Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 
     $pwshModule = @(
-        'Az'
+        'Az',
+        'Microsoft.Graph'
         'Posh-Git',
         'Terminal-Icons',
         'PSReadLine',
