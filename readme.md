@@ -11,6 +11,7 @@
 ## Release Notes
 
 > **JULY 2024** \
+> Added Microsoft.Graph Module \
 > Added Get-NetAddressSpace Function \
 > Fixed Update-PSProfile Function \
 > Created Release Pipeline for Production and Development \
@@ -60,6 +61,7 @@ While doing some research as well around `$PROFILE` tips and tricks, I found som
  - [Pester](https://www.powershellgallery.com/packages/Pester)
  - [Posh-Git](https://www.powershellgallery.com/packages/posh-git)
  - [Terminal-Icons](https://www.powershellgallery.com/packages/Terminal-Icons)
+ - [Microsoft.Graph](https://www.powershellgallery.com/packages?q=Microsoft+Graph)
  - [Az](https://www.powershellgallery.com/packages/Az)
 
 ### Winget Modules
