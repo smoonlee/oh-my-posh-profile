@@ -66,7 +66,7 @@ Version: 3.1.16.1 - August 2024 | Created Get-PSProfileVersion Function to check
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.1-dev'
+$profileVersion = '3.1.16.1-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
