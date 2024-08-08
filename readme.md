@@ -11,6 +11,8 @@
 ## Release Notes
 
 > **JULY 2024** \
+> Added Get-EolInfo \
+> Added Get-PSProfileVersion \
 > Added Microsoft.Graph Module \
 > Added Get-NetAddressSpace Function \
 > Fixed Update-PSProfile Function \
@@ -253,6 +255,265 @@ FirstUsableIP    : ::1
 LastUsableIP     : ::ffff:ffff:ffff:fffe
 BroadcastAddress : ::ffff:ffff:ffff:ffff
 UsableHostCount  : 18446744073709551614
+```
+
+[x]> Get-PSProfileVersion \
+Check the local profile version 
+```
+Latest Profile Release: 3.1.16.1-prod
+Current Local Profile Version: 3.1.16.1-prod
+```
+
+[x]> Get-EolInfo \
+Ever wanted to know when something is going to expire? The peoples over at https://endoflife.date and created a public API we can query 
+
+> This shows all version of a product for example `windows` or `windows-server`
+```
+Get-EolInfo -productName <productname>
+```
+
+> [!TIP]
+> After -productName, Hit Tab for the 334 possibilities? \
+> or check https://endoflife.date/ for a more visual overview
+
+```
+cycle           : 23H2
+releaseDate     : 2023-10-24
+eol             : 2025-10-24
+latest          : 10.0.25398
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-annual-channel
+lts             : False
+support         : 2025-04-24
+extendedSupport : False
+
+cycle           : 2022
+releaseDate     : 2021-08-18
+eol             : 2031-10-14
+latest          : 10.0.20348
+lts             : True
+link            : https://learn.microsoft.com/windows/release-health/windows-server-release-info
+support         : 2026-10-13
+extendedSupport : False
+
+cycle           : 20H2
+releaseDate     : 2020-10-20
+eol             : 2022-08-09
+latest          : 10.0.19042
+link            : https://learn.microsoft.com/lifecycle/announcements/windows-server-20h2-retiring
+lts             : False
+support         : 2022-08-09
+extendedSupport : False
+
+cycle           : 2004
+releaseDate     : 2020-05-27
+eol             : 2021-12-14
+latest          : 10.0.19041
+link            : https://learn.microsoft.com/lifecycle/announcements/windows-server-version-2004-end-of-servicing
+lts             : False
+support         : 2021-12-14
+extendedSupport : False
+
+cycle           : 1909
+releaseDate     : 2019-11-12
+eol             : 2021-05-11
+latest          : 10.0.18363
+link            : https://learn.microsoft.com/lifecycle/announcements/windows-server-1909-end-of-servicing
+lts             : False
+support         : 2021-05-11
+extendedSupport : False
+
+cycle           : 1903
+releaseDate     : 2019-05-21
+eol             : 2020-12-08
+latest          : 10.0.18362
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-semiannual-channel
+lts             : False
+support         : 2020-12-08
+extendedSupport : False
+
+cycle           : 1809
+releaseDate     : 2018-11-13
+eol             : 2020-11-10
+latest          : 10.0.17763
+link            : https://learn.microsoft.com/lifecycle/announcements/windows-server-1809-end-of-servicing
+lts             : False
+support         : 2020-11-10
+extendedSupport : False
+
+cycle           : 2019
+releaseDate     : 2018-11-13
+lts             : True
+eol             : 2029-01-09
+latest          : 10.0.17763
+link            : https://learn.microsoft.com/windows/release-health/windows-server-release-info
+support         : 2024-01-09
+extendedSupport : False
+
+cycle           : 1803
+releaseDate     : 2018-04-30
+eol             : 2019-11-12
+latest          : 10.0.17134
+link            : https://learn.microsoft.com/lifecycle/announcements/windows-server-1803-end-of-servicing
+lts             : False
+support         : 2019-11-12
+extendedSupport : False
+
+cycle           : 1709
+releaseDate     : 2017-10-17
+eol             : 2019-04-09
+latest          : 10.0.16299
+link            : https://techcommunity.microsoft.com/t5/windows-server-for-developers/windows-server-version-1709-lifecycle-announcement/m-p/379766
+lts             : False
+support         : 2019-04-09
+extendedSupport : False
+
+cycle           : 2016
+releaseDate     : 2016-10-15
+lts             : True
+eol             : 2027-01-12
+latest          : 10.0.14393
+link            : https://learn.microsoft.com/windows/release-health/windows-server-release-info
+support         : 2022-01-11
+extendedSupport : False
+
+cycle           : 2012-R2
+releaseDate     : 2013-11-25
+lts             : True
+eol             : 2023-10-10
+latest          : 6.3.9600
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-2012-r2
+support         : 2018-10-09
+extendedSupport : 2026-10-13
+
+cycle           : 2012
+lts             : True
+releaseDate     : 2012-10-30
+eol             : 2023-10-10
+latest          : 6.2.9200
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-2012
+support         : 2018-10-09
+extendedSupport : 2026-10-13
+
+cycle           : 2008-R2-SP1
+releaseDate     : 2011-02-22
+lts             : True
+eol             : 2020-01-14
+latest          : 6.1.7601
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-2008-r2
+support         : 2015-01-13
+extendedSupport : 2023-01-10
+
+cycle           : 2008-SP2
+releaseDate     : 2009-04-29
+lts             : True
+eol             : 2020-01-14
+latest          : 6.0.6003
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-2008
+support         : 2015-01-13
+extendedSupport : 2023-01-10
+
+cycle           : 2003-SP2
+releaseDate     : 2003-04-24
+lts             : True
+eol             : 2015-07-14
+latest          : 5.2.3790
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-2003-
+support         : 2010-07-13
+extendedSupport : False
+
+cycle           : 2000
+releaseDate     : 2000-02-17
+lts             : True
+eol             : 2010-07-13
+latest          : 5.0.2195
+link            :
+support         : 2005-06-30
+extendedSupport : False
+```
+
+
+
+> Get products with current vender support
+```
+Get-EolInfo -productName <productname> -activeSupport
+```
+
+```
+cycle           : 23H2
+releaseDate     : 2023-10-24
+eol             : 2025-10-24
+latest          : 10.0.25398
+link            : https://learn.microsoft.com/lifecycle/products/windows-server-annual-channel
+lts             : False
+support         : 2025-04-24
+extendedSupport : False
+
+cycle           : 2022
+releaseDate     : 2021-08-18
+eol             : 2031-10-14
+latest          : 10.0.20348
+lts             : True
+link            : https://learn.microsoft.com/windows/release-health/windows-server-release-info
+support         : 2026-10-13
+extendedSupport : False
+
+cycle           : 2019
+releaseDate     : 2018-11-13
+lts             : True
+eol             : 2029-01-09
+latest          : 10.0.17763
+link            : https://learn.microsoft.com/windows/release-health/windows-server-release-info
+support         : 2024-01-09
+extendedSupport : False
+
+cycle           : 2016
+releaseDate     : 2016-10-15
+lts             : True
+eol             : 2027-01-12
+latest          : 10.0.14393
+link            : https://learn.microsoft.com/windows/release-health/windows-server-release-info
+support         : 2022-01-11
+extendedSupport : False
+
+
+```
+
+> Get products with Long Term Services/Support 
+```
+Get-EolInfo -productVersion <productname> -ltsSupport
+```
+
+```
+cycle             : 24.04
+codename          : Noble Numbat
+lts               : True
+releaseDate       : 2024-04-25
+eol               : 2029-04-25
+latest            : 24.04
+latestReleaseDate : 2024-04-25
+support           : 2029-04-25
+extendedSupport   : 2036-04-25
+
+cycle             : 22.04
+codename          : Jammy Jellyfish
+lts               : True
+releaseDate       : 2022-04-21
+eol               : 2027-04-01
+latest            : 22.04.4
+latestReleaseDate : 2024-02-22
+support           : 2024-09-30
+extendedSupport   : 2032-04-09
+
+cycle             : 20.04
+codename          : Focal Fossa
+lts               : True
+releaseDate       : 2020-04-23
+eol               : 2025-04-02
+latest            : 20.04.6
+latestReleaseDate : 2023-03-23
+support           : 2022-10-01
+extendedSupport   : 2030-04-02
+
 ```
 
 ## Windows Terminal Nerd Font
