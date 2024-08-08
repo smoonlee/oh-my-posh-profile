@@ -61,10 +61,11 @@ Version: 3.1.14.3 - July 2024 | Updated Update-PSProfile, added Return Happy che
 Version: 3.1.14.4 - July 2024 | Updated Update-PSProfile, Changed Initial Function Write-Output to 'Checking for PSProfile Release.'
 Version: 3.1.15 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation and showSubnet and IPv6 Support
 Version: 3.1.15.1 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation and showSubnet and IPv6 Support (Small fixes)
+version: 3.1.16 - August 2024 | Created Get-EolInfo Function for End of Life Information https://endoflife.date/
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.15.1-prod'
+$profileVersion = '3.1.16-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -612,4 +613,92 @@ function Get-NetConfig {
             }
         }
     }
+}
+
+# Function - Get End of Life Information
+function Get-EolInfo {
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidateSet(
+            'akeneo-pim', 'alibaba-dragonwell', 'almalinux', 'alpine', 'amazon-cdk', 'amazon-corretto',
+            'amazon-eks', 'amazon-glue', 'amazon-linux', 'amazon-neptune', 'amazon-rds-mariadb',
+            'amazon-rds-mysql', 'amazon-rds-postgresql', 'android', 'angular', 'angularjs', 'ansible',
+            'ansible-core', 'antix', 'apache', 'apache-activemq', 'apache-airflow', 'apache-apisix',
+            'apache-camel', 'apache-cassandra', 'apache-flink', 'apache-groovy', 'apache-hadoop',
+            'apache-hop', 'apache-kafka', 'apache-lucene', 'apache-spark', 'apache-struts',
+            'api-platform', 'apple-watch', 'arangodb', 'argo-cd', 'artifactory', 'aws-lambda',
+            'azul-zulu', 'azure-devops-server', 'azure-kubernetes-service', 'bazel', 'beats',
+            'bellsoft-liberica', 'blender', 'bootstrap', 'bun', 'cakephp', 'calico', 'centos',
+            'centos-stream', 'centreon', 'cert-manager', 'cfengine', 'chef-infra-client',
+            'chef-infra-server', 'citrix-vad', 'ckeditor', 'clamav', 'cockroachdb', 'coder',
+            'coldfusion', 'composer', 'confluence', 'consul', 'containerd', 'contao', 'contour',
+            'cortex-xdr', 'cos', 'couchbase-server', 'craft-cms', 'dbt-core', 'dce', 'debian',
+            'dependency-track', 'devuan', 'django', 'docker-engine', 'dotnet', 'dotnetfx',
+            'drupal', 'drush', 'eclipse-jetty', 'eclipse-temurin', 'elasticsearch', 'electron',
+            'elixir', 'emberjs', 'envoy', 'erlang', 'esxi', 'etcd', 'eurolinux', 'exim',
+            'fairphone', 'fedora', 'ffmpeg', 'filemaker', 'firefox', 'fluent-bit', 'flux',
+            'fortios', 'freebsd', 'gerrit', 'gitlab', 'go', 'goaccess', 'godot', 'google-kubernetes-engine',
+            'google-nexus', 'gorilla', 'graalvm', 'gradle', 'grafana', 'grafana-loki', 'grails',
+            'graylog', 'gstreamer', 'haproxy', 'harbor', 'hashicorp-vault', 'hbase', 'horizon',
+            'ibm-aix', 'ibm-i', 'ibm-semeru-runtime', 'icinga', 'icinga-web', 'intel-processors',
+            'internet-explorer', 'ionic', 'ios', 'ipad', 'ipados', 'iphone', 'isc-dhcp', 'istio',
+            'jekyll', 'jenkins', 'jhipster', 'jira-software', 'joomla', 'jquery', 'jreleaser',
+            'kde-plasma', 'keda', 'keycloak', 'kibana', 'kindle', 'kirby', 'kong-gateway',
+            'kotlin', 'kubernetes', 'kubernetes-csi-node-driver-registrar', 'kubernetes-node-feature-discovery',
+            'kuma', 'kyverno', 'laravel', 'libreoffice', 'lineageos', 'linux', 'linuxmint',
+            'log4j', 'logstash', 'looker', 'lua', 'macos', 'mageia', 'magento', 'mariadb',
+            'mastodon', 'matomo', 'mattermost', 'mautic', 'maven', 'mediawiki', 'meilisearch',
+            'memcached', 'micronaut', 'microsoft-build-of-openjdk', 'mongodb', 'moodle',
+            'motorola-mobility', 'msexchange', 'mssqlserver', 'mulesoft-runtime', 'mxlinux',
+            'mysql', 'neo4j', 'neos', 'netbsd', 'nextcloud', 'nextjs', 'nexus', 'nginx',
+            'nix', 'nixos', 'nodejs', 'nokia', 'nomad', 'numpy', 'nutanix-aos', 'nutanix-files',
+            'nutanix-prism', 'nuxt', 'nvidia', 'nvidia-gpu', 'office', 'oneplus', 'openbsd',
+            'openjdk-builds-from-oracle', 'opensearch', 'openssl', 'opensuse', 'opentofu',
+            'openvpn', 'openwrt', 'openzfs', 'opnsense', 'oracle-apex', 'oracle-database',
+            'oracle-jdk', 'oracle-linux', 'oracle-solaris', 'ovirt', 'pangp', 'panos', 'pci-dss',
+            'perl', 'photon', 'php', 'phpbb', 'phpmyadmin', 'pixel', 'plesk', 'pnpm',
+            'pop-os', 'postfix', 'postgresql', 'postmarketos', 'powershell', 'privatebin',
+            'prometheus', 'protractor', 'proxmox-ve', 'puppet', 'python', 'qt', 'quarkus-framework',
+            'quasar', 'rabbitmq', 'rails', 'rancher', 'raspberry-pi', 'react', 'react-native',
+            'readynas', 'red-hat-openshift', 'redhat-build-of-openjdk', 'redhat-jboss-eap',
+            'redhat-satellite', 'redis', 'redmine', 'rhel', 'robo', 'rocket-chat', 'rocky-linux',
+            'ros', 'ros-2', 'roundcube', 'ruby', 'rust', 'salt', 'samsung-mobile', 'sapmachine',
+            'scala', 'sharepoint', 'shopware', 'silverstripe', 'slackware', 'sles', 'solr',
+            'sonar', 'sourcegraph', 'splunk', 'spring-boot', 'spring-framework', 'sqlite',
+            'squid', 'steamos', 'surface', 'suse-manager', 'symfony', 'tails', 'tarantool',
+            'telegraf', 'terraform', 'tomcat', 'traefik', 'twig', 'typo3', 'ubuntu', 'umbraco',
+            'unity', 'unrealircd', 'varnish', 'vcenter', 'veeam-backup-and-replication',
+            'visionos', 'visual-cobol', 'visual-studio', 'vmware-cloud-foundation',
+            'vmware-harbor-registry', 'vmware-srm', 'vue', 'vuetify', 'wagtail', 'watchos',
+            'weechat', 'windows', 'windows-embedded', 'windows-nano-server', 'windows-server',
+            'windows-server-core', 'wireshark', 'wordpress', 'xcp-ng', 'yarn', 'yocto',
+            'zabbix', 'zerto', 'zookeeper'
+        )]
+        [string]$productName,
+
+        [Parameter()]
+        [switch]$activeSupport,
+
+        [Parameter()]
+        [switch]$ltsSupport
+    )
+
+    $eolUrl = "https://endoflife.date/api/$productName"
+    $eolInfo = Invoke-RestMethod -Uri $eolUrl
+
+    # Get the current date
+    $currentDate = Get-Date
+
+    # Apply filtering based on parameters
+    if ($ltsSupport) {
+        # Filter only LTS versions
+        $eolInfo = $eolInfo | Where-Object { $_.Lts -eq $true }
+    }
+
+    if ($activeSupport) {
+        # Filter out versions that have reached EOL on or before the current date
+        $eolInfo = $eolInfo | Where-Object { [DateTime]$_.eol -gt $currentDate }
+    }
+
+    $eolInfo
 }
