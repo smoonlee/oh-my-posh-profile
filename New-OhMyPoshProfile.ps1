@@ -269,7 +269,9 @@ function Install-WinGetApplications {
         'Microsoft.Azure.Kubelogin',
         'Kubernetes.kubectl',
         'Helm.Helm',
-        'Ookla.Speedtest.CLI'
+        'Ookla.Speedtest.CLI',
+        'Hashicorp.Terraform',
+        'Amazon.AWSCLI'
     )
 
     ForEach ($app in $winGetApps) {
@@ -287,7 +289,7 @@ function Install-WinGetApplications {
 }
 
 function Set-PwshProfile {
-    $pwshTheme = "$PSScriptRoot\quick-term-azure.omp.json"
+    $pwshTheme = "$PSScriptRoot\quick-term-cloud.omp.json"
     $pwshThemeName = Split-Path -Leaf $pwshTheme
     Copy-Item -Path $pwshTheme -Destination "$env:POSH_THEMES_PATH"
 
@@ -382,22 +384,29 @@ function Update-VSCodePwshModule {
     }
     $vsCodeModulePath = "$env:UserProfile\.vscode\extensions\$folderName"
 
-    Write-Output "[OhMyPoshProfile $scriptVersion] :: Checking if VSCode is running..."
-    $vsCodeProcess = Get-Process -Name Code -ErrorAction SilentlyContinue
-    if ($vsCodeProcess) {
-        Write-Warning "Please close Visual Studio Code before continuing, Skipping VSCode PowerShell Module patch!!"
-        return
-    }
+    if (!(Get-ChildItem -Path $vsCodeModulePath\modules\PSReadLine | Where-Object 'Name' -like '2.3.5' )) {
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: Checking if VSCode is running..."
+        $vsCodeProcess = Get-Process -Name Code -ErrorAction SilentlyContinue
+        if ($vsCodeProcess) {
+            Write-Warning "Please close Visual Studio Code before continuing, Skipping VSCode PowerShell Module patch!!"
+            return
+        }
 
-    Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode not running, Patching PowerShell Module [$folderName]" `r
-    Write-Output "The PowerShell Module Extension [$folderName], Uses PSReadline 2.4.0 Beta."
-    Write-Output "Using 2.4.0 Beta you get this error: 'Assembly with same name is already loaded'"
-    Write-Output "The OhMyPoshProfile setup scripts installs the latest stable version of PSReadline [$psReadLineVersion]"
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode not running, Patching PowerShell Module [$folderName]" `r
+        Write-Output "The PowerShell Module Extension [$folderName], Uses PSReadline 2.4.0 Beta."
+        Write-Output "Using 2.4.0 Beta you get this error: 'Assembly with same name is already loaded'"
+        Write-Output "The OhMyPoshProfile setup scripts installs the latest stable version of PSReadline [$psReadLineVersion]"
 
-    if (Test-Path -Path "$vsCodeModulePath\modules\PSReadLine" ) {
-        Remove-Item -Path "$vsCodeModulePath\modules\PSReadLine\2.4.0" -Recurse -Force
+        if (Test-Path -Path "$vsCodeModulePath\modules\PSReadLine\2.4.0" ) {
+            Remove-Item -Path "$vsCodeModulePath\modules\PSReadLine\2.4.0" -Recurse -Force
+        }
+
+        # Check if 2.3.5 is not installed
         Save-Module -Name 'PSReadLine' -Path "$vsCodeModulePath\modules" -Force
+    } else {
+        Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module is already patched"
     }
+
 }
 
 function Register-PSProfile {
