@@ -150,6 +150,18 @@
           "properties": {
             "source": "pwsh"
           }
+        },
+        {
+          "foreground": "#d75f00",
+          "style": "plain",
+          "template": "||",
+          "type": "text"
+        },
+        {
+          "style": "powerline",
+          "foreground": "#ffffff",
+          "template": "\ue7ad : {{.Profile}}{{ if .Region }}@{{ .Region }}{{ end }}",
+          "type": "aws"
         }
       ],
       "type": "prompt"
