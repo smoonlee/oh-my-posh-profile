@@ -64,15 +64,17 @@ Version: 3.1.15.1 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generati
 version: 3.1.16 - August 2024 | Created Get-EolInfo Function for End of Life Information https://endoflife.date/
 Version: 3.1.16.1 - August 2024 | Created Get-PSProfileVersion Function to check latest release version
 Version: 3.1.16.2 - August 2024 | Created Get-PSProfileTheme
+Version: 3.1.16.3 - August 2024 | Updated Get-PSProfileVersion and Update-PSProfile to show change log
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.2-dev'
+$profileVersion = '3.1.16.3-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
 $newProfileReleaseTag = $(Invoke-RestMethod -Uri $gitRepositoryUrl/latest).tag_name
 $newProfileReleaseUrl = $(Invoke-RestMethod -Uri $gitRepositoryUrl/latest).assets.browser_download_url
+$newProfileReleaseNotes = $(Invoke-RestMethod -Uri $gitRepositoryUrl/latest).body
 
 # Import PowerShell Modules
 Import-Module -Name 'Posh-Git'
@@ -253,23 +255,30 @@ function Get-PSProfileTheme {
 # Function - Get PowerShell Profile Version
 function Get-PSProfileVersion {
     $newProfileReleases = Invoke-RestMethod -Uri $gitRepositoryUrl
-    $newProfilePreRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Property published_at -Descending
-    $newProfilePreReleaseTag = $newProfilePreRelease[0].tag_name
-
-    Write-Output "Latest Profile Release: $newProfilePreReleaseTag"
-    Write-Output "Current Local Profile Version: $profileVersion"
+    $newProfileStableRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Property published_at -Descending
+    $newProfileDevRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Property published_at -Descending
+    $newProfileReleaseTag = $newProfileStableRelease[0].tag_name
+    $newProfileDevReleaseTag = $newProfileDevRelease[0].tag_name
+    
+    Write-Output "Current Local Profile Version: $profileVersion" `r
+    Write-Output "Latest Stable Profile Release: $newProfileReleaseTag"
+    Write-Output "Latest Dev Profile Release: $newProfileDevReleaseTag"
 }
 
 # Function - Download PSProfile [Prod] or [Dev] Release
 function Get-PSProfileUpdate {
     param (
         [string] $profileRelease,
+        [string] $profileReleaseNotes,
         [string] $profileDownloadUrl
     )
 
     Write-Output "Checking for PSProfile Release..." `r
     Write-Output "Current Profile Version: $profileVersion"
     Write-Output "New Profile Version: $profileRelease"
+    Write-Output "PSProfile Change Log:"
+    Write-Output "$profileReleaseNotes"
+
 
     # Check if the profile is already up to date
     if ($profileVersion -match $profileRelease) {
@@ -313,16 +322,17 @@ function Update-PSProfile {
         $newProfileReleases = Invoke-RestMethod -Uri $gitRepositoryUrl
         $newProfilePreRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Property published_at -Descending
         $newProfilePreReleaseTag = $newProfilePreRelease[0].tag_name
+        $newProfilePreReleaseReleaseNotes = $newProfilePreRelease[0].body
         $newProfilePreReleaseUrl = $newProfilePreRelease[0].assets.browser_download_url
 
         # Get Latest Profile Release
-        Get-PSProfileUpdate -profileRelease $newProfilePreReleaseTag -profileDownloadUrl $newProfilePreReleaseUrl
+        Get-PSProfileUpdate -profileRelease $newProfilePreReleaseTag -profileDownloadUrl $newProfilePreReleaseUrl -profileReleaseNotes $newProfilePreReleaseReleaseNotes
 
         return
     }
 
     # Get Latest Profile Release
-    Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl
+    Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl -profileReleaseNotes $newProfileReleaseReleaseNotes
 }
 
 # Function - Update WinGet Applications
