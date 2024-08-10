@@ -10,9 +10,15 @@
 
 ## Release Notes
 
-> **JULY 2024** \
+> **AUGUST 2024** \
+> Updated Oh My Posh Theme, Added AWS Support, Renamed to quick-term-cloud.omp.json
+> Updated New-OhMyPoshProfile.ps1 \
+> Added Amazon.AWSCLI WinGet Package \
+> Added Hashicorp.Terraform WinGet Package \
 > Added Get-EolInfo \
-> Added Get-PSProfileVersion \
+> Added Get-PSProfileVersion
+>
+> **JULY 2024** \
 > Added Microsoft.Graph Module \
 > Added Get-NetAddressSpace Function \
 > Fixed Update-PSProfile Function \
@@ -20,11 +26,11 @@
 > Added Update-PSProfile & Register-PSProfile \
 > Added Get-AksVersion Function \
 > Updated Remove-GitBranch \
-> Script Formatting Improvements 
+> Script Formatting Improvements
 >
 > **JUNE 2024** \
 > Added Get-DnsResult Function \
-> Renamed Get-PublicIPAddress to Get-MyPublicIP 
+> Renamed Get-PublicIPAddress to Get-MyPublicIP
 >
 > **MAY 2024** \
 > Rebuilt Functions for Installation \
@@ -76,6 +82,8 @@ While doing some research as well around `$PROFILE` tips and tricks, I found som
  - [Kubernetes.kubectl](https://winstall.app/apps/Kubernetes.kubectl)
  - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
  - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
+ - [Hashicorp.Terraform](https://winstall.app/apps/Hashicorp.Terraform)
+ - [Amazon.AWSCLI](https://winstall.app/apps/Amazon.AWSCLI)
 
 ### PowerShell Functions
 
@@ -161,7 +169,7 @@ Hugo (Extended) Hugo.Hugo.Extended 0.125.5 0.125.6   winget
 1 upgrades available.
 ```
 
-[x]> Remove-GitBranch (Singe Branch) (custom Default Branch) 
+[x]> Remove-GitBranch (Singe Branch) (custom Default Branch)
 <br>
 
 For example, If you are not using `main`
@@ -258,14 +266,14 @@ UsableHostCount  : 18446744073709551614
 ```
 
 [x]> Get-PSProfileVersion \
-Check the local profile version 
+Check the local profile version
 ```
 Latest Profile Release: 3.1.16.1-prod
 Current Local Profile Version: 3.1.16.1-prod
 ```
 
 [x]> Get-EolInfo \
-Ever wanted to know when something is going to expire? The peoples over at https://endoflife.date and created a public API we can query 
+Ever wanted to know when something is going to expire? The peoples over at https://endoflife.date and created a public API we can query
 
 > This shows all version of a product for example `windows` or `windows-server`
 ```
@@ -478,7 +486,7 @@ extendedSupport : False
 
 ```
 
-> Get products with Long Term Services/Support 
+> Get products with Long Term Services/Support
 ```
 Get-EolInfo -productVersion <productname> -ltsSupport
 ```
@@ -556,7 +564,7 @@ d-----        07/05/2022     06:42                PSReadLine
 
 <details>
 <summary> New Device Setup </summary>
- 
+
 <br>
 Ensure that you can execute scripts on your local machine
 <br>
