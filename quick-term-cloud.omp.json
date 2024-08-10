@@ -160,7 +160,7 @@
         {
           "style": "powerline",
           "foreground": "#ffffff",
-          "template": "\ue7ad : {{.Profile}}{{ if .Region }}@{{ .Region }}{{ end }}",
+          "template": " \ue7ad : {{.Profile}}{{ if .Region }}@{{ .Region }}{{ end }}",
           "type": "aws"
         }
       ],
