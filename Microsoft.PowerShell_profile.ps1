@@ -63,10 +63,11 @@ Version: 3.1.15 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation
 Version: 3.1.15.1 - July 2024 | Updated Get-NetConfig, Added CIDR Table Generation and showSubnet and IPv6 Support (Small fixes)
 version: 3.1.16 - August 2024 | Created Get-EolInfo Function for End of Life Information https://endoflife.date/
 Version: 3.1.16.1 - August 2024 | Created Get-PSProfileVersion Function to check latest release version
+Version: 3.1.16.2 - August 2024 | Created Get-PSProfileTheme
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.1-prod'
+$profileVersion = '3.1.16.2-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -94,7 +95,7 @@ if ($profileVersion -ne $newProfileReleaseTag) {
 }
 
 # Load Oh My Posh Application
-oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\quick-term-azure.omp.json" | Invoke-Expression
+oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\themeNameHere" | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
 $env:POSH_AZURE_ENABLED = $true
@@ -244,6 +245,21 @@ function Register-PSProfile {
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
 }
 
+# Function - Get PowerShell Profile Theme
+function Get-PSProfileTheme {
+    Write-Output "Current Theme: $env:POSH_THEME "
+}
+
+# Function - Get PowerShell Profile Version
+function Get-PSProfileVersion {
+    $newProfileReleases = Invoke-RestMethod -Uri $gitRepositoryUrl
+    $newProfilePreRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Property published_at -Descending
+    $newProfilePreReleaseTag = $newProfilePreRelease[0].tag_name
+
+    Write-Output "Latest Profile Release: $newProfilePreReleaseTag"
+    Write-Output "Current Local Profile Version: $profileVersion"
+}
+
 # Function - Download PSProfile [Prod] or [Dev] Release
 function Get-PSProfileUpdate {
     param (
@@ -284,16 +300,6 @@ function Get-PSProfileUpdate {
 
     # Reload PowerShell Profile
     Register-PSProfile
-}
-
-# Function - Get PowerShell Profile Version
-function Get-PSProfileVersion {
-    $newProfileReleases = Invoke-RestMethod -Uri $gitRepositoryUrl
-    $newProfilePreRelease = $newProfileReleases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Property published_at -Descending
-    $newProfilePreReleaseTag = $newProfilePreRelease[0].tag_name
-
-    Write-Output "Latest Profile Release: $newProfilePreReleaseTag"
-    Write-Output "Current Local Profile Version: $profileVersion"
 }
 
 # Function - Update PowerShell Profile
