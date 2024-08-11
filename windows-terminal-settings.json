@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -16,17 +16,17 @@
             "keys": "ctrl+v"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         }
     ],
     "copyFormatting": "none",
@@ -34,20 +34,20 @@
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "initialCols": 130,
     "initialRows": 35,
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "colorScheme": "Solarized Dark",
             "cursorShape": "underscore",
             "elevate": false,
-            "font": 
+            "font":
             {
                 "face": "CaskaydiaCove NF",
                 "size": 9.0
@@ -56,7 +56,7 @@
             "startingDirectory": "C:\\Code",
             "useAcrylic": false
         },
-        "list": 
+        "list":
         [
             {
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -88,11 +88,19 @@
                 "hidden": false,
                 "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
                 "name": "Ubuntu 22.04 LTS",
-                "tabTitle": "Ubuntu 22.04.3 LTS"
+                "tabTitle": "Ubuntu 22.04 LTS"
+            },
+            {
+                "commandline": "ubuntu2404.exe",
+                "guid": "{fd7f431d-e5b9-482e-99d3-5928e0e6335c}",
+                "hidden": false,
+                "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
+                "name": "Ubuntu 24.04 LTS",
+                "tabTitle": "Ubuntu 24.04 LTS"
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
