@@ -11,6 +11,7 @@
 ## Release Notes
 
 > **AUGUST 2024** \
+> Verbose Formatting Improvements for Update-PSProfile
 > Updated Oh My Posh Theme, Added AWS Support, Renamed to quick-term-cloud.omp.json
 > Updated New-OhMyPoshProfile.ps1 \
 > Added Amazon.AWSCLI WinGet Package \
