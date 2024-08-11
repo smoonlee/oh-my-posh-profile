@@ -66,10 +66,11 @@ Version: 3.1.16.1 - August 2024 | Created Get-PSProfileVersion Function to check
 Version: 3.1.16.2 - August 2024 | Created Get-PSProfileTheme
 Version: 3.1.16.3 - August 2024 | Updated Get-PSProfileVersion and Update-PSProfile to show change log
 Version: 3.1.16.4 - August 2024 | Fixed Update-PSProfile to show change log
+Version: 3.1.16.5 - August 2024 | Verbose Formatting for Change Log
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.4-dev'
+$profileVersion = '3.1.16.5-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -277,9 +278,8 @@ function Get-PSProfileUpdate {
     Write-Output "Checking for PSProfile Release..." `r
     Write-Output "Current Profile Version: $profileVersion"
     Write-Output "New Profile Version: $profileRelease"
-    Write-Output "PSProfile Change Log:"
+    Write-Output `r "PSProfile Change Log [$profileRelease]:"
     Write-Output "$profileReleaseNotes"
-
 
     # Check if the profile is already up to date
     if ($profileVersion -match $profileRelease) {
