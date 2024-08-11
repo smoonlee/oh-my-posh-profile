@@ -68,10 +68,11 @@ Version: 3.1.16.3 - August 2024 | Updated Get-PSProfileVersion and Update-PSProf
 Version: 3.1.16.4 - August 2024 | Fixed Update-PSProfile to show change log
 Version: 3.1.16.5 - August 2024 | Verbose Formatting for Change Log
 Version: 3.1.16.6 - August 2024 | Verbose Formatting for Change Log
+Version: 3.1.17 - August 2024 | GitHub Action Bump - No change made to profile
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.6-prod'
+$profileVersion = '3.1.17-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
