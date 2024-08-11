@@ -565,8 +565,10 @@ d-----        07/05/2022     06:42                PSReadLine
 
 <details>
 <summary> New Device Setup </summary>
-
 <br>
+ 
+**Open PowerShell\Windows Terminal in Administrative context, Required for NerdFont Installation.**
+
 Ensure that you can execute scripts on your local machine
 <br>
 
