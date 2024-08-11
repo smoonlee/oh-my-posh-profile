@@ -65,10 +65,11 @@ version: 3.1.16 - August 2024 | Created Get-EolInfo Function for End of Life Inf
 Version: 3.1.16.1 - August 2024 | Created Get-PSProfileVersion Function to check latest release version
 Version: 3.1.16.2 - August 2024 | Created Get-PSProfileTheme
 Version: 3.1.16.3 - August 2024 | Updated Get-PSProfileVersion and Update-PSProfile to show change log
+Version: 3.1.16.4 - August 2024 | Fixed Update-PSProfile to show change log
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.3-dev'
+$profileVersion = '3.1.16.4-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -332,7 +333,7 @@ function Update-PSProfile {
     }
 
     # Get Latest Profile Release
-    Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl -profileReleaseNotes $newProfileReleaseReleaseNotes
+    Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl -profileReleaseNotes $newProfileReleaseNotes
 }
 
 # Function - Update WinGet Applications
