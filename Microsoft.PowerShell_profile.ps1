@@ -67,10 +67,11 @@ Version: 3.1.16.2 - August 2024 | Created Get-PSProfileTheme
 Version: 3.1.16.3 - August 2024 | Updated Get-PSProfileVersion and Update-PSProfile to show change log
 Version: 3.1.16.4 - August 2024 | Fixed Update-PSProfile to show change log
 Version: 3.1.16.5 - August 2024 | Verbose Formatting for Change Log
+Version: 3.1.16.6 - August 2024 | Verbose Formatting for Change Log
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.16.5-dev'
+$profileVersion = '3.1.16.6-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -291,7 +292,7 @@ function Get-PSProfileUpdate {
     # Get Current Pwsh Theme
     $pwshThemeName = Split-Path $env:POSH_THEME -Leaf
 
-    Write-Output "Updating Profile..."
+    Write-Output `r "Updating Profile..."
     # Download the new profile
     Invoke-WebRequest -Uri $profileDownloadUrl -OutFile $PROFILE
 
