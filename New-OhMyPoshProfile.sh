@@ -121,7 +121,7 @@ function configureOhMyPoshTheme() {
     fi
 
     # Theme configuration
-    local themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-azure.omp.json"
+    local themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
     local themeName=$(basename "$themeProfile")
     local outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
 
