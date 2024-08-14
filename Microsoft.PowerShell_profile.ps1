@@ -70,11 +70,12 @@ Version: 3.1.16.5 - August 2024 | Verbose Formatting for Change Log
 Version: 3.1.16.6 - August 2024 | Verbose Formatting for Change Log
 Version: 3.1.17 - August 2024 | GitHub Action Bump - No change made to profile
 Version: 3.1.18 - August 2024 | Created Get-AzVMQuotaCheck
-version: 3.1.18.1 - August 2024 | Code Tidy and Get-AzVMQuotaCheck released
+Version: 3.1.18.1 - August 2024 | Code Tidy and Get-AzVMQuotaCheck released
+Version: 3.1.18.2 - August 2024 | Updated Get-AzVMQuotaCheck Logic
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.18.1-prod'
+$profileVersion = '3.1.18.2-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -796,7 +797,7 @@ function Get-AzVMQuotaCheck {
             "Standard_NV8as_v4", "Standard_NV16as_v4", "Standard_NV32as_v4", "Standard_NV48as_v4", "Standard_NV56as_v4",
             "Standard_NV72as_v4"
         )]
-        [string]$SkuType,
+        [string]$skuType,
 
         [Parameter(Mandatory = $false, Position = 3, HelpMessage = "Enter the subscription ID")]
         [string]$subscriptionId
@@ -805,11 +806,13 @@ function Get-AzVMQuotaCheck {
     if ($subscriptionId) {
 
         # List all subscriptions
-        $subscriptions = az account list --all --output json | ConvertFrom-Json
+        $subscriptions = az account list --output json --only-show-errors  | ConvertFrom-Json
         $tenantFriendlyName = az account show --query 'tenantDisplayName' -o tsv
+
         # Check if the provided subscriptionId exists in the list of subscriptions
         if ($subscriptions | Where-Object { $_.id -eq $subscriptionId }) {
             $subscriptionExists = $true
+            az account set --subscription $subscriptionId
         }
 
         if (!$subscriptionExists) {
@@ -835,17 +838,19 @@ function Get-AzVMQuotaCheck {
         }
     }
 
-    Write-Output "Checking quota for VM Family '$SkuType' in '$location'"
+    $subscriptionId = az account show --query 'id' -o tsv
+    $subscriptionFriendlyName = az account show --query 'name' -o tsv
+    Write-Output "Checking quota for VM Family '$skuType' in '$location' for subscription: $subscriptionId - $subscriptionFriendlyName"
     Write-Warning "This can take 2 minutes to check and report back!!"
 
     # Get the list of VM SKUs for the given location
     $SKUFamily = az vm list-skus --location $location --query "[?resourceType=='virtualMachines'].{Name:name, Family:family}" | ConvertFrom-Json
 
     # Check if the SkuType is valid in the given location
-    $familyInfo = $SKUFamily | Where-Object { $_.Name -eq $SkuType }
+    $familyInfo = $SKUFamily | Where-Object { $_.Name -eq $skuType }
 
     if ($familyInfo) {
-        Write-Output "VM Family '$SkuType' is available in the location '$location'. Checking quota..."
+        Write-Output "VM Family '$skuType' is available in the location '$location'. Checking quota..."
 
         # Get the quota information for the VM family
         $quotaInfo = az vm list-usage --location $location --query "[?name.value=='$($familyInfo.Family)']" | ConvertFrom-Json
@@ -856,10 +861,10 @@ function Get-AzVMQuotaCheck {
             }
         }
         else {
-            Write-Output "Quota information not available for VM Family '$SkuType'"
+            Write-Output "Quota information not available for VM Family '$skuType'"
         }
     }
     else {
-        Write-Output "VM Family '$SkuType' is not valid or not available in the location '$location'"
+        Write-Output "VM Family '$skuType' is not valid or not available in the location '$location'"
     }
 }
