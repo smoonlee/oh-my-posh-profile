@@ -11,6 +11,8 @@
 ## Release Notes
 
 > **AUGUST 2024** \
+> Scripts formatting and small improvements \
+> Created Get-AzVMQuotaCheck Function \
 > Verbose Formatting Improvements for Update-PSProfile \
 > Updated Oh My Posh Theme, Added AWS Support, Renamed to quick-term-cloud.omp.json
 > Updated New-OhMyPoshProfile.ps1 \
