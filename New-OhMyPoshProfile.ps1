@@ -251,8 +251,11 @@ function Install-PowerShellModules {
         }
 
         if ($module -eq 'PSReadLine') {
-            Write-Output "[OhMyPoshProfile $scriptVersion] :: Updating PSReadLine for PowerShell 5"
-            Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+            $moduleVersion = (Get-ChildItem -Path 'C:\Program Files\WindowsPowerShell\Modules\PSReadLine').Name
+            if (!($moduleVersion -contains '2.3.5')) {
+                Write-Output "[OhMyPoshProfile $scriptVersion] :: Updating PSReadLine for PowerShell 5"
+                Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+            }
         }
     }
 }
