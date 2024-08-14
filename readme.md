@@ -528,6 +528,32 @@ extendedSupport   : 2030-04-02
 
 ```
 
+[x]> Get-AzVMQuotaCheck
+> Function to check the CPU Quota Limits a current context Subscription
+
+```
+Get-AzVMQuotaCheck -location -skuType ''
+```
+
+```
+Checking quota for VM Family 'Standard_B4ms' in 'westeurope'
+WARNING: This can take 2 minutes to check and report back!!
+VM Family 'Standard_B4ms' is available in the location 'westeurope'. Checking quota...
+WARNING: Standard BS Family vCPUs: You have consumed 53/100 available quota
+```
+
+> Function to check the CPU Quota Limits on a specified Subscription
+```
+Get-AzVMQuotaCheck -location -skuType '' -subscriptionId ''
+```
+
+```
+Checking quota for VM Family 'Standard_B4ms' in 'westeurope' for subscription: <subscriptionId> - <subscriptionFriendlyName>
+WARNING: This can take 2 minutes to check and report back!!
+VM Family 'Standard_B4ms' is available in the location 'westeurope'. Checking quota...
+WARNING: Standard BS Family vCPUs: You have consumed 36/100 available quota
+```
+
 ## Windows Terminal Nerd Font
 
 Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts'
