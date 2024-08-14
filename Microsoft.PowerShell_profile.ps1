@@ -69,11 +69,12 @@ Version: 3.1.16.4 - August 2024 | Fixed Update-PSProfile to show change log
 Version: 3.1.16.5 - August 2024 | Verbose Formatting for Change Log
 Version: 3.1.16.6 - August 2024 | Verbose Formatting for Change Log
 Version: 3.1.17 - August 2024 | GitHub Action Bump - No change made to profile
-Version: 3.1.18 - August 2024 | Created Get-VMQuotaCheck
+Version: 3.1.18 - August 2024 | Created Get-AzVMQuotaCheck
+version: 3.1.18.1 - August 2024 | Code Tidy and Get-AzVMQuotaCheck released
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.18-dev'
+$profileVersion = '3.1.18.1-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
