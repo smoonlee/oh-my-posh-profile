@@ -14,7 +14,8 @@
 > Scripts formatting and small improvements \
 > Created Get-AzVMQuotaCheck Function \
 > Verbose Formatting Improvements for Update-PSProfile \
-> Updated Oh My Posh Theme, Added AWS Support, Renamed to quick-term-cloud.omp.json
+> Updated Oh My Posh Theme, Added AWS Support \
+> Renamed to quick-term-cloud.omp.json \
 > Updated New-OhMyPoshProfile.ps1 \
 > Added Amazon.AWSCLI WinGet Package \
 > Added Hashicorp.Terraform WinGet Package \
