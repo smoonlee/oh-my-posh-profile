@@ -72,10 +72,11 @@ Version: 3.1.17 - August 2024 | GitHub Action Bump - No change made to profile
 Version: 3.1.18 - August 2024 | Created Get-AzVMQuotaCheck
 Version: 3.1.18.1 - August 2024 | Code Tidy and Get-AzVMQuotaCheck released
 Version: 3.1.18.2 - August 2024 | Updated Get-AzVMQuotaCheck Logic
+Version: 3.1.18.3 - August 2024 | Added aksReleaseCalendar switch to Get-AksVersion Function
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.18.2-prod'
+$profileVersion = '3.1.18.3-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -277,7 +278,8 @@ function Get-PSProfileUpdate {
     param (
         [string] $profileRelease,
         [string] $profileReleaseNotes,
-        [string] $profileDownloadUrl
+        [string] $profileDownloadUrl,
+        [string] $profileVersion
     )
 
     Write-Output "Checking for PSProfile Release..." `r
@@ -320,7 +322,8 @@ function Get-PSProfileUpdate {
 # Function - Update PowerShell Profile
 function Update-PSProfile {
     param (
-        [switch] $devMode
+        [switch] $devMode,
+        [switch] $force
     )
 
     if ($devMode) {
@@ -336,6 +339,8 @@ function Update-PSProfile {
 
         return
     }
+
+    
 
     # Get Latest Profile Release
     Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl -profileReleaseNotes $newProfileReleaseNotes
@@ -416,7 +421,7 @@ function Get-DnsResult {
 # Function - Get Azure Kubernetes Service Version
 function Get-AksVersion {
     param (
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory = $false)]
         [ValidateSet("eastus", "eastus2", "southcentralus", "westus", "northcentralus",
             "westus2", "centralus", "westcentralus", "canadacentral", "canadaeast",
             "brazilsouth", "northeurope", "westeurope", "uksouth", "ukwest",
@@ -427,8 +432,15 @@ function Get-AksVersion {
             "southafricanorth", "southafricawest", "uaenorth", "uaecentral",
             "switzerlandnorth", "switzerlandwest", "germanynorth", "germanywestcentral",
             "norwayeast", "norwaywest")]
-        [string]$location
+        [string]$location,
+        [switch]$aksReleaseCalendar
     )
+
+    if ($aksReleaseCalendar) {
+        Start-Process "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar"
+        return
+    }
+
     az aks get-versions --location $location --output table
 }
 
