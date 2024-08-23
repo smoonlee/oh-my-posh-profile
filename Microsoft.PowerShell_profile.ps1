@@ -72,11 +72,12 @@ Version: 3.1.17 - August 2024 | GitHub Action Bump - No change made to profile
 Version: 3.1.18 - August 2024 | Created Get-AzVMQuotaCheck
 Version: 3.1.18.1 - August 2024 | Code Tidy and Get-AzVMQuotaCheck released
 Version: 3.1.18.2 - August 2024 | Updated Get-AzVMQuotaCheck Logic
-Version: 3.1.18.3 - August 2024 | Added aksReleaseCalendar switch to Get-AksVersion Function
+Version: 3.1.18.3 - August 2024 | Added aksReleaseCalendar switch to Get-AksVersion function
+Version: 3.1.18.4 - August 2024 | Small formatting change to Update-WindowsApps function.
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.18.3-prod'
+$profileVersion = '3.1.18.4-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -353,7 +354,7 @@ function Update-WindowsApps {
         return
     }
 
-    Write-Output "Updating Windows Applications..." `r
+    Write-Output `r "Updating Windows Applications..." `r
     winget upgrade --include-unknown --all --silent --force
 }
 
