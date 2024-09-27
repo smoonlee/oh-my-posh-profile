@@ -265,16 +265,17 @@ function Install-WinGetApplications {
     # Configure WinGet
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking Winget Modules"
     $winGetApps = @(
-        'JanDeDobbeleer.OhMyPosh',
-        'Git.Git',
-        'GitHub.cli',
-        'Microsoft.AzureCLI',
-        'Microsoft.Azure.Kubelogin',
-        'Kubernetes.kubectl',
-        'Helm.Helm',
-        'Ookla.Speedtest.CLI',
-        'Hashicorp.Terraform',
-        'Amazon.AWSCLI'
+        Amazon.AWSCLI
+        Git.Git
+        GitHub.cli
+        Helm.Helm
+        Hashicorp.Terraform
+        JanDeDobbeleer.OhMyPosh
+        Kubernetes.kubectl
+        Microsoft.Azure.Kubelogin
+        Microsoft.AzureCLI
+        Microsoft.VisualStudioCode.CLI
+        Ookla.Speedtest.CLI
     )
 
     ForEach ($app in $winGetApps) {
@@ -406,10 +407,10 @@ function Update-VSCodePwshModule {
 
         # Check if 2.3.5 is not installed
         Save-Module -Name 'PSReadLine' -Path "$vsCodeModulePath\modules" -Force
-    } else {
+    }
+    else {
         Write-Output "[OhMyPoshProfile $scriptVersion] :: VSCode PowerShell Module is already patched"
     }
-
 }
 
 function Register-PSProfile {
