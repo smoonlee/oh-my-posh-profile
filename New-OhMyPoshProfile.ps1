@@ -265,17 +265,17 @@ function Install-WinGetApplications {
     # Configure WinGet
     Write-Output `r "[OhMyPoshProfile $scriptVersion] :: Checking Winget Modules"
     $winGetApps = @(
-        Amazon.AWSCLI
-        Git.Git
-        GitHub.cli
-        Helm.Helm
-        Hashicorp.Terraform
-        JanDeDobbeleer.OhMyPosh
-        Kubernetes.kubectl
-        Microsoft.Azure.Kubelogin
-        Microsoft.AzureCLI
-        Microsoft.VisualStudioCode.CLI
-        Ookla.Speedtest.CLI
+        'Amazon.AWSCLI'
+        'Git.Git'
+        'GitHub.cli'
+        'Helm.Helm'
+        'Hashicorp.Terraform'
+        'JanDeDobbeleer.OhMyPosh'
+        'Kubernetes.kubectl'
+        'Microsoft.Azure.Kubelogin'
+        'Microsoft.AzureCLI'
+        'Microsoft.VisualStudioCode.CLI'
+        'Ookla.Speedtest.CLI'
     )
 
     ForEach ($app in $winGetApps) {
