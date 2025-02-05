@@ -8,48 +8,6 @@
 > #Requires -RunAsAdministrator \
 > This script requires execution as Administrator, for Nerd Font Installation!
 
-## Release Notes
-
-> **AUGUST 2024** \
-> Script formatting and small improvements \
-> Created Get-AzVMQuotaCheck Function \
-> Verbose Formatting Improvements for Update-PSProfile \
-> Updated Oh My Posh Theme, Added AWS Support \
-> Renamed to quick-term-cloud.omp.json \
-> Updated New-OhMyPoshProfile.ps1 \
-> Added Amazon.AWSCLI WinGet Package \
-> Added Hashicorp.Terraform WinGet Package \
-> Added Get-EolInfo \
-> Added Get-PSProfileVersion
->
-> **JULY 2024** \
-> Added Microsoft.Graph Module \
-> Added Get-NetAddressSpace Function \
-> Fixed Update-PSProfile Function \
-> Created Release Pipeline for Production and Development \
-> Added Update-PSProfile & Register-PSProfile \
-> Added Get-AksVersion Function \
-> Updated Remove-GitBranch \
-> Script Formatting Improvements
->
-> **JUNE 2024** \
-> Added Get-DnsResult Function \
-> Renamed Get-PublicIPAddress to Get-MyPublicIP
->
-> **MAY 2024** \
-> Rebuilt Functions for Installation \
-> Added custom PowerShell Functions: \
-> Get-PublicIP, \
-> Get-SystemUptime, \
-> Get-AzSystemUptime, \
-> Register-PSProfile, \
-> Update-WindowsApps, \
-> Remove-GitBranch \
-> Added Support for AKS Clusters \
-> Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete) \
-> Move PowerShell Modules back to User Documents \
-> Rebuilt WSL/Linux bash script
-
 ## Improvements Over Mk2
 
 Since the release of the Mk2 Profile back in August 2023, I've learnt and realised that the PowerShell modules don't need to be installed directly in the `C:\Program Files\WindowsPowerShell\Modules` folder to get cross platform/version support.
@@ -67,27 +25,151 @@ While doing some research as well around `$PROFILE` tips and tricks, I found som
 
 ### PowerShell Modules
 
- - [PackageManagement](https://www.powershellgallery.com/packages/PackageManagement)
- - [PowerShellGet](https://www.powershellgallery.com/packages/PowerShellGet)
- - [PSReadLine](https://www.powershellgallery.com/packages/PSReadLine)
- - [Pester](https://www.powershellgallery.com/packages/Pester)
- - [Posh-Git](https://www.powershellgallery.com/packages/posh-git)
- - [Terminal-Icons](https://www.powershellgallery.com/packages/Terminal-Icons)
- - [Microsoft.Graph](https://www.powershellgallery.com/packages?q=Microsoft+Graph)
- - [Az](https://www.powershellgallery.com/packages/Az)
+- [Az](https://www.powershellgallery.com/packages/Az)  
+- [Microsoft.Graph](https://www.powershellgallery.com/packages?q=Microsoft+Graph)  
+- [PackageManagement](https://www.powershellgallery.com/packages/PackageManagement)  
+- [Pester](https://www.powershellgallery.com/packages/Pester)  
+- [Posh-Git](https://www.powershellgallery.com/packages/posh-git)  
+- [PowerShellGet](https://www.powershellgallery.com/packages/PowerShellGet)  
+- [PSReadLine](https://www.powershellgallery.com/packages/PSReadLine)  
+- [PSRule](https://www.powershellgallery.com/packages/PSRule)  
+- [PSRule.Rules.Azure](https://www.powershellgallery.com/packages/PSRule.Rules.Azure)  
+- [Terminal-Icons](https://www.powershellgallery.com/packages/Terminal-Icons)  
+
 
 ### Winget Modules
 
- - [JanDeDobbeleer.OhMyPosh](https://winstall.app/apps/JanDeDobbeleer.OhMyPosh)
- - [Git.Git](https://winstall.app/apps/Git.Git)
- - [Github.Cli](https://winstall.app/apps/GitHub.cli)
- - [Microsoft.AzureCLI](https://winstall.app/apps/Microsoft.AzureCLI)
- - [Microsoft.Azure.Kubelogin](https://winstall.app/apps/Microsoft.Azure.Kubelogin)
- - [Kubernetes.kubectl](https://winstall.app/apps/Kubernetes.kubectl)
- - [Helm.Helm](https://winstall.app/apps/Helm.Helm)
- - [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)
- - [Hashicorp.Terraform](https://winstall.app/apps/Hashicorp.Terraform)
- - [Amazon.AWSCLI](https://winstall.app/apps/Amazon.AWSCLI)
+- [Amazon.AWSCLI](https://winstall.app/apps/Amazon.AWSCLI)  
+- [Git.Git](https://winstall.app/apps/Git.Git)  
+- [Github.Cli](https://winstall.app/apps/GitHub.cli)  
+- [Hashicorp.Terraform](https://winstall.app/apps/Hashicorp.Terraform)  
+- [Helm.Helm](https://winstall.app/apps/Helm.Helm)  
+- [JanDeDobbeleer.OhMyPosh](https://winstall.app/apps/JanDeDobbeleer.OhMyPosh)  
+- [Kubernetes.kubectl](https://winstall.app/apps/Kubernetes.kubectl)  
+- [Microsoft.Azure.Kubelogin](https://winstall.app/apps/Microsoft.Azure.Kubelogin)  
+- [Microsoft.AzureCLI](https://winstall.app/apps/Microsoft.AzureCLI)  
+- [Ookla.Speedtest.CLI](https://winstall.app/apps/Ookla.Speedtest.CLI)  
+
+## Profile Installation
+### Windows Terminal Nerd Font
+
+Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts'
+You can get yours here: [Nerd Font](https://www.nerdfonts.com/font-downloads)
+
+Using the `New-OhMyPoshProfile.ps1` it will auto install the `Cascadia Code` Font. \
+The font file which is installed is the: `CaskaydiaCoveNerdFont-Regular.ttf` \
+If you want to add this support to Visual Studio Code, you can update the Font Family:
+
+``` powershell
+'CenturyGothic', 'CaskaydiaCove Nerd Font'
+```
+
+### Profile Setup
+
+### -> Windows
+
+<details>
+<summary> New Device Setup </summary>
+<br>
+ 
+**Open PowerShell\Windows Terminal in Administrative context, Required for NerdFont Installation.**
+
+Ensure that you can execute scripts on your local machine
+<br>
+
+``` powershell
+Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned' -Force
+```
+
+Download and execute the New-PSProfile.ps1 script.
+
+``` powershell
+git clone https://github.com/smoonlee/oh-my-posh-profile.git ; Set-Location oh-my-posh-profile ; .\New-OhMyPoshProfile.ps1
+```
+</details>
+
+### -> Linux
+
+<details>
+<summary> New Device Setup </summary>
+<br>
+
+``` bash
+setupUrl='https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-OhMyPoshProfile.sh'
+curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh ; bash New-OhMyPoshProfile.sh
+```
+
+</details>
+
+<details>
+<summary> WSL :: Kubernetes </summary>
+<br>
+
+> **NOTE** \
+> Since Mk3, This is built into the setup script!
+
+You might need to create the `.kube` folder first.
+
+``` bash
+mkdir $HOME/.kube
+```
+
+Then create a symbolic link to the Windows `.kube` folder.
+
+> **NOTE** \
+> Please update the Users folder to match your Windows User folder
+
+``` bash
+ln -sf /mnt/c/Users/<username>/.kube/config $HOME/.kube/config
+```
+</details>
+<br>
+
+## Release Notes
+
+> **February 2025**
+ - Removed Get-AzVMQuota
+ - Improved Get-EolInfo Function
+ 
+> **August 2024**
+- Script formatting and small improvements
+- Created Get-AzVMQuotaCheck Function
+- Verbose Formatting Improvements for Update-PSProfile
+- Updated Oh My Posh Theme, Added AWS Support
+- Renamed to quick-term-cloud.omp.json
+- Updated New-OhMyPoshProfile.ps1
+- Added Amazon.AWSCLI WinGet Package
+- Added Hashicorp.Terraform WinGet Package
+- Added Get-EolInfo
+- Added Get-PSProfileVersion
+
+> **July 2024**
+- Added Microsoft.Graph Module 
+- Added Get-NetAddressSpace Function 
+- Fixed Update-PSProfile Function 
+- Created Release Pipeline for Production and Development 
+- Added Update-PSProfile & Register-PSProfile 
+- Added Get-AksVersion Function 
+- Updated Remove-GitBranch 
+- Script Formatting Improvements
+
+> **June 2024**
+- Added Get-DnsResult Function
+- Renamed Get-PublicIPAddress to Get-MyPublicIP
+
+> **May 2024** 
+- Rebuilt Functions for Installation
+- Added custom PowerShell Functions:
+- Created Get-PublicIP
+- Created Get-SystemUptime
+- Created Get-AzSystemUptime
+- Created Register-PSProfile
+- Created Update-WindowsApps
+- Created Remove-GitBranch
+- Created Added Support for AKS Clusters
+- Added Module Intellisense (Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete)
+- Move PowerShell Modules back to User Documents
+- Rebuilt WSL/Linux bash script
 
 ### PowerShell Functions
 
@@ -527,123 +609,3 @@ support           : 2022-10-01
 extendedSupport   : 2030-04-02
 
 ```
-
-[x]> Get-AzVMQuotaCheck
-> Function to check the CPU Quota Limits a current context Subscription
-
-```
-Get-AzVMQuotaCheck -location -skuType ''
-```
-
-```
-Checking quota for VM Family 'Standard_B4ms' in 'westeurope'
-WARNING: This can take 2 minutes to check and report back!!
-VM Family 'Standard_B4ms' is available in the location 'westeurope'. Checking quota...
-WARNING: Standard BS Family vCPUs: You have consumed 53/100 available quota
-```
-
-> Function to check the CPU Quota Limits on a specified Subscription
-```
-Get-AzVMQuotaCheck -location -skuType '' -subscriptionId ''
-```
-
-```
-Checking quota for VM Family 'Standard_B4ms' in 'westeurope' for subscription: <subscriptionId> - <subscriptionFriendlyName>
-WARNING: This can take 2 minutes to check and report back!!
-VM Family 'Standard_B4ms' is available in the location 'westeurope'. Checking quota...
-WARNING: Standard BS Family vCPUs: You have consumed 36/100 available quota
-```
-
-## Windows Terminal Nerd Font
-
-Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts'
-You can get yours here: [Nerd Font](https://www.nerdfonts.com/font-downloads)
-
-Using the `New-OhMyPoshProfile.ps1` it will auto install the `Cascadia Code` Font. \
-The font file which is installed is the: `CaskaydiaCoveNerdFont-Regular.ttf` \
-If you want to add this support to Visual Studio Code, you can update the Font Family:
-
-``` powershell
-'Consolas', 'Courier New', 'CaskaydiaCove Nerd Font'
-```
-
-## Pre Device Setup
-
-> [!IMPORTANT]
-> If you've used the v2 setup, You'll manually need to remove Modules from \
-> pwsh7 :: C:\Program Files\PowerShell\Modules \
-> pwsh5 :: C:\Program Files\WindowsPowerShell\Modules
-
-### PowerShell 5 default modules
-
-``` powershell
-Directory: C:\Program Files\WindowsPowerShell\Modules
-
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----        07/05/2022     06:42                Microsoft.PowerShell.Operation.Validation
-d-----        07/05/2022     06:42                PackageManagement
-d-----        07/05/2022     06:42                Pester
-d-----        07/05/2022     06:42                PowerShellGet
-d-----        07/05/2022     06:42                PSReadLine
-```
-
-## Profile Setup
-
-### -> Windows
-
-<details>
-<summary> New Device Setup </summary>
-<br>
- 
-**Open PowerShell\Windows Terminal in Administrative context, Required for NerdFont Installation.**
-
-Ensure that you can execute scripts on your local machine
-<br>
-
-``` powershell
-Set-ExecutionPolicy -Scope 'CurrentUser' -ExecutionPolicy 'RemoteSigned' -Force
-```
-
-Download and execute the New-PSProfile.ps1 script.
-
-``` powershell
-git clone https://github.com/smoonlee/oh-my-posh-profile.git ; Set-Location oh-my-posh-profile ; .\New-OhMyPoshProfile.ps1
-```
-</details>
-
-### -> Linux
-
-<details>
-<summary> New Device Setup </summary>
-<br>
-
-``` bash
-setupUrl='https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/New-OhMyPoshProfile.sh'
-curl -s $setupUrl -o $HOME/New-OhMyPoshProfile.sh ; bash New-OhMyPoshProfile.sh
-```
-
-</details>
-
-<details>
-<summary> WSL :: Kubernetes </summary>
-<br>
-
-> **NOTE** \
-> Since Mk3, This is built into the setup script!
-
-You might need to create the `.kube` folder first.
-
-``` bash
-mkdir $HOME/.kube
-```
-
-Then create a symbolic link to the Windows `.kube` folder.
-
-> **NOTE** \
-> Please update the Users folder to match your Windows User folder
-
-``` bash
-ln -sf /mnt/c/Users/<username>/.kube/config $HOME/.kube/config
-```
-</details>
