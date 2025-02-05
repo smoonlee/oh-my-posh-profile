@@ -75,10 +75,11 @@ Version: 3.1.18.2 - August 2024 | Updated Get-AzVMQuotaCheck Logic
 Version: 3.1.18.3 - August 2024 | Added aksReleaseCalendar switch to Get-AksVersion function
 Version: 3.1.18.4 - August 2024 | Small formatting change to Update-WindowsApps function.
 Version: 3.1.19 - February 2025 | Updated Get-EolInfo ProductName Array, Removed AzVMQuota Check
+Version: 3.1.19.1 - February 2025 | General Profile Improvements and Code Tiding
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.19-prod'
+$profileVersion = '3.1.19.1-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -107,17 +108,11 @@ if ($profileVersion -ne $newProfileReleaseTag) {
 }
 
 # Load Oh My Posh Application
-oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\themeNameHere" | Invoke-Expression
+oh-my-posh init powershell --config "$env:POSH_THEMES_PATH\quick-term-cloud.omp.json" | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
 $env:POSH_AZURE_ENABLED = $true
 $env:POSH_GIT_ENABLED = $true
-
-# Function - Get Public IP Address
-function Get-MyPublicIP {
-    $ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
-    $ip.Content
-}
 
 # Function - Azure CLI Tab Completion
 Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
@@ -136,6 +131,12 @@ Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
         [System.Management.Automation.CompletionResult]::new($_, $_, "ParameterValue", $_)
     }
     Remove-Item $completion_file, Env:\_ARGCOMPLETE_STDOUT_FILENAME, Env:\ARGCOMPLETE_USE_TEMPFILES, Env:\COMP_LINE, Env:\COMP_POINT, Env:\_ARGCOMPLETE, Env:\_ARGCOMPLETE_SUPPRESS_SPACE, Env:\_ARGCOMPLETE_IFS, Env:\_ARGCOMPLETE_SHELL
+}
+
+# Function - Get Public IP Address
+function Get-MyPublicIP {
+    $ip = Invoke-WebRequest -Uri 'https://ifconfig.me/ip'
+    $ip.Content
 }
 
 # Function - Get System Uptime
@@ -307,8 +308,8 @@ function Get-PSProfileUpdate {
     # Read the profile content
     $pwshProfile = Get-Content -Path $PROFILE -Raw
 
-    # Replace 'themeNameHere' with the current theme name, but only once
-    [regex]$pattern = "themeNameHere"
+    # Replace 'quick-term-cloud.omp.json' with the current theme name, but only once
+    [regex]$pattern = "quick-term-cloud.omp.json"
     $pwshProfile = $pattern.replace($pwshProfile, $pwshThemeName , 1)
 
     # Write the updated content back to the profile
@@ -342,8 +343,6 @@ function Update-PSProfile {
         return
     }
 
-
-
     # Get Latest Profile Release
     Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl -profileReleaseNotes $newProfileReleaseNotes
 }
@@ -369,7 +368,7 @@ function Remove-GitBranch {
 
     $allBranches = git branch | ForEach-Object { $_.Trim() }
     $allBranches = $allBranches -replace '^\* ', ''
-    $allBranches = $allBranches | Where-Object { $_ -notmatch 'main' -and $_ -notmatch 'dev-main' -and $_ -notmatch 'master' }
+    $allBranches = $allBranches | Where-Object { $_ -notmatch 'master' -and $_ -notmatch 'main' -and $_ -notmatch 'prod' -and $_ -notmatch 'dev-main' }
 
     #
     if (([string]::IsNullOrEmpty($allBranches))) {
@@ -411,8 +410,14 @@ function Remove-GitBranch {
 function Get-DnsResult {
     param (
         [Parameter(Mandatory = $true)]
-        [ValidateSet('UNKNOWN', 'A_AAAA', 'A', 'NS', 'MD', 'MF', 'CNAME', 'SOA', 'MB', 'MG', 'MR', 'NULL', 'WKS', 'PTR', 'HINFO', 'MINFO', 'MX', 'TXT', 'RP', 'AFSDB', 'X25', 'ISDN', 'RT', 'AAAA', 'SRV', 'DNAME', 'OPT', 'DS', 'RRSIG', 'NSEC', 'DNSKEY', 'DHCID', 'NSEC3', 'NSEC3PARAM', 'ANY', 'ALL', 'WINS')]
+        [ValidateSet(
+            'UNKNOWN', 'A_AAAA', 'A', 'NS', 'MD', 'MF', 'CNAME', 'SOA', 'MB', 'MG', 'MR',
+            'NULL', 'WKS', 'PTR', 'HINFO', 'MINFO', 'MX', 'TXT', 'RP', 'AFSDB', 'X25', 'ISDN',
+            'RT', 'AAAA', 'SRV', 'DNAME', 'OPT', 'DS', 'RRSIG', 'NSEC', 'DNSKEY', 'DHCID',
+            'NSEC3', 'NSEC3PARAM', 'ANY', 'ALL', 'WINS'
+        )]
         [string]$recordType,
+
         [Parameter(Mandatory = $true)]
         [string]$domain
     )
@@ -433,10 +438,19 @@ function Get-AksVersion {
             "southeastasia", "eastasia", "centraluseuap", "eastus2euap",
             "southafricanorth", "southafricawest", "uaenorth", "uaecentral",
             "switzerlandnorth", "switzerlandwest", "germanynorth", "germanywestcentral",
-            "norwayeast", "norwaywest")]
+            "norwayeast", "norwaywest", "brazilsoutheast", "indiawest", "eastus3",
+            "westus3", "canadawest", "australiaeast", "australiacentral", "australiacentral2",
+            "uksouth", "ukwest", "westcentralus", "southeastasia", "northindia", "centralindia",
+            "southindia", "westindia")]
         [string]$location,
         [switch]$aksReleaseCalendar
     )
+
+    # Check if az is installed
+    if (-not (Get-Command az -ErrorAction SilentlyContinue)) {
+        Write-Output "Az CLI is not installed. Please install Azure CLI to use this function." -ForegroundColor Red
+        return
+    }
 
     if ($aksReleaseCalendar) {
         Start-Process "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar"
@@ -450,9 +464,7 @@ function Get-AksVersion {
 function Get-NetConfig {
     param (
         [string]$cidr,
-
         [switch]$showSubnets,
-
         [switch]$showIpv4CidrTable
     )
 
@@ -729,19 +741,30 @@ function Get-EolInfo {
     $eolUrl = "https://endoflife.date/api/$productName"
     $eolInfo = Invoke-RestMethod -Uri $eolUrl
 
-    # Get the current date
     $currentDate = Get-Date
 
-    # Apply filtering based on parameters
+    # Ensure 'eol' values are properly handled
+    foreach ($entry in $eolInfo) {
+        if ($entry.eol -eq "false") {
+            $entry.eol = $null
+        }
+    }
+
+    # Apply LTS filter if requested
     if ($ltsSupport) {
-        # Filter only LTS versions
-        $eolInfo = $eolInfo | Where-Object { $_.Lts -eq $true }
+        $eolInfo = $eolInfo | Where-Object { $_.lts -eq $true }
     }
 
+    # Apply Active Support filter if requested
     if ($activeSupport) {
-        # Filter out versions that have reached EOL on or before the current date
-        $eolInfo = $eolInfo | Where-Object { [DateTime]$_.eol -gt $currentDate }
+        $eolInfo = $eolInfo | Where-Object {
+            # Ensure 'eol' is not 'false' before converting to [DateTime]
+            ([string]::IsNullOrEmpty($_.eol)) -or ($_.eol -match "^\d{4}-\d{2}-\d{2}$" -and [DateTime]$_.eol -gt $currentDate)
+        }
     }
 
-    $eolInfo
+    # Sort results, moving entries with null EOL to the bottom
+    $eolInfo = $eolInfo | Sort-Object { if ($_.eol -match "^\d{4}-\d{2}-\d{2}$") { [DateTime]$_.eol } else { [DateTime]::MaxValue } } -Descending
+
+    return $eolInfo
 }
