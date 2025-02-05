@@ -74,10 +74,11 @@ Version: 3.1.18.1 - August 2024 | Code Tidy and Get-AzVMQuotaCheck released
 Version: 3.1.18.2 - August 2024 | Updated Get-AzVMQuotaCheck Logic
 Version: 3.1.18.3 - August 2024 | Added aksReleaseCalendar switch to Get-AksVersion function
 Version: 3.1.18.4 - August 2024 | Small formatting change to Update-WindowsApps function.
+Version: 3.1.19 - February 2025 | Updated Get-EolInfo ProductName Array, Removed AzVMQuota Check
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.18.4-prod'
+$profileVersion = '3.1.19-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -341,7 +342,7 @@ function Update-PSProfile {
         return
     }
 
-    
+
 
     # Get Latest Profile Release
     Get-PSProfileUpdate -profileRelease $newProfileReleaseTag -profileDownloadUrl $newProfileReleaseUrl -profileReleaseNotes $newProfileReleaseNotes
@@ -666,59 +667,55 @@ function Get-EolInfo {
     param (
         [Parameter(Mandatory = $true)]
         [ValidateSet(
-            'akeneo-pim', 'alibaba-dragonwell', 'almalinux', 'alpine', 'amazon-cdk', 'amazon-corretto',
-            'amazon-eks', 'amazon-glue', 'amazon-linux', 'amazon-neptune', 'amazon-rds-mariadb',
-            'amazon-rds-mysql', 'amazon-rds-postgresql', 'android', 'angular', 'angularjs', 'ansible',
-            'ansible-core', 'antix', 'apache', 'apache-activemq', 'apache-airflow', 'apache-apisix',
-            'apache-camel', 'apache-cassandra', 'apache-flink', 'apache-groovy', 'apache-hadoop',
-            'apache-hop', 'apache-kafka', 'apache-lucene', 'apache-spark', 'apache-struts',
-            'api-platform', 'apple-watch', 'arangodb', 'argo-cd', 'artifactory', 'aws-lambda',
-            'azul-zulu', 'azure-devops-server', 'azure-kubernetes-service', 'bazel', 'beats',
-            'bellsoft-liberica', 'blender', 'bootstrap', 'bun', 'cakephp', 'calico', 'centos',
-            'centos-stream', 'centreon', 'cert-manager', 'cfengine', 'chef-infra-client',
-            'chef-infra-server', 'citrix-vad', 'ckeditor', 'clamav', 'cockroachdb', 'coder',
-            'coldfusion', 'composer', 'confluence', 'consul', 'containerd', 'contao', 'contour',
-            'cortex-xdr', 'cos', 'couchbase-server', 'craft-cms', 'dbt-core', 'dce', 'debian',
-            'dependency-track', 'devuan', 'django', 'docker-engine', 'dotnet', 'dotnetfx',
-            'drupal', 'drush', 'eclipse-jetty', 'eclipse-temurin', 'elasticsearch', 'electron',
-            'elixir', 'emberjs', 'envoy', 'erlang', 'esxi', 'etcd', 'eurolinux', 'exim',
-            'fairphone', 'fedora', 'ffmpeg', 'filemaker', 'firefox', 'fluent-bit', 'flux',
-            'fortios', 'freebsd', 'gerrit', 'gitlab', 'go', 'goaccess', 'godot', 'google-kubernetes-engine',
-            'google-nexus', 'gorilla', 'graalvm', 'gradle', 'grafana', 'grafana-loki', 'grails',
-            'graylog', 'gstreamer', 'haproxy', 'harbor', 'hashicorp-vault', 'hbase', 'horizon',
-            'ibm-aix', 'ibm-i', 'ibm-semeru-runtime', 'icinga', 'icinga-web', 'intel-processors',
-            'internet-explorer', 'ionic', 'ios', 'ipad', 'ipados', 'iphone', 'isc-dhcp', 'istio',
-            'jekyll', 'jenkins', 'jhipster', 'jira-software', 'joomla', 'jquery', 'jreleaser',
-            'kde-plasma', 'keda', 'keycloak', 'kibana', 'kindle', 'kirby', 'kong-gateway',
-            'kotlin', 'kubernetes', 'kubernetes-csi-node-driver-registrar', 'kubernetes-node-feature-discovery',
-            'kuma', 'kyverno', 'laravel', 'libreoffice', 'lineageos', 'linux', 'linuxmint',
-            'log4j', 'logstash', 'looker', 'lua', 'macos', 'mageia', 'magento', 'mariadb',
-            'mastodon', 'matomo', 'mattermost', 'mautic', 'maven', 'mediawiki', 'meilisearch',
-            'memcached', 'micronaut', 'microsoft-build-of-openjdk', 'mongodb', 'moodle',
-            'motorola-mobility', 'msexchange', 'mssqlserver', 'mulesoft-runtime', 'mxlinux',
-            'mysql', 'neo4j', 'neos', 'netbsd', 'nextcloud', 'nextjs', 'nexus', 'nginx',
-            'nix', 'nixos', 'nodejs', 'nokia', 'nomad', 'numpy', 'nutanix-aos', 'nutanix-files',
-            'nutanix-prism', 'nuxt', 'nvidia', 'nvidia-gpu', 'office', 'oneplus', 'openbsd',
-            'openjdk-builds-from-oracle', 'opensearch', 'openssl', 'opensuse', 'opentofu',
-            'openvpn', 'openwrt', 'openzfs', 'opnsense', 'oracle-apex', 'oracle-database',
-            'oracle-jdk', 'oracle-linux', 'oracle-solaris', 'ovirt', 'pangp', 'panos', 'pci-dss',
-            'perl', 'photon', 'php', 'phpbb', 'phpmyadmin', 'pixel', 'plesk', 'pnpm',
-            'pop-os', 'postfix', 'postgresql', 'postmarketos', 'powershell', 'privatebin',
-            'prometheus', 'protractor', 'proxmox-ve', 'puppet', 'python', 'qt', 'quarkus-framework',
-            'quasar', 'rabbitmq', 'rails', 'rancher', 'raspberry-pi', 'react', 'react-native',
-            'readynas', 'red-hat-openshift', 'redhat-build-of-openjdk', 'redhat-jboss-eap',
-            'redhat-satellite', 'redis', 'redmine', 'rhel', 'robo', 'rocket-chat', 'rocky-linux',
-            'ros', 'ros-2', 'roundcube', 'ruby', 'rust', 'salt', 'samsung-mobile', 'sapmachine',
-            'scala', 'sharepoint', 'shopware', 'silverstripe', 'slackware', 'sles', 'solr',
-            'sonar', 'sourcegraph', 'splunk', 'spring-boot', 'spring-framework', 'sqlite',
-            'squid', 'steamos', 'surface', 'suse-manager', 'symfony', 'tails', 'tarantool',
-            'telegraf', 'terraform', 'tomcat', 'traefik', 'twig', 'typo3', 'ubuntu', 'umbraco',
-            'unity', 'unrealircd', 'varnish', 'vcenter', 'veeam-backup-and-replication',
-            'visionos', 'visual-cobol', 'visual-studio', 'vmware-cloud-foundation',
-            'vmware-harbor-registry', 'vmware-srm', 'vue', 'vuetify', 'wagtail', 'watchos',
-            'weechat', 'windows', 'windows-embedded', 'windows-nano-server', 'windows-server',
-            'windows-server-core', 'wireshark', 'wordpress', 'xcp-ng', 'yarn', 'yocto',
-            'zabbix', 'zerto', 'zookeeper'
+            "akeneo-pim", "alibaba-dragonwell", "almalinux", "alpine", "amazon-cdk", "amazon-corretto",
+            "amazon-eks", "amazon-glue", "amazon-linux", "amazon-neptune", "amazon-rds-mariadb",
+            "amazon-rds-mysql", "amazon-rds-postgresql", "android", "angular", "angularjs", "ansible",
+            "ansible-core", "antix", "apache", "apache-activemq", "apache-airflow", "apache-apisix",
+            "apache-camel", "apache-cassandra", "apache-couchdb", "apache-flink", "apache-groovy",
+            "apache-hadoop", "apache-hop", "apache-kafka", "apache-lucene", "apache-spark",
+            "apache-struts", "api-platform", "apple-watch", "arangodb", "argo-cd", "artifactory",
+            "aws-lambda", "azul-zulu", "azure-devops-server", "azure-kubernetes-service", "backdrop",
+            "bazel", "beats", "bellsoft-liberica", "big-ip", "blender", "bootstrap", "bun", "cakephp",
+            "calico", "centos", "centos-stream", "centreon", "cert-manager", "cfengine", "chef-infra-client",
+            "chef-infra-server", "chef-inspec", "citrix-vad", "ckeditor", "clamav", "cnspec", "cockroachdb",
+            "coder", "coldfusion", "composer", "confluence", "consul", "containerd", "contao", "contour",
+            "controlm", "cortex-xdr", "cos", "couchbase-server", "craft-cms", "dbt-core", "dce", "debian",
+            "dependency-track", "devuan", "django", "docker-engine", "dotnet", "dotnetfx", "drupal", "drush",
+            "eclipse-jetty", "eclipse-temurin", "elasticsearch", "electron", "elixir", "emberjs", "envoy",
+            "erlang", "eslint", "esxi", "etcd", "eurolinux", "exim", "fairphone", "fedora", "ffmpeg",
+            "filemaker", "firefox", "fluent-bit", "flux", "forgejo", "fortios", "freebsd", "gerrit", "ghc",
+            "gitlab", "go", "goaccess", "godot", "google-kubernetes-engine", "google-nexus", "gorilla",
+            "graalvm", "gradle", "grafana", "grafana-loki", "grails", "graylog", "gstreamer", "haproxy",
+            "harbor", "hashicorp-packer", "hashicorp-vault", "hbase", "horizon", "ibm-aix", "ibm-i",
+            "ibm-semeru-runtime", "icinga", "icinga-web", "intel-processors", "internet-explorer", "ionic",
+            "ios", "ipad", "ipados", "iphone", "isc-dhcp", "istio", "jekyll", "jenkins", "jhipster",
+            "jira-software", "joomla", "jquery", "jquery-ui", "jreleaser", "julia", "kde-plasma", "keda",
+            "keycloak", "kibana", "kindle", "kirby", "kong-gateway", "kotlin", "kubernetes",
+            "kubernetes-csi-node-driver-registrar", "kubernetes-node-feature-discovery", "kuma", "kyverno",
+            "laravel", "libreoffice", "lineageos", "linux", "linuxmint", "log4j", "logstash", "looker", "lua",
+            "macos", "mageia", "magento", "mandrel", "mariadb", "mastodon", "matomo", "mattermost", "mautic",
+            "maven", "mediawiki", "meilisearch", "memcached", "micronaut", "microsoft-build-of-openjdk",
+            "mongodb", "moodle", "motorola-mobility", "msexchange", "mssqlserver", "mulesoft-runtime",
+            "mxlinux", "mysql", "neo4j", "neos", "netbsd", "nextcloud", "nextjs", "nexus", "nginx", "nix",
+            "nixos", "nodejs", "nokia", "nomad", "numpy", "nutanix-aos", "nutanix-files", "nutanix-prism",
+            "nuxt", "nvidia", "nvidia-gpu", "nvm", "office", "oneplus", "openbsd", "openjdk-builds-from-oracle",
+            "opensearch", "openssl", "opensuse", "opentofu", "openvpn", "openwrt", "openzfs", "opnsense",
+            "oracle-apex", "oracle-database", "oracle-jdk", "oracle-linux", "oracle-solaris", "ovirt", "pangp",
+            "panos", "pci-dss", "perl", "photon", "php", "phpbb", "phpmyadmin", "pixel", "pixel-watch", "plesk",
+            "pnpm", "podman", "pop-os", "postfix", "postgresql", "postmarketos", "powershell", "privatebin",
+            "prometheus", "protractor", "proxmox-ve", "puppet", "python", "qt", "quarkus-framework", "quasar",
+            "rabbitmq", "rails", "rancher", "raspberry-pi", "react", "react-native", "readynas",
+            "red-hat-openshift", "redhat-build-of-openjdk", "redhat-jboss-eap", "redhat-satellite", "redis",
+            "redmine", "rhel", "robo", "rocket-chat", "rocky-linux", "ros", "ros-2", "roundcube", "ruby",
+            "rust", "salt", "samsung-mobile", "sapmachine", "scala", "sharepoint", "shopware", "silverstripe",
+            "slackware", "sles", "solr", "sonar", "sourcegraph", "splunk", "spring-boot", "spring-framework",
+            "sqlite", "squid", "steamos", "subversion", "surface", "suse-manager", "svelte", "symfony", "tails",
+            "tarantool", "telegraf", "terraform", "tomcat", "traefik", "tvos", "twig", "typo3", "ubuntu",
+            "umbraco", "unity", "unrealircd", "valkey", "varnish", "vcenter", "veeam-backup-and-replication",
+            "visionos", "visual-cobol", "visual-studio", "vmware-cloud-foundation", "vmware-harbor-registry",
+            "vmware-srm", "vue", "vuetify", "wagtail", "watchos", "weechat", "windows", "windows-embedded",
+            "windows-nano-server", "windows-server", "windows-server-core", "wireshark", "wordpress", "xcp-ng",
+            "yarn", "yocto", "zabbix", "zentyal", "zerto", "zookeeper"
         )]
         [string]$productName,
 
@@ -747,137 +744,4 @@ function Get-EolInfo {
     }
 
     $eolInfo
-}
-
-# Function - Get-VMQuotaCheck# Function - Get-VMQuotaCheck
-function Get-AzVMQuotaCheck {
-    param(
-        [Parameter(Mandatory = $true, Position = 0, HelpMessage = "Enter the Azure location")]
-        [ValidateSet(
-            "eastus", "eastus2", "westus", "westus2", "centralus", "northcentralus",
-            "southcentralus", "westcentralus", "canadaeast", "canadacentral",
-            "brazilsouth", "uksouth", "ukwest", "westeurope", "northeurope",
-            "francecentral", "francesouth", "germanywestcentral", "germanynorth",
-            "germanyeast", "switzerlandnorth", "switzerlandwest", "norwaywest",
-            "norwayeast", "swedencentral", "swedensouth", "australiaeast",
-            "australiasoutheast", "australiacentral", "australiacentral2",
-            "japaneast", "japanwest", "koreacentral", "koreasouth", "centralindia",
-            "southindia", "westindia", "uaenorth", "uaesouth", "southafricanorth",
-            "southafricawest", "israelcentral", "israelnorth", "eastasia", "southeastasia",
-            "hongkong", "mideast", "southamericaeast", "southamericawest", "singapore",
-            "qatarcentral", "qatarnorth"
-        )]
-        [string]$location,
-
-        [Parameter(Mandatory = $true, Position = 1, HelpMessage = "Enter the VM size")]
-        [ValidateSet(
-            "Standard_A0", "Standard_A1", "Standard_A1_v2", "Standard_A2", "Standard_A2_v2", "Standard_A2m_v2",
-            "Standard_A3", "Standard_A4", "Standard_A4_v2", "Standard_A4m_v2", "Standard_A5", "Standard_A6", "Standard_A7",
-            "Standard_A8", "Standard_A8_v2", "Standard_A8m_v2", "Standard_A9", "Standard_B1ms", "Standard_B1s",
-            "Standard_B2ms", "Standard_B2s", "Standard_B4ms", "Standard_B8ms", "Standard_D1", "Standard_D1_v2",
-            "Standard_D2", "Standard_D2_v2", "Standard_D2_v3", "Standard_D2_v4", "Standard_D3", "Standard_D3_v2",
-            "Standard_D4", "Standard_D4_v2", "Standard_D4_v3", "Standard_D4_v4", "Standard_D5_v2", "Standard_D8_v3",
-            "Standard_D8_v4", "Standard_D11_v2", "Standard_D12_v2", "Standard_D12_v3", "Standard_D13_v2",
-            "Standard_D13_v3", "Standard_D14_v2", "Standard_D14_v3", "Standard_D15_v2", "Standard_D16_v3",
-            "Standard_D16_v4", "Standard_D32_v3", "Standard_D32_v4", "Standard_D48_v3", "Standard_D48_v4",
-            "Standard_D64_v3", "Standard_D64_v4", "Standard_D96_v3", "Standard_DS1", "Standard_DS1_v2", "Standard_DS2",
-            "Standard_DS2_v2", "Standard_DS3", "Standard_DS3_v2", "Standard_DS4", "Standard_DS4_v2", "Standard_DS5",
-            "Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_DS14_v2", "Standard_E2_v3",
-            "Standard_E2_v4", "Standard_E2s_v3", "Standard_E2s_v4", "Standard_E4_v3", "Standard_E4_v4",
-            "Standard_E4s_v3", "Standard_E4s_v4", "Standard_E8_v3", "Standard_E8_v4", "Standard_E8s_v3",
-            "Standard_E8s_v4", "Standard_E16_v3", "Standard_E16_v4", "Standard_E16s_v3", "Standard_E16s_v4",
-            "Standard_E20_v3", "Standard_E20s_v3", "Standard_E32_v3", "Standard_E32_v4", "Standard_E32s_v3",
-            "Standard_E32s_v4", "Standard_E48_v3", "Standard_E48_v4", "Standard_E48s_v3", "Standard_E48s_v4",
-            "Standard_E64_v3", "Standard_E64_v4", "Standard_E64i_v3", "Standard_E64i_v4", "Standard_E64is_v3",
-            "Standard_E64is_v4", "Standard_E64s_v3", "Standard_E64s_v4", "Standard_E80_v3", "Standard_E80s_v3",
-            "Standard_E104i_v5", "Standard_E104is_v5", "Standard_E104s_v5", "Standard_E112i_v5", "Standard_E112is_v5",
-            "Standard_E112s_v5", "Standard_F1", "Standard_F2", "Standard_F2s", "Standard_F4", "Standard_F4s",
-            "Standard_F8", "Standard_F8s", "Standard_F16", "Standard_F16s", "Standard_F32s", "Standard_F48s",
-            "Standard_F64s", "Standard_F72s", "Standard_G1", "Standard_G2", "Standard_G3", "Standard_G4",
-            "Standard_G5", "Standard_GS1", "Standard_GS2", "Standard_GS3", "Standard_GS4", "Standard_GS5",
-            "Standard_H8", "Standard_H8m", "Standard_H16", "Standard_H16m", "Standard_H16mr", "Standard_H16r",
-            "Standard_HB120-96rs_v3", "Standard_HB120rs_v3", "Standard_HC44rs", "Standard_L4", "Standard_L8",
-            "Standard_L8s", "Standard_L16", "Standard_L16s", "Standard_L32s", "Standard_L48s", "Standard_L64s",
-            "Standard_L80s", "Standard_M8ms", "Standard_M8", "Standard_M16ms", "Standard_M16", "Standard_M32ls",
-            "Standard_M32ms", "Standard_M32ts", "Standard_M32", "Standard_M64ls", "Standard_M64ms",
-            "Standard_M64s", "Standard_M64", "Standard_M128", "Standard_M128ms", "Standard_M128s",
-            "Standard_NC6", "Standard_NC6s_v2", "Standard_NC6s_v3", "Standard_NC12", "Standard_NC12s_v2",
-            "Standard_NC12s_v3", "Standard_NC24", "Standard_NC24r", "Standard_NC24rs_v2", "Standard_NC24rs_v3",
-            "Standard_NC24s_v2", "Standard_NC24s_v3", "Standard_ND6", "Standard_ND6s", "Standard_ND12",
-            "Standard_ND12s", "Standard_ND24rs", "Standard_ND24", "Standard_ND40rs_v2", "Standard_ND96asr_v4",
-            "Standard_ND96amsr_A100_v4", "Standard_ND96asr_A100_v4", "Standard_NV6", "Standard_NV12",
-            "Standard_NV24", "Standard_NV12s_v3", "Standard_NV24s_v3", "Standard_NV48s_v3", "Standard_NV4as_v4",
-            "Standard_NV8as_v4", "Standard_NV16as_v4", "Standard_NV32as_v4", "Standard_NV48as_v4", "Standard_NV56as_v4",
-            "Standard_NV72as_v4"
-        )]
-        [string]$skuType,
-
-        [Parameter(Mandatory = $false, Position = 3, HelpMessage = "Enter the subscription ID")]
-        [string]$subscriptionId
-    )
-
-    if ($subscriptionId) {
-
-        # List all subscriptions
-        $subscriptions = az account list --output json --only-show-errors  | ConvertFrom-Json
-        $tenantFriendlyName = az account show --query 'tenantDisplayName' -o tsv
-
-        # Check if the provided subscriptionId exists in the list of subscriptions
-        if ($subscriptions | Where-Object { $_.id -eq $subscriptionId }) {
-            $subscriptionExists = $true
-            az account set --subscription $subscriptionId
-        }
-
-        if (!$subscriptionExists) {
-            Write-Output " > Subscription $subscriptionId not found under $tenantFriendlyName Environment."
-            Write-Output " > Logging into Azure for $subscriptionId"
-            az config set core.login_experience_v2=off
-
-            # Attempt to log in
-            az login --use-device-code --output none
-
-            # Set the subscription after login
-            Write-Output " > Setting subscription to $subscriptionId"
-            az account set --subscription $subscriptionId
-
-            # Verify subscription is correctly set
-            $newContext = az account show --output json | ConvertFrom-Json
-            if ($newContext.id -eq $subscriptionId) {
-                Write-Output " > Successfully set the subscription to $subscriptionId"
-            }
-            else {
-                Write-Output " > Failed to set the subscription to $subscriptionId. Please check your access rights."
-            }
-        }
-    }
-
-    $subscriptionId = az account show --query 'id' -o tsv
-    $subscriptionFriendlyName = az account show --query 'name' -o tsv
-    Write-Output "Checking quota for VM Family '$skuType' in '$location' for subscription: $subscriptionId - $subscriptionFriendlyName"
-    Write-Warning "This can take 2 minutes to check and report back!!"
-
-    # Get the list of VM SKUs for the given location
-    $SKUFamily = az vm list-skus --location $location --query "[?resourceType=='virtualMachines'].{Name:name, Family:family}" | ConvertFrom-Json
-
-    # Check if the SkuType is valid in the given location
-    $familyInfo = $SKUFamily | Where-Object { $_.Name -eq $skuType }
-
-    if ($familyInfo) {
-        Write-Output "VM Family '$skuType' is available in the location '$location'. Checking quota..."
-
-        # Get the quota information for the VM family
-        $quotaInfo = az vm list-usage --location $location --query "[?name.value=='$($familyInfo.Family)']" | ConvertFrom-Json
-
-        if ($quotaInfo) {
-            foreach ($info in $quotaInfo) {
-                Write-Warning "$($info.name.localizedValue): You have consumed $($info.currentValue)/$($info.limit) available quota"
-            }
-        }
-        else {
-            Write-Output "Quota information not available for VM Family '$skuType'"
-        }
-    }
-    else {
-        Write-Output "VM Family '$skuType' is not valid or not available in the location '$location'"
-    }
 }
