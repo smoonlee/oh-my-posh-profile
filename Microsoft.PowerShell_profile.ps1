@@ -1,4 +1,4 @@
-$profileVersion = '3.2.0.9.7-dev'
+$profileVersion = '3.2.0.9.8-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -126,9 +126,10 @@ function Update-PSProfile {
     Write-Output "Profile Version.......: $releaseTag"
 
     # Display Patch Notes
-    Write-Output "`nProfile Patch Notes:"
+    Write-Output `r "Profile Patch Notes:"
     Write-Output $releaseNotes
-    Start-Sleep -Seconds 3
+
+    Start-Sleep -Seconds 4
 
     # Download new profile
     try {
