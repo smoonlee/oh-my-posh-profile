@@ -1,4 +1,4 @@
-$profileVersion = '3.2.0.9.6-dev'
+$profileVersion = '3.2.0.9.7-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -92,61 +92,59 @@ function Get-PSProfileVersion {
 
 # Function - Update PowerShell Profile (OTA)
 function Update-PSProfile {
+    [CmdletBinding()]
     param (
         [switch] $devRelease
     )
 
-    $releaseTag = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).tag_name
-    $releaseNotes = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).body
-    $releaseUrl = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).assets.browser_download_url
+    Set-StrictMode -Version Latest
 
-    $devReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).tag_name
-    $devReleaseNotes = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).body
-    $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
+    # Select latest stable and dev releases
+    $stableRelease = $releases | Where-Object { -not $_.prerelease } | Select-Object -First 1
+    $devReleaseObj = $releases | Where-Object { $_.prerelease } | Select-Object -First 1
 
-    $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
-    Write-Output `r "Current Theme...............: $currentThemeName"
-    Write-Output "Current Profile Version.....: $profileVersion" `r
+    # Ensure variables exist to prevent errors
+    if (-not $stableRelease) { Write-Warning "No stable releases found."; return }
+    if ($devRelease -and -not $devReleaseObj) { Write-Warning "No development releases found."; return }
 
-    Write-Output "Latest Dev Release..........: $devReleaseTag "
-    Write-Output "Latest Stable Release.......: $releaseTag"
-
-    # Sleep
-    Start-Sleep -Second 4
+    # Extract values
+    $releaseTag = $stableRelease.tag_name
+    $releaseNotes = $stableRelease.body
+    $releaseUrl = $stableRelease.assets.browser_download_url
 
     if ($devRelease) {
-        Write-Output "" # Required for Verbose Spacing
-        Write-Warning "[Oh My Posh] - Development Build Profile Update!!"
+        Write-Output "" # Verbose
+        Write-Warning "--- Using Development Release ---"
+        $releaseTag = $devReleaseObj.tag_name
+        $releaseNotes = $devReleaseObj.body
+        $releaseUrl = $devReleaseObj.assets.browser_download_url
+    }
 
-        Write-Output `r "Profile Patch Notes:"
-        Write-Output $devReleaseNotes
+    # Get current theme
+    $currentThemeName = $env:POSH_THEME | Split-Path -Leaf
+    Write-Output "Current Theme.........: $currentThemeName"
+    Write-Output "Profile Version.......: $releaseTag"
 
-        # Download Development Oh My Posh Profile
-        Invoke-WebRequest -Method 'Get' -Uri $devReleaseUrl -OutFile $PROFILE
+    # Display Patch Notes
+    Write-Output "`nProfile Patch Notes:"
+    Write-Output $releaseNotes
+    Start-Sleep -Seconds 3
 
-        # Update New Profile with Current Theme
-        $pwshProfile = Get-Content -Path $PROFILE -Raw
-        $updatedPwshProfile = $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
-        $updatedPwshProfile | Set-Content -Path $PROFILE
-
-        # Reload Profile (Register-PSProfile)
-        Register-PSProfile
-
+    # Download new profile
+    try {
+        Invoke-WebRequest -Uri $releaseUrl -OutFile $PROFILE -ErrorAction Stop
+    }
+    catch {
+        Write-Error "Failed to download profile: $_"
         return
     }
 
-    Write-Output `r "Profile Patch Notes:"
-    Write-Output $releaseNotes
-
-    # Download Latest Profile
-    Invoke-WebRequest -Method 'Get' -Uri $releaseUrl -OutFile $PROFILE
-
-    # Update New Profile with Current Theme
+    # Update theme reference
     $pwshProfile = Get-Content -Path $PROFILE -Raw
     $updatedPwshProfile = $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
-    $updatedPwshProfile | Set-Content -Path $PROFILE
+    Set-Content -Path $PROFILE -Value $updatedPwshProfile
 
-    # Reload Profile (Register-PSProfile)
+    # Reload profile
     Register-PSProfile
 }
 
