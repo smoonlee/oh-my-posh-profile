@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.4-dev'
+$profileVersion = '3.2.0.5-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -27,7 +27,7 @@ Set-PSReadLineKeyHandler -Key 'UpArrow' -Function 'HistorySearchBackward'
 Set-PSReadLineKeyHandler -Key 'DownArrow' -Function 'HistorySearchForward'
 
 # Oh My Posh Configuration
-$themePath = "$env:POSH_THEMES_PATH\pixelrobots.omp.json"
+$themePath = "$env:POSH_THEMES_PATH\quick-term-cloud.json"
 oh-my-posh init powershell --config $themePath | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
@@ -83,20 +83,27 @@ function Update-PSProfile {
         [switch] $devRelease
     )
 
+    $releaseTag = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).tag_name
+    $releaseNotes = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).body
+    $releaseUrl = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).assets.browser_download_url
+
+    $devReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).tag_name
+    $devReleaseNotes = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).body
+    $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
+
+
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
     Write-Output `r "Current Theme............: $currentThemeName"
-    Write-Output "Current Profile Version..: $profileVersion"
+    Write-Output "Current Profile Version.....: $profileVersion"
+    Write-Output "Latest Dev Release..........: $devReleaseTag "
+    Write-Output "Latest Stable Release.......: $releaseTag"
 
     if ($devRelease) {
         Write-Output "" # Required for Verbose Spacing
         Write-Warning "[Oh My Posh] - Development Build Profile Update!!"
 
-        $devReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).tag_name
-        $devReleaseNotes = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).body
-        $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
-
         # Download Development Oh My Posh Profile
-        Invoke-WebRequest -Uri $devReleaseUrl -OutFile $PROFILE
+        Invoke-WebRequest -Method 'Get' -Uri $devReleaseUrl -OutFile $PROFILE
 
         # Update New Profile with Current Theme
         $pwshProfile = Get-Content -Path $PROFILE -Raw
@@ -104,13 +111,21 @@ function Update-PSProfile {
         $updatedPwshProfile | Set-Content -Path $PROFILE
 
         # Reload Profile (Register-PSProfile)
-        #Register-PSProfile
+        Register-PSProfile
 
         return
     }
 
-    # Download Latest Profile
-    Invoke-WebRequest -Method 'Get' -Uri $pwshProfile -OutFile $PROFILE
+        # Download Latest Profile
+        Invoke-WebRequest -Method 'Get' -Uri $pwshProfile -OutFile $PROFILE
+
+        # Update New Profile with Current Theme
+        $pwshProfile = Get-Content -Path $PROFILE -Raw
+        $updatedPwshProfile = $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
+        $updatedPwshProfile | Set-Content -Path $PROFILE
+
+        # Reload Profile (Register-PSProfile)
+        Register-PSProfile
 }
 
 
