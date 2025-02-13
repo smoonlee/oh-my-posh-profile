@@ -1,4 +1,4 @@
-$profileVersion = '3.2.0.9.5-dev'
+$profileVersion = '3.2.0.9.6-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -83,9 +83,9 @@ function Get-PSProfileVersion {
     $devReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).tag_name
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
-    Write-Output `r "Current Theme............: $currentThemeName"
+    Write-Output `r "Current Theme...............: $currentThemeName"
     Write-Output "Current Profile Version.....: $profileVersion" `r
-    
+
     Write-Output "Latest Dev Release..........: $devReleaseTag"
     Write-Output "Latest Stable Release.......: $releaseTag"
 }
@@ -105,9 +105,9 @@ function Update-PSProfile {
     $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
-    Write-Output `r "Current Theme............: $currentThemeName"
+    Write-Output `r "Current Theme...............: $currentThemeName"
     Write-Output "Current Profile Version.....: $profileVersion" `r
-    
+
     Write-Output "Latest Dev Release..........: $devReleaseTag "
     Write-Output "Latest Stable Release.......: $releaseTag"
 
@@ -135,19 +135,19 @@ function Update-PSProfile {
         return
     }
 
-        Write-Output `r "Profile Patch Notes:"
-        Write-Output $releaseNotes
+    Write-Output `r "Profile Patch Notes:"
+    Write-Output $releaseNotes
 
-        # Download Latest Profile
-        Invoke-WebRequest -Method 'Get' -Uri $pwshProfile -OutFile $PROFILE
+    # Download Latest Profile
+    Invoke-WebRequest -Method 'Get' -Uri $releaseUrl -OutFile $PROFILE
 
-        # Update New Profile with Current Theme
-        $pwshProfile = Get-Content -Path $PROFILE -Raw
-        $updatedPwshProfile = $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
-        $updatedPwshProfile | Set-Content -Path $PROFILE
+    # Update New Profile with Current Theme
+    $pwshProfile = Get-Content -Path $PROFILE -Raw
+    $updatedPwshProfile = $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
+    $updatedPwshProfile | Set-Content -Path $PROFILE
 
-        # Reload Profile (Register-PSProfile)
-        Register-PSProfile
+    # Reload Profile (Register-PSProfile)
+    Register-PSProfile
 }
 
 # Function - Update WinGet Applications
