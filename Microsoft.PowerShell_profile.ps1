@@ -1,4 +1,4 @@
-$profileVersion = '3.2.0.9.4-dev'
+$profileVersion = '3.2.0.9.5-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -119,7 +119,7 @@ function Update-PSProfile {
         Write-Warning "[Oh My Posh] - Development Build Profile Update!!"
 
         Write-Output `r "Profile Patch Notes:"
-        Write-Output: $devReleaseNotes
+        Write-Output $devReleaseNotes
 
         # Download Development Oh My Posh Profile
         Invoke-WebRequest -Method 'Get' -Uri $devReleaseUrl -OutFile $PROFILE
@@ -136,7 +136,7 @@ function Update-PSProfile {
     }
 
         Write-Output `r "Profile Patch Notes:"
-        Write-Output: $releaseNotes
+        Write-Output $releaseNotes
 
         # Download Latest Profile
         Invoke-WebRequest -Method 'Get' -Uri $pwshProfile -OutFile $PROFILE
