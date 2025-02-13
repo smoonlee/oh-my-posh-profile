@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.1-dev'
+$profileVersion = '3.2.0.2-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -73,7 +73,7 @@ function Get-PSProfileTheme {
 
     $themePath = Split-Path -Parent $env:POSH_THEME
     $themeFile = Split-Path -Leaf $env:POSH_THEME
-    $themeLink = "`e]8;;$themePath$`e\$themeFile`e]8;;`e\"
+    $themeLink = "`e]8;;$themePath`e\$themeFile`e]8;;`e\"
 
     Write-Output "Current Theme: $themeLink"
 }
