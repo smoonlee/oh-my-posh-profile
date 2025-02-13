@@ -1,4 +1,5 @@
-$profileVersion = '3.2.0.10-dev'
+
+$profileVersion = '3.2.0.9.2-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -77,23 +78,20 @@ function Get-PSProfileTheme {
     Write-Output "Current Theme: $themeLink"
 }
 
+# Function - Get PowerShell Profile Version Information
 function Get-PSProfileVersion {
     $releaseTag = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).tag_name
-    $releaseNotes = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).body
-    $releaseUrl = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).assets.browser_download_url
-
     $devReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).tag_name
-    $devReleaseNotes = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).body
-    $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
-    Write-Output `r "Current Theme...............: $currentThemeName"
-    Write-Output "Current Profile Version.....: $profileVersion" `r
-
-    Write-Output "Latest Dev Release..........: $devReleaseTag "
+    Write-Output `r "Current Theme............: $currentThemeName"
+    Write-Output "Current Profile Version.....: $profileVersion"
+    Write-Output "Latest Dev Release..........: $devReleaseTag"
     Write-Output "Latest Stable Release.......: $releaseTag"
+
 }
 
+# Function - Update PowerShell Profile (OTA)
 function Update-PSProfile {
     param (
         [switch] $devRelease
@@ -108,9 +106,8 @@ function Update-PSProfile {
     $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
-    Write-Output `r "Current Theme...............: $currentThemeName"
-    Write-Output "Current Profile Version.....: $profileVersion" `r
-
+    Write-Output `r "Current Theme............: $currentThemeName"
+    Write-Output "Current Profile Version.....: $profileVersion"
     Write-Output "Latest Dev Release..........: $devReleaseTag "
     Write-Output "Latest Stable Release.......: $releaseTag"
 
@@ -147,7 +144,6 @@ function Update-PSProfile {
         Register-PSProfile
 }
 
-
 # Function - Update WinGet Applications
 function Update-WindowsApps {
     if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
@@ -159,7 +155,7 @@ function Update-WindowsApps {
     winget upgrade --include-unknown --all --silent --force
 }
 
-# Get Public IP Address
+# Function - Get Public IP Address
 function Get-MyPublicIP {
     try {
         $ipInfo = Invoke-RestMethod -Uri 'https://ipinfo.io' -TimeoutSec 5
@@ -561,6 +557,7 @@ function Get-NetConfig {
         }
     }
 }
+
 # Function - Get End of Life Information
 function Get-EolInfo {
     param (
