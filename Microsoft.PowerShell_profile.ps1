@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.5-dev'
+$profileVersion = '3.2.0.6-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -91,6 +91,8 @@ function Update-PSProfile {
     $devReleaseNotes = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).body
     $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
+    # Sleep 
+    Start-Sleep -Second 2
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
     Write-Output `r "Current Theme............: $currentThemeName"
