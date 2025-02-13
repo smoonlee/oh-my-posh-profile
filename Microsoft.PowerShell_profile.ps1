@@ -77,10 +77,11 @@ Version: 3.1.18.4 - August 2024 | Small formatting change to Update-WindowsApps 
 Version: 3.1.19 - February 2025 | Updated Get-EolInfo ProductName Array, Removed AzVMQuota Check
 Version: 3.1.19.1 - February 2025 | General Profile Improvements and Code Tiding
 Version: 3.1.19.2 - February 2025 | Fixed line 112 'themeNameHere'
+Version: 3.1.20 - February 2025 | Fixed Get-PSProfileUpdate
 #>
 
 # Oh My Posh Profile Version
-$profileVersion = '3.1.19.2-prod'
+$profileVersion = '3.1.20-prod'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -309,8 +310,8 @@ function Get-PSProfileUpdate {
     # Read the profile content
     $pwshProfile = Get-Content -Path $PROFILE -Raw
 
-    # Replace 'quick-term-cloud.omp.json' with the current theme name, but only once
-    [regex]$pattern = "quick-term-cloud.omp.json"
+    # Replace 'themeNameHere' with the current theme name, but only once
+    [regex]$pattern = "themeNameHere"
     $pwshProfile = $pattern.replace($pwshProfile, $pwshThemeName , 1)
 
     # Write the updated content back to the profile
