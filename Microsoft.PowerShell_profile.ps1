@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0-dev'
+$profileVersion = '3.2.0.1-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -96,12 +96,17 @@ function Update-PSProfile {
         $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
         # Download Development Oh My Posh Profile
-        Invoke-WebRequest -Method 'Get' -Uri $devReleaseUrl -Out $PROFILE
+        Invoke-WebRequest -Method 'Get' -Uri $devReleaseUrl -OutFile $PROFILE
 
         # Update New Profile with Current Theme
         $pwshProfile = Get-Content -Path $PROFILE -Raw
+        $updatedProfile = $pwshProfile -replace "\$env:POSH_THEMES_PATH\$($env:POSH_THEME | Split-Path -Leaf)\", $currentThemePath
+
+        # Save the updated profile
+        Set-Content -Path $PROFILE -Value $updatedProfile
 
         # Reload Profile (Register-PSProfile)
+        Register-PSProfile
 
         return
     }
