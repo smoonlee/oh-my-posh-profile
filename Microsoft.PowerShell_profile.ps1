@@ -1,4 +1,3 @@
-
 $profileVersion = '3.2.0.10-dev'
 
 # GitHub Repository Details
