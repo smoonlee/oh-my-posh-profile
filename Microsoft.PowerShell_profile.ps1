@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.9.2-dev'
+$profileVersion = '3.2.0.9.3-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -85,10 +85,10 @@ function Get-PSProfileVersion {
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
     Write-Output `r "Current Theme............: $currentThemeName"
-    Write-Output "Current Profile Version.....: $profileVersion"
+    Write-Output "Current Profile Version.....: $profileVersion" `r
+    
     Write-Output "Latest Dev Release..........: $devReleaseTag"
     Write-Output "Latest Stable Release.......: $releaseTag"
-
 }
 
 # Function - Update PowerShell Profile (OTA)
@@ -107,7 +107,8 @@ function Update-PSProfile {
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
     Write-Output `r "Current Theme............: $currentThemeName"
-    Write-Output "Current Profile Version.....: $profileVersion"
+    Write-Output "Current Profile Version.....: $profileVersion" `r
+    
     Write-Output "Latest Dev Release..........: $devReleaseTag "
     Write-Output "Latest Stable Release.......: $releaseTag"
 
