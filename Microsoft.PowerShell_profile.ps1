@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.2-dev'
+$profileVersion = '3.2.0.3-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -27,7 +27,7 @@ Set-PSReadLineKeyHandler -Key 'UpArrow' -Function 'HistorySearchBackward'
 Set-PSReadLineKeyHandler -Key 'DownArrow' -Function 'HistorySearchForward'
 
 # Oh My Posh Configuration
-$themePath = "$env:POSH_THEMES_PATH\quick-term-cloud.omp.json"
+$themePath = "$env:POSH_THEMES_PATH\pixelrobots.omp.json"
 oh-my-posh init powershell --config $themePath | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
@@ -100,7 +100,8 @@ function Update-PSProfile {
 
         # Update New Profile with Current Theme
         $pwshProfile = Get-Content -Path $PROFILE -Raw
-        $updatedProfile = $pwshProfile -replace "\$env:POSH_THEMES_PATH\$($env:POSH_THEME | Split-Path -Leaf)\", $currentThemePath
+
+        $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
 
         # Save the updated profile
         Set-Content -Path $PROFILE -Value $updatedProfile
