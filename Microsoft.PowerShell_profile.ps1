@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.7-dev'
+$profileVersion = '3.2.0.8-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -78,11 +78,8 @@ function Get-PSProfileTheme {
     Write-Output "Current Theme: $themeLink"
 }
 
-function Update-PSProfile {
-    param (
-        [switch] $devRelease
-    )
-
+function Get-PSProfileVersion {
+    
     $releaseTag = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).tag_name
     $releaseNotes = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).body
     $releaseUrl = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).assets.browser_download_url
@@ -91,14 +88,24 @@ function Update-PSProfile {
     $devReleaseNotes = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).body
     $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
-    # Sleep 
-    Start-Sleep -Second 4
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
     Write-Output `r "Current Theme............: $currentThemeName"
     Write-Output "Current Profile Version.....: $profileVersion"
     Write-Output "Latest Dev Release..........: $devReleaseTag "
     Write-Output "Latest Stable Release.......: $releaseTag"
+}
+
+function Update-PSProfile {
+    param (
+        [switch] $devRelease
+    )
+
+    # Get Latest Releases
+    Get-PSProfileVersion
+
+    # Sleep
+    Start-Sleep -Second 4
 
     if ($devRelease) {
         Write-Output "" # Required for Verbose Spacing
@@ -638,3 +645,4 @@ function Get-EolInfo {
 
     return $eolInfo
 }
+
