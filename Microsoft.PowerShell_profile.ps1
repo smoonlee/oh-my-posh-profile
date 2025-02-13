@@ -1,5 +1,5 @@
 
-$profileVersion = '3.2.0.6-dev'
+$profileVersion = '3.2.0.7-dev'
 
 # GitHub Repository Details
 $gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
@@ -27,7 +27,7 @@ Set-PSReadLineKeyHandler -Key 'UpArrow' -Function 'HistorySearchBackward'
 Set-PSReadLineKeyHandler -Key 'DownArrow' -Function 'HistorySearchForward'
 
 # Oh My Posh Configuration
-$themePath = "$env:POSH_THEMES_PATH\quick-term-cloud.json"
+$themePath = "$env:POSH_THEMES_PATH\quick-term-cloud.omp.json"
 oh-my-posh init powershell --config $themePath | Invoke-Expression
 
 # Local Oh-My-Posh Configuration
@@ -92,7 +92,7 @@ function Update-PSProfile {
     $devReleaseUrl = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).assets.browser_download_url
 
     # Sleep 
-    Start-Sleep -Second 2
+    Start-Sleep -Second 4
 
     $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
     Write-Output `r "Current Theme............: $currentThemeName"
