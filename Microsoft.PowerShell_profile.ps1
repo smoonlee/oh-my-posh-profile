@@ -1,19 +1,41 @@
-$profileVersion = '3.2.0.9.8-dev'
+<# Optimized PowerShell Profile Script #>
 
-# GitHub Repository Details
-$gitRepositoryUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
-
-$releases = Invoke-RestMethod -Uri $gitRepositoryUrl
-$latestReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).tag_name
+# Define Profile Version and URL
+$pwshProfile = '3.2.1-dev'
+$pwshProfileUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
 
 # Profile Update Checker
-if ($profileVersion -ne $latestReleaseTag) {
+$cachePath = "$env:LOCALAPPDATA\PSProfile\releases.json"
+if (Test-Path $cachePath) {
+    if ((Get-Date) -lt (Get-Item $cachePath).LastWriteTime.AddDays(1)) {
+        $releases = Get-Content $cachePath | ConvertFrom-Json
+    }
+    else {
+        $releases = Invoke-RestMethod -Method 'Get' -Uri $pwshProfileUrl -ErrorAction SilentlyContinue
+        if ($releases) {
+            $releases | ConvertTo-Json -Depth 10 | Set-Content $cachePath
+        }
+    }
+}
+else {
+    $releases = Invoke-RestMethod -Method 'Get' -Uri $pwshProfileUrl -ErrorAction SilentlyContinue
+    if ($releases) {
+        New-Item -ItemType File -Path $cachePath -Force | Out-Null
+        $releases | ConvertTo-Json -Depth 10 | Set-Content $cachePath
+    }
+}
+
+
+$latestReleaseTag = ($releases | Where-Object { -not $_.prerelease } | Select-Object -First 1).tag_name
+if ($pwshProfile -ne $latestReleaseTag) {
     Write-Warning "[Oh My Posh] - Profile Update Available, Please run: Update-PSProfile"
 }
 
-# Import PowerShell Modules
+# Import PowerShell Modules (Only if not already loaded)
 $modules = @('Posh-Git', 'Terminal-Icons', 'PSReadLine')
-$modules | ForEach-Object { Import-Module -Name $_ -ErrorAction SilentlyContinue }
+forEach ($module in $modules) {
+    Import-Module -Name $module -ErrorAction SilentlyContinue
+}
 
 # PSReadLine Configuration
 Set-PSReadLineOption -EditMode 'Windows'
@@ -25,13 +47,19 @@ Set-PSReadLineKeyHandler -Key 'Tab' -Function 'MenuComplete'
 Set-PSReadLineKeyHandler -Key 'UpArrow' -Function 'HistorySearchBackward'
 Set-PSReadLineKeyHandler -Key 'DownArrow' -Function 'HistorySearchForward'
 
-# Oh My Posh Configuration
+# Oh My Posh Configuration (Check if theme file exists)
 $themePath = "$env:POSH_THEMES_PATH\quick-term-cloud.omp.json"
-oh-my-posh init powershell --config $themePath | Invoke-Expression
+if (Test-Path $themePath) {
+    oh-my-posh init powershell --config $themePath | Invoke-Expression
+}
 
 # Local Oh-My-Posh Configuration
 $env:POSH_AZURE_ENABLED = $true
 $env:POSH_GIT_ENABLED = $true
+
+#
+# PowerShell Functions
+####
 
 # Function - Azure CLI Tab Completion
 # Microsoft Docs - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=winget#enable-tab-completion-in-powershell
@@ -53,9 +81,6 @@ Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
     Remove-Item $completion_file, Env:\_ARGCOMPLETE_STDOUT_FILENAME, Env:\ARGCOMPLETE_USE_TEMPFILES, Env:\COMP_LINE, Env:\COMP_POINT, Env:\_ARGCOMPLETE, Env:\_ARGCOMPLETE_SUPPRESS_SPACE, Env:\_ARGCOMPLETE_IFS, Env:\_ARGCOMPLETE_SHELL
 }
 
-#
-# Custom Function Below
-
 # Function - Reload PowerShell Session, Keeping Windows Terminal running.
 function Register-PSProfile {
     Clear-Host
@@ -74,25 +99,35 @@ function Get-PSProfileTheme {
     $themeFile = Split-Path -Leaf $env:POSH_THEME
     $themeLink = "`e]8;;$themePath`e\$themeFile`e]8;;`e\"
 
-    Write-Output "Current Theme: $themeLink"
+    Write-Output `r "Current Theme: $themeLink"
 }
 
 # Function - Get PowerShell Profile Version Information
 function Get-PSProfileVersion {
-    $releaseTag = $($($releases | Where-Object { $_.prerelease -eq $false } | Sort-Object -Unique)[0]).tag_name
-    $devReleaseTag = $($($releases | Where-Object { $_.prerelease -eq $true } | Sort-Object -Unique)[0]).tag_name
+    $stableRelease = $releases | Where-Object { -not $_.prerelease } | Select-Object -First 1 -Property tag_name
+    $devRelease = $releases | Where-Object { $_.prerelease } | Select-Object -First 1 -Property tag_name
 
-    $currentThemeName = $($env:POSH_THEME | Split-Path -Leaf)
+    $currentThemeName = Split-Path -Leaf $env:POSH_THEME
     Write-Output `r "Current Theme...............: $currentThemeName"
-    Write-Output "Current Profile Version.....: $profileVersion" `r
+    Write-Output "Current Profile Version.....: $pwshProfile`n"
 
-    Write-Output "Latest Dev Release..........: $devReleaseTag"
-    Write-Output "Latest Stable Release.......: $releaseTag"
+    if ($stableRelease) {
+        Write-Output "Latest Stable Release.......: $($stableRelease.tag_name)"
+    }
+    else {
+        Write-Output "Latest Stable Release.......: Not available"
+    }
+
+    if ($devRelease) {
+        Write-Output "Latest Dev Release..........: $($devRelease.tag_name)"
+    }
+    else {
+        Write-Output "Latest Dev Release..........: Not available"
+    }
 }
 
 # Function - Update PowerShell Profile (OTA)
 function Update-PSProfile {
-    [CmdletBinding()]
     param (
         [switch] $devRelease
     )
@@ -108,17 +143,17 @@ function Update-PSProfile {
     if ($devRelease -and -not $devReleaseObj) { Write-Warning "No development releases found."; return }
 
     # Extract values
-    $releaseTag = $stableRelease.tag_name
-    $releaseNotes = $stableRelease.body
-    $releaseUrl = $stableRelease.assets.browser_download_url
-
-    if ($devRelease) {
-        Write-Output "" # Verbose
+    $release = if ($devRelease) {
         Write-Warning "--- Using Development Release ---"
-        $releaseTag = $devReleaseObj.tag_name
-        $releaseNotes = $devReleaseObj.body
-        $releaseUrl = $devReleaseObj.assets.browser_download_url
+        $devReleaseObj
     }
+    else {
+        $stableRelease
+    }
+
+    $releaseTag = $release.tag_name
+    $releaseNotes = $release.body
+    $releaseUrl = $release.assets.browser_download_url
 
     # Get current theme
     $currentThemeName = $env:POSH_THEME | Split-Path -Leaf
@@ -141,9 +176,8 @@ function Update-PSProfile {
     }
 
     # Update theme reference
-    $pwshProfile = Get-Content -Path $PROFILE -Raw
-    $updatedPwshProfile = $pwshProfile -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName"
-    Set-Content -Path $PROFILE -Value $updatedPwshProfile
+    (Get-Content -Path $PROFILE -Raw) -replace '(\\[^"]+\.omp\.json)', "\$currentThemeName" |
+    Set-Content -Path $PROFILE
 
     # Reload profile
     Register-PSProfile
@@ -151,7 +185,7 @@ function Update-PSProfile {
 
 # Function - Update WinGet Applications
 function Update-WindowsApps {
-    if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
+    if (-not ([Security.Principal.WindSowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
         Write-Warning "This function must be run as an administrator."
         return
     }
@@ -163,7 +197,7 @@ function Update-WindowsApps {
 # Function - Get Public IP Address
 function Get-MyPublicIP {
     try {
-        $ipInfo = Invoke-RestMethod -Uri 'https://ipinfo.io' -TimeoutSec 5
+        $ipInfo = Invoke-RestMethod -Method 'Get' -Uri 'https://ipinfo.io' -TimeoutSec 5
 
         if ($ipInfo -and $ipInfo.ip) {
             [PSCustomObject]@{
@@ -214,44 +248,51 @@ function Get-SystemUptime {
 # Function - Get Azure Virtual Machine System Uptime
 function Get-AzSystemUptime {
     param (
-        [string] $subscriptionId,
-        [string] $resourceGroup,
-        [string] $vmName
+        [string]$subscriptionId,
+        [string]$resourceGroup,
+        [string]$vmName
     )
 
-
-    # Set subscription only if different from current context
-    if ($subscriptionId -and ((Get-AzContext).Subscription.Id -ne $subscriptionId)) {
-        Set-AzContext -SubscriptionId $subscriptionId | Out-Null
-        $subFriendlyName = (Get-AzContext).Subscription.Name
+    # Check and set subscription context
+    $currentSub = az account show --query id -o tsv
+    if ($subscriptionId -and ($currentSub -ne $subscriptionId)) {
+        az account set --subscription $subscriptionId | Out-Null
+        $subFriendlyName = az account show --query name -o tsv
         Write-Output "[Azure] :: Using Azure Subscription: $subFriendlyName"
     }
 
-    # Fetch VM details once to avoid multiple API calls
-    $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
-    $osType = $vm.StorageProfile.OsDisk.OsType
-
+    # Get VM OS type
+    $osType = az vm show --resource-group $resourceGroup --name $vmName --query "storageProfile.osDisk.osType" -o tsv
     Write-Output "[Azure] :: Fetching System Uptime for $vmName in $resourceGroup..."
 
-    # Determine OS and execute corresponding command
-    if ($osType -eq 'Windows') {
-        $response = Invoke-AzVMRunCommand -ResourceGroupName $resourceGroup -Name $vmName -CommandId 'RunPowerShellScript' -ScriptString @'
-        $uptime = New-TimeSpan -Start (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
-        Write-Output "[Azure] :: Hostname: $(hostname)"
-        Write-Output "[Azure] :: Uptime: $($uptime.Days) days, $($uptime.Hours) hours, $($uptime.Minutes) minutes, $($uptime.Seconds) seconds"
-        Write-Output "[Azure] :: Last Reboot Time: $((Get-CimInstance Win32_OperatingSystem).LastBootUpTime.ToString('dd/MM/yyyy HH:mm:ss'))"
-'@
+    if ($osType -eq "Windows") {
+        $response = az vm run-command invoke `
+            --resource-group $resourceGroup `
+            --name $vmName `
+            --command-id "RunPowerShellScript" `
+            --scripts @'
+$uptime = New-TimeSpan -Start (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
+Write-Output "[Azure] :: Hostname: $env:COMPUTERNAME"
+Write-Output "[Azure] :: Uptime: $($uptime.Days) days, $($uptime.Hours) hours, $($uptime.Minutes) minutes, $($uptime.Seconds) seconds"
+Write-Output "[Azure] :: Last Reboot Time: $((Get-CimInstance Win32_OperatingSystem).LastBootUpTime.ToString('dd/MM/yyyy HH:mm:ss'))"
+'@ `
+            --query "value[0].message" -o tsv
 
-        return $response.Value[0].Message
+        return $response
     }
-    elseif ($osType -eq 'Linux') {
-        $response = Invoke-AzVMRunCommand -ResourceGroupName $resourceGroup -Name $vmName -CommandId 'RunShellScript' -ScriptString @'
-        echo "[Azure] :: Hostname: $(hostname)"
-        echo "[Azure] :: Uptime: $(uptime -p)"
-        echo "[Azure] :: Last Reboot Time: $(uptime -s)"
-'@
+    elseif ($osType -eq "Linux") {
+        $response = az vm run-command invoke `
+            --resource-group $resourceGroup `
+            --name $vmName `
+            --command-id "RunShellScript" `
+            --scripts @'
+echo "[Azure] :: Hostname: $(hostname)"
+echo "[Azure] :: Uptime: $(uptime -p)"
+echo "[Azure] :: Last Reboot Time: $(uptime -s)"
+'@ `
+            --query "value[0].message" -o tsv
 
-        return $response.Value[0].Message.Trim()
+        return $response.Trim()
     }
     else {
         Write-Warning "[Azure] :: Unsupported OS Type: $osType"
@@ -266,52 +307,34 @@ function Remove-GitBranch {
         [switch] $all
     )
 
-    # Get all local branches and clean them up (trim and remove active branch marker)
-    $allBranches = git branch | ForEach-Object { $_.Trim() } | Where-Object { $_ -notmatch '^\* ' }
-
-    # Filter out default, main, prod, and dev-main branches
-    $allBranches = $allBranches | Where-Object { $_ -notmatch 'master | main | prod |dev-main' }
+    # Get all local branches excluding the active branch
+    $allBranches = git branch --format="%(refname:short)" | Where-Object { $_ -notmatch '^(master|main|prod|dev-main)$' }
 
     # Handle case where there are no branches to clean
-    if ($allBranches.Count -eq 0) {
-        Write-Output ""  # Empty line for script spacing
-        $defaultBranchName = (git remote show origin | Select-String -Pattern 'HEAD branch:').ToString().Split(':')[-1].Trim()
+    if (-not $allBranches) {
+        $defaultBranchName = (git symbolic-ref refs/remotes/origin/HEAD | ForEach-Object { $_ -replace 'refs/remotes/origin/', '' }).Trim()
         Write-Output "Default Branch: $defaultBranchName"
         Write-Warning "No additional branches found"
         return
     }
 
-    # Proceed with cleaning branches
     if ($all) {
-        Write-Output ""  # Empty line for script spacing
         Write-Warning "This will remove ALL local branches in the repository!"
         Write-Output 'Press any key to continue...'
         $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
 
-        # Ensure we checkout to a safe branch (default or main)
-        Write-Output "`r[Git] :: Switching to default branch"
-        if ($defaultBranch) {
-            git checkout $defaultBranch
-        }
-        else {
-            git checkout main
-        }
+        # Checkout to the default branch
+        Write-Output "[Git] :: Switching to default branch"
+        git checkout $defaultBranch -q 2>$null
 
-        # Start the branch clean-up process
-        Write-Output "`r[Git] :: Cleaning up branches"
-        foreach ($branch in $allBranches) {
-            try {
-                git branch -D $branch
-            }
-            catch {
-                Write-Warning "Failed to delete branch $branch"
-            }
-        }
+        # Delete all branches in one command for efficiency
+        Write-Output "[Git] :: Cleaning up branches"
+        git branch -D $allBranches -q 2>$null
     }
-    else {
-        # If $branchName is provided, delete that specific branch
+    elseif ($branchName) {
+        # Delete the specified branch
         try {
-            git branch -D $branchName
+            git branch -D $branchName -q 2>$null
         }
         catch {
             Write-Warning "Failed to delete branch $branchName"
@@ -377,21 +400,31 @@ function Get-AksVersion {
 
     # Check if az CLI is installed
     if (-not (Get-Command az -ErrorAction SilentlyContinue)) {
-        Write-Output "Az CLI is not installed. Please install Azure CLI to use this function." -ForegroundColor Red
+        Write-Error "Az CLI is not installed. Please install Azure CLI to use this function."
         return
     }
 
-    # If aksReleaseCalendar is specified, open the release calendar page
+    # Open the release calendar if requested
     if ($aksReleaseCalendar) {
         Start-Process "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar"
         return
     }
 
-    # Fetch AKS versions for the given location with selected output format
-    $output = az aks get-versions --location $location --output $outputFormat
+    # Validate location parameter
+    if (-not $location) {
+        Write-Error "Location is required unless --aksReleaseCalendar is specified."
+        return
+    }
 
-    # Display the result
-    Write-Output $output
+    # Fetch AKS versions for the given location
+    try {
+        Write-Output "Checking AKS Versions, Be right back..."
+        $output = az aks get-versions --location $location --output $outputFormat --only-show-errors
+        Write-Output $output
+    }
+    catch {
+        Write-Error "Failed to fetch AKS versions: $_"
+    }
 }
 
 # Function - Get Network Address Space
@@ -402,9 +435,6 @@ function Get-NetConfig {
         [switch]$showIpv4CidrTable,
         [switch]$azure
     )
-
-    # Load System.Numerics for BigInteger support
-    Add-Type -AssemblyName 'System.Numerics'
 
     # Function to convert IPv4 address to integer
     function ConvertTo-IntIPv4 {
@@ -429,20 +459,12 @@ function Get-NetConfig {
             [int]$basePrefix
         )
 
-        # Convert base IP to integer
-        $baseInt = ConvertTo-IntIPv4 -ip $baseIp
-        $cidrTable = @()
-
-        for ($prefix = $basePrefix; $prefix -le 32; $prefix++) {
+        $cidrTable = for ($prefix = $basePrefix; $prefix -le 32; $prefix++) {
             $subnetSize = [math]::Pow(2, (32 - $prefix))
-            $networkInt = $baseInt -band (([math]::Pow(2, 32) - 1) - ([math]::Pow(2, 32 - $prefix) - 1))
-            $subnetMask = ConvertTo-IPv4 -int $subnetSize
-            $totalHosts = [int]($subnetSize - 2)  # Remove leading zeros
-
-            $cidrTable += [PSCustomObject]@{
+            [PSCustomObject]@{
                 CIDR       = "$baseIp/$prefix"
-                SubnetMask = $subnetMask
-                TotalHosts = $totalHosts
+                SubnetMask = ConvertTo-SubnetMaskIPv4 -prefix $prefix
+                TotalHosts = [int]($subnetSize - 2)
             }
         }
 
@@ -452,15 +474,13 @@ function Get-NetConfig {
     # Function to convert prefix length to IPv4 subnet mask
     function ConvertTo-SubnetMaskIPv4 {
         param ($prefix)
-        $maskInt = ([math]::Pow(2, $prefix) - 1) * [math]::Pow(2, 32 - $prefix)
-        ConvertTo-IPv4 -int $maskInt
+        ConvertTo-IPv4 -int ([math]::Pow(2, 32) - [math]::Pow(2, 32 - $prefix))
     }
 
     # Function to determine IPv4 class
     function Get-IPv4Class {
         param ($ip)
-        $firstOctet = [int]$ip.Split('.')[0]
-        switch ($firstOctet) {
+        switch ([int]$ip.Split('.')[0]) {
             { $_ -ge 1 -and $_ -le 126 } { return 'A' }
             { $_ -ge 128 -and $_ -le 191 } { return 'B' }
             { $_ -ge 192 -and $_ -le 223 } { return 'C' }
@@ -472,94 +492,54 @@ function Get-NetConfig {
     $baseIP, $prefix = $cidr -split '/'
     $prefix = [int]$prefix
 
-    $isIPv6 = $baseIP.Contains(':')
+    $baseInt = ConvertTo-IntIPv4 -ip $baseIP
+    $networkSize = [math]::Pow(2, 32 - $prefix)
+    $subnetMask = ([math]::Pow(2, 32) - [math]::Pow(2, 32 - $prefix))
+    $networkInt = $baseInt -band $subnetMask
 
     if ($showIpv4CidrTable) {
-        # Generate CIDR table for IPv4
         return (New-CidrTable -baseIp $baseIP -basePrefix $prefix) | Format-Table -AutoSize
     }
 
     if ($azure) {
-        # Azure specific logic for usable IPs
-        if ($isIPv6) {
-            Write-Output "Azure networking for IPv6 is not yet supported."
-        }
-        else {
-            $baseInt = ConvertTo-IntIPv4 -ip $baseIP
-            $subnetMask = [math]::Pow(2, 32 - $prefix)
-
-            # Network calculation
-            $networkInt = $baseInt -band $subnetMask
-
-            # For Azure, first usable IP is +4 due to reserved IPs (.0, .1, .2, .3)
-            $firstUsableIP = ConvertTo-IPv4 -int ($networkInt + 4)
-            $lastUsableIP = ConvertTo-IPv4 -int ($networkInt + $subnetMask - 2)
-            $broadcastAddress = ConvertTo-IPv4 -int ($networkInt + $subnetMask - 1)
-
-            $usableHostCount = $subnetMask - 4
-
-            return [PSCustomObject]@{
-                IPClass          = Get-IPv4Class -ip $baseIP
-                CIDR             = $cidr
-                NetworkAddress   = ConvertTo-IPv4 -int $networkInt
-                FirstUsableIP    = $firstUsableIP
-                LastUsableIP     = $lastUsableIP
-                BroadcastAddress = $broadcastAddress
-                UsableHostCount  = $usableHostCount
-                SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
-            }
+        return [PSCustomObject]@{
+            IPClass          = Get-IPv4Class -ip $baseIP
+            CIDR             = $cidr
+            NetworkAddress   = ConvertTo-IPv4 -int $networkInt
+            FirstUsableIP    = ConvertTo-IPv4 -int ($networkInt + 4)   # Azure reserves first 4 IPs
+            LastUsableIP     = ConvertTo-IPv4 -int ($networkInt + $networkSize - 2)  # Last usable before broadcast
+            BroadcastAddress = ConvertTo-IPv4 -int ($networkInt + $networkSize - 1)
+            UsableHostCount  = $networkSize - 5  # Azure removes 5 IPs from usable range
+            SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
         }
     }
 
-    if ($isIPv6) {
-        # IPv6 logic
-        Write-Output "IPv6 logic is still a placeholder for future use."
+    if ($showSubnets) {
+        $subnetPrefix = 24
+        $subnetSize = [math]::Pow(2, 32 - $subnetPrefix)
+
+        $subnets = for ($currentSubnetInt = $networkInt; $currentSubnetInt -lt ($networkInt + $networkSize); $currentSubnetInt += $subnetSize) {
+            $subnetStart = $currentSubnetInt
+            $subnetEnd = [math]::Min($currentSubnetInt + $subnetSize - 1, $networkInt + $networkSize - 1)
+
+            [PSCustomObject]@{
+                SubnetStart = ConvertTo-IPv4 -int ($subnetStart + 1)
+                SubnetEnd   = ConvertTo-IPv4 -int ($subnetEnd - 1)
+            }
+        }
+
+        return $subnets
     }
-    else {
-        # IPv4 logic for non-Azure cases
-        $baseInt = ConvertTo-IntIPv4 -ip $baseIP
-        $networkSize = [math]::Pow(2, 32 - $prefix)
-        $subnetMask = ([math]::Pow(2, 32) - [math]::Pow(2, 32 - $prefix))
 
-        $networkInt = $baseInt -band $subnetMask
-
-        if ($showSubnets) {
-            # Show subnets within this range
-            $subnetPrefix = 24
-            $subnetSize = [math]::Pow(2, 32 - $subnetPrefix)
-
-            $currentSubnetInt = $networkInt
-            $subnets = @()
-
-            while ($currentSubnetInt -lt $networkInt + $networkSize) {
-                $subnetStart = $currentSubnetInt
-                $subnetEnd = [math]::Min($currentSubnetInt + $subnetSize - 1, $networkInt + $networkSize - 1)
-
-                if ($subnetEnd -gt $subnetStart) {
-                    $subnetStartIP = ConvertTo-IPv4 -int ($subnetStart + 1)
-                    $subnetEndIP = ConvertTo-IPv4 -int ($subnetEnd - 1)
-
-                    $subnets += "Subnet: $subnetStartIP - $subnetEndIP"
-                }
-
-                $currentSubnetInt = $currentSubnetInt + $subnetSize
-            }
-
-            return $subnets
-        }
-        else {
-            # Output results for standard IPv4
-            return [PSCustomObject]@{
-                IPClass          = Get-IPv4Class -ip $baseIP
-                CIDR             = $cidr
-                NetworkAddress   = ConvertTo-IPv4 -int $networkInt
-                FirstUsableIP    = ConvertTo-IPv4 -int ($networkInt + 1)
-                LastUsableIP     = ConvertTo-IPv4 -int ($networkInt + $networkSize - 2)
-                BroadcastAddress = ConvertTo-IPv4 -int ($networkInt + $networkSize - 1)
-                UsableHostCount  = ($networkSize - 2).ToString()
-                SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
-            }
-        }
+    return [PSCustomObject]@{
+        IPClass          = Get-IPv4Class -ip $baseIP
+        CIDR             = $cidr
+        NetworkAddress   = ConvertTo-IPv4 -int $networkInt
+        FirstUsableIP    = ConvertTo-IPv4 -int ($networkInt + 1)
+        LastUsableIP     = ConvertTo-IPv4 -int ($networkInt + $networkSize - 2)
+        BroadcastAddress = ConvertTo-IPv4 -int ($networkInt + $networkSize - 1)
+        UsableHostCount  = $networkSize - 2
+        SubnetMask       = ConvertTo-SubnetMaskIPv4 -prefix $prefix
     }
 }
 
@@ -628,32 +608,27 @@ function Get-EolInfo {
     )
 
     $eolUrl = "https://endoflife.date/api/$productName"
-    $eolInfo = Invoke-RestMethod -Uri $eolUrl
+    try {
+        $eolInfo = Invoke-RestMethod -Uri $eolUrl -ErrorAction Stop
+    }
+    catch {
+        Write-Error "Failed to fetch EOL information for $(productName): $_"
+        return
+    }
 
     $currentDate = Get-Date
 
-    # Ensure 'eol' values are properly handled
-    foreach ($entry in $eolInfo) {
-        if ($entry.eol -eq "false") {
-            $entry.eol = $null
-        }
-    }
-
-    # Apply LTS filter if requested
-    if ($ltsSupport) {
-        $eolInfo = $eolInfo | Where-Object { $_.lts -eq $true }
-    }
-
-    # Apply Active Support filter if requested
-    if ($activeSupport) {
-        $eolInfo = $eolInfo | Where-Object {
-            # Ensure 'eol' is not 'false' before converting to [DateTime]
-            ([string]::IsNullOrEmpty($_.eol)) -or ($_.eol -match "^\d{4}-\d{2}-\d{2}$" -and [DateTime]$_.eol -gt $currentDate)
-        }
-    }
-
-    # Sort results, moving entries with null EOL to the bottom
-    $eolInfo = $eolInfo | Sort-Object { if ($_.eol -match "^\d{4}-\d{2}-\d{2}$") { [DateTime]$_.eol } else { [DateTime]::MaxValue } } -Descending
+    # Filter and sort in a single pipeline for better performance
+    $eolInfo = $eolInfo | Where-Object {
+        ($ltsSupport -and $_.lts -eq $true) -or
+        ($activeSupport -and (
+            -not [string]::IsNullOrEmpty($_.eol) -and
+            ($_.eol -match "^\d{4}-\d{2}-\d{2}$" -and [DateTime]$_.eol -gt $currentDate)
+        )) -or
+        (-not $ltsSupport -and -not $activeSupport)
+    } | Sort-Object {
+        if ($_.eol -match "^\d{4}-\d{2}-\d{2}$") { [DateTime]$_.eol } else { [DateTime]::MaxValue }
+    } -Descending
 
     return $eolInfo
 }
