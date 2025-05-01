@@ -10,7 +10,7 @@
 #Requires -RunAsAdministrator
 
 param (
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory = $false)]
     [string]$nerdFont = 'CascadiaCode'
 )
 
@@ -22,7 +22,8 @@ function Invoke-WinGetPackageCheck {
     try {
         $latestRelease = Invoke-RestMethod -Method 'Get' -Uri $wingetReleaseUrl
         $latestVersion = $latestRelease.tag_name.TrimStart("v")
-    } catch {
+    }
+    catch {
         Write-Error "Failed to retrieve latest WinGet release info: $_"
         return
     }
@@ -44,7 +45,7 @@ function Invoke-WinGetPackageCheck {
 
     # Get asset URLs for App Installer bundle and license from GitHub release
     $installerAsset = $latestRelease.assets | Where-Object name -like '*.msixbundle' | Select-Object -First 1
-    $licenseAsset   = $latestRelease.assets | Where-Object name -like '*.xml'        | Select-Object -First 1
+    $licenseAsset = $latestRelease.assets | Where-Object name -like '*.xml'        | Select-Object -First 1
 
     if (-not $installerAsset -or -not $licenseAsset) {
         Write-Error "Failed to locate installer or license asset in the release."
@@ -52,7 +53,7 @@ function Invoke-WinGetPackageCheck {
     }
 
     $downloadLinks[$installerAsset.name] = $installerAsset.browser_download_url
-    $downloadLinks[$licenseAsset.name]   = $licenseAsset.browser_download_url
+    $downloadLinks[$licenseAsset.name] = $licenseAsset.browser_download_url
 
     Write-Output "→ Downloading and installing WinGet dependencies..."
 
@@ -64,7 +65,8 @@ function Invoke-WinGetPackageCheck {
         Write-Output "Downloading $fileName..."
         try {
             Invoke-WebRequest -Uri $url -OutFile $tempPath -UseBasicParsing
-        } catch {
+        }
+        catch {
             Write-Error "Failed to download $(fileName): $_"
             continue
         }
@@ -76,7 +78,8 @@ function Invoke-WinGetPackageCheck {
             if ($localVersion -lt $fileVersion) {
                 Write-Output "Installing $fileName..."
                 Add-AppxPackage -Path $tempPath
-            } else {
+            }
+            else {
                 Write-Warning "$fileName is older or already installed. Skipping."
             }
 
@@ -92,7 +95,8 @@ function Invoke-WinGetPackageCheck {
         Write-Output "Installing App Installer ($($installerAsset.name))..."
         Add-AppProvisionedPackage -Online -PackagePath $installerPath -LicensePath $licensePath | Out-Null
         Remove-Item $installerPath, $licensePath -Force
-    } else {
+    }
+    else {
         Write-Error "Installer or license file missing, skipping provisioning."
     }
 
@@ -102,7 +106,8 @@ function Invoke-WinGetPackageCheck {
         Write-Output "Refreshing WinGet sources..."
         Start-Process -FilePath $wingetExe -ArgumentList 'source reset --force' -Wait -NoNewWindow
         Start-Process -FilePath $wingetExe -ArgumentList 'source update' -Wait -NoNewWindow
-    } else {
+    }
+    else {
         Write-Warning "Cannot find winget.exe in expected location."
     }
 
@@ -111,72 +116,103 @@ function Invoke-WinGetPackageCheck {
 
 function Install-WinGetApplications {
 
-#
-# Windows Application
-#
+    #
+    # Windows Application
+    #
 
-Write-Output `r "--> Installing Windows Applications"
+    Write-Output `r "--> Installing Windows Applications"
 
-# 
-$appList = @(
-    'JanDeDobbeleer.OhMyPosh'
-    'Microsoft.WindowsTerminal'
-    'Microsoft.PowerShell'
-    'Microsoft.VisualStudioCode.CLI'
-    'Microsoft.Bicep'
-    'Microsoft.AzureCLI'
-    'Microsoft.Azure.Kubelogin'
-    'Amazon.AWSCLI'
-    'Hashicorp.Terraform'
-    'Git.Git'
-    'GitHub.cli'
-    'Helm.Helm'
-    'Kubernetes.kubectl'
-    'FireDaemon.OpenSSL'
-    'Ookla.Speedtest.CLI'
-)
+    #
+    $appList = @(
+        'JanDeDobbeleer.OhMyPosh'
+        'Microsoft.WindowsTerminal'
+        'Microsoft.PowerShell'
+        'Microsoft.VisualStudioCode.CLI'
+        'Microsoft.Bicep'
+        'Microsoft.AzureCLI'
+        'Microsoft.Azure.Kubelogin'
+        'Amazon.AWSCLI'
+        'Hashicorp.Terraform'
+        'Git.Git'
+        'GitHub.cli'
+        'Helm.Helm'
+        'Kubernetes.kubectl'
+        'FireDaemon.OpenSSL'
+        'Ookla.Speedtest.CLI'
+    )
 
-foreach ($app in $appList) {
-    Write-Output "Installing: $app"
-    winget install  --accept-source-agreements --accept-source-agreements --scope machine --silent --exact --id $app | Out-Null
-}
+    foreach ($app in $appList) {
+        Write-Output "Installing: $app"
+        winget install  --accept-source-agreements --accept-source-agreements --scope machine --silent --exact --id $app | Out-Null
+    }
 
 }
 
 function Install-PwshModules {
-    
-#
-# PowerShell Modules
-#
-
-Write-Output `r "--> Installing PowerShell Modules"
-
-Write-Output "Checking PSGallery InstallationPolicy"
-$policyState = (Get-PSRepository -Name 'PSGallery').InstallationPolicy
-if ($policyState -ne 'Trusted') {
-    Write-Output "Updated PSGalery InstallationPolicy [Trusted]"
-    Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted' `r
-} else {
-    Write-Output "PSGallery Installation Already Configured - [Trusted]" `r
-}
-
-If ($PSVersionTable.PSVersion.Major -eq '5') { 
 
     #
-    Write-Warning "PowerShell 5.x Detected, Updating Pester, PSReadLine, PowerShellGet, PackageManagement"
-
+    # PowerShell Modules
     #
-    Write-Output "Installing Latest NuGet PackageProvider"
-    Install-PackageProvider -Name 'NuGet' -Force | Out-Null
 
-    $pwsh5Modules =@(
-        'PowerShellGet'
-        'PackageManagement'
+    Write-Output `r "--> Installing PowerShell Modules"
+
+    Write-Output "Checking PSGallery InstallationPolicy"
+    $policyState = (Get-PSRepository -Name 'PSGallery').InstallationPolicy
+    if ($policyState -ne 'Trusted') {
+        Write-Output "Updated PSGalery InstallationPolicy [Trusted]"
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted' `r
+    }
+    else {
+        Write-Output "PSGallery Installation Already Configured - [Trusted]" `r
+    }
+
+    If ($PSVersionTable.PSVersion.Major -eq '5') {
+
+        #
+        Write-Warning "PowerShell 5.x Detected, Updating Pester, PSReadLine, PowerShellGet, PackageManagement"
+
+        #
+        Write-Output "Installing Latest NuGet PackageProvider"
+        Install-PackageProvider -Name 'NuGet' -Force | Out-Null
+
+        $pwsh5Modules = @(
+            'PowerShellGet'
+            'PackageManagement'
+            'Pester'
+            'PSReadLine'
+        )
+
+        foreach ($module in $pwsh5Modules) {
+            $onlineModule = Find-Module -Repository 'PSGallery' -Name $module
+            $moduleCheck = Get-Module -ListAvailable -Name $module
+            if ($moduleCheck) {
+                $localModuleVersion = $(Get-Module -ListAvailable -Name $module | Select-Object 'Version' -First 1).Version.ToString()
+            }
+
+            if ($onlineModule.version -eq $localModuleVersion) {
+                Write-Output "Module: $module is up to date"
+            }
+
+            if ($onlineModule.version -ne $localModuleVersion) {
+                Write-Output "Installing Module: $module"
+                Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -AllowClobber -SkipPublisherCheck -Force
+            }
+        }
+
+        #
+        Write-Output ""
+    }
+
+    $pwshModules = @(
+        'Az'
+        'Microsoft.Graph'
+        'Terminal-Icons'
+        'Posh-Git'
         'Pester'
         'PSReadLine'
     )
-    
-    foreach ($module in $pwsh5Modules) {
+
+    foreach ($module in $pwshModules) {
         $onlineModule = Find-Module -Repository 'PSGallery' -Name $module
         $moduleCheck = Get-Module -ListAvailable -Name $module
         if ($moduleCheck) {
@@ -189,39 +225,9 @@ If ($PSVersionTable.PSVersion.Major -eq '5') {
 
         if ($onlineModule.version -ne $localModuleVersion) {
             Write-Output "Installing Module: $module"
-            Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -AllowClobber -SkipPublisherCheck -Force
+            Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -Force -WarningAction Ignore
         }
     }
-
-    #
-    Write-Output ""
-}
-
-$pwshModules = @(
-    'Az'
-    'Microsoft.Graph'
-    'Terminal-Icons'
-    'Posh-Git'
-    'Pester'
-    'PSReadLine'
-)
-
-foreach ($module in $pwshModules) {
-    $onlineModule = Find-Module -Repository 'PSGallery' -Name $module
-    $moduleCheck = Get-Module -ListAvailable -Name $module
-    if ($moduleCheck) {
-        $localModuleVersion = $(Get-Module -ListAvailable -Name $module | Select-Object 'Version' -First 1).Version.ToString()
-    }
-
-    if ($onlineModule.version -eq $localModuleVersion) {
-        Write-Output "Module: $module is up to date"
-    }
-
-    if ($onlineModule.version -ne $localModuleVersion) {
-        Write-Output "Installing Module: $module"
-        Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -WarningAction Ignore
-    }
-}
 
 }
 
@@ -234,6 +240,11 @@ function Install-NerdFontPackage {
     Write-Output `r "--> Installing NerdFont: $nerdFont"
 
     $repoApiUrl = "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
+
+    if (Get-ChildItem -Path C:\Windows\Fonts | Where-Object 'Name' -like "*NerdFont-Regular.ttf") {
+        Write-Output "Nerd Font [$nerdFont] is already installed"
+        return
+    }
 
     try {
         Write-Output "Fetching latest Nerd Fonts release info..."
@@ -278,11 +289,9 @@ function Install-NerdFontPackage {
 
                 New-ItemProperty -Path $fontRegistryPath -Name $registryName -PropertyType String -Value $registryValue -Force | Out-Null
             }
-            
+
             Write-Output "$($fonts.Count) font file(s) installed to $fontDir"
         }
-
-
 
         # Cleanup
         Write-Output "Cleaning up temporary files..."
@@ -299,20 +308,62 @@ function Install-NerdFontPackage {
 function Set-WindowsTerminalProfile {
     Write-Output `r "--> Configuring Windows Terminal Profile"
 
-    Write-Output "Downloading Windows Terminal Profile Settings..."
+    # Check if WSL is enabled
+    Write-Output "Checking for Windows Subsystem for Linux (WSL) support..."
+    $wslFeature = Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+    if ($wslFeature.State -eq "Enabled") {
+        Write-Output "Microsoft-Windows-Subsystem-Linux is already enabled."
+    } else {
+        Write-Output "WSL is not enabled. Enabling WSL..."
+        Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
+        Write-Output "WSL has been enabled. Please restart your computer to apply the changes."
+    }
+
+    # Check if Ubuntu 24.04 is already installed
+    $wslDistro = "Ubuntu-24.04"
+    $installedDistros = wsl.exe --list --quiet
+
+    if ($installedDistros -contains $wslDistro) {
+        Write-Output "The WSL instance '$wslDistro' is already installed. Skipping installation."
+    } else {
+        Write-Output "Installing: $wslDistro"
+        wsl.exe --install $wslDistro
+    }
+
+    #
+    Write-Output `r "Downloading Windows Terminal Profile Settings..."
 
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/windows-terminal-settings.json?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
-    
+
     # Decode base64 content and write to file
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes($env:LOCALAPPDATA + "\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json", $contentBytes)
-    
+
+    Write-Output `r "Downloading Oh My Posh Profile..."
+    $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/quick-term-cloud.omp.json?ref=main'
+    $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
+
+    # Decode base64 content and write to file
+    $contentBytes = [System.Convert]::FromBase64String($response.content)
+    [System.IO.File]::WriteAllBytes("$env:POSH_THEMES_PATH\quick-term-cloud.omp.json", $contentBytes)
+   
+    Write-Output `r "Downloading PowerShell Profile..."
+    $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/Microsoft.PowerShell_profile.ps1?ref=main'
+    $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
+
+    # Decode base64 content and write to file
+    $contentBytes = [System.Convert]::FromBase64String($response.content)
+    [System.IO.File]::WriteAllBytes("C:\Users\Simon\Documents\PowerShell\Microsoft.PowerShell_profile.ps1", $contentBytes)
+   
+
+
     $codePath = 'C:\Code'
     If (!(Test-Path -Path $codePath)) {
         #
         Write-Output "Creating Local Code Folder: $codePath"
-        
+
         New-Item -ItemType 'Directory' -Path $codePath | Out-Null
     }
 }
@@ -398,28 +449,27 @@ function Update-VSCodePwshModule {
 
 function Register-PSProfile {
 
-    # 
+    #
     Write-Output `r "--> Reloading PowerShell Profile!"
 
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
 }
 
-
-# 
+#
 $timeStamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
 Write-Output "#########################################"
 Write-Output " Simon's Oh My Posh Profile Setup v3.2.0 "
-Write-Output "#########################################" 
+Write-Output "#########################################"
 Write-Output "Install Start Time: $timeStamp" `r
 
 #
 Invoke-WinGetPackageCheck
 
-# 
+#
 Install-WinGetApplications
 
-# 
+#
 Install-PwshModules
 
 #
