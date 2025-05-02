@@ -167,7 +167,7 @@ function Install-PwshModules {
         Write-Output "PSGallery Installation Already Configured - [Trusted]" `r
     }
 
-    If ($PSVersionTable.PSVersion.Major -eq '5') {
+    if ($PSVersionTable.PSVersion.Major -eq '5') {
 
         #
         Write-Warning "PowerShell 5.x Detected, Updating Pester, PSReadLine, PowerShellGet, PackageManagement"
@@ -228,6 +228,11 @@ function Install-PwshModules {
             Write-Output "Installing Module: $module"
             Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -Force -WarningAction Ignore
         }
+        
+        if ($module -eq 'PSReadLine' -or $module -eq 'Pester') {
+            Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+        }
+
     }
 
 }
