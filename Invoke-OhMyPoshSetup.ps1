@@ -128,7 +128,6 @@ function Install-WinGetApplications {
         'Microsoft.WindowsTerminal'
         'Microsoft.PowerShell'
         'Microsoft.VisualStudioCode.CLI'
-        'Microsoft.Bicep'
         'Microsoft.AzureCLI'
         'Microsoft.Azure.Kubelogin'
         'Amazon.AWSCLI'
@@ -146,6 +145,8 @@ function Install-WinGetApplications {
         winget install  --accept-source-agreements --accept-source-agreements --scope machine --silent --exact --id $app | Out-Null
     }
 
+    Write-Output "Installing: Microsoft.AzureCLI Bicep"
+    az bicep install
 }
 
 function Install-PwshModules {
@@ -341,7 +342,7 @@ function Set-WindowsTerminalProfile {
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes($env:LOCALAPPDATA + "\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json", $contentBytes)
 
-    Write-Output `r "Downloading Oh My Posh Profile..."
+    Write-Output "Downloading Oh My Posh Profile..."
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/quick-term-cloud.omp.json?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
 
@@ -349,7 +350,7 @@ function Set-WindowsTerminalProfile {
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes("$env:POSH_THEMES_PATH\quick-term-cloud.omp.json", $contentBytes)
    
-    Write-Output `r "Downloading PowerShell Profile..."
+    Write-Output "Downloading PowerShell Profile..."
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/Microsoft.PowerShell_profile.ps1?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
 
@@ -455,6 +456,7 @@ function Register-PSProfile {
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
 }
+
 
 #
 $timeStamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
