@@ -55,7 +55,7 @@ function Invoke-WinGetPackageCheck {
     $downloadLinks[$installerAsset.name] = $installerAsset.browser_download_url
     $downloadLinks[$licenseAsset.name] = $licenseAsset.browser_download_url
 
-    Write-Output "→ Downloading and installing WinGet dependencies..."
+    Write-Output "--> Downloading and installing WinGet dependencies..."
 
     foreach ($entry in $downloadLinks.GetEnumerator()) {
         $fileName = $entry.Key
@@ -73,7 +73,7 @@ function Invoke-WinGetPackageCheck {
 
         if ($fileName -like '*.appx') {
             $localVersion = (Get-AppxPackage -Name 'Microsoft.VCLibs*' | Sort-Object -Property Version | Select-Object -Last 1).Version
-            $fileVersion = (Get-AppPackageManifest -PackagePath $tempPath).Package.Properties.Version
+            $fileVersion = (Get-AppPackageManifest -Package $tempPath).Package.Properties.Version
 
             if ($localVersion -lt $fileVersion) {
                 Write-Output "Installing $fileName..."
@@ -124,11 +124,12 @@ function Install-WinGetApplications {
 
     #
     $appList = @(
-        'JanDeDobbeleer.OhMyPosh'
         'Microsoft.WindowsTerminal'
+        'JanDeDobbeleer.OhMyPosh'
         'Microsoft.PowerShell'
         'Microsoft.VisualStudioCode.CLI'
         'Microsoft.AzureCLI'
+        'Microsoft.Bicep'
         'Microsoft.Azure.Kubelogin'
         'Amazon.AWSCLI'
         'Hashicorp.Terraform'
@@ -145,8 +146,8 @@ function Install-WinGetApplications {
         winget install  --accept-source-agreements --accept-source-agreements --scope machine --silent --exact --id $app | Out-Null
     }
 
-    Write-Output "Installing: Microsoft.AzureCLI Bicep"
-    az bicep install
+    #Write-Output "Installing: Microsoft.AzureCLI Bicep"
+    #az bicep install
 }
 
 function Install-PwshModules {
@@ -158,6 +159,11 @@ function Install-PwshModules {
     Write-Output `r "--> Installing PowerShell Modules"
 
     Write-Output "Checking PSGallery InstallationPolicy"
+
+    #
+    Write-Output "Installing Latest NuGet PackageProvider"
+    Install-PackageProvider -Name 'NuGet' -Force | Out-Null
+
     $policyState = (Get-PSRepository -Name 'PSGallery').InstallationPolicy
     if ($policyState -ne 'Trusted') {
         Write-Output "Updated PSGalery InstallationPolicy [Trusted]"
@@ -171,10 +177,6 @@ function Install-PwshModules {
 
         #
         Write-Warning "PowerShell 5.x Detected, Updating Pester, PSReadLine, PowerShellGet, PackageManagement"
-
-        #
-        Write-Output "Installing Latest NuGet PackageProvider"
-        Install-PackageProvider -Name 'NuGet' -Force | Out-Null
 
         $pwsh5Modules = @(
             'PowerShellGet'
@@ -228,7 +230,7 @@ function Install-PwshModules {
             Write-Output "Installing Module: $module"
             Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -Force -WarningAction Ignore
         }
-        
+
         if ($module -eq 'PSReadLine' -or $module -eq 'Pester') {
             Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
         }
@@ -320,7 +322,8 @@ function Set-WindowsTerminalProfile {
 
     if ($wslFeature.State -eq "Enabled") {
         Write-Output "Microsoft-Windows-Subsystem-Linux is already enabled."
-    } else {
+    }
+    else {
         Write-Output "WSL is not enabled. Enabling WSL..."
         Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
         Write-Output "WSL has been enabled. Please restart your computer to apply the changes."
@@ -332,7 +335,8 @@ function Set-WindowsTerminalProfile {
 
     if ($installedDistros -contains $wslDistro) {
         Write-Output "The WSL instance '$wslDistro' is already installed. Skipping installation."
-    } else {
+    }
+    else {
         Write-Output "Installing: $wslDistro"
         wsl.exe --install $wslDistro
     }
@@ -354,7 +358,7 @@ function Set-WindowsTerminalProfile {
     # Decode base64 content and write to file
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes("$env:POSH_THEMES_PATH\quick-term-cloud.omp.json", $contentBytes)
-   
+
     Write-Output "Downloading PowerShell Profile..."
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/Microsoft.PowerShell_profile.ps1?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
@@ -362,7 +366,7 @@ function Set-WindowsTerminalProfile {
     # Decode base64 content and write to file
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes("C:\Users\Simon\Documents\PowerShell\Microsoft.PowerShell_profile.ps1", $contentBytes)
-   
+
 
 
     $codePath = 'C:\Code'
