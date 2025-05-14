@@ -130,4 +130,8 @@ main() {
   log "✅ All tools installed successfully!"
 }
 
+# Execute Installation
 main
+
+# Reload Profile
+. .profile
