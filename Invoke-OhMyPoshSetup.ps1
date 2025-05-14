@@ -166,8 +166,8 @@ function Install-PwshModules {
 
     $policyState = (Get-PSRepository -Name 'PSGallery').InstallationPolicy
     if ($policyState -ne 'Trusted') {
-        Write-Output "Updated PSGalery InstallationPolicy [Trusted]"
-        Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted' `r
+        Write-Output "Updated PSGalery InstallationPolicy [Trusted]" `r
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
     }
     else {
         Write-Output "PSGallery Installation Already Configured - [Trusted]" `r
