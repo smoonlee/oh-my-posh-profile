@@ -425,7 +425,7 @@ function Set-WindowsTerminalProfile {
 
     # Decode base64 content and write to file
     $contentBytes = [System.Convert]::FromBase64String($response.content)
-    [System.IO.File]::WriteAllBytes($env:LOCALAPPDATA + "\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json", $contentBytes)
+    [System.IO.File]::WriteAllBytes("$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json", $contentBytes)
 
     Write-Output "Downloading Oh My Posh Profile..."
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/quick-term-cloud.omp.json?ref=main'
@@ -442,9 +442,7 @@ function Set-WindowsTerminalProfile {
 
     # Decode base64 content and write to file
     $contentBytes = [System.Convert]::FromBase64String($response.content)
-    [System.IO.File]::WriteAllBytes("C:\Users\Simon\Documents\PowerShell\Microsoft.PowerShell_profile.ps1", $contentBytes)
-
-
+    [System.IO.File]::WriteAllBytes("$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1", $contentBytes)
 
     $codePath = 'C:\Code'
     If (!(Test-Path -Path $codePath)) {
