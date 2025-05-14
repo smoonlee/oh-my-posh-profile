@@ -89,7 +89,10 @@ install_powershell() {
 configure_powershell_modules() {
   log "Configuring PowerShell Gallery and Installing Az Module"
   pwsh -Command '
+    Write-Output "Updating PSGallery InstallationPolicy [Trusted] `r
     Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+
+    Write-Output "Installing Azure Modules"
     Install-Module -Name Az -Repository PSGallery -Force
   '
 }
