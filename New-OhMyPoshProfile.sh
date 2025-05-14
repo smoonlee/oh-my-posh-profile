@@ -1,183 +1,131 @@
-#!/bin/bash
-scriptVersion=v3
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Function - update System Packages
-function updateSystem() {
-    echo "[OhMyPoshProfile $scriptVersion] :: Update System Packages"
-    sudo apt update
-    sudo apt upgrade -y && sudo apt install -y gcc build-essential apt-utils
-    sudo apt autoremove -y
+log() {
+  echo -e "\n--> $1"
 }
 
-function installApplications() {
-    echo ""
-    echo "[OhMyPoshProfile $scriptVersion] :: Installing Applications"
-
-    # Install Azure CLI
-    if ! command -v /usr/bin/az &>/dev/null; then
-        echo "[OhMyPoshProfile $scriptVersion] :: Installing Azure CLI"
-        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-    else
-        echo "[OhMyPoshProfile $scriptVersion] :: Azure CLI already installed"
-    fi
-
-    # Install Kubectl
-    if ! command -v kubectl &>/dev/null; then
-        echo ""   
-        echo "[OhMyPoshProfile $scriptVersion] :: Installing Kubectl"
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-    else
-        echo "[OhMyPoshProfile $scriptVersion] :: Kubectl already installed"
-    fi
+install_system_updates() {
+  log "Installing System Updates and Essential Packages"
+  sudo apt update
+  sudo apt dist-upgrade -y
+  sudo apt install -y build-essential gcc curl wget gnupg lsb-release apt-transport-https ca-certificates
 }
 
-# Function - Install Brew Package Manager
-function installBrewPackageManager() {
-    echo ""
-    echo "[OhMyPoshProfile $scriptVersion] :: Installing Brew Package Manager"
+install_homebrew() {
+  log "Installing Homebrew Package Manager"
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+    echo '❌ Homebrew installation failed'
+    exit 1
+  }
 
-    # Check if Homebrew is already installed
-    if command -v /home/linuxbrew/.linuxbrew/bin/brew &>/dev/null; then
-        echo "[OhMyPoshProfile $scriptVersion] :: Homebrew is already installed. Skipping installation."
-        return 0
-    fi
+  log "Adding Brew to User Profile"
+  {
+    echo
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+  } >> "$HOME/.bashrc"
 
-    # Check if curl is installed, if not, install it
-    if ! command -v /usr/bin/curl &>/dev/null; then
-        echo "curl is not installed. Installing curl..."
-        if [[ $(lsb_release -is) == "Ubuntu" ]]; then
-            sudo apt update
-            sudo apt install -y curl
-        else
-            echo "Error: curl is not installed and cannot be automatically installed on this system. Please install curl manually and try again."
-            return 1
-        fi
-    fi
-
-    # Download and Install Homebrew
-    echo "[OhMyPoshProfile $scriptVersion] :: Downloading and installing Homebrew..."
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # Check if installation was successful
-    if [[ $? -ne 0 ]]; then
-        echo "Error: Homebrew installation failed."
-        return 1
-    fi
-
-    # Add Homebrew to User Profile/Session
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>"$HOME/.profile"
-
-    # Reload Profile with Homebrew
-    echo "[OhMyPoshProfile $scriptVersion] :: Homebrew installed successfully."
-    . $HOME/.profile
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 }
 
-# Function - Install Oh-My-Posh
-function installOhMyPosh() {
-    echo ""
-    echo "[OhMyPoshProfile $scriptVersion] :: Installing Oh My Posh"
+install_oh_my_posh() {
+  log "Installing Oh My Posh"
+  brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
-    # Check if Oh My Posh is already installed
-    if command -v /home/linuxbrew/.linuxbrew/bin/oh-my-posh &>/dev/null; then
-        echo "[OhMyPoshProfile $scriptVersion] :: Oh My Posh is already installed. Skipping installation."
-        return 0
-    fi
+  # Theme configuration
+  themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
+  themeName=$(basename "$themeProfile")
+  outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
 
-    # Check if Homebrew is installed, if not, install it
-    if ! command -v brew &>/dev/null; then
-        echo "Homebrew is not installed. Installing Brew Package Manager..."
-        installBrewPackageManager
-        if [[ $? -ne 0 ]]; then
-            echo "Error: Homebrew installation failed. Cannot proceed with Oh My Posh installation."
-            return 1
-        fi
-    fi
+  # Download theme
+  echo "[OhMyPosh] :: Downloading [$themeName]"
+  if ! curl -fsSL "$themeProfile" -o "$outFile"; then
+    echo "❌ Error: Failed to download theme." >&2
+    exit 1
+  fi
 
-    # Install Oh-My-Posh
-    brew install jandedobbeleer/oh-my-posh/oh-my-posh
-
-    # Check if installation was successful
-    if [[ $? -ne 0 ]]; then
-        echo "Error: Oh My Posh installation failed."
-        return 1
-    fi
-
-    echo "[OhMyPoshProfile $scriptVersion] :: Oh My Posh installed successfully."
-
-    # Reload Profile with Oh-My-Posh
-    . $HOME/.profile
+  # Add Oh-My-Posh init to profile
+  initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
+  if ! grep -qF "$initCommand" "$HOME/.profile"; then
+    echo "$initCommand" >>"$HOME/.profile"
+  fi
 }
 
-function configureOhMyPoshTheme() {
-    echo ""
-    echo "[OhMyPoshProfile $scriptVersion] :: Configure Posh Theme"
+install_kubectl() {
+  log "Installing kubectl"
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.33/deb/Release.key |
+    sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
-    # Check dependencies
-    if ! command -v curl &>/dev/null || ! command -v oh-my-posh &>/dev/null; then
-        echo "Error: Required dependencies not found. Please make sure 'curl' and 'oh-my-posh' are installed." >&2
-        return 1
-    fi
+  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' |
+    sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
 
-    # Theme configuration
-    local themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
-    local themeName=$(basename "$themeProfile")
-    local outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
-
-    # Download theme
-    echo "[OhMyPoshProfile $scriptVersion] :: Downloading [$themeName]"
-    if ! curl -fsSL "$themeProfile" -o "$outFile"; then
-        echo "Error: Failed to download theme." >&2
-        return 1
-    fi
-
-    # Add Oh-My-Posh to user profile
-    local initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
-    if ! grep -qF "$initCommand" "$HOME/.profile"; then
-        echo "$initCommand" >>"$HOME/.profile"
-    fi
-
-    # Reload profile
-    echo "[OhMyPoshProfile $scriptVersion] :: Reloading Profile"
-    . $HOME/.profile
+  sudo apt update
+  sudo apt install -y kubectl
 }
 
-function configureKubectl() {
-    echo ""
-    echo "[OhMyPoshProfile $scriptVersion] :: Patching Kubernetes Configuration into WSL"
+install_helm() {
+  log "Installing Helm"
+  curl https://baltocdn.com/helm/signing.asc | gpg --dearmor |
+    sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 
-    localUser="Simon"
-    kubeDir="$HOME/.kube"
-    configFile="/mnt/c/Users/$localUser/.kube/config"
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" |
+    sudo tee /etc/apt/sources.list.d/helm-stable-debian.list > /dev/null
 
-    # Check if kube directory exists, if not create it
-    if [ ! -d "$kubeDir" ]; then
-        mkdir -p "$kubeDir"
-        echo "[OhMyPoshProfile $scriptVersion] :: Created $kubeDir directory"
-    fi
-
-    # Check if config file exists
-    if [ ! -f "$configFile" ]; then
-        echo "Error: Kubernetes config file not found at $configFile"
-        return 1
-    fi
-
-    # Create symbolic link to config file
-    ln -sf "$configFile" "$kubeDir/config"
-    echo "[OhMyPoshProfile $scriptVersion] :: Kubernetes configuration symlink created"
+  sudo apt update
+  sudo apt install -y helm
 }
 
-#
-##
-echo "[OhMyPoshProfile $scriptVersion] :: Linux Setup Script"
+install_powershell() {
+  log "Installing PowerShell"
+  wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
+  sudo dpkg -i packages-microsoft-prod.deb
+  rm packages-microsoft-prod.deb
 
-updateSystem
-installApplications
-installBrewPackageManager
-installOhMyPosh
-configureOhMyPoshTheme
-configureKubectl
+  sudo apt update
+  sudo apt install -y powershell
+}
 
-# Load Profile
-. .profile
+configure_powershell_modules() {
+  log "Configuring PowerShell Gallery and Installing Az Module"
+  pwsh -Command '
+    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+    Install-Module -Name Az -Repository PSGallery -Force
+  '
+}
+
+install_azure_cli_and_bicep() {
+  log "Installing Azure CLI and Bicep"
+  sudo mkdir -p /etc/apt/keyrings
+  curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+  sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+
+  AZ_REPO=$(lsb_release -cs)
+  ARCH=$(dpkg --print-architecture)
+
+  echo "deb [arch=$ARCH signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
+    sudo tee /etc/apt/sources.list.d/azure-cli.list > /dev/null
+
+  sudo apt update
+  sudo apt install -y azure-cli
+
+  log "Installing Bicep CLI via Azure CLI"
+  az bicep install
+}
+
+main() {
+  install_system_updates
+  install_homebrew
+  install_oh_my_posh
+  install_kubectl
+  install_helm
+  install_powershell
+  configure_powershell_modules
+  install_azure_cli_and_bicep
+  log "✅ All tools installed successfully!"
+}
+
+main
