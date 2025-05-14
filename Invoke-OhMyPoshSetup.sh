@@ -23,8 +23,8 @@ install_homebrew() {
   {
     echo
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
-  } >> "/home/$USER/.bashrc"
-  
+  } >> "$HOME/.bashrc"
+
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 }
 
@@ -33,21 +33,21 @@ install_oh_my_posh() {
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
   # Theme configuration
-  local themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
-  local themeName=$(basename "$themeProfile")
-  local outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
+  themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
+  themeName=$(basename "$themeProfile")
+  outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
 
   # Download theme
-  echo "[OhMyPoshProfile $scriptVersion] :: Downloading [$themeName]"
+  echo "[OhMyPosh] :: Downloading [$themeName]"
   if ! curl -fsSL "$themeProfile" -o "$outFile"; then
-      echo "Error: Failed to download theme." >&2
-      return 1
+    echo "❌ Error: Failed to download theme." >&2
+    exit 1
   fi
 
-  # Add Oh-My-Posh to user profile
-  local initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
+  # Add Oh-My-Posh init to profile
+  initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
   if ! grep -qF "$initCommand" "$HOME/.profile"; then
-      echo "$initCommand" >>"$HOME/.profile"
+    echo "$initCommand" >>"$HOME/.profile"
   fi
 }
 
