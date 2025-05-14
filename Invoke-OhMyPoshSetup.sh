@@ -38,7 +38,6 @@ install_oh_my_posh() {
   outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
 
   # Download theme
-  echo "[OhMyPosh] :: Downloading [$themeName]"
   if ! curl -fsSL "$themeProfile" -o "$outFile"; then
     echo "❌ Error: Failed to download theme." >&2
     exit 1
