@@ -1,10 +1,47 @@
 <#
+.SYNOPSIS
+    Automates the setup and configuration of a Windows development environment, including package installations, PowerShell modules, fonts, and terminal profiles.
 
+.DESCRIPTION
+    This script performs the following tasks:
+    - Checks and updates the WinGet CLI Package Manager.
+    - Installs a predefined list of Windows applications using WinGet.
+    - Installs and updates PowerShell modules from PSGallery.
+    - Downloads and installs a specified Nerd Font.
+    - Configures the Windows Terminal profile, including WSL setup and profile customization.
+    - Sets up cross-version PowerShell module support between PowerShell 5.x and 7.x.
+    - Patches the VSCode PowerShell extension to resolve compatibility issues with PSReadLine.
+    - Reloads the PowerShell profile to apply changes.
 
+.PARAMETER nerdFont
+    Specifies the name of the Nerd Font to be installed. Default is 'CascadiaCode'.
 
+.NOTES
+    - Requires administrative privileges to run.
+    - Designed for Windows environments with PowerShell 5.x or later.
+    - Internet connectivity is required for downloading packages and resources.
 
+.EXAMPLE
+    .\Setup-Script.ps1 -nerdFont 'FiraCode'
+    Runs the script and installs the 'FiraCode' Nerd Font along with other configurations.
 
+.EXAMPLE
+    .\Setup-Script.ps1
+    Runs the script with the default Nerd Font ('CascadiaCode').
 
+.REQUIREMENTS
+    - PowerShell 5.x or later.
+    - Administrative privileges.
+    - Internet connectivity.
+
+.AUTHOR
+    Simon Lee
+
+.VERSION
+    3.2.0
+
+.LINK
+    https://github.com/smoonlee/oh-my-posh-profile
 #>
 
 #Requires -RunAsAdministrator
