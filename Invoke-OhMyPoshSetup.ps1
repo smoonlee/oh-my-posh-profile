@@ -45,7 +45,7 @@ function Invoke-WinGetPackageCheck {
 
     # Get asset URLs for App Installer bundle and license from GitHub release
     $installerAsset = $latestRelease.assets | Where-Object name -like '*.msixbundle' | Select-Object -First 1
-    $licenseAsset = $latestRelease.assets | Where-Object name -like '*.xml'        | Select-Object -First 1
+    $licenseAsset = $latestRelease.assets | Where-Object name -like '*.xml' | Select-Object -First 1
 
     if (-not $installerAsset -or -not $licenseAsset) {
         Write-Error "Failed to locate installer or license asset in the release."
@@ -55,43 +55,75 @@ function Invoke-WinGetPackageCheck {
     $downloadLinks[$installerAsset.name] = $installerAsset.browser_download_url
     $downloadLinks[$licenseAsset.name] = $licenseAsset.browser_download_url
 
-    Write-Output "--> Downloading and installing WinGet dependencies..."
+    Write-Output `r "--> Downloading Microsoft.VCLibs dependencies..."
 
-    foreach ($entry in $downloadLinks.GetEnumerator()) {
-        $fileName = $entry.Key
-        $url = $entry.Value
-        $tempPath = Join-Path $env:TEMP $fileName
+    $tempFiles = @{}
 
-        Write-Output "Downloading $fileName..."
+    foreach ($lib in @('Microsoft.VCLibs.x64.appx', 'Microsoft.VCLibs.x86.appx')) {
+        $url = $downloadLinks[$lib]
+        $tempPath = Join-Path $env:TEMP $lib
+
+        Write-Output "Downloading: $lib..."
         try {
             Invoke-WebRequest -Uri $url -OutFile $tempPath -UseBasicParsing
+            $tempFiles[$lib] = $tempPath
         }
         catch {
-            Write-Error "Failed to download $(fileName): $_"
-            continue
+            Write-Error "Failed to download $($lib): $_"
+            return
         }
+    }
 
-        if ($fileName -like '*.appx') {
-            $localVersion = (Get-AppxPackage -Name 'Microsoft.VCLibs*' | Sort-Object -Property Version | Select-Object -Last 1).Version
+    # Install VCLibs if needed
+    foreach ($lib in $tempFiles.Keys) {
+        $tempPath = $tempFiles[$lib]
+        try {
             $fileVersion = (Get-AppPackageManifest -Package $tempPath).Package.Properties.Version
 
-            if ($localVersion -lt $fileVersion) {
-                Write-Output "Installing $fileName..."
+            $arch = if ($lib -like '*x64*') { 'X64' } else { 'X86' }
+            $localVersion = Get-AppxPackage | Where-Object {
+                $_.Name -match 'Microsoft\.VCLibs\.140\.00\.UWPDesktop' -and $_.Architecture -eq $arch
+            } | Sort-Object Version | Select-Object -ExpandProperty Version -Last 1
+
+            if (-not $localVersion) {
+                Write-Output "$lib not found locally. Installing version $fileVersion..."
+                Add-AppxPackage -Path $tempPath
+            }
+            elseif ([version]$fileVersion -gt [version]$localVersion) {
+                Write-Output "$lib local version: $localVersion, available: $fileVersion — Updating..."
                 Add-AppxPackage -Path $tempPath
             }
             else {
-                Write-Warning "$fileName is older or already installed. Skipping."
+                Write-Output "$lib local version: $localVersion, available: $fileVersion — Up-to-date or newer, skipping."
             }
-
-            Remove-Item -Path $tempPath -Force
+        }
+        catch {
+            Write-Error "Failed to evaluate/install $($lib): $_"
+        }
+        finally {
+            Remove-Item -Path $tempPath -Force -ErrorAction SilentlyContinue
         }
     }
 
     # Install App Installer MSIX and license
+    Write-Output `r "--> Installing App Installer and license..."
+
     $installerPath = Join-Path $env:TEMP $installerAsset.name
     $licensePath = Join-Path $env:TEMP $licenseAsset.name
 
-    if (Test-Path $installerPath -and Test-Path $licensePath) {
+    try {
+        Write-Output "Downloading: $($installerAsset.name)..."
+        Invoke-WebRequest -Uri $installerAsset.browser_download_url -OutFile $installerPath -UseBasicParsing
+
+        Write-Output "Downloading: $($licenseAsset.name)..."
+        Invoke-WebRequest -Uri $licenseAsset.browser_download_url -OutFile $licensePath -UseBasicParsing
+    }
+    catch {
+        Write-Error "Failed to download App Installer bundle or license: $_"
+        return
+    }
+
+    if ((Test-Path $installerPath) -and (Test-Path $licensePath)) {
         Write-Output "Installing App Installer ($($installerAsset.name))..."
         Add-AppProvisionedPackage -Online -PackagePath $installerPath -LicensePath $licensePath | Out-Null
         Remove-Item $installerPath, $licensePath -Force
@@ -103,7 +135,7 @@ function Invoke-WinGetPackageCheck {
     # Refresh WinGet sources
     $wingetExe = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
     if (Test-Path $wingetExe) {
-        Write-Output "Refreshing WinGet sources..."
+        Write-Output `r "Refreshing WinGet sources..."
         Start-Process -FilePath $wingetExe -ArgumentList 'source reset --force' -Wait -NoNewWindow
         Start-Process -FilePath $wingetExe -ArgumentList 'source update' -Wait -NoNewWindow
     }
@@ -111,7 +143,7 @@ function Invoke-WinGetPackageCheck {
         Write-Warning "Cannot find winget.exe in expected location."
     }
 
-    Write-Output "WinGet setup/update complete."
+    Write-Output `r "WinGet CLI Package Manager Updated!"
 }
 
 function Install-WinGetApplications {
@@ -129,7 +161,6 @@ function Install-WinGetApplications {
         'Microsoft.PowerShell'
         'Microsoft.VisualStudioCode.CLI'
         'Microsoft.AzureCLI'
-        'Microsoft.Bicep'
         'Microsoft.Azure.Kubelogin'
         'Amazon.AWSCLI'
         'Hashicorp.Terraform'
@@ -146,8 +177,9 @@ function Install-WinGetApplications {
         winget install  --accept-source-agreements --accept-source-agreements --scope machine --silent --exact --id $app | Out-Null
     }
 
-    #Write-Output "Installing: Microsoft.AzureCLI Bicep"
-    #az bicep install
+    # Install Azure CLI Bicep Extension
+    Write-Output "Installing: Azure CLI Bicep Extension"
+    . "C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin\az.cmd" bicep install | Out-Null
 }
 
 function Install-PwshModules {
@@ -161,8 +193,10 @@ function Install-PwshModules {
     Write-Output "Checking PSGallery InstallationPolicy"
 
     #
-    Write-Output "Installing Latest NuGet PackageProvider"
-    Install-PackageProvider -Name 'NuGet' -Force | Out-Null
+    if ($PSVersionTable.PSVersion.Major -eq '5') {
+        Write-Output "Installing Latest NuGet PackageProvider"
+        Install-PackageProvider -Name 'NuGet' -Force | Out-Null
+    }
 
     $policyState = (Get-PSRepository -Name 'PSGallery').InstallationPolicy
     if ($policyState -ne 'Trusted') {
@@ -199,6 +233,7 @@ function Install-PwshModules {
             if ($onlineModule.version -ne $localModuleVersion) {
                 Write-Output "Installing Module: $module"
                 Install-Module -Repository 'PSGallery' -Scope 'CurrentUser' -Name $module -AllowClobber -SkipPublisherCheck -Force
+                Import-Module -Name $module
             }
         }
 
@@ -314,6 +349,10 @@ function Install-NerdFontPackage {
 }
 
 function Set-WindowsTerminalProfile {
+
+    # Import DISM Module
+    Import-Module -Name 'DISM'
+
     Write-Output `r "--> Configuring Windows Terminal Profile"
 
     # Check if WSL is enabled
@@ -337,7 +376,7 @@ function Set-WindowsTerminalProfile {
         Write-Output "The WSL instance '$wslDistro' is already installed. Skipping installation."
     }
     else {
-        Write-Output "Installing: $wslDistro"
+        Write-Output `r "Installing: $wslDistro"
         wsl.exe --install $wslDistro
     }
 
@@ -356,6 +395,7 @@ function Set-WindowsTerminalProfile {
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
 
     # Decode base64 content and write to file
+    $env:Path += ";C:\Program Files (x86)\oh-my-posh\bin"
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes("$env:POSH_THEMES_PATH\quick-term-cloud.omp.json", $contentBytes)
 
@@ -460,12 +500,11 @@ function Update-VSCodePwshModule {
 function Register-PSProfile {
 
     #
-    Write-Output `r "--> Reloading PowerShell Profile!"
+    Write-Output `r "--> Reloading PowerShell Profile!" `r
 
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
 }
-
 
 #
 $timeStamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
