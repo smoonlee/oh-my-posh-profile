@@ -38,12 +38,14 @@ install_oh_my_posh() {
   outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
 
   # Download theme
+  echo "Downloading Theme: $themeName
   if ! curl -fsSL "$themeProfile" -o "$outFile"; then
     echo "❌ Error: Failed to download theme." >&2
     exit 1
   fi
 
   # Add Oh-My-Posh init to profile
+  echo "Updating Profile with Oh My Posh"
   initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
   if ! grep -qF "$initCommand" "$HOME/.profile"; then
     echo "$initCommand" >>"$HOME/.profile"
