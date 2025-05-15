@@ -9,7 +9,7 @@ install_system_updates() {
   log "Installing System Updates and Essential Packages"
   sudo apt update
   sudo apt dist-upgrade -y
-  sudo apt install -y build-essential gcc curl wget gnupg lsb-release apt-transport-https ca-certificates
+  sudo apt install -y build-essential gcc curl wget gnupg lsb-release apt-transport-https ca-certificates software-properties-common
 }
 
 install_homebrew() {
@@ -25,6 +25,11 @@ install_homebrew() {
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
   } >> "$HOME/.bashrc"
 
+  {
+    echo
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+  } >> "$HOME/.profile"
+
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 }
 
@@ -32,20 +37,17 @@ install_oh_my_posh() {
   log "Installing Oh My Posh"
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
-  # Theme configuration
   themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
   themeName=$(basename "$themeProfile")
   outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
 
-  # Download theme
-  echo "Downloading Theme: $themeName
+  log "Downloading Theme: $themeName"
   if ! curl -fsSL "$themeProfile" -o "$outFile"; then
     echo "❌ Error: Failed to download theme." >&2
     exit 1
   fi
 
-  # Add Oh-My-Posh init to profile
-  echo "Updating Profile with Oh My Posh"
+  log "Updating Profile with Oh My Posh"
   initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
   if ! grep -qF "$initCommand" "$HOME/.profile"; then
     echo "$initCommand" >>"$HOME/.profile"
@@ -90,13 +92,10 @@ install_powershell() {
 
 configure_powershell_modules() {
   log "Configuring PowerShell Gallery and Installing Az Module"
-  pwsh -Command '
-    Write-Output "Updating PSGallery InstallationPolicy [Trusted] `r
-    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-
-    Write-Output "Installing Azure Modules"
+  pwsh -Command "
+    Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
     Install-Module -Name Az -Repository PSGallery -Force
-  '
+  "
 }
 
 install_azure_cli_and_bicep() {
@@ -136,4 +135,6 @@ main() {
 main
 
 # Reload Profile
-. .profile
+if [[ -f "$HOME/.profile" ]]; then
+  . "$HOME/.profile"
+fi
