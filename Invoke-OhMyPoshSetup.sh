@@ -95,10 +95,13 @@ install_powershell() {
 
 configure_powershell_modules() {
   log "Configuring PowerShell Gallery and Installing Az Module"
-  pwsh -Command "
-    Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
-    Install-Module -Name Az -Repository PSGallery -Force
-  "
+  pwsh -Command '
+    echo "Updating PSGallery InstallationPolicy [Trusted]"
+    Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
+
+    echo "Installing Azure Modules"
+    Install-Module -Repository 'PSGallery' -Name 'Az' -Force
+  '
 }
 
 install_azure_cli_and_bicep() {
