@@ -37,6 +37,7 @@ install_oh_my_posh() {
   log "Installing Oh My Posh"
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
+  # Theme configuration
   themeProfile="https://raw.githubusercontent.com/smoonlee/oh-my-posh-profile/main/quick-term-cloud.omp.json"
   themeName=$(basename "$themeProfile")
   outFile="$(brew --prefix oh-my-posh)/themes/$themeName"
@@ -48,9 +49,11 @@ install_oh_my_posh() {
   fi
 
   log "Updating Profile with Oh My Posh"
-  initCommand="eval \"\$(oh-my-posh init bash --config $(brew --prefix oh-my-posh)/themes/$themeName)\""
+  themePath="$(brew --prefix oh-my-posh)/themes/$themeName"
+  initCommand="eval \"\$(oh-my-posh init bash --config '$themePath')\""
+
   if ! grep -qF "$initCommand" "$HOME/.profile"; then
-    echo "$initCommand" >>"$HOME/.profile"
+    echo "$initCommand" >> "$HOME/.profile"
   fi
 }
 
