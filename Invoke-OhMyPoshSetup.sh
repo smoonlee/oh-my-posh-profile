@@ -99,7 +99,7 @@ configure_powershell_modules() {
     echo "Updating PSGallery InstallationPolicy [Trusted]"
     Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 
-    echo "Installing Azure Modules"
+    echo "Installing Pwsh Module: 'Az'"
     Install-Module -Repository 'PSGallery' -Name 'Az' -Force
   '
 }
