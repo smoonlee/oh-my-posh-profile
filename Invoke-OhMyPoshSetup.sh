@@ -97,33 +97,62 @@ configure_powershell_modules() {
   log "Configuring PowerShell Gallery and Installing Az Module"
   pwsh -Command '
     echo "Updating PSGallery InstallationPolicy [Trusted]"
-    Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
+    Set-PSRepository -Name ''PSGallery'' -InstallationPolicy Trusted
 
-    echo "Installing Pwsh Module: 'Az'"
-    Install-Module -Repository 'PSGallery' -Name 'Az' -Force
+    $modules = @(
+      "Az"
+      "Microsoft.Graph"
+      "Terminal-Icons"
+      "Posh-Git"
+      "Pester"
+      "PSReadLine"
+      "PSRule"
+      "PSRule.Rules.Azure"
+    )
+
+    foreach ($module in $modules) {
+      echo "Installing Pwsh Module: $module"
+      Install-Module -Repository PSGallery -Name $module -Force
+    }
   '
 }
 
 install_azure_cli_and_bicep() {
   log "Installing Azure CLI and Bicep"
+
+  # Setup Microsoft signing key
   sudo mkdir -p /etc/apt/keyrings
   curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
     gpg --dearmor |
     sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
   sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
 
-  AZ_REPO=$(lsb_release -cs)
+  # Add Azure CLI repo
+  AZ_DIST=$(lsb_release -cs)
   ARCH=$(dpkg --print-architecture)
 
-  echo "deb [arch=$ARCH signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
+  echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ ${AZ_DIST} main" |
     sudo tee /etc/apt/sources.list.d/azure-cli.list > /dev/null
 
-  sudo apt update
-  sudo apt install -y azure-cli
+  sudo apt update && sudo apt install -y azure-cli
 
   log "Installing Bicep CLI via Azure CLI"
-  az bicep install
+  if ! az bicep install; then
+    log "Azure CLI method failed — falling back to manual Bicep install"
+
+    BICEP_VERSION=$(curl -s https://api.github.com/repos/Azure/bicep/releases/latest | grep tag_name | cut -d '"' -f 4)
+    curl -Lo bicep "https://github.com/Azure/bicep/releases/download/${BICEP_VERSION}/bicep-linux-x64"
+    chmod +x bicep
+    sudo mv bicep /usr/local/bin/bicep
+  fi
+
+  log "Bicep version: $(bicep --version)"
 }
+
+echo "#########################################"
+echo " Simon's Oh My Posh Profile Setup v3.2.0 "
+echo "#########################################"
+echo "Install Start Time: $(date)"
 
 main() {
   install_system_updates

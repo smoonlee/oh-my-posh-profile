@@ -92,7 +92,7 @@ function Invoke-WinGetPackageCheck {
     $downloadLinks[$installerAsset.name] = $installerAsset.browser_download_url
     $downloadLinks[$licenseAsset.name] = $licenseAsset.browser_download_url
 
-    Write-Output `r "--> Downloading Microsoft.VCLibs dependencies..."
+    Write-Output `r "--> Downloading Microsoft.VCLibs dependencies"
 
     $tempFiles = @{}
 
@@ -100,7 +100,7 @@ function Invoke-WinGetPackageCheck {
         $url = $downloadLinks[$lib]
         $tempPath = Join-Path $env:TEMP $lib
 
-        Write-Output "Downloading: $lib..."
+        Write-Output "Downloading: $lib"
         try {
             Invoke-WebRequest -Uri $url -OutFile $tempPath -UseBasicParsing
             $tempFiles[$lib] = $tempPath
@@ -123,11 +123,11 @@ function Invoke-WinGetPackageCheck {
             } | Sort-Object Version | Select-Object -ExpandProperty Version -Last 1
 
             if (-not $localVersion) {
-                Write-Output "$lib not found locally. Installing version $fileVersion..."
+                Write-Output "$lib not found locally. Installing version $fileVersion"
                 Add-AppxPackage -Path $tempPath
             }
             elseif ([version]$fileVersion -gt [version]$localVersion) {
-                Write-Output "$lib local version: $localVersion, available: $fileVersion — Updating..."
+                Write-Output "$lib local version: $localVersion, available: $fileVersion — Updating"
                 Add-AppxPackage -Path $tempPath
             }
             else {
@@ -143,16 +143,16 @@ function Invoke-WinGetPackageCheck {
     }
 
     # Install App Installer MSIX and license
-    Write-Output `r "--> Installing App Installer and license..."
+    Write-Output `r "--> Installing App Installer and license"
 
     $installerPath = Join-Path $env:TEMP $installerAsset.name
     $licensePath = Join-Path $env:TEMP $licenseAsset.name
 
     try {
-        Write-Output "Downloading: $($installerAsset.name)..."
+        Write-Output "Downloading: $($installerAsset.name)"
         Invoke-WebRequest -Uri $installerAsset.browser_download_url -OutFile $installerPath -UseBasicParsing
 
-        Write-Output "Downloading: $($licenseAsset.name)..."
+        Write-Output "Downloading: $($licenseAsset.name)"
         Invoke-WebRequest -Uri $licenseAsset.browser_download_url -OutFile $licensePath -UseBasicParsing
     }
     catch {
@@ -161,7 +161,7 @@ function Invoke-WinGetPackageCheck {
     }
 
     if ((Test-Path $installerPath) -and (Test-Path $licensePath)) {
-        Write-Output "Installing App Installer ($($installerAsset.name))..."
+        Write-Output "Installing App Installer ($($installerAsset.name))"
         Add-AppProvisionedPackage -Online -PackagePath $installerPath -LicensePath $licensePath | Out-Null
         Remove-Item $installerPath, $licensePath -Force
     }
@@ -172,7 +172,7 @@ function Invoke-WinGetPackageCheck {
     # Refresh WinGet sources
     $wingetExe = "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe"
     if (Test-Path $wingetExe) {
-        Write-Output `r "Refreshing WinGet sources..."
+        Write-Output `r "Refreshing WinGet sources"
         Start-Process -FilePath $wingetExe -ArgumentList 'source reset --force' -Wait -NoNewWindow
         Start-Process -FilePath $wingetExe -ArgumentList 'source update' -Wait -NoNewWindow
     }
@@ -185,13 +185,8 @@ function Invoke-WinGetPackageCheck {
 
 function Install-WinGetApplications {
 
-    #
-    # Windows Application
-    #
+    Write-Output `r "--> Checking Windows Applications"
 
-    Write-Output `r "--> Installing Windows Applications"
-
-    #
     $appList = @(
         'Microsoft.WindowsTerminal'
         'JanDeDobbeleer.OhMyPosh'
@@ -210,13 +205,34 @@ function Install-WinGetApplications {
     )
 
     foreach ($app in $appList) {
-        Write-Output "Installing: $app"
-        winget install  --accept-source-agreements --accept-source-agreements --scope machine --silent --exact --id $app | Out-Null
+        $installed = winget list --exact --id $app 2>$null | Select-String $app
+        if ($installed) {
+            Write-Output "Updating: $app"
+            winget upgrade --accept-source-agreements --accept-package-agreements --scope machine --silent --exact --id $app | Out-Null
+        }
+
+        if (!($installed)) {
+            Write-Output "Installing: $app"
+            winget install --accept-source-agreements --accept-package-agreements --scope machine --silent --exact --id $app | Out-Null
+        }
     }
 
     # Install Azure CLI Bicep Extension
     Write-Output "Installing: Azure CLI Bicep Extension"
-    . "C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin\az.cmd" bicep install | Out-Null
+    & "C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin\az.cmd" bicep install | Out-Null
+
+    # Load System Paths into Session
+    Write-Output `r "Loading System Paths into Session"
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+    # Configure Git Auto Remote Branch
+    Write-Output "Configuring Git Auto Remote Branch"
+    git config --global push.autoSetupRemote true
+
+    # Configure Azure CLI Authentication Prompt
+    Write-Output "Updating Azure [CLI] Authentication Prompt"
+    az config set core.enable_broker_on_windows=false
+
 }
 
 function Install-PwshModules {
@@ -225,7 +241,7 @@ function Install-PwshModules {
     # PowerShell Modules
     #
 
-    Write-Output `r "--> Installing PowerShell Modules"
+    Write-Output `r "--> Getting PowerShell Modules"
 
     Write-Output "Checking PSGallery InstallationPolicy"
 
@@ -285,6 +301,8 @@ function Install-PwshModules {
         'Posh-Git'
         'Pester'
         'PSReadLine'
+        'PSRule'
+        'PSRule.Rules.Azure'
     )
 
     foreach ($module in $pwshModules) {
@@ -304,10 +322,16 @@ function Install-PwshModules {
         }
 
         if ($module -eq 'PSReadLine' -or $module -eq 'Pester') {
-            Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+            $targetPath = "C:\Program Files\WindowsPowerShell\Modules\$module\$($onlineModule.Version)"
+            if (-not (Test-Path $targetPath)) {
+                Save-Module -Name $module -Path 'C:\Program Files\WindowsPowerShell\Modules'
+            }
         }
-
     }
+
+    # Update Az (Pwsh) Module Authentication Prompt
+    "Updating Azure [Pwsh] Authentication Prompt"
+    Update-AzConfig -EnableLoginByWam $false
 
 }
 
@@ -327,7 +351,7 @@ function Install-NerdFontPackage {
     }
 
     try {
-        Write-Output "Fetching latest Nerd Fonts release info..."
+        Write-Output "Fetching latest Nerd Fonts release info"
         $releaseInfo = Invoke-RestMethod -Uri $repoApiUrl -UseBasicParsing
 
         $asset = $releaseInfo.assets | Where-Object { $_.name -match "^$nerdFont\.zip$" }
@@ -341,10 +365,10 @@ function Install-NerdFontPackage {
         $extractPath = Join-Path $env:TEMP "$nerdFont-Font"
 
         $fileSizeMB = [math]::Round($asset.size / 1MB, 2)
-        Write-Output "Downloading $nerdFont.zip (${fileSizeMB} MB)..."
+        Write-Output "Downloading $nerdFont.zip (${fileSizeMB} MB)"
         Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $tempZip -UseBasicParsing
 
-        Write-Output "Extracting font files..."
+        Write-Output "Extracting font files"
         Expand-Archive -LiteralPath $tempZip -DestinationPath $extractPath -Force
 
         $fonts = Get-ChildItem -Path $extractPath -Include *NerdFont-Regular*.ttf, *.otf -Recurse
@@ -374,7 +398,7 @@ function Install-NerdFontPackage {
         }
 
         # Cleanup
-        Write-Output "Cleaning up temporary files..."
+        Write-Output "Cleaning up temporary files"
         Remove-Item -Path $tempZip -Force -ErrorAction SilentlyContinue
         Remove-Item -Path $extractPath -Recurse -Force -ErrorAction SilentlyContinue
 
@@ -393,14 +417,14 @@ function Set-WindowsTerminalProfile {
     Write-Output `r "--> Configuring Windows Terminal Profile"
 
     # Check if WSL is enabled
-    Write-Output "Checking for Windows Subsystem for Linux (WSL) support..."
+    Write-Output "Checking for Windows Subsystem for Linux (WSL) support"
     $wslFeature = Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 
     if ($wslFeature.State -eq "Enabled") {
         Write-Output "Microsoft-Windows-Subsystem-Linux is already enabled."
     }
     else {
-        Write-Output "WSL is not enabled. Enabling WSL..."
+        Write-Output "WSL is not enabled. Enabling WSL"
         Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
         Write-Output "WSL has been enabled. Please restart your computer to apply the changes."
     }
@@ -418,7 +442,7 @@ function Set-WindowsTerminalProfile {
     }
 
     #
-    Write-Output `r "Downloading Windows Terminal Profile Settings..."
+    Write-Output `r "Downloading Windows Terminal Profile Settings"
 
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/windows-terminal-settings.json?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
@@ -427,22 +451,55 @@ function Set-WindowsTerminalProfile {
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes("$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json", $contentBytes)
 
-    Write-Output "Downloading Oh My Posh Profile..."
+    #
+    # Set POSH_THEMES_PATH based on Oh My Posh installation location
+    $userPath = "$env:USERPROFILE\AppData\Local\Programs\oh-my-posh\themes"
+    $systemPath = "C:\Program Files (x86)\oh-my-posh\themes"
+
+    if (Test-Path $userPath) {
+        $env:POSH_THEMES_PATH = $userPath
+        Write-Output "Detected user installation of Oh My Posh. Using themes path: $userPath"
+    }
+    elseif (Test-Path $systemPath) {
+        $env:POSH_THEMES_PATH = $systemPath
+        Write-Output "Detected system installation of Oh My Posh. Using themes path: $systemPath"
+    }
+    else {
+        Write-Warning "Oh My Posh themes path not found. Please check your installation."
+    }
+
+    Write-Output `r "Downloading Oh My Posh Profile: '$($env:POSH_THEMES_PATH)\quick-term-cloud.omp.json'"
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/quick-term-cloud.omp.json?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
 
     # Decode base64 content and write to file
-    $env:Path += ";C:\Program Files (x86)\oh-my-posh\bin"
     $contentBytes = [System.Convert]::FromBase64String($response.content)
     [System.IO.File]::WriteAllBytes("$env:POSH_THEMES_PATH\quick-term-cloud.omp.json", $contentBytes)
 
-    Write-Output "Downloading PowerShell Profile..."
+
+    # Check PowerShell Edition
+    switch ($PSVersionTable.PSVersion.Major) {
+        5 {
+            $profilePath = "$([Environment]::GetFolderPath('MyDocuments'))\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+            Write-Output "Detected PowerShell 5.x. Profile path set to: $profilePath"
+        }
+        7 {
+            $profilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
+            Write-Output "Detected PowerShell 7.x. Profile path set to: $profilePath"
+        }
+        Default {
+            $profilePath = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
+            Write-Warning "Unknown PowerShell version. Defaulting profile path to: $profilePath"
+        }
+    }
+
+    Write-Output "Downloading PowerShell Profile: $profilePath"
     $apiUrl = 'https://api.github.com/repos/smoonlee/oh-my-posh-profile/contents/Microsoft.PowerShell_profile.ps1?ref=main'
     $response = Invoke-RestMethod -Method 'Get' -Uri $apiUrl
 
     # Decode base64 content and write to file
     $contentBytes = [System.Convert]::FromBase64String($response.content)
-    [System.IO.File]::WriteAllBytes("$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1", $contentBytes)
+    [System.IO.File]::WriteAllBytes($profilePath, $contentBytes)
 
     $codePath = 'C:\Code'
     If (!(Test-Path -Path $codePath)) {
@@ -508,7 +565,7 @@ function Update-VSCodePwshModule {
     $vsCodeModulePath = "$env:UserProfile\.vscode\extensions\$folderName"
 
     if (!(Get-ChildItem -Path $vsCodeModulePath\modules\PSReadLine | Where-Object 'Name' -like '2.3.6' )) {
-        Write-Output "Checking if VSCode is running..."
+        Write-Output "Checking if VSCode is running"
         $vsCodeProcess = Get-Process -Name Code -ErrorAction SilentlyContinue
         if ($vsCodeProcess) {
             Write-Warning "Please close Visual Studio Code before continuing, Skipping VSCode PowerShell Module patch!!"
@@ -536,6 +593,10 @@ function Register-PSProfile {
 
     #
     Write-Output `r "--> Reloading PowerShell Profile!" `r
+
+    # Load System Paths into Session
+    # https://www.reddit.com/r/PowerShell/comments/ygpoy7/start_new_ps_session_or_reload_powershell_after/
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
     # https://stackoverflow.com/questions/11546069/refreshing-restarting-powershell-session-w-out-exiting
     Get-Process -Id $PID | Select-Object -ExpandProperty Path | ForEach-Object { Invoke-Command { & "$_" } -NoNewScope }
