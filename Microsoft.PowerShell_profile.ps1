@@ -65,16 +65,18 @@ https://github.com/smoonlee/oh-my-posh-profile
 
 # Oh My Posh - Profile Release Version
 $profileVersion = '3.2.0-dev'
-$releaseUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases?per_page=1"
+$releaseUrl = "https://api.github.com/repos/smoonlee/oh-my-posh-profile/releases"
 
 # Conditional API check (once per session, max every hour)
 if (-not $global:LastProfileCheck -or $global:LastProfileCheck -lt (Get-Date).AddHours(-1)) {
     try {
         $headers = @{ "Accept" = "application/vnd.github+json"; "User-Agent" = "PowerShell" }
-        $global:LatestRelease = Invoke-RestMethod -Uri $releaseUrl -Headers $headers -TimeoutSec 3 -ErrorAction Stop
+        $allReleases = Invoke-RestMethod -Uri $releaseUrl -Headers $headers -TimeoutSec 3 -ErrorAction Stop
+        $global:LatestStableRelease = $($allReleases | Where-Object { -not $_.prerelease })[0]
+        $global:LatestDevelopmentRelease = $($allReleases | Where-Object { $_.prerelease })[0]
         $global:LastProfileCheck = Get-Date
 
-        if ($profileVersion -ne $global:LatestRelease[0].tag_name) {
+        if ($global:LatestRelease -and $profileVersion -ne $global:LatestRelease.tag_name) {
             Write-Warning "[Oh My Posh] - Profile Update Available, Please run: Update-PSProfile"
         }
     }
@@ -165,8 +167,8 @@ function Get-PSProfileTheme {
 # Function - Get PowerShell Profile Version Information
 function Get-PSProfileVersion {
     try {
-        $releaseTag = if ($global:LatestRelease) { $global:LatestRelease[0].tag_name } else { "Unknown (run Update-PSProfile to fetch)" }
-        $devReleaseTag = if ($global:LatestRelease -and $global:LatestRelease[0].prerelease) { $global:LatestRelease[0].tag_name } else { "No dev release available" }
+        $releaseTag = if ($global:LatestStableRelease) { $global:LatestStableRelease.tag_name } else { "No stable release available" }
+        $devReleaseTag = if ($global:LatestDevelopmentRelease) { $global:LatestDevelopmentRelease.tag_name } else { "No dev release available" }
         $currentThemeName = if ($env:POSH_THEME) { Split-Path -Leaf $env:POSH_THEME } else { "None" }
 
         [PSCustomObject]@{
@@ -391,13 +393,13 @@ function Get-DnsResult {
             }
 
             switch ($recordType) {
-                'MX'   { $answer | Select-Object Name, Type, TTL, Preference, NameExchange | Format-Table -AutoSize }
-                'NS'   { $answer | Select-Object Name, Type, TTL, NameHost | Format-Table -AutoSize }
-                'SOA'  { $answer | Select-Object Name, Type, TTL, SerialNumber, PrimaryServer, ResponsiblePerson | Format-Table -AutoSize }
-                'SRV'  { $answer | Select-Object Name, Type, TTL, Priority, Weight, Port, Target | Format-Table -AutoSize }
-                'CNAME'{ $answer | Select-Object Name, Type, TTL, CanonicalName | Format-Table -AutoSize }
-                'PTR'  { $answer | Select-Object Name, Type, TTL, PtrDomainName | Format-Table -AutoSize }
-                'TXT'  { $answer | Select-Object Name, Type, TTL| Format-Table -AutoSize }
+                'MX' { $answer | Select-Object Name, Type, TTL, Preference, NameExchange | Format-Table -AutoSize }
+                'NS' { $answer | Select-Object Name, Type, TTL, NameHost | Format-Table -AutoSize }
+                'SOA' { $answer | Select-Object Name, Type, TTL, SerialNumber, PrimaryServer, ResponsiblePerson | Format-Table -AutoSize }
+                'SRV' { $answer | Select-Object Name, Type, TTL, Priority, Weight, Port, Target | Format-Table -AutoSize }
+                'CNAME' { $answer | Select-Object Name, Type, TTL, CanonicalName | Format-Table -AutoSize }
+                'PTR' { $answer | Select-Object Name, Type, TTL, PtrDomainName | Format-Table -AutoSize }
+                'TXT' { $answer | Select-Object Name, Type, TTL | Format-Table -AutoSize }
                 default { $answer | Select-Object Name, Type, TTL, IPAddress | Format-Table -AutoSize }
             }
         }
@@ -535,7 +537,7 @@ function Get-EolInfo {
             $eolInfo = $eolInfo | Where-Object { [string]::IsNullOrEmpty($_.eol) -or ($_.eol -match 'False') -or (($_.eol -match '^\d{4}-\d{2}-\d{2}$') -and ([DateTime]$_.eol -gt $currentDate)) }
         }
 
-        $eolInfo | Sort-Object { try { [datetime]$_.releaseDate } catch { Get-Date "1900-01-01" }} -Descending | Format-Table -AutoSize
+        $eolInfo | Sort-Object { try { [datetime]$_.releaseDate } catch { Get-Date "1900-01-01" } } -Descending | Format-Table -AutoSize
     }
     catch {
         Write-Warning "Failed to fetch EOL info for $($productName): $_"
