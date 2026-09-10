@@ -1,6 +1,17 @@
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $moduleNames = @((Get-ChildItem (Join-Path $root 'src/modules') -Directory -Filter 'PwshProfile.*').Name) + 'PwshProfile.FutureModule'
+
+foreach ($moduleDirectory in Get-ChildItem (Join-Path $root 'src/modules') -Directory -Filter 'PwshProfile.*') {
+  $manifestPath = Join-Path $moduleDirectory.FullName "$($moduleDirectory.Name).psd1"
+  $changelogPath = Join-Path $moduleDirectory.FullName 'CHANGELOG.md'
+  $version = [string](Import-PowerShellDataFile -LiteralPath $manifestPath).ModuleVersion
+  $changelog = Get-Content -LiteralPath $changelogPath -Raw
+  if ($changelog -notmatch "(?m)^## \[$([regex]::Escape($version))\](?: - \d{4}-\d{2}-\d{2})?\s*$") {
+    throw "$($moduleDirectory.Name) changelog has no section for manifest version $version."
+  }
+}
+'PASS: every module manifest version has matching release notes.'
 $commit = 'a' * 40
 $global:PwshModuleReleaseTestState = @{}
 function gh {
