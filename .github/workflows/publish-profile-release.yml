@@ -1,0 +1,282 @@
+name: Publish Pwsh Profile Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing GitHub Release tag to package and upload
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-pwsh-profile-${{ github.event.release.tag_name || inputs.release_tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve release metadata
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          $tag = if ($env:EVENT_RELEASE_TAG) { $env:EVENT_RELEASE_TAG } else { $env:INPUT_RELEASE_TAG }
+          $release = gh release view $tag --repo $env:GITHUB_REPOSITORY --json tagName,targetCommitish,publishedAt,isDraft,isPrerelease | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { throw 'Could not read release metadata.' }
+          if (-not $release.isDraft) { throw 'Only draft releases can be packaged. Published assets cannot be replaced.' }
+          $publishedAt = if ($release.publishedAt) { $release.publishedAt } else { [DateTime]::UtcNow.ToString('o') }
+          $releaseRef = gh api "repos/$env:GITHUB_REPOSITORY/commits/$($release.tagName)" --jq .sha
+          if ($LASTEXITCODE -ne 0 -or $releaseRef -notmatch '^[a-f0-9]{40}$') { throw 'Create the release tag before packaging.' }
+          "RELEASE_TAG=$($release.tagName)" >> $env:GITHUB_ENV
+          "RELEASE_REF=$releaseRef" >> $env:GITHUB_ENV
+          "RELEASE_PUBLISHED_AT=$publishedAt" >> $env:GITHUB_ENV
+          "RELEASE_DRAFT=$($release.isDraft)" >> $env:GITHUB_ENV
+          "RELEASE_PRERELEASE=$($release.isPrerelease)" >> $env:GITHUB_ENV
+
+      - name: Check out release tag
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.RELEASE_REF }}
+
+      - name: Validate and stage release assets
+        shell: pwsh
+        run: |
+          if ($env:RELEASE_TAG -notmatch '^v(?<version>(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?)$') {
+            throw "Release tag '$env:RELEASE_TAG' must use SemVer 2.0, for example v4.0.0 or v4.0.0-pre-release-0.1."
+          }
+
+          $version = $Matches.version
+          $versionIsPrerelease = [bool]$Matches.prerelease
+          $releaseIsPrerelease = [System.Convert]::ToBoolean($env:RELEASE_PRERELEASE)
+          if ($versionIsPrerelease -ne $releaseIsPrerelease) {
+            throw "GitHub Release prerelease state '$releaseIsPrerelease' does not match version '$version'."
+          }
+          $channel = if ($versionIsPrerelease) { 'prerelease' } else { 'stable' }
+          $profilePath = './src/profile/Microsoft.PowerShell_profile.ps1'
+          $themePath = './src/themes/quick-term-cloud.omp.json'
+          $setupPath = './src/Invoke-PwshProfileSetup.ps1'
+          $publicIPManifestPath = './src/modules/PwshProfile.PublicIP/PwshProfile.PublicIP.psd1'
+          $publicIPScriptPath = './src/modules/PwshProfile.PublicIP/PwshProfile.PublicIP.psm1'
+          $networkCidrManifestPath = './src/modules/PwshProfile.NetworkCidr/PwshProfile.NetworkCidr.psd1'
+          $networkCidrScriptPath = './src/modules/PwshProfile.NetworkCidr/PwshProfile.NetworkCidr.psm1'
+          $networkCidrFormatPath = './src/modules/PwshProfile.NetworkCidr/PwshProfile.NetworkCidr.Format.ps1xml'
+          $endOfLifeManifestPath = './src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.psd1'
+          $endOfLifeScriptPath = './src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.psm1'
+          $endOfLifeFormatPath = './src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.Format.ps1xml'
+          $azureKubernetesManifestPath = './src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psd1'
+          $azureKubernetesScriptPath = './src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psm1'
+          $dnsManifestPath = './src/modules/PwshProfile.Dns/PwshProfile.Dns.psd1'
+          $dnsScriptPath = './src/modules/PwshProfile.Dns/PwshProfile.Dns.psm1'
+          $dnsFormatPath = './src/modules/PwshProfile.Dns/PwshProfile.Dns.Format.ps1xml'
+          $tlsCertificateManifestPath = './src/modules/PwshProfile.TlsCertificate/PwshProfile.TlsCertificate.psd1'
+          $tlsCertificateScriptPath = './src/modules/PwshProfile.TlsCertificate/PwshProfile.TlsCertificate.psm1'
+          $tlsCertificateFormatPath = './src/modules/PwshProfile.TlsCertificate/PwshProfile.TlsCertificate.Format.ps1xml'
+          $catalogPath = './NerdFontsCatalog.json'
+          $changelogPath = './CHANGELOG.md'
+          $profileContent = Get-Content -LiteralPath $profilePath -Raw
+
+          if ($profileContent -notmatch "(?m)^\s*\`$script:PwshProfileVersion\s*=\s*'$([regex]::Escape($version))'\s*$") {
+            throw "The profile version must be '$version' before publishing $env:RELEASE_TAG."
+          }
+
+          $changelogContent = Get-Content -LiteralPath $changelogPath -Raw
+          if ($changelogContent -notmatch "(?m)^## \[$([regex]::Escape($version))\](?: - \d{4}-\d{2}-\d{2})?\s*$") {
+            throw "CHANGELOG.md must contain a section for '$version' before publishing $env:RELEASE_TAG."
+          }
+
+          $null = Get-Content -LiteralPath $themePath -Raw | ConvertFrom-Json -ErrorAction Stop
+          $catalog = Get-Content -LiteralPath $catalogPath -Raw | ConvertFrom-Json -ErrorAction Stop
+          if (-not $catalog.NerdFontsVersion -or @($catalog.Fonts).Count -eq 0) {
+            throw 'NerdFontsCatalog.json is missing NerdFontsVersion or font entries.'
+          }
+          foreach ($scriptPath in @($profilePath, $setupPath, $publicIPScriptPath, $networkCidrScriptPath, $endOfLifeScriptPath, $azureKubernetesScriptPath, $dnsScriptPath, $tlsCertificateScriptPath)) {
+            $tokens = $null
+            $parseErrors = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile(
+              (Resolve-Path $scriptPath),
+              [ref]$tokens,
+              [ref]$parseErrors
+            )
+            if ($parseErrors.Count -gt 0) {
+              throw "$scriptPath failed syntax validation: $($parseErrors.Message -join '; ')"
+            }
+          }
+          $null = Import-PowerShellDataFile -LiteralPath $publicIPManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $networkCidrManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $endOfLifeManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $azureKubernetesManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $dnsManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $tlsCertificateManifestPath -ErrorAction Stop
+          foreach ($formatPath in @($networkCidrFormatPath, $endOfLifeFormatPath, $dnsFormatPath, $tlsCertificateFormatPath)) {
+            $null = [xml](Get-Content -LiteralPath $formatPath -Raw)
+          }
+
+          $assetRoot = Join-Path $env:RUNNER_TEMP 'pwsh-profile-release'
+          New-Item -ItemType Directory -Path $assetRoot -Force | Out-Null
+          $assets = [ordered]@{
+            profile = [ordered]@{
+              asset = 'Microsoft.PowerShell_profile.ps1'
+              source = 'src/profile/Microsoft.PowerShell_profile.ps1'
+            }
+            theme = [ordered]@{
+              asset = 'quick-term-cloud.omp.json'
+              source = 'src/themes/quick-term-cloud.omp.json'
+            }
+            setup = [ordered]@{
+              asset = 'Invoke-PwshProfileSetup.ps1'
+              source = 'src/Invoke-PwshProfileSetup.ps1'
+            }
+            publicIPManifest = [ordered]@{
+              asset = 'PwshProfile.PublicIP.psd1'
+              source = 'src/modules/PwshProfile.PublicIP/PwshProfile.PublicIP.psd1'
+            }
+            publicIPScript = [ordered]@{
+              asset = 'PwshProfile.PublicIP.psm1'
+              source = 'src/modules/PwshProfile.PublicIP/PwshProfile.PublicIP.psm1'
+            }
+            networkCidrManifest = [ordered]@{
+              asset = 'PwshProfile.NetworkCidr.psd1'
+              source = 'src/modules/PwshProfile.NetworkCidr/PwshProfile.NetworkCidr.psd1'
+            }
+            networkCidrScript = [ordered]@{
+              asset = 'PwshProfile.NetworkCidr.psm1'
+              source = 'src/modules/PwshProfile.NetworkCidr/PwshProfile.NetworkCidr.psm1'
+            }
+            networkCidrFormat = [ordered]@{
+              asset = 'PwshProfile.NetworkCidr.Format.ps1xml'
+              source = 'src/modules/PwshProfile.NetworkCidr/PwshProfile.NetworkCidr.Format.ps1xml'
+            }
+            endOfLifeManifest = [ordered]@{
+              asset = 'PwshProfile.EndOfLife.psd1'
+              source = 'src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.psd1'
+            }
+            endOfLifeScript = [ordered]@{
+              asset = 'PwshProfile.EndOfLife.psm1'
+              source = 'src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.psm1'
+            }
+            endOfLifeFormat = [ordered]@{
+              asset = 'PwshProfile.EndOfLife.Format.ps1xml'
+              source = 'src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.Format.ps1xml'
+            }
+            azureKubernetesManifest = [ordered]@{
+              asset = 'PwshProfile.AzureKubernetes.psd1'
+              source = 'src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psd1'
+            }
+            azureKubernetesScript = [ordered]@{
+              asset = 'PwshProfile.AzureKubernetes.psm1'
+              source = 'src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psm1'
+            }
+            dnsManifest = [ordered]@{
+              asset = 'PwshProfile.Dns.psd1'
+              source = 'src/modules/PwshProfile.Dns/PwshProfile.Dns.psd1'
+            }
+            dnsScript = [ordered]@{
+              asset = 'PwshProfile.Dns.psm1'
+              source = 'src/modules/PwshProfile.Dns/PwshProfile.Dns.psm1'
+            }
+            dnsFormat = [ordered]@{
+              asset = 'PwshProfile.Dns.Format.ps1xml'
+              source = 'src/modules/PwshProfile.Dns/PwshProfile.Dns.Format.ps1xml'
+            }
+            tlsCertificateManifest = [ordered]@{
+              asset = 'PwshProfile.TlsCertificate.psd1'
+              source = 'src/modules/PwshProfile.TlsCertificate/PwshProfile.TlsCertificate.psd1'
+            }
+            tlsCertificateScript = [ordered]@{
+              asset = 'PwshProfile.TlsCertificate.psm1'
+              source = 'src/modules/PwshProfile.TlsCertificate/PwshProfile.TlsCertificate.psm1'
+            }
+            tlsCertificateFormat = [ordered]@{
+              asset = 'PwshProfile.TlsCertificate.Format.ps1xml'
+              source = 'src/modules/PwshProfile.TlsCertificate/PwshProfile.TlsCertificate.Format.ps1xml'
+            }
+            catalog = [ordered]@{
+              asset = 'NerdFontsCatalog.json'
+              source = 'NerdFontsCatalog.json'
+            }
+          }
+
+          foreach ($artifact in $assets.Values) {
+            $destination = Join-Path $assetRoot $artifact.asset
+            Copy-Item -LiteralPath $artifact.source -Destination $destination -Force
+            $artifact.sha256 = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash.ToLowerInvariant()
+          }
+
+          $manifest = [ordered]@{
+            schemaVersion = 1
+            version = $version
+            tag = $env:RELEASE_TAG
+            channel = $channel
+            publishedAt = $env:RELEASE_PUBLISHED_AT
+            repository = '${{ github.repository }}'
+            commit = $env:RELEASE_REF
+            minimumPowerShellVersion = '5.1'
+            artifacts = $assets
+          }
+          $manifestPath = Join-Path $assetRoot 'PwshProfile.release.json'
+          $manifest | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $manifestPath -Encoding utf8NoBOM
+
+          "assetRoot=$assetRoot" >> $env:GITHUB_ENV
+
+      - name: Upload immutable release assets
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $draft = gh release view $env:RELEASE_TAG --json isDraft | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0 -or -not $draft.isDraft) { throw 'Assets may only be uploaded to a draft release.' }
+          gh release upload $env:RELEASE_TAG `
+            (Join-Path $env:assetRoot 'Microsoft.PowerShell_profile.ps1') `
+            (Join-Path $env:assetRoot 'quick-term-cloud.omp.json') `
+            (Join-Path $env:assetRoot 'Invoke-PwshProfileSetup.ps1') `
+            (Join-Path $env:assetRoot 'PwshProfile.PublicIP.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.PublicIP.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.NetworkCidr.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.NetworkCidr.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.NetworkCidr.Format.ps1xml') `
+            (Join-Path $env:assetRoot 'PwshProfile.EndOfLife.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.EndOfLife.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.EndOfLife.Format.ps1xml') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureKubernetes.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureKubernetes.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.Dns.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.Dns.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.Dns.Format.ps1xml') `
+            (Join-Path $env:assetRoot 'PwshProfile.TlsCertificate.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.TlsCertificate.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.TlsCertificate.Format.ps1xml') `
+            (Join-Path $env:assetRoot 'NerdFontsCatalog.json') `
+            (Join-Path $env:assetRoot 'PwshProfile.release.json') `
+            --clobber
+          if ($LASTEXITCODE -ne 0) { throw 'Release asset upload failed.' }
+
+      - name: Publish completed draft release
+        if: env.RELEASE_DRAFT == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $release = gh release view $env:RELEASE_TAG --json isDraft,assets | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0 -or -not $release.isDraft) { throw 'Release must remain a draft until verification completes.' }
+          $tagCommit = gh api "repos/$env:GITHUB_REPOSITORY/commits/$env:RELEASE_TAG" --jq .sha
+          if ($LASTEXITCODE -ne 0 -or $tagCommit -ne $env:RELEASE_REF) { throw 'Release tag changed during packaging.' }
+          $verifyRoot = Join-Path $env:RUNNER_TEMP 'verify-profile-release'
+          New-Item -ItemType Directory -Path $verifyRoot -Force | Out-Null
+          gh release download $env:RELEASE_TAG --dir $verifyRoot
+          if ($LASTEXITCODE -ne 0) { throw 'Could not verify uploaded assets.' }
+          foreach ($file in Get-ChildItem -LiteralPath $env:assetRoot -File) {
+            $download = Join-Path $verifyRoot $file.Name
+            if (-not (Test-Path -LiteralPath $download) -or (Get-FileHash $download).Hash -ne (Get-FileHash $file.FullName).Hash) {
+              throw "Uploaded asset verification failed: $($file.Name)"
+            }
+          }
+          gh release edit $env:RELEASE_TAG `
+            --draft=false `
+            --prerelease=$env:RELEASE_PRERELEASE
+          if ($LASTEXITCODE -ne 0) { throw 'Could not publish verified draft release.' }

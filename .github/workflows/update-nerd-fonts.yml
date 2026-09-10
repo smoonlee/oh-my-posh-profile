@@ -1,0 +1,65 @@
+name: Update Nerd Fonts Catalog
+
+on:
+  schedule:
+    - cron: '0 6 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: update-nerd-fonts-catalog
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Capture current Nerd Fonts catalog
+        shell: pwsh
+        run: |
+          if (Test-Path ./NerdFontsCatalog.json) {
+            Copy-Item ./NerdFontsCatalog.json (Join-Path $env:RUNNER_TEMP 'NerdFontsCatalog.previous.json')
+          }
+
+      - name: Scrape Nerd Fonts catalog
+        shell: pwsh
+        run: ./scripts/Update-NerdFontsCatalog.ps1
+
+      - name: Build pull request summary
+        id: catalog-changes
+        shell: pwsh
+        run: |
+          $previousCatalog = Join-Path $env:RUNNER_TEMP 'NerdFontsCatalog.previous.json'
+          $parameters = @{
+            CurrentCatalogPath = './NerdFontsCatalog.json'
+          }
+          if (Test-Path $previousCatalog) {
+            $parameters.PreviousCatalogPath = $previousCatalog
+          }
+
+          $body = ./scripts/Get-NerdFontsCatalogChanges.ps1 @parameters
+          $delimiter = "NERD_FONTS_$([guid]::NewGuid().ToString('N'))"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "body<<$delimiter" -Encoding utf8
+          Add-Content -Path $env:GITHUB_OUTPUT -Value $body -Encoding utf8
+          Add-Content -Path $env:GITHUB_OUTPUT -Value $delimiter -Encoding utf8
+
+      - name: Create Nerd Fonts update pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/update-nerd-fonts
+          delete-branch: true
+          add-paths: |
+            NerdFontsCatalog.json
+            src/Invoke-PwshProfileSetup.ps1
+          commit-message: 'Update Nerd Fonts Catalog'
+          title: '[GitHub Action]: Update Nerd Font Catalog'
+          body: ${{ steps.catalog-changes.outputs.body }}
+          assignees: smoonlee
