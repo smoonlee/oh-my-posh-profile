@@ -33,6 +33,9 @@ machine-scoped Winget package needs to be installed or updated.
 
 ## Install
 
+> [!IMPORTANT]
+> Please execute as Adminsitrator, For NerdFont Installation.
+
 Download the setup script from the latest published release, then run it from
 PowerShell 7:
 
