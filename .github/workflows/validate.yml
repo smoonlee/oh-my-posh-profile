@@ -1,0 +1,78 @@
+name: Validate Pwsh Profile
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  merge_group:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    name: Windows regression
+    runs-on: windows-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install validation dependencies
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $release = gh api repos/JanDeDobbeleer/oh-my-posh/releases/tags/v31.2.0 | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { throw 'Could not resolve pinned OMP release.' }
+          $asset = $release.assets | Where-Object name -EQ 'posh-windows-amd64.exe'
+          if (@($asset).Count -ne 1 -or $asset.digest -notmatch '^sha256:([a-f0-9]{64})$') { throw 'Missing OMP asset digest.' }
+          $expectedHash = $Matches[1]
+          $bin = Join-Path $env:RUNNER_TEMP 'profile-test-bin'
+          New-Item -ItemType Directory $bin | Out-Null
+          $destination = Join-Path $bin 'oh-my-posh.exe'
+          Invoke-WebRequest $asset.browser_download_url -OutFile $destination
+          if ((Get-FileHash $destination -Algorithm SHA256).Hash -ine $expectedHash) { throw 'OMP hash mismatch.' }
+          $bin >> $env:GITHUB_PATH
+          'C:\Program Files\Git\usr\bin' >> $env:GITHUB_PATH
+          python -m pip install PyYAML==6.0.3
+          if ($LASTEXITCODE -ne 0) { throw 'YAML dependency installation failed.' }
+
+      - name: Validate workflow YAML
+        run: |
+          python scripts/Test-WorkflowYaml.py
+          if ($LASTEXITCODE -ne 0) { throw 'Workflow YAML validation failed.' }
+
+      - name: PowerShell 7 regression tests
+        run: |
+          Get-Command oh-my-posh, openssl -ErrorAction Stop | Select-Object Name, Source
+          $tests = @(
+            'Test-ReleaseWorkflows.ps1', 'Test-ModuleReleases.ps1', 'Test-RuntimeGuards.ps1', 'Test-UpdateTransactions.ps1',
+            'Test-PoshResize.ps1', 'Test-AzureCompletion.ps1',
+            'Test-BundleRollback.ps1', 'Test-ModuleRollback.ps1',
+            'Test-EndOfLifeRelease.ps1', 'Test-ModuleFixes.ps1'
+          )
+          foreach ($test in $tests) {
+            # Isolate mocks, imported modules, and event subscriptions per test.
+            & (Join-Path $PSHOME 'pwsh.exe') -NoProfile -NonInteractive -File (Join-Path './scripts' $test)
+            if ($LASTEXITCODE -ne 0) { throw "Regression failed: $test" }
+          }
+
+      - name: Windows PowerShell 5.1 fallback checks
+        run: |
+          & "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File ./scripts/Test-RuntimeGuards.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'PowerShell 5.1 fallback checks failed.' }
+
+      - name: Render prompt theme
+        run: |
+          $render = oh-my-posh print primary --config ./src/themes/quick-term-cloud.omp.json --plain 2>&1
+          if ($LASTEXITCODE -ne 0 -or ($render -join "`n") -match 'CONFIG ERROR|TEMPLATE ERROR|template:.*error') { throw "Prompt rendering failed: $render" }
+          $render

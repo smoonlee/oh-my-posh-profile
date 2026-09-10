@@ -1,0 +1,221 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "patch_pwsh_bleed": true,
+  "var": {
+    "dividerColor": "#d75f00",
+    "copilotLayoutReserve": 25
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "#ffffff",
+          "background": "#d75f00",
+          "template": "  {{ .Icon }}  ",
+          "options": {
+            "windows": "\ue70f",
+            "macos": "\ue711",
+            "linux": "\ue712",
+            "ubuntu": "\uf31c",
+            "debian": "\uf306",
+            "fedora": "\uf30a",
+            "arch": "\uf303",
+            "centos": "\uf304",
+            "elementary": "\uf309",
+            "gentoo": "\uf30d",
+            "manjaro": "\uf312",
+            "mint": "\uf30f",
+            "opensuse": "\uf314",
+            "raspbian": "\uf315",
+            "alpine": "\uf300"
+          }
+        },
+        {
+          "type": "text",
+          "alias": "Elevated",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "#ffffff",
+          "background": "#da3633",
+          "template": "{{ if .Root }} \uf071 ELEVATED {{ end }}"
+        },
+        {
+          "type": "path",
+          "alias": "Path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "template": " {{ .Path | lower }} ",
+          "foreground": "#ffffff",
+          "background": "#0087af",
+          "options": {
+            "style": "agnoster_short",
+            "max_depth": 3,
+            "folder_icon": "…",
+            "folder_separator_icon": " <transparent>\ue0b1</> "
+          }
+        },
+        {
+          "type": "git",
+          "alias": "Git",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#000000",
+          "background": "#52c77a",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffa94d{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f78c8c{{ end }}",
+            "{{ if gt .Ahead 0 }}#66b3ff{{ end }}",
+            "{{ if gt .Behind 0 }}#ff9966{{ end }}"
+          ],
+          "template": " {{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if gt .Working.Untracked 0 }} \uf016 {{ .Working.Untracked }}{{ end }}{{ if gt (add .Working.Added .Working.Modified) 0 }} \uf044 {{ add .Working.Added .Working.Modified }}{{ end }}{{ if gt .Working.Deleted 0 }} \uf458 {{ .Working.Deleted }}{{ end }}{{ if gt .Working.Unmerged 0 }} \uf071 {{ .Working.Unmerged }}{{ end }}{{ if gt (add .Staging.Added .Staging.Modified .Staging.Deleted .Staging.Unmerged .Staging.Untracked) 0 }} \uf046 {{ add .Staging.Added .Staging.Modified .Staging.Deleted .Staging.Unmerged .Staging.Untracked }}{{ end }}{{ if gt .StashCount 0 }} \uf0c7 {{ .StashCount }}{{ end }}",
+          "options": {
+            "branch_icon": "\ue0a0 "
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "overflow": "break",
+      "segments": [
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "invert_powerline": true,
+          "foreground": "#585858",
+          "background": "#e4e4e4",
+          "template": " \ueba2 {{ .FormattedMs }} ",
+          "options": {
+            "style": "austin",
+            "always_enabled": true
+          }
+        },
+        {
+          "type": "copilot",
+          "alias": "copilot",
+          "min_width": 40,
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#000000",
+          "background": "#8250df",
+          "background_templates": [
+            "{{ if ge .Premium.Percent 90 }}#da3633{{ end }}",
+            "{{ if ge .Premium.Percent 70 }}#d29922{{ end }}"
+          ],
+          "template": "{{ $occupied := printf \"%s%s%s%s%s\" (.Segments.Os.Text | default \"\") (.Segments.Elevated.Text | default \"\") (.Segments.Path.Text | default \"\") (.Segments.Git.Text | default \"\") (.Segments.Executiontime.Text | default \"\") }}{{ $occupied = regexReplaceAll \"<[^>]*>\" $occupied \"\" }}{{ $available := sub (int .Env.POSH_TERMINAL_WIDTH) (add (len (regexFindAll \".\" $occupied -1)) (int .Var.copilotLayoutReserve)) }}{{ $full := printf \" \\uec1e  %s Used: %v%% \" .Premium.Percent.GaugeUsed .Premium.Percent }}{{ $compact := printf \" \\uec1e  %v%% \" .Premium.Percent }}{{ if ge $available (int64 (len (regexFindAll \".\" $full -1))) }}{{ $full }}{{ else if ge $available (int64 (len (regexFindAll \".\" $compact -1))) }}{{ $compact }}{{ end }}",
+          "options": {
+            "http_timeout": 3000
+          },
+          "cache": {
+            "duration": "1m",
+            "strategy": "session"
+          }
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "invert_powerline": true,
+          "leading_diamond": "",
+          "foreground": "#000000",
+          "background": "#d75f00",
+          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
+          "options": {
+            "time_format": "15:04:05"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": []
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "kubectl",
+          "alias": "Kubernetes",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "template": "\u2570\u2500 \udb84\udcfe : {{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }}",
+          "cache": {
+            "duration": "none",
+            "strategy": "session"
+          }
+        },
+        {
+          "type": "az",
+          "alias": "AzureCli",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "template": "{{ if .Segments.Kubernetes.Text }} <{{ .Var.dividerColor }}>||</> {{ else }}\u2570\u2500 {{ end }}\uebd8 : {{ .Name }}",
+          "cache": {
+            "duration": "none",
+            "strategy": "session"
+          },
+          "options": {
+            "source": "cli"
+          }
+        },
+        {
+          "type": "az",
+          "alias": "AzurePwsh",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "template": "{{ if or .Segments.Kubernetes.Text .Segments.AzureCli.Text }} <{{ .Var.dividerColor }}>||</> {{ else }}\u2570\u2500 {{ end }}\ue683 : {{ .Name }}",
+          "cache": {
+            "duration": "none",
+            "strategy": "session"
+          },
+          "options": {
+            "source": "pwsh"
+          }
+        },
+        {
+          "type": "aws",
+          "alias": "Aws",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "template": "{{ if or .Segments.Kubernetes.Text .Segments.AzureCli.Text .Segments.AzurePwsh.Text }} <{{ .Var.dividerColor }}>||</> {{ else }}\u2570\u2500 {{ end }}\udb83\ude0f : {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }}",
+          "cache": {
+            "duration": "none",
+            "strategy": "session"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#d75f00",
+          "foreground_templates": [
+            "{{ if .Root }}#da3633{{ end }}"
+          ],
+          "template": "{{ if .Root }}# {{ else }}$ {{ end }}"
+        }
+      ]
+    }
+  ]
+}

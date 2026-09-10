@@ -1,0 +1,172 @@
+name: Publish Pwsh Profile Module Updates
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+    paths:
+      - 'src/modules/**/*.psd1'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: publish-pwsh-profile-modules
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out merged module changes
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+
+      - name: Validate, package, and publish changed modules
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          TARGET_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $manifestPaths = @(
+            gh api "repos/$env:GITHUB_REPOSITORY/pulls/$env:PR_NUMBER/files" --paginate --jq '.[].filename' |
+              Where-Object { $_ -match '^src/modules/(?<name>PwshProfile\.[A-Za-z0-9_.-]+)/\k<name>\.psd1$' }
+          )
+          if ($LASTEXITCODE -ne 0) { throw 'Could not enumerate changed module manifests.' }
+          foreach ($manifestPath in $manifestPaths) {
+            $moduleName = [IO.Path]::GetFileNameWithoutExtension($manifestPath)
+            $moduleRoot = Split-Path $manifestPath -Parent
+            $module = Import-PowerShellDataFile -LiteralPath $manifestPath -ErrorAction Stop
+            $version = [string]$module.ModuleVersion
+            if ($version -notmatch '^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$') {
+              throw "$moduleName version '$version' is not stable SemVer."
+            }
+            $previousManifest = git show "$($env:BASE_SHA):$manifestPath" 2>$null | Out-String
+            $previousVersion = if ($LASTEXITCODE -eq 0 -and
+              $previousManifest -match "(?m)^\s*ModuleVersion\s*=\s*'(?<version>\d+\.\d+\.\d+)'\s*$") {
+              $Matches.version
+            } else { $null }
+            if ($previousVersion -eq $version) {
+              Write-Host "$moduleName version is unchanged; no module release needed."
+              continue
+            }
+            if ($previousVersion -and [version]$version -le [version]$previousVersion) {
+              throw "$moduleName version must increase from $previousVersion; found $version."
+            }
+
+            $changelogPath = Join-Path $moduleRoot 'CHANGELOG.md'
+            if (-not (Test-Path $changelogPath)) { throw "$moduleName requires its own CHANGELOG.md." }
+            $changelog = Get-Content $changelogPath -Raw
+            $notesPattern = "(?ms)^## \[$([regex]::Escape($version))\](?: - \d{4}-\d{2}-\d{2})?\s*\r?\n(?<notes>.*?)(?=^## \[|\z)"
+            if ($changelog -notmatch $notesPattern) { throw "$moduleName changelog has no section for '$version'." }
+            $releaseNotes = $Matches.notes.Trim()
+
+            $rootModule = [string]$module.RootModule
+            if ([IO.Path]::GetFileName($rootModule) -ne $rootModule -or $rootModule -notmatch '\.psm1$') {
+              throw "$moduleName RootModule must be a .psm1 file in its module directory."
+            }
+            $assetDefinitions = [ordered]@{
+              manifest = [IO.Path]::GetFileName($manifestPath)
+              script = $rootModule
+            }
+            $formatIndex = 0
+            foreach ($formatFile in @($module.FormatsToProcess | Where-Object { $_ })) {
+              $formatName = [string]$formatFile
+              if ([IO.Path]::GetFileName($formatName) -ne $formatName -or $formatName -notmatch '\.ps1xml$') {
+                throw "$moduleName format files must be .ps1xml files in its module directory."
+              }
+              $assetDefinitions["format$formatIndex"] = $formatName
+              $formatIndex++
+            }
+
+            $stageRoot = Join-Path $env:RUNNER_TEMP "$moduleName-$version"
+            New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
+            $releaseAssets = [ordered]@{}
+            foreach ($entry in $assetDefinitions.GetEnumerator()) {
+              $source = Join-Path $moduleRoot $entry.Value
+              if (-not (Test-Path $source -PathType Leaf)) { throw "$moduleName asset is missing: $($entry.Value)" }
+              $destination = Join-Path $stageRoot $entry.Value
+              Copy-Item -LiteralPath $source -Destination $destination
+              $releaseAssets[$entry.Key] = [ordered]@{
+                asset = $entry.Value
+                sha256 = (Get-FileHash $destination -Algorithm SHA256).Hash.ToLowerInvariant()
+              }
+            }
+            $tokens = $null
+            $parseErrors = $null
+            [void][Management.Automation.Language.Parser]::ParseFile(
+              (Join-Path $stageRoot $rootModule), [ref]$tokens, [ref]$parseErrors
+            )
+            if ($parseErrors.Count) { throw ($parseErrors.Message -join '; ') }
+            foreach ($formatName in @($module.FormatsToProcess | Where-Object { $_ })) {
+              $null = [xml](Get-Content (Join-Path $stageRoot $formatName) -Raw)
+            }
+
+            $tag = "$moduleName-v$version"
+            $releaseManifest = [ordered]@{
+              schemaVersion = 1
+              module = $moduleName
+              version = $version
+              tag = $tag
+              repository = '${{ github.repository }}'
+              commit = $env:TARGET_SHA
+              minimumPowerShellVersion = [string]$module.PowerShellVersion
+              artifacts = $releaseAssets
+            }
+            $releaseManifestName = "$moduleName.release.json"
+            $releaseManifestPath = Join-Path $stageRoot $releaseManifestName
+            $releaseManifest | ConvertTo-Json -Depth 6 |
+              Set-Content -LiteralPath $releaseManifestPath -Encoding utf8NoBOM
+            $notesPath = Join-Path $stageRoot 'release-notes.md'
+            [IO.File]::WriteAllText($notesPath, $releaseNotes, [Text.UTF8Encoding]::new($false))
+
+            & ./scripts/Ensure-PwshProfileModuleTag.ps1 -Repository $env:GITHUB_REPOSITORY -Tag $tag -Commit $env:TARGET_SHA
+
+            $alreadyPublished = $false
+            gh release view $tag *> $null
+            if ($LASTEXITCODE -eq 0) {
+              $existing = gh release view $tag --json isDraft | ConvertFrom-Json
+              if ($LASTEXITCODE -ne 0) { throw "Could not read release $tag." }
+              $alreadyPublished = -not $existing.isDraft
+              $tagCommit = gh api "repos/$env:GITHUB_REPOSITORY/commits/$tag" --jq .sha
+              if ($LASTEXITCODE -ne 0 -or $tagCommit -ne $env:TARGET_SHA) { throw "Release $tag already points to another commit or could not be resolved." }
+            } else {
+              gh release create $tag --verify-tag --target $env:TARGET_SHA --title $tag --notes-file $notesPath --draft
+              if ($LASTEXITCODE -ne 0) { throw "Could not create draft release $tag." }
+            }
+            $uploadPaths = @($assetDefinitions.Values | ForEach-Object { Join-Path $stageRoot $_ })
+            $uploadPaths += $releaseManifestPath
+            if (-not $alreadyPublished) {
+              $draft = gh release view $tag --json isDraft | ConvertFrom-Json
+              if ($LASTEXITCODE -ne 0 -or -not $draft.isDraft) { throw 'Uploads require a draft release.' }
+              gh release upload $tag @uploadPaths --clobber
+              if ($LASTEXITCODE -ne 0) { throw "Could not upload all assets for $tag." }
+            }
+            $verifyRoot = Join-Path $stageRoot 'verified'
+            New-Item -ItemType Directory -Path $verifyRoot -Force | Out-Null
+            gh release download $tag --dir $verifyRoot
+            if ($LASTEXITCODE -ne 0) { throw "Could not download assets for verification: $tag" }
+            foreach ($path in $uploadPaths) {
+              $download = Join-Path $verifyRoot ([IO.Path]::GetFileName($path))
+              if (-not (Test-Path $download) -or (Get-FileHash $download).Hash -ne (Get-FileHash $path).Hash) {
+                throw "Uploaded asset verification failed: $path"
+              }
+            }
+            $tagCommit = gh api "repos/$env:GITHUB_REPOSITORY/commits/$tag" --jq .sha
+            if ($LASTEXITCODE -ne 0 -or $tagCommit -ne $env:TARGET_SHA) { throw "Tag $tag does not match packaged commit." }
+            if ($alreadyPublished) {
+              Write-Host "Verified already published $tag; continuing remaining modules."
+              continue
+            }
+            gh release edit $tag --draft=false --latest=false
+            if ($LASTEXITCODE -ne 0) { throw "Could not publish $tag." }
+          }

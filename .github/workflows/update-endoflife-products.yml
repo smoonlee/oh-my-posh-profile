@@ -1,0 +1,73 @@
+name: Update EndOfLife Products
+
+on:
+  schedule:
+    - cron: '0 7 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: update-endoflife-products
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Capture current endoflife.date product catalog
+        shell: pwsh
+        run: |
+          if (Test-Path ./EndOfLifeProducts.json) {
+            Copy-Item ./EndOfLifeProducts.json (Join-Path $env:RUNNER_TEMP 'EndOfLifeProducts.previous.json')
+          }
+
+      - name: Refresh endoflife.date products
+        shell: pwsh
+        run: ./scripts/Update-EndOfLifeProducts.ps1
+
+      - name: Prepare patch release and module changelog
+        shell: pwsh
+        run: |
+          ./scripts/Update-EndOfLifeRelease.ps1 -PreviousCatalogPath (Join-Path $env:RUNNER_TEMP 'EndOfLifeProducts.previous.json')
+
+      - name: Build pull request summary
+        id: product-changes
+        shell: pwsh
+        run: |
+          $previousCatalog = Join-Path $env:RUNNER_TEMP 'EndOfLifeProducts.previous.json'
+          $parameters = @{
+            CurrentCatalogPath = './EndOfLifeProducts.json'
+          }
+          if (Test-Path $previousCatalog) {
+            $parameters.PreviousCatalogPath = $previousCatalog
+          }
+
+          $body = ./scripts/Get-EndOfLifeProductChanges.ps1 @parameters
+          $body += "`n`n## Release preparation`n`nCatalog changes include an independent EndOfLife module minor-version bump and module changelog entry. Merging this automation PR publishes only the verified EndOfLife module assets. The profile version is unchanged."
+          $delimiter = "END_OF_LIFE_$([guid]::NewGuid().ToString('N'))"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "body<<$delimiter" -Encoding utf8
+          Add-Content -Path $env:GITHUB_OUTPUT -Value $body -Encoding utf8
+          Add-Content -Path $env:GITHUB_OUTPUT -Value $delimiter -Encoding utf8
+
+      - name: Create endoflife.date product update pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/update-endoflife-products
+          delete-branch: true
+          add-paths: |
+            EndOfLifeProducts.json
+            src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.psm1
+            src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.psd1
+            src/modules/PwshProfile.EndOfLife/CHANGELOG.md
+          commit-message: 'Update endoflife.date products'
+          title: '[GitHub Action]: Update endoflife.date products'
+          body: ${{ steps.product-changes.outputs.body }}
+          assignees: smoonlee
