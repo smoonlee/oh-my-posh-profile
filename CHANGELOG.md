@@ -15,6 +15,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   releases at `smoonlee/oh-my-posh-profile`.
 - Preserve the audited GitHub REST release-array and pagination fix, including
   its regression coverage, in the GA release.
+- Restore the `PwshProfile.EndOfLife` 1.0.2 release notes and require every
+  module manifest version to have a matching module changelog section.
 
 ## [4.0.0-pre-release-0.9.8.1] - 2026-09-09
 
