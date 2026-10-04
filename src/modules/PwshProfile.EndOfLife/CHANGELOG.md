@@ -2,6 +2,12 @@
 
 All notable changes to the independently released module are documented here.
 
+## [1.1.0] - 2026-10-04
+
+- Refresh the supported product catalog and tab completion from endoflife.date.
+- Added products: `bind-9`, `ceph`, `chromecast`, `external-dns`, `jira-service-management`, `kiali`, `samba`.
+- Lifecycle dates continue to be fetched live when queried.
+
 ## [1.0.2] - 2026-09-09
 
 - Refresh the supported product catalog and tab completion from endoflife.date.
