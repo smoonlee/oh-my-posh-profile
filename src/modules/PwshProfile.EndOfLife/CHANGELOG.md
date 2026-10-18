@@ -2,6 +2,12 @@
 
 All notable changes to the independently released module are documented here.
 
+## [1.2.0] - 2026-10-18
+
+- Refresh the supported product catalog and tab completion from endoflife.date.
+- Added products: `dapr`, `jfrog-xray`, `liquibase-secure`, `nura`, `pgadmin`.
+- Lifecycle dates continue to be fetched live when queried.
+
 ## [1.1.0] - 2026-10-04
 
 - Refresh the supported product catalog and tab completion from endoflife.date.
