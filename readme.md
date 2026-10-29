@@ -159,6 +159,8 @@ session.
 | Network CIDR | `Set-PwshProfile -EnableNetworkCidr` | `Get-NetworkCidr` |
 | End-of-life data | `Set-PwshProfile -EnableEndOfLife` | `Get-EolInfo` |
 | Azure Kubernetes | `Set-PwshProfile -EnableAzureKubernetes` | `Get-AksVersion` |
+| Azure images | `Set-PwshProfile -EnableAzureImages` | `Get-AzureVmImage`, `ConvertTo-AzureVmImageBicep` |
+| Azure compute | `Set-PwshProfile -EnableAzureCompute` | `Get-AzureVmSize` |
 | DNS | `Set-PwshProfile -EnableDns` | `Get-DnsResult` |
 | TLS certificates | `Set-PwshProfile -EnableTlsCertificate` | `Get-TlsCertificate`, `Split-PfxCertificate`, `New-PfxCertificate`, `Test-CertificateKeyMatch`, `New-SelfSignedTlsCertificate` |
 
@@ -167,6 +169,41 @@ Disable a module by passing `$false` to its switch:
 ```powershell
 Set-PwshProfile -EnableDns:$false
 ```
+
+### Module updates
+
+Azure Images and Azure Compute have independent module versions and GitHub
+releases, like the other optional modules. Run the normal updater to install
+newer versions of modules already installed in the profile store:
+
+```powershell
+Update-PwshProfile
+Get-PwshProfile
+```
+
+Module-only updates do not change the profile version, unrelated modules or
+your enable/disable settings. Loaded modules are re-imported after an update.
+The updater verifies the release metadata and file hashes, installs the complete
+module including its declared table-format files, and rolls back on failure.
+Locally modified or missing tracked files still block replacement.
+
+Independent releases update **existing installations**; they do not add new
+modules or new `Set-PwshProfile` switches to an older profile. To use Azure Images
+and Azure Compute through the profile for the first time, install a profile
+bundle containing them (or use the documented local-source setup), then enable
+them with the commands above. Publishing these two module releases alone does
+not publish a new profile bundle.
+
+For standalone use outside the profile, download the `.psd1`, `.psm1` and
+declared `.Format.ps1xml` assets from the corresponding module release into the
+same directory, then import its `.psd1`. Standalone copies outside the profile
+store are not managed by `Update-PwshProfile`.
+
+Module release tags use `PwshProfile.AzureImages-v<version>` and
+`PwshProfile.AzureCompute-v<version>`, separately from profile `v<version>` tags.
+See [independent module releases](docs/release-automation.md) for publication and
+verification details. Catalogue refresh automation is optional and is not
+required to install these modules, use live discovery or request PAYG estimates.
 
 ### Examples
 
@@ -195,6 +232,238 @@ Get-TlsCertificate -HostName example.com -ShowChain
 ```
 
 Use `Get-Help <command> -Full` for complete parameters and examples.
+
+### Azure images and VM sizes
+
+Live queries require Azure CLI on `PATH` and a signed-in account (`az login`) with
+permission to read the Compute catalogue. They use the active CLI subscription;
+pass `-Subscription <name-or-id>` to query another without changing your defaults.
+Image searches with `-Catalog` are offline and need neither Azure CLI nor authentication.
+Neither module creates resources, accepts Marketplace terms, or queries quota usage.
+Compute pricing is optional through `-IncludePrice`; ordinary lookups make no pricing requests.
+Both modules' region completion uses the full physical-region list reported
+by Azure (63 names in the initial seed), refreshed by the catalogue workflow.
+This can include restricted or preview regions, not a guarantee of subscription
+access or VM/image availability. Arbitrary region names are still accepted.
+
+```powershell
+Set-PwshProfile -EnableAzureImages
+Set-PwshProfile -EnableAzureCompute
+
+# Find Windows Server 2025 variants in your target region
+Get-AzureVmImage -Location uksouth -OS WindowsServer -Search 2025
+
+# Only Windows client editions still within their normal security-support period
+Get-AzureVmImage -Location westeurope -OS WindowsClient
+
+# Explicitly include end-of-life and unclassified releases
+Get-AzureVmImage -Location westeurope -OS WindowsClient -IncludeUnsupported
+
+# Discover standard Canonical Ubuntu images available in this region
+Get-AzureVmImage -Location uksouth -OS Ubuntu
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Search 22.04
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Search 26.04
+
+# Include Pro, CIS, hardened, FIPS and minimal variants
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Expanded
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Expanded -Search cis
+
+# Filter Azure-reported architecture and Hyper-V generation
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Search 26.04 -Arch amd64 -Generation Gen2
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Arch arm -Generation Gen2
+
+# Other OS families, with tab completion for -OS
+Get-AzureVmImage -Location uksouth -OS Debian
+Get-AzureVmImage -Location uksouth -OS RHEL
+
+# Browse any publisher, including those outside the configured OS presets
+Get-AzureVmImage -Location uksouth -Publisher SUSE -Offer '*sles*'
+
+# Fast offline search of the bundled snapshot
+Get-AzureVmImage -Catalog -Search 26.04
+Get-AzureVmImage -Catalog -OS Debian -Location eastus
+
+# Custom offer, with wildcard SKU filtering
+Get-AzureVmImage -Location uksouth -Publisher MicrosoftWindowsServer `
+  -Offer WindowsServer -Sku '*2025*'
+
+# Choose an exact SKU from the results, then format its image reference
+$sku = Read-Host 'Image SKU'
+Get-AzureVmImage -Location uksouth -Sku $sku | ConvertTo-AzureVmImageBicep
+
+# List concrete versions for pinning (requires an exact SKU, no wildcards)
+Get-AzureVmImage -Location uksouth -Sku $sku -ListVersions
+
+# Find sizes with 4-8 enabled vCPUs and 16-32 GB memory
+Get-AzureVmSize -Location uksouth -MinVCpus 4 -MaxVCpus 8 `
+  -MinMemoryGB 16 -MaxMemoryGB 32 -Architecture x64
+
+# Inspect all capabilities and subscription restrictions for one size
+Get-AzureVmSize -Location uksouth -Name Standard_D4s_v5 | Format-List *
+
+# Compare public PAYG estimates, including Windows licensing, in GBP
+Get-AzureVmSize -Location uksouth -Name 'Standard_D*s_v5' `
+  -IncludePrice -PriceOS Windows -Currency GBP
+```
+
+Live `Get-AzureVmImage` queries default to Windows Server. `-Search` is a case-insensitive
+literal substring of the offer or SKU, treating dots and underscores as equivalent
+(for example, `22.04` matches `22_04`). `-Sku` accepts PowerShell wildcards.
+The Ubuntu preset discovers Canonical offers dynamically, including older and
+newer releases. By default, offer/SKU names containing CIS, hardened, FIPS or minimal
+tokens are excluded, as are Canonical's Ubuntu Pro variants. `-Expanded` includes
+them again, for live and offline queries, including explicit publisher/offer
+requests. Windows Pro editions remain visible. This name-based convenience filter
+is not an authoritative licensing or security classification.
+It queries SKUs for each matching offer, so a broad lookup can take longer than an
+explicit `-Publisher Canonical -Offer <offer-from-results>` query.
+
+**Supported releases only:** live and offline searches exclude end-of-life,
+unreleased/preview and unclassified images by default. Support means the OS cycle's
+normal security-maintenance period, including normal Windows Server extended
+support but excluding paid ESU/ESM/EUS/LTSS extensions. Windows client editions and
+LTSC releases have separate deadlines: a supported Windows 10 LTSC image can remain
+visible even though ordinary Windows 10 is end-of-life.
+
+`-OS WindowsClient` includes Azure Virtual Desktop images (`avd` and legacy `evd`
+SKUs), plus Microsoft 365 Apps images from the `office-365` offer. These use Windows
+Enterprise OS support dates; the filter does not verify the bundled apps' support
+or licensing. Use `-OS WindowsClient -Search avd` for current AVD-named images,
+or `-Search evd` for legacy names. No `-Expanded` switch is needed.
+
+Dates come from [endoflife.date](https://endoflife.date/). Live searches fetch public
+lifecycle data over HTTPS and cache successful responses for one hour per product;
+they do not require the separate EndOfLife module. An unavailable or malformed
+lifecycle response stops the supported-only query rather than returning unverified
+results. `-IncludeUnsupported` bypasses lifecycle checks and that HTTP dependency.
+It does not bypass variant filtering: combine `-Expanded -IncludeUnsupported`
+when both specialised and older images are wanted.
+
+Image names are mapped conservatively to known lifecycle products and cycles.
+Unrecognized publishers, releases or naming patterns are hidden by default,
+including Azure Linux until a verified lifecycle mapping is available. The filter
+checks release-family support, not whether an individual image build is fully
+patched or whether an update to a newer point release is required. Check the
+vendor's lifecycle and your support entitlement before deployment.
+
+SUSE includes the SLES 16 offer naming scheme. Rocky Linux includes CIQ community
+images as well as RESF images. Flatcar's production `stable` channel is verified
+through its [official release feed](https://www.flatcar.org/releases/), not an
+invented fixed EOL date. Alpha, beta and unverified LTS channels remain opt-in.
+Azure Linux 3.0 still requires `-IncludeUnsupported` because an OS-wide lifecycle
+mapping has not been verified; this does not mean Microsoft has declared it EOL.
+Azure Linux 4.0 is [currently preview](https://learn.microsoft.com/azure/azure-linux/release-cadence-lifecycle)
+and is deliberately excluded by default.
+
+`-Arch` accepts `amd64`/`x64` and `arm64`/`arm`. `-Generation` accepts `Gen1` or
+`Gen2`; ARM is an architecture, not a generation. These filters use Azure image
+metadata, not SKU-name guesses. Architecture and generation are included by default,
+without an extra switch. Live queries fetch details for each candidate, so narrow
+the offer/SKU/search when possible. For a faster name-only lookup, explicitly use
+`-IncludeMetadata:$false`; this leaves both fields `Unknown`. Architecture or
+generation filters always fetch metadata, even with that opt-out. Unknown values
+never match platform filters, and a Gen1 image will not match `-Generation Gen2`.
+The refreshed offline catalogue retains both fields without extra Azure calls.
+Azure can list SKUs whose `latest` version no longer resolves. Metadata queries
+warn and skip those specific entries, continuing to the remaining images.
+Authentication, permission, malformed-response and other lookup errors still stop
+the query; failures resolving explicitly listed versions are not skipped.
+
+The default image table groups publisher, offer, region and source above each table,
+with fixed Arch, Gen and Version columns followed by SKU stretching to the right
+edge of the terminal. Short early results do not shrink the SKU column. Names wrap
+only when they exceed the available width, rather than being truncated. Output remains objects: use
+`Format-List *` for all properties or pipe selected results to Bicep conversion.
+
+Ordinary lookups return one object per offer/SKU with the **unresolved `latest`
+alias**, not a pinned version. `-ListVersions` makes a live version query and
+sorts newest first within each offer. Use an explicit publisher and offer to pin
+versions of one Ubuntu image: names such as `server` are shared across releases.
+Pass a selected version object to `ConvertTo-AzureVmImageBicep` to preserve that
+version. The generated `imageReference` belongs under a VM's `storageProfile`;
+purchase plans, terms acceptance and VM/image compatibility are not validated.
+Choose the required Core/Desktop Experience, generation and architecture variant
+explicitly. Live custom queries use `-Publisher` instead of `-OS`; omit `-Offer`
+to browse all of that publisher's offers, or supply an exact name or wildcard.
+
+Presets cover Windows Server/client, Ubuntu, Debian, RHEL, SUSE, Oracle Linux,
+Rocky Linux, AlmaLinux, Flatcar, Azure Linux and FreeBSD. Publisher mappings and offer
+patterns live in [AzureImagesCatalog.json](AzureImagesCatalog.json). `-OS All`
+queries every configured preset live and can be slow; it is not every Marketplace
+appliance or reseller image. Generic publisher queries remain available for those.
+
+`-Catalog` defaults to supported releases across all OS families and searches the bundled public-Azure
+snapshot, including OS and publisher names. Its results are labelled
+`Source = Catalog`; normal queries return `Source = Live`. A catalogue match is
+not a live regional availability check. The bundled snapshot has been populated
+from authenticated Azure discovery for `uksouth` and `eastus`, including metadata.
+It is not an all-region offline index; use live queries for other regions.
+Offline support checks use bundled `Lifecycles` dates, evaluated on every query so
+an installed snapshot stops showing a release after its support deadline. Older
+snapshots without lifecycle records require a refresh or `-IncludeUnsupported`.
+
+The [Azure image update workflow](.github/workflows/update-azure-images.yml) runs
+weekly or manually, validates results, and opens an independent module update PR.
+New physical regions update both modules' completion and prepare independent
+patch releases even without image changes. Image-only or lifecycle-only changes
+do not bump the Compute module.
+Lifecycle-date changes also trigger an update PR.
+`AvailableLocations` is the full reported completion list; `Locations` remains the
+configured subset used for image snapshots, initially `uksouth` and `eastus`.
+See [catalogue automation setup](docs/release-automation.md#azure-image-catalogue)
+for OIDC prerequisites, configured regions, local refreshes and first-run steps.
+
+`Get-AzureVmSize` includes restricted sizes so they do not silently disappear.
+Its `Restriction` summary distinguishes region-wide and zone-specific limits;
+`Restrictions` retains the raw details for the requested region. `Zones` lists
+advertised zones, not a promise of availability in each zone. `None` means no
+reported SKU restrictions, **not guaranteed capacity or sufficient quota**.
+CPU filters use enabled vCPUs (`vCPUsAvailable` for constrained-core sizes);
+`TotalVCpus` preserves the underlying `vCPUs` capability. Missing CPU/memory
+values stay null and are excluded by numeric filters; missing architecture is
+shown as `Unknown`.
+
+**Optional PAYG estimates:** `-IncludePrice` adds public retail prices from the
+[Azure Retail Prices API](https://learn.microsoft.com/en-us/rest/api/cost-management/retail-prices/azure-retail-prices).
+It defaults to base Linux compute in USD. Use `-PriceOS Windows` for Windows
+license-included rates and `-Currency GBP` (or another supported three-letter
+currency) for reference estimates. `-PriceOS` selects the price basis only; it
+does not check whether a VM size supports a particular OS or image. Both price
+options require `-IncludePrice`.
+
+Results default to a wrapped table, including single-size lookups. Pricing tables
+group region, OS and currency above the rows and display `PAYG/hour` and `Est/730h`.
+Use `Format-List *` to inspect all properties instead. Numeric `RetailHourly` and
+`RetailMonthly` properties remain available for sorting and calculations;
+monthly estimates assume 730 running hours and are rounded to two decimals.
+`PriceStatus`, `PriceEffectiveDate`, `PriceRetrievedAt` and `PriceSource` expose
+the match status and provenance. Missing or conflicting rates have status
+`Unknown`, null numeric amounts and an explicit `Unknown` display, not zero.
+Restricted sizes remain visible regardless of price availability.
+
+Only ordinary hourly PAYG base-compute meters are matched by exact region,
+SKU and price OS. Spot, Low Priority, Dev/Test, reservations, savings plans and
+software-specific rates are excluded. These estimates are **not a total bill**:
+disks, networking, Marketplace software, paid Linux distribution subscriptions,
+taxes, negotiated discounts and Azure Hybrid Benefit are not calculated.
+Non-USD rates are indicative, not a contractual billing conversion.
+
+The public pricing API needs no additional authentication and covers commercial
+Azure, not sovereign clouds. Complete regional responses are cached in memory
+for one hour per region/currency and reused across SKU and OS selections.
+Expired entries are refreshed; failed or incomplete requests are not cached.
+Pricing failures warn and preserve VM size results with unknown prices. No pricing
+request is made unless `-IncludePrice` is used and at least one size matches.
+
+For testing directly from a checkout before installing the updated profile:
+
+```powershell
+Import-Module ./src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psd1
+Import-Module ./src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psd1
+```
+
+Reference: [Azure CLI image discovery](https://learn.microsoft.com/en-us/cli/azure/vm/image)
+and [VM resource SKUs](https://learn.microsoft.com/en-us/cli/azure/vm#az-vm-list-skus).
 
 ## Safe installation and updates
 

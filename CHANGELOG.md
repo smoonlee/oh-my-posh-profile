@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Add disabled-by-default `PwshProfile.AzureImages` with regional image SKU
+  discovery, catalogue-driven OS presets, version listing, and Bicep
+  image reference formatting.
+- Add offline Azure image catalogue search, generic publisher/offer discovery,
+  and a weekly/manual OIDC workflow that prepares reviewed catalogue and module
+  release updates without changing the profile version.
+- Add disabled-by-default `PwshProfile.AzureCompute` with regional VM size
+  discovery, vCPU/memory/architecture filters, and subscription restrictions.
+- Integrate both modules with profile settings, local installation, verified
+  release bundles, and offline regression checks on PowerShell 7 and 5.1.
+
 ## [4.0.0] - 2026-09-10
 
 ### General availability

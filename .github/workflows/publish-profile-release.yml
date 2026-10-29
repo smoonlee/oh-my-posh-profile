@@ -71,6 +71,12 @@ jobs:
           $endOfLifeFormatPath = './src/modules/PwshProfile.EndOfLife/PwshProfile.EndOfLife.Format.ps1xml'
           $azureKubernetesManifestPath = './src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psd1'
           $azureKubernetesScriptPath = './src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psm1'
+          $azureImagesManifestPath = './src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psd1'
+          $azureImagesScriptPath = './src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psm1'
+          $azureImagesFormatPath = './src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.Format.ps1xml'
+          $azureComputeManifestPath = './src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psd1'
+          $azureComputeScriptPath = './src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psm1'
+          $azureComputeFormatPath = './src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.Format.ps1xml'
           $dnsManifestPath = './src/modules/PwshProfile.Dns/PwshProfile.Dns.psd1'
           $dnsScriptPath = './src/modules/PwshProfile.Dns/PwshProfile.Dns.psm1'
           $dnsFormatPath = './src/modules/PwshProfile.Dns/PwshProfile.Dns.Format.ps1xml'
@@ -95,7 +101,7 @@ jobs:
           if (-not $catalog.NerdFontsVersion -or @($catalog.Fonts).Count -eq 0) {
             throw 'NerdFontsCatalog.json is missing NerdFontsVersion or font entries.'
           }
-          foreach ($scriptPath in @($profilePath, $setupPath, $publicIPScriptPath, $networkCidrScriptPath, $endOfLifeScriptPath, $azureKubernetesScriptPath, $dnsScriptPath, $tlsCertificateScriptPath)) {
+          foreach ($scriptPath in @($profilePath, $setupPath, $publicIPScriptPath, $networkCidrScriptPath, $endOfLifeScriptPath, $azureKubernetesScriptPath, $azureImagesScriptPath, $azureComputeScriptPath, $dnsScriptPath, $tlsCertificateScriptPath)) {
             $tokens = $null
             $parseErrors = $null
             [void][System.Management.Automation.Language.Parser]::ParseFile(
@@ -111,9 +117,11 @@ jobs:
           $null = Import-PowerShellDataFile -LiteralPath $networkCidrManifestPath -ErrorAction Stop
           $null = Import-PowerShellDataFile -LiteralPath $endOfLifeManifestPath -ErrorAction Stop
           $null = Import-PowerShellDataFile -LiteralPath $azureKubernetesManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $azureImagesManifestPath -ErrorAction Stop
+          $null = Import-PowerShellDataFile -LiteralPath $azureComputeManifestPath -ErrorAction Stop
           $null = Import-PowerShellDataFile -LiteralPath $dnsManifestPath -ErrorAction Stop
           $null = Import-PowerShellDataFile -LiteralPath $tlsCertificateManifestPath -ErrorAction Stop
-          foreach ($formatPath in @($networkCidrFormatPath, $endOfLifeFormatPath, $dnsFormatPath, $tlsCertificateFormatPath)) {
+          foreach ($formatPath in @($networkCidrFormatPath, $endOfLifeFormatPath, $azureImagesFormatPath, $azureComputeFormatPath, $dnsFormatPath, $tlsCertificateFormatPath)) {
             $null = [xml](Get-Content -LiteralPath $formatPath -Raw)
           }
 
@@ -171,6 +179,30 @@ jobs:
             azureKubernetesScript = [ordered]@{
               asset = 'PwshProfile.AzureKubernetes.psm1'
               source = 'src/modules/PwshProfile.AzureKubernetes/PwshProfile.AzureKubernetes.psm1'
+            }
+            azureImagesManifest = [ordered]@{
+              asset = 'PwshProfile.AzureImages.psd1'
+              source = 'src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psd1'
+            }
+            azureImagesScript = [ordered]@{
+              asset = 'PwshProfile.AzureImages.psm1'
+              source = 'src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psm1'
+            }
+            azureImagesFormat = [ordered]@{
+              asset = 'PwshProfile.AzureImages.Format.ps1xml'
+              source = 'src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.Format.ps1xml'
+            }
+            azureComputeManifest = [ordered]@{
+              asset = 'PwshProfile.AzureCompute.psd1'
+              source = 'src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psd1'
+            }
+            azureComputeScript = [ordered]@{
+              asset = 'PwshProfile.AzureCompute.psm1'
+              source = 'src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psm1'
+            }
+            azureComputeFormat = [ordered]@{
+              asset = 'PwshProfile.AzureCompute.Format.ps1xml'
+              source = 'src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.Format.ps1xml'
             }
             dnsManifest = [ordered]@{
               asset = 'PwshProfile.Dns.psd1'
@@ -245,6 +277,12 @@ jobs:
             (Join-Path $env:assetRoot 'PwshProfile.EndOfLife.Format.ps1xml') `
             (Join-Path $env:assetRoot 'PwshProfile.AzureKubernetes.psd1') `
             (Join-Path $env:assetRoot 'PwshProfile.AzureKubernetes.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureImages.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureImages.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureImages.Format.ps1xml') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureCompute.psd1') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureCompute.psm1') `
+            (Join-Path $env:assetRoot 'PwshProfile.AzureCompute.Format.ps1xml') `
             (Join-Path $env:assetRoot 'PwshProfile.Dns.psd1') `
             (Join-Path $env:assetRoot 'PwshProfile.Dns.psm1') `
             (Join-Path $env:assetRoot 'PwshProfile.Dns.Format.ps1xml') `

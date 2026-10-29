@@ -1,0 +1,29309 @@
+$script:AzureImagesCatalog = @'
+{
+  "SchemaVersion": 1,
+  "Cloud": "AzureCloud",
+  "Locations": [
+    "uksouth",
+    "eastus"
+  ],
+  "AvailableLocations": [
+    "australiacentral",
+    "australiacentral2",
+    "australiaeast",
+    "australiasoutheast",
+    "austriaeast",
+    "belgiumcentral",
+    "brazilsouth",
+    "brazilsoutheast",
+    "canadacentral",
+    "canadaeast",
+    "centralindia",
+    "centralus",
+    "centraluseuap",
+    "chilecentral",
+    "denmarkeast",
+    "eastasia",
+    "eastus",
+    "eastus2",
+    "eastus2euap",
+    "eastusstg",
+    "francecentral",
+    "francesouth",
+    "germanynorth",
+    "germanywestcentral",
+    "indiasouthcentral",
+    "indonesiacentral",
+    "israelcentral",
+    "italynorth",
+    "japaneast",
+    "japanwest",
+    "jioindiacentral",
+    "jioindiawest",
+    "koreacentral",
+    "koreasouth",
+    "malaysiawest",
+    "mexicocentral",
+    "newzealandnorth",
+    "northcentralus",
+    "northeurope",
+    "norwayeast",
+    "norwaywest",
+    "polandcentral",
+    "qatarcentral",
+    "southafricanorth",
+    "southafricawest",
+    "southcentralus",
+    "southcentralusstg",
+    "southeastasia",
+    "southindia",
+    "spaincentral",
+    "swedencentral",
+    "switzerlandnorth",
+    "switzerlandwest",
+    "uaecentral",
+    "uaenorth",
+    "uksouth",
+    "ukwest",
+    "westcentralus",
+    "westeurope",
+    "westindia",
+    "westus",
+    "westus2",
+    "westus3"
+  ],
+  "Presets": [
+    {
+      "OS": "WindowsServer",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer"
+    },
+    {
+      "OS": "WindowsClient",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "win*"
+    },
+    {
+      "OS": "WindowsClient",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365*"
+    },
+    {
+      "OS": "Ubuntu",
+      "Publisher": "Canonical",
+      "Offer": "*ubuntu*"
+    },
+    {
+      "OS": "Debian",
+      "Publisher": "Debian",
+      "Offer": "debian*"
+    },
+    {
+      "OS": "RHEL",
+      "Publisher": "RedHat",
+      "Offer": "rhel*"
+    },
+    {
+      "OS": "SUSE",
+      "Publisher": "SUSE",
+      "Offer": "*"
+    },
+    {
+      "OS": "OracleLinux",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux*"
+    },
+    {
+      "OS": "RockyLinux",
+      "Publisher": "resf",
+      "Offer": "rockylinux*"
+    },
+    {
+      "OS": "RockyLinux",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions*"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Publisher": "almalinux",
+      "Offer": "almalinux*"
+    },
+    {
+      "OS": "Flatcar",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux*"
+    },
+    {
+      "OS": "AzureLinux",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "*"
+    },
+    {
+      "OS": "AzureLinux",
+      "Publisher": "MicrosoftAzureLinux",
+      "Offer": "*"
+    },
+    {
+      "OS": "FreeBSD",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd*"
+    },
+    {
+      "OS": "FreeBSD",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd*"
+    }
+  ],
+  "Images": [
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "10-arm64-64k-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:10-arm64-64k-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "10-arm64-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:10-arm64-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "8-arm-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:8-arm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "9-arm-64k-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:9-arm-64k-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "9-arm-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:9-arm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "10-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:10-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "10-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:10-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-v100-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-v100-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-v100-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-v100-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-v100-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-v100-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-v100-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-v100-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "10-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:10-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "10-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:10-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "8-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:8-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "8-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "9-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:9-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "eastus",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "9-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:9-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "10-arm64-64k-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:10-arm64-64k-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "10-arm64-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:10-arm64-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "8-arm-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:8-arm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "9-arm-64k-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:9-arm-64k-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-arm",
+      "Sku": "9-arm-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-arm:9-arm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "10-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:10-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "10-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:10-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-v100-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-v100-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8_10-hpc-v100-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8_10-hpc-v100-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "8-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:8-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-v100-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-v100-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-hpc",
+      "Sku": "9-hpc-v100-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-hpc:9-hpc-v100-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "10-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:10-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "10-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:10-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "8-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:8-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "8-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "9-gen1",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:9-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AlmaLinux",
+      "Location": "uksouth",
+      "Publisher": "almalinux",
+      "Offer": "almalinux-x86_64",
+      "Sku": "9-gen2",
+      "Version": "latest",
+      "Urn": "almalinux:almalinux-x86_64:9-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftAzureLinux",
+      "Offer": "azurelinux-4",
+      "Sku": "4",
+      "Version": "latest",
+      "Urn": "MicrosoftAzureLinux:azurelinux-4:4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftAzureLinux",
+      "Offer": "azurelinux-4",
+      "Sku": "4-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftAzureLinux:azurelinux-4:4-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-acl",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-acl:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-arm64-gen2-acl",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-arm64-gen2-acl:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-arm64-gen2-fips",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-arm64-gen2-fips:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-cvm",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-fips",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-gen1-kernel-hwe",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-gen1-kernel-hwe:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-gen2",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-gen2-fips",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-gen2-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-hwe",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-hwe:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-hwe-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-hwe-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-mshv",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-mshv:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "eastus",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-mshv-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-mshv-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftAzureLinux",
+      "Offer": "azurelinux-4",
+      "Sku": "4",
+      "Version": "latest",
+      "Urn": "MicrosoftAzureLinux:azurelinux-4:4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftAzureLinux",
+      "Offer": "azurelinux-4",
+      "Sku": "4-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftAzureLinux:azurelinux-4:4-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-acl",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-acl:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-arm64-gen2-acl",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-arm64-gen2-acl:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-arm64-gen2-fips",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-arm64-gen2-fips:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-cvm",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-fips",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-gen1-kernel-hwe",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-gen1-kernel-hwe:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-gen2",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-gen2-fips",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-gen2-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-hwe",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-hwe:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-hwe-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-hwe-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-mshv",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-mshv:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "AzureLinux",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftCBLMariner",
+      "Offer": "azure-linux-3",
+      "Sku": "azure-linux-3-kernel-mshv-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftCBLMariner:azure-linux-3:azure-linux-3-kernel-mshv-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-backports-arm64-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-backports-arm64-v2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-backports-gen2-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-backports-gen2-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-backports-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-backports-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-backports-arm64-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-backports-arm64-v2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-backports-gen2-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-backports-gen2-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-backports-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-backports-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-14-daily",
+      "Sku": "14",
+      "Version": "latest",
+      "Urn": "Debian:debian-14-daily:14:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-14-daily",
+      "Sku": "14-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-14-daily:14-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-14-daily",
+      "Sku": "14-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-14-daily:14-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-sid-daily",
+      "Sku": "sid",
+      "Version": "latest",
+      "Urn": "Debian:debian-sid-daily:sid:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-sid-daily",
+      "Sku": "sid-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-sid-daily:sid-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "eastus",
+      "Publisher": "Debian",
+      "Offer": "debian-sid-daily",
+      "Sku": "sid-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-sid-daily:sid-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-backports-arm64-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-backports-arm64-v2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-backports-gen2-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-backports-gen2-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-backports-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-backports-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11",
+      "Sku": "11-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11:11-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-backports-arm64-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-backports-arm64-v2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-backports-gen2-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-backports-gen2-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-backports-v2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-backports-v2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-11-daily",
+      "Sku": "11-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-11-daily:11-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12",
+      "Sku": "12-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12:12-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-12-daily",
+      "Sku": "12-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-12-daily:12-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13",
+      "Sku": "13-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13:13-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-backports",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-backports:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-backports-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-backports-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-backports-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-backports-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-13-daily",
+      "Sku": "13-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-13-daily:13-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-14-daily",
+      "Sku": "14",
+      "Version": "latest",
+      "Urn": "Debian:debian-14-daily:14:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-14-daily",
+      "Sku": "14-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-14-daily:14-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-14-daily",
+      "Sku": "14-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-14-daily:14-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-sid-daily",
+      "Sku": "sid",
+      "Version": "latest",
+      "Urn": "Debian:debian-sid-daily:sid:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-sid-daily",
+      "Sku": "sid-arm64",
+      "Version": "latest",
+      "Urn": "Debian:debian-sid-daily:sid-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Debian",
+      "Location": "uksouth",
+      "Publisher": "Debian",
+      "Offer": "debian-sid-daily",
+      "Sku": "sid-gen2",
+      "Version": "latest",
+      "Urn": "Debian:debian-sid-daily:sid-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:alpha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "alpha-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:alpha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:beta:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "beta-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:beta-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2022",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2022:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2022-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2022-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2023",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2023:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2023-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2023-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2024:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2024-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2024-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:stable:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "stable-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:stable-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:alpha:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:beta:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:lts2024:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:stable:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:alpha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "alpha-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:alpha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:beta:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "beta-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:beta-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:lts2024:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "lts2024-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:lts2024-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:stable:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "stable-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:stable-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:alpha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "alpha-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:alpha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:beta:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "beta-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:beta-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2022",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2022:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2022-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2022-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2023",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2023:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2023-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2023-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2024:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2024-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2024-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:stable:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "eastus",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "stable-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:stable-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:alpha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "alpha-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:alpha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:beta:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "beta-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:beta-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2022",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2022:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2022-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2022-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2023",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2023:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2023-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2023-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2024:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "lts2024-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:lts2024-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:stable:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux",
+      "Sku": "stable-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux:stable-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:alpha:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:beta:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:lts2024:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm:stable:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:alpha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "alpha-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:alpha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:beta:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "beta-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:beta-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:lts2024:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "lts2024-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:lts2024-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:stable:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-corevm-amd64",
+      "Sku": "stable-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-corevm-amd64:stable-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "alpha",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:alpha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "alpha-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:alpha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "beta",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:beta:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "beta-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:beta-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2022",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2022:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2022-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2022-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2023",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2023:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2023-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2023-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2024",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2024:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "lts2024-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:lts2024-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "stable",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:stable:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Flatcar",
+      "Location": "uksouth",
+      "Publisher": "kinvolk",
+      "Offer": "flatcar-container-linux-free",
+      "Sku": "stable-gen2",
+      "Version": "latest",
+      "Urn": "kinvolk:flatcar-container-linux-free:stable-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-11_4",
+      "Sku": "11_4-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-11_4:11_4-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-12_2",
+      "Sku": "12_2-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-12_2:12_2-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-12_3",
+      "Sku": "12_3-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-12_3:12_3-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-12_4",
+      "Sku": "12_4-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-12_4:12_4-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_0",
+      "Sku": "13_0-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_0:13_0-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_1",
+      "Sku": "13_1-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_1:13_1-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_2",
+      "Sku": "13_2-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_2:13_2-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_3",
+      "Sku": "13_3-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_3:13_3-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_3",
+      "Sku": "13_3-release-gen2",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_3:13_3-release-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_4",
+      "Sku": "13_4-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_4:13_4-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_4",
+      "Sku": "13_4-release-gen2",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_4:13_4-release-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_5",
+      "Sku": "13_5-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_5:13_5-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_5",
+      "Sku": "13_5-release-gen2",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_5:13_5-release-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "11_4-release-p1-test",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:11_4-release-p1-test:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "11_4-release-test",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:11_4-release-test:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "12_1_testing",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:12_1_testing:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "eastus",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "12_1-release-p6-test",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:12_1-release-p6-test:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_0",
+      "Sku": "15_0-release-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_0:15_0-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-ufs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "FreeBSD",
+      "Offer": "freebsd-15_1",
+      "Sku": "15_1-release-zfs",
+      "Version": "latest",
+      "Urn": "FreeBSD:freebsd-15_1:15_1-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-11_4",
+      "Sku": "11_4-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-11_4:11_4-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-12_2",
+      "Sku": "12_2-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-12_2:12_2-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-12_3",
+      "Sku": "12_3-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-12_3:12_3-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-12_4",
+      "Sku": "12_4-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-12_4:12_4-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_0",
+      "Sku": "13_0-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_0:13_0-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_1",
+      "Sku": "13_1-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_1:13_1-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_2",
+      "Sku": "13_2-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_2:13_2-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_3",
+      "Sku": "13_3-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_3:13_3-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_3",
+      "Sku": "13_3-release-gen2",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_3:13_3-release-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_4",
+      "Sku": "13_4-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_4:13_4-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_4",
+      "Sku": "13_4-release-gen2",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_4:13_4-release-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_5",
+      "Sku": "13_5-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_5:13_5-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-13_5",
+      "Sku": "13_5-release-gen2",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-13_5:13_5-release-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_0",
+      "Sku": "14_0-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_0:14_0-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_1",
+      "Sku": "14_1-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_1:14_1-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_2",
+      "Sku": "14_2-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_2:14_2-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_3",
+      "Sku": "14_3-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_3:14_3-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-amd64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-amd64-gen2-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-amd64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-amd64-gen2-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-arm64-gen2-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-arm64-gen2-ufs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-arm64-gen2-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-arm64-gen2-zfs:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-ufs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-ufs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-14_4",
+      "Sku": "14_4-release-zfs",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-14_4:14_4-release-zfs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "11_4-release-p1-test",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:11_4-release-p1-test:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "11_4-release-test",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:11_4-release-test:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "12_1_testing",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:12_1_testing:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "FreeBSD",
+      "Location": "uksouth",
+      "Publisher": "TheFreeBSDFoundation",
+      "Offer": "freebsd-testing",
+      "Sku": "12_1-release-p6-test",
+      "Version": "latest",
+      "Urn": "TheFreeBSDFoundation:freebsd-testing:12_1-release-p6-test:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol101-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol101-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol101-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol101-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol101-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol101-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol102-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol102-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol102-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol102-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol102-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol102-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol810-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol810-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol810-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol810-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol810-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol810-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol97-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol97-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol97-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol97-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol97-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol97-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol98-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol98-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol98-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol98-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "eastus",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol98-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol98-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol101-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol101-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol101-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol101-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol101-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol101-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol102-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol102-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol102-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol102-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol102-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol102-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol810-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol810-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol810-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol810-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol810-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol810-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol97-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol97-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol97-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol97-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol97-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol97-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol98-arm64-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol98-arm64-lvm-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol98-lvm",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol98-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "OracleLinux",
+      "Location": "uksouth",
+      "Publisher": "Oracle",
+      "Offer": "Oracle-Linux",
+      "Sku": "ol98-lvm-gen2",
+      "Version": "latest",
+      "Urn": "Oracle:Oracle-Linux:ol98-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_1",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_2-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_2-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10-lvm",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10-lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "100-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:100-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "101-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:101-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "7_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:7_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "7-LVM",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:7-LVM:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "79-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:79-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "7lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:7lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_3",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_5",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_5:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_7",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8-LVM",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8-LVM:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8-lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "810-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:810-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "83-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:83-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "84-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:84-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "85-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:85-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "86-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:86-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "87-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:87-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "88-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:88-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "89-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:89-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_1",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_3",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_5",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_5:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_7",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9-lvm",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9-lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "90-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:90-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "91-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:91-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "92-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:92-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "93-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:93-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "94_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:94_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "95_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:95_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "96-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:96-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "97-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:97-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_apps",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_apps:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_apps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_apps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_ha",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_ha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_ha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_ha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "10_0-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:10_0-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "10_1-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:10_1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "10_2-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:10_2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_10-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_10-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_6-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_6-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_7-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_7-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_8-arm64-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_8-arm64-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_0-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_0-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_1-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_2-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_3-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_3-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_4-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_4-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_5-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_5-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_6-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_6-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_7-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_7-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_8-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_8-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm-92-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm-92-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm74",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm74:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm75",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm75:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm76",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm76:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm76-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm76-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm77",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm77:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm77-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm77-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm78",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm78:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm78-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm78-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm79",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm79:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm79-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm79-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm8",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm81",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm81:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm81-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm81-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm810",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm810:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm810-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm810-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm82",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm82:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm82-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm82-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm83",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm83:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm83-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm83-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm84",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm84:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm84-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm84-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm85",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm85:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm85-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm85-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm86",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm86:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm86-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm86-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm87",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm87:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm87-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm87-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm88",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm88:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm88-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm88-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm89",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm89:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm89-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm89-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm90",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm90:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm90-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm90-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm91",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm91:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm91-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm91-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm92",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm92:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm93",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm93:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm93-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm93-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm94",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm94:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm94-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm94-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm95",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm95:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm95-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm95-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm96",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm96:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm96-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm96-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm97",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm97:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm97-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm97-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm98",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm98:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm98-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm98-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "10_0_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:10_0_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "10_1_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:10_1_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "10_2_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:10_2_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_4_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_4_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_5_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_5_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_6_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_6_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_7_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_7_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_8_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_8_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_10-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_10-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_4-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_4-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_6-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_6-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "9_2-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:9_2-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_0_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_0_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_0_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_0_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_2_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_2_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_2_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_2_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_4_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_4_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_4_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_4_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_6_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_6_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_6_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_6_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_8_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_8_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_8_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_8_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_1",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_2-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_2-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "100-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:100-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "101-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:101-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7_6",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7_7",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "76-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:76-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "77-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:77-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_0",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_1",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_3",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_7",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_9",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "80-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:80-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "81-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:81-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "810-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:810-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "82-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:82-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "83-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:83-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "84-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:84-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "86-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:86-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "87-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:87-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "88-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:88-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "89-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:89-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_5",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_5:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_7",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "92_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:92_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "94_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:94_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "95_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:95_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "96-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:96-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "97-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:97-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP",
+      "Sku": "76-ci",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP:76-ci:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP",
+      "Sku": "76-ci-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP:76-ci-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "100sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:100sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "102sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:102sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "7_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:7_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "79sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:79sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_1",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "810sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:810sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "81sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:81sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "82sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:82sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "84sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:84sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "86sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:86sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "88sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:88sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "90sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:90sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "92sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:92sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "94sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:94sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "96sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:96sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "98sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:98sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "100sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:100sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "102sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:102sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "7_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:7_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "79sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:79sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "810sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:810sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "84sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:84sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "86sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:86sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "88sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:88sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "90sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:90sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "92sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:92sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "94sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:94sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "96sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:96sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "eastus",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "98sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:98sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_1",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10_2-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10_2-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10-lvm",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "10-lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:10-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "100-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:100-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "101-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:101-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "7_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:7_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "7-LVM",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:7-LVM:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "79-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:79-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "7lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:7lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_3",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_5",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_5:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_7",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8-LVM",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8-LVM:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "8-lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:8-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "810-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:810-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "83-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:83-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "84-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:84-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "85-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:85-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "86-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:86-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "87-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:87-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "88-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:88-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "89-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:89-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_1",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_3",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_5",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_5:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_7",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9_8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9_8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9-lvm",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "9-lvm-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:9-lvm-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "90-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:90-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "91-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:91-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "92-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:92-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "93-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:93-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "94_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:94_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "95_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:95_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "96-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:96-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL",
+      "Sku": "97-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL:97-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_apps",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_apps:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_apps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_apps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_ha",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_ha:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel_test_offers",
+      "Sku": "10_0_sap_ha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel_test_offers:10_0_sap_ha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "10_0-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:10_0-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "10_1-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:10_1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "10_2-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:10_2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_10-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_10-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_6-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_6-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_7-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_7-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "8_8-arm64-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:8_8-arm64-gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_0-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_0-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_1-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_2-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_3-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_3-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_4-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_4-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_5-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_5-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_6-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_6-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_7-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_7-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-arm64",
+      "Sku": "9_8-arm64",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-arm64:9_8-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm-92-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm-92-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm74",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm74:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm75",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm75:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm76",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm76:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm76-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm76-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm77",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm77:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm77-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm77-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm78",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm78:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm78-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm78-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm79",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm79:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm79-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm79-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm8",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm81",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm81:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm81-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm81-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm810",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm810:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm810-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm810-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm82",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm82:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm82-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm82-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm83",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm83:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm83-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm83-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm84",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm84:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm84-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm84-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm85",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm85:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm85-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm85-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm86",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm86:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm86-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm86-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm87",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm87:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm87-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm87-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm88",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm88:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm88-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm88-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm89",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm89:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm89-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm89-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm90",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm90:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm90-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm90-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm91",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm91:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm91-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm91-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm92",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm92:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm93",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm93:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm93-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm93-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm94",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm94:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm94-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm94-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm95",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm95:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm95-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm95-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm96",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm96:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm96-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm96-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm97",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm97:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm97-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm97-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm98",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm98:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-byos",
+      "Sku": "rhel-lvm98-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-byos:rhel-lvm98-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "10_0_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:10_0_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "10_1_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:10_1_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "10_2_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:10_2_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_4_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_4_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_5_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_5_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_6_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_6_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_7_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_7_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-cvm",
+      "Sku": "9_8_cvm",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-cvm:9_8_cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_10-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_10-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_4-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_4-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_6-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_6-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "8_8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:8_8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "9_2-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:9_2-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_0_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_0_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_0_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_0_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_2_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_2_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_10_2_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_10_2_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_4_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_4_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_4_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_4_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_6_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_6_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_6_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_6_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_8_with_ha_add_on",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_8_with_ha_add_on:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-HA",
+      "Sku": "rhel_9_8_with_ha_add_on-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-HA:rhel_9_8_with_ha_add_on-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_1",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10_2-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10_2-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "10-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:10-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "100-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:100-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "101-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:101-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7_6",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7_7",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "7-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:7-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "76-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:76-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "77-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:77-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_0",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_1",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_3",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_3:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_7",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8_9",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "8-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:8-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "80-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:80-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "81-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:81-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "810-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:810-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "82-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:82-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "83-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:83-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "84-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:84-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "86-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:86-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "87-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:87-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "88-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:88-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "89-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:89-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_5",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_5:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_7",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_7:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9_8-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9_8-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "9-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:9-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "92_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:92_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "94_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:94_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "95_gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:95_gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "96-raw",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:96-raw:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "rhel-raw",
+      "Sku": "97-raw-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:rhel-raw:97-raw-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP",
+      "Sku": "76-ci",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP:76-ci:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP",
+      "Sku": "76-ci-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP:76-ci-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "100sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:100sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "102sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:102sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "7_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:7_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "79sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:79sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_1",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "810sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:810sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "81sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:81sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "82sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:82sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "84sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:84sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "86sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:86sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "88sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:88sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "90sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:90sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "92sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:92sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "94sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:94sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "96sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:96sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-APPS",
+      "Sku": "98sapapps-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-APPS:98sapapps-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "10_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:10_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "10_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:10_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "100sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:100sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "102sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:102sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "7_9",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:7_9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "79sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:79sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_10",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "8_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:8_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "810sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:810sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "84sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:84sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "86sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:86sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "88sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:88sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_0",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_0:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_4",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_4:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_6",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_6:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "9_8",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:9_8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "90sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:90sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "92sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:92sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "94sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:94sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "96sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:96sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RHEL",
+      "Location": "uksouth",
+      "Publisher": "RedHat",
+      "Offer": "RHEL-SAP-HA",
+      "Sku": "98sapha-gen2",
+      "Version": "latest",
+      "Urn": "RedHat:RHEL-SAP-HA:98sapha-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-10",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-10-arm",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-10-arm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-8",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-8-arm",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-8-arm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-9",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-9-arm",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-9-arm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "10-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:10-base:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "10-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:10-lvm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-8",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-8:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-8-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-8-lvm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-9",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-9:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-9-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-9-lvm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "10-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:10-base:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "10-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:10-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "8-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:8-base:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "8-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:8-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "9-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:9-base:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "eastus",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "9-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:9-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-10",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-10:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-10-arm",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-10-arm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-8",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-8:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-8-arm",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-8-arm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-9",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-9:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "ciq",
+      "Offer": "rocky-community-editions",
+      "Sku": "rocky-community-9-arm",
+      "Version": "latest",
+      "Urn": "ciq:rocky-community-editions:rocky-community-9-arm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "10-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:10-base:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "10-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:10-lvm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-8",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-8:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-8-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-8-lvm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-9",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-9:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-aarch64",
+      "Sku": "rockylinux-aarch64-9-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-aarch64:rockylinux-aarch64-9-lvm:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "10-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:10-base:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "10-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:10-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "8-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:8-base:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "8-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:8-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "9-base",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:9-base:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "RockyLinux",
+      "Location": "uksouth",
+      "Publisher": "resf",
+      "Offer": "rockylinux-x86_64",
+      "Sku": "9-lvm",
+      "Version": "latest",
+      "Urn": "resf:rockylinux-x86_64:9-lvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "manager-proxy-5-1-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:manager-proxy-5-1-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "manager-proxy-5-1-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-proxy-5-1-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "manager-proxy-5-1-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-proxy-5-1-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "manager-server-5-1-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:manager-server-5-1-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "manager-server-5-1-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-server-5-1-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "manager-server-5-1-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-server-5-1-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-3-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-3-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-3-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-3-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-3-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-3-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-4-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-4-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-basic",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-basic:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-basic",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-basic:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-basic",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-basic:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-basic",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-basic:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-basic",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-basic:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-basic",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-basic:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-basic-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-basic-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-basic-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-basic-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-chost-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-chost-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-chost-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-chost-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-hardened-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-hardened-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-hardened-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-hardened-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-sapcal-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-sapcal-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-sapcal-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-sapcal-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen1_volvo_q-217213",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen1_volvo_q-217213:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen2_volvo_q-217213",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen2_volvo_q-217213:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "eastus",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "manager-proxy-5-1-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:manager-proxy-5-1-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "manager-proxy-5-1-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-proxy-5-1-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "manager-proxy-5-1-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-proxy-5-1-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "manager-server-5-1-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:manager-server-5-1-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "manager-server-5-1-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-server-5-1-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "manager-server-5-1-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:manager-server-5-1-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp6-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp6-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-hpc-15-sp7-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-hpc-15-sp7-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-3-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-3-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-3-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-3-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-3-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-3-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-4-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-4-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-5-5-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-5-5-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-0-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-0-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sle-micro-6-1-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sle-micro-6-1-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-12-sp5-hpc-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-12-sp5-hpc-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp4-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp4-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-basic",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-basic:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-basic",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-basic:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp5-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp5-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-basic",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-basic:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-basic",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-basic:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp6-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp6-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-basic",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-basic:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-basic",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-basic:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-chost-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-chost-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-chost-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-chost-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-sapcal",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-sapcal:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-15-sp7-sapcal",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-15-sp7-sapcal:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-arm64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-arm64-llc:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-basic-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-basic-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-basic-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-basic-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-chost-byos-arm64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-chost-byos-arm64:gen2:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-chost-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-chost-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-chost-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-chost-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-hardened-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-hardened-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-hardened-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-hardened-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-sapcal-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-sapcal-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-sapcal-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-sapcal-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-16-0-x86-64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-16-0-x86-64-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-12-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-12-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp4-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp4-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp5-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp5-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp6-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp6-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened-byos",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened-byos:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-hardened-byos",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-hardened-byos:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen1_volvo_q-217213",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen1_volvo_q-217213:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-15-sp7-llc",
+      "Sku": "gen2_volvo_q-217213",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-15-sp7-llc:gen2_volvo_q-217213:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-byos-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-byos-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-byos-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-byos-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64-llc",
+      "Sku": "gen1",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64-llc:gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "SUSE",
+      "Location": "uksouth",
+      "Publisher": "SUSE",
+      "Offer": "sles-sap-16-0-x86-64-llc",
+      "Sku": "gen2",
+      "Version": "latest",
+      "Urn": "SUSE:sles-sap-16-0-x86-64-llc:gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-confidential-vm-focal",
+      "Sku": "20_04-lts-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-confidential-vm-focal:20_04-lts-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-confidential-vm-jammy",
+      "Sku": "22_04-lts-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-confidential-vm-jammy:22_04-lts-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal",
+      "Sku": "minimal-20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal:minimal-20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal",
+      "Sku": "minimal-20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal:minimal-20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal-daily",
+      "Sku": "minimal-20_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal-daily:minimal-20_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal-daily",
+      "Sku": "minimal-20_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal-daily:minimal-20_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy",
+      "Sku": "minimal-22_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy:minimal-22_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy",
+      "Sku": "minimal-22_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy:minimal-22_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy-daily",
+      "Sku": "minimal-22_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy-daily:minimal-22_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy-daily",
+      "Sku": "minimal-22_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy-daily:minimal-22_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "18_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:18_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "24_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:24_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "02-pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:02-pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "02-pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:02-pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "18_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:18_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "18_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:18_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic",
+      "Sku": "pro-18_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic:pro-18_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic",
+      "Sku": "pro-18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic:pro-18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic",
+      "Sku": "pro-18_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic:pro-18_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic-fips",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic-fips:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic-fips",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic-fips:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-confidential-vm-jammy",
+      "Sku": "pro-22_04-lts-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-confidential-vm-jammy:pro-22_04-lts-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal",
+      "Sku": "pro-20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal:pro-20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal",
+      "Sku": "pro-20_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal:pro-20_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal",
+      "Sku": "pro-20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal:pro-20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal-fips",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal-fips:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal-fips",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal-fips:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy",
+      "Sku": "pro-22_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy:pro-22_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy",
+      "Sku": "pro-22_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy:pro-22_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy",
+      "Sku": "pro-22_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy:pro-22_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy-fips",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy-fips:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy-fips",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy-fips:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy-fips",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy-fips:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "18_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:18_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "18_04-lts-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:18_04-lts-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-14_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-14_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-focal",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-focal:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-focal",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-focal:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-focal",
+      "Sku": "pro-minimal-20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-focal:pro-minimal-20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-focal",
+      "Sku": "pro-minimal-20_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-focal:pro-minimal-20_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-focal",
+      "Sku": "pro-minimal-20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-focal:pro-minimal-20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-trusty",
+      "Sku": "pro-14_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-trusty:pro-14_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial",
+      "Sku": "pro-16_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial:pro-16_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial",
+      "Sku": "pro-16_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial:pro-16_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial-fips",
+      "Sku": "pro-fips-16_04-private",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial-fips:pro-fips-16_04-private:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial-fips",
+      "Sku": "pro-fips-16_04-private-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial-fips:pro-fips-16_04-private-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-bionic-wm",
+      "Sku": "18_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-bionic-wm:18_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-bionic-wm",
+      "Sku": "18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-bionic-wm:18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-bionic-wm",
+      "Sku": "18_04-lts-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-bionic-wm:18_04-lts-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal",
+      "Sku": "20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal",
+      "Sku": "20_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal:20_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal",
+      "Sku": "20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal-daily",
+      "Sku": "20_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal-daily",
+      "Sku": "20_04-daily-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal-daily",
+      "Sku": "20_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy",
+      "Sku": "22_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy",
+      "Sku": "22_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy",
+      "Sku": "22_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy-daily",
+      "Sku": "22_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy-daily:22_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy-daily",
+      "Sku": "22_04-daily-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy-daily:22_04-daily-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy-daily",
+      "Sku": "22_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy-daily:22_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-fips",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-fips-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-fips-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-fips-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-fips-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "specialized-hardware",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:specialized-hardware:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-fips",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-fips-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-fips-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-fips-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-fips-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-specialized-hardware",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-specialized-hardware:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-core-24-private",
+      "Sku": "ubuntu-core",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-core-24-private:ubuntu-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-18_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-18_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-20_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-20_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-18_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-18_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-20_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-20_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16_04_0-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16_04_0-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16.04-LTS",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16.04-LTS:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16.04.0-LTS",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16.04.0-LTS:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "18_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:18_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "eastus",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "18.04-LTS",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:18.04-LTS:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-confidential-vm-focal",
+      "Sku": "20_04-lts-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-confidential-vm-focal:20_04-lts-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-confidential-vm-jammy",
+      "Sku": "22_04-lts-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-confidential-vm-jammy:22_04-lts-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal",
+      "Sku": "minimal-20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal:minimal-20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal",
+      "Sku": "minimal-20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal:minimal-20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal-daily",
+      "Sku": "minimal-20_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal-daily:minimal-20_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-focal-daily",
+      "Sku": "minimal-20_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-focal-daily:minimal-20_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy",
+      "Sku": "minimal-22_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy:minimal-22_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy",
+      "Sku": "minimal-22_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy:minimal-22_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy-daily",
+      "Sku": "minimal-22_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy-daily:minimal-22_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-minimal-jammy-daily",
+      "Sku": "minimal-22_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-minimal-jammy-daily:minimal-22_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "18_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:18_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "24_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:24_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-airdig",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-airdig:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "02-pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:02-pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "02-pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:02-pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-att",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-att:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "18_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:18_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ca",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ca:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-csw",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-csw:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-da",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-da:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-nestle",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-nestle:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-shell",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-shell:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "18_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:18_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-sk",
+      "Sku": "26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-sk:26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-ub01",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-ub01:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-advanced-sla-unp",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-advanced-sla-unp:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic",
+      "Sku": "pro-18_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic:pro-18_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic",
+      "Sku": "pro-18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic:pro-18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic",
+      "Sku": "pro-18_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic:pro-18_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic-fips",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic-fips:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-bionic-fips",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-bionic-fips:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-confidential-vm-jammy",
+      "Sku": "pro-22_04-lts-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-confidential-vm-jammy:pro-22_04-lts-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal",
+      "Sku": "pro-20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal:pro-20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal",
+      "Sku": "pro-20_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal:pro-20_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal",
+      "Sku": "pro-20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal:pro-20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal-fips",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal-fips:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-focal-fips",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-focal-fips:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy",
+      "Sku": "pro-22_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy:pro-22_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy",
+      "Sku": "pro-22_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy:pro-22_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy",
+      "Sku": "pro-22_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy:pro-22_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy-fips",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy-fips:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy-fips",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy-fips:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-jammy-fips",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-jammy-fips:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "18_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:18_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "18_04-lts-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:18_04-lts-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-14_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-14_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-16_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-16_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-16_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-16_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-22_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-22_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-18_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-18_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-microsoft",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-microsoft:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-focal",
+      "Sku": "pro-cis-minimal-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-focal:pro-cis-minimal-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-focal",
+      "Sku": "pro-cis-minimal-20_04-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-focal:pro-cis-minimal-20_04-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-cis-jammy",
+      "Sku": "pro-cis-minimal-22_04-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-cis-jammy:pro-cis-minimal-22_04-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-focal",
+      "Sku": "pro-minimal-20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-focal:pro-minimal-20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-focal",
+      "Sku": "pro-minimal-20_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-focal:pro-minimal-20_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-minimal-focal",
+      "Sku": "pro-minimal-20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-minimal-focal:pro-minimal-20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-trusty",
+      "Sku": "pro-14_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-trusty:pro-14_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial",
+      "Sku": "pro-16_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial:pro-16_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial",
+      "Sku": "pro-16_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial:pro-16_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial-fips",
+      "Sku": "pro-fips-16_04-private",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial-fips:pro-fips-16_04-private:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-pro-xenial-fips",
+      "Sku": "pro-fips-16_04-private-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-pro-xenial-fips:pro-fips-16_04-private-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-bionic-wm",
+      "Sku": "18_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-bionic-wm:18_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-bionic-wm",
+      "Sku": "18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-bionic-wm:18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-bionic-wm",
+      "Sku": "18_04-lts-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-bionic-wm:18_04-lts-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal",
+      "Sku": "20_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal",
+      "Sku": "20_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal:20_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal",
+      "Sku": "20_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal-daily",
+      "Sku": "20_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal-daily",
+      "Sku": "20_04-daily-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-focal-daily",
+      "Sku": "20_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy",
+      "Sku": "22_04-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy",
+      "Sku": "22_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy",
+      "Sku": "22_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy-daily",
+      "Sku": "22_04-daily-lts",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy-daily:22_04-daily-lts:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy-daily",
+      "Sku": "22_04-daily-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy-daily:22_04-daily-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "0001-com-ubuntu-server-jammy-daily",
+      "Sku": "22_04-daily-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:0001-com-ubuntu-server-jammy-daily:22_04-daily-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-fips",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-fips-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-fips-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-fips-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-fips-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-1-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-1-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-1-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-1-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-2",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-2-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-2-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-cis-level-2-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-cis-level-2-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts",
+      "Sku": "ubuntu-pro-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts:ubuntu-pro-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-22_04-lts-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-22_04-lts-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "specialized-hardware",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:specialized-hardware:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-fips",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-fips:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-fips-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-fips-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-fips-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-fips-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts",
+      "Sku": "ubuntu-pro-specialized-hardware",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts:ubuntu-pro-specialized-hardware:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-24_04-lts-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-24_04-lts-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_04-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_04-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-25_10-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-25_10-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "pro-server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:pro-server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_04-lts-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_04-lts-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-26_10-daily",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-26_10-daily:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-core-24-private",
+      "Sku": "ubuntu-core",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-core-24-private:ubuntu-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "minimal",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:minimal:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "minimal-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:minimal-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "minimal-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:minimal-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server-cvm",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server-cvm:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-26_04-lts",
+      "Sku": "server-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-26_04-lts:server-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-18_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-18_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-20_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-20_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-20_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-20_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-24_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-24_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-24_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-24_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-24_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-24_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-18_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-18_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-18_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-18_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-20_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-20_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-20_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-20_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-22_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-22_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-22_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-22_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-fips-22_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-fips-22_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-minimal-26_04",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-minimal-26_04:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-minimal-26_04-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-minimal-26_04-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "ubuntu-pro-infra-and-apps-24x7-support",
+      "Sku": "pro-minimal-26_04-gen1",
+      "Version": "latest",
+      "Urn": "Canonical:ubuntu-pro-infra-and-apps-24x7-support:pro-minimal-26_04-gen1:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16_04_0-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16_04_0-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16.04-LTS",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16.04-LTS:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "16.04.0-LTS",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:16.04.0-LTS:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "18_04-lts-arm64",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:18_04-lts-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "18_04-lts-gen2",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:18_04-lts-gen2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "Ubuntu",
+      "Location": "uksouth",
+      "Publisher": "Canonical",
+      "Offer": "UbuntuServer",
+      "Sku": "18.04-LTS",
+      "Version": "latest",
+      "Urn": "Canonical:UbuntuServer:18.04-LTS:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win10-22h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win10-22h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win10-22h2-avd-m365-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win10-22h2-avd-m365-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-22h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-22h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-23h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-23h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-24h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-24h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-25h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-25h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-26h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-26h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprise",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprise:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprise-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprise-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprisen",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprisen:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprisen-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprisen-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprise",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprise:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprise-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprise-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprisen",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprisen:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprisen-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprisen-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-ent-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-ent-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-ent-ltsc-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-ent-ltsc-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-entn-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-entn-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-entn-ltsc-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-entn-ltsc-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-avd-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-avd-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-ent-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-entn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-entn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro-zh-cn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro-zh-cn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pron-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pron-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-23h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-23h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-23h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-23h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-23h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-23h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-ent-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-ent-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-entn-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-entn-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-22h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-22h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-22h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-22h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-23h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-23h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-23h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-23h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-24h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-24h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-24h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-24h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-25h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-25h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-25h2-ent-cpc-devready",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-25h2-ent-cpc-devready:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-25h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-25h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-26h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-26h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-26h2-ent-cpc-devready",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-26h2-ent-cpc-devready:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-26h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-26h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-25h2-ent-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-25h2-ent-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pro-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pro-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-22h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-22h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-23h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-23h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-24h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-24h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-24h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-24h2-pro:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-25h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-25h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-25h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-25h2-pro:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-26h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-26h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-26h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-26h2-pro:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win10-22h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win10-22h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win10-22h2-avd-m365-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win10-22h2-avd-m365-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-22h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-22h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-23h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-23h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-24h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-24h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-25h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-25h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "office-365",
+      "Sku": "win11-26h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:office-365:win11-26h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprise",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprise:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprise-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprise-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprisen",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprisen:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs1-enterprisen-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs1-enterprisen-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprise",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprise:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprise-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprise-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprisen",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprisen:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "rs5-enterprisen-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:rs5-enterprisen-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-ent-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-ent-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-ent-ltsc-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-ent-ltsc-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-entn-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-entn-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-21h2-entn-ltsc-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-21h2-entn-ltsc-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-avd-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-avd-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-ent-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-entn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-entn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pro-zh-cn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pro-zh-cn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "Windows-10",
+      "Sku": "win10-22h2-pron-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:Windows-10:win10-22h2-pron-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-23h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-23h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-23h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-23h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-23h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-23h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-ent-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-ent-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-entn-ltsc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-entn-ltsc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-24h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-24h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-25h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-25h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-11",
+      "Sku": "win11-26h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-11:win11-26h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-22h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-22h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-22h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-22h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-23h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-23h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-23h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-23h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-24h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-24h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-24h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-24h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-25h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-25h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-25h2-ent-cpc-devready",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-25h2-ent-cpc-devready:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-25h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-25h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-26h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-26h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-26h2-ent-cpc-devready",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-26h2-ent-cpc-devready:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows-ent-cpc",
+      "Sku": "win11-26h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows-ent-cpc:win11-26h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-25h2-ent-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-25h2-ent-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-avd",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-avd:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-avd-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-avd-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent-cpc",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent-cpc:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-ent-cpc-m365",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-ent-cpc-m365:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-entn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-entn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pro:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pro-arm64",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pro-arm64:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pro-zh-cn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pro-zh-cn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview",
+      "Sku": "win11-26h2-pron",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview:win11-26h2-pron:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-22h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-22h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-23h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-23h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-24h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-24h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-24h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-24h2-pro:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-25h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-25h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-25h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-25h2-pro:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-26h2-ent",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-26h2-ent:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsClient",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsDesktop",
+      "Offer": "windows11preview-arm64",
+      "Sku": "win11-26h2-pro",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsDesktop:windows11preview-arm64:win11-26h2-pro:latest",
+      "Architecture": "arm64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-gensecond",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-gensecond:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-gs",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-gs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-Server-Core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-Server-Core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-server-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-server-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-Server-Core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-Server-Core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-server-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-server-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-zhcn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-zhcn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-zhcn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-zhcn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-Core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-Core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-gensecond",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-gensecond:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-gs",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-gs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-gs-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-gs-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-zhcn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-zhcn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-zhcn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-zhcn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-hotpatch",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-hotpatch:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-hotpatch-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-hotpatch-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "23h2-datacenter-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:23h2-datacenter-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "eastus",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "23h2-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:23h2-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-gensecond",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-gensecond:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-gs",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-gs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-Server-Core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-Server-Core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-server-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-server-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-Server-Core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-Server-Core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-server-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-server-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-Datacenter-zhcn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-zhcn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2016-datacenter-zhcn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2016-datacenter-zhcn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-Core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-Core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-gensecond",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-gensecond:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-gs",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-gs:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-gs-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-gs-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-Datacenter-zhcn",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-Datacenter-zhcn:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2019-datacenter-zhcn-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2019-datacenter-zhcn-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-hotpatch",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-hotpatch:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-hotpatch-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-hotpatch-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-azure-edition-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2022-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2022-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-azure-edition-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-azure-edition-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-core-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-core-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-smalldisk",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-smalldisk:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "2025-datacenter-smalldisk-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-smalldisk-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "23h2-datacenter-core",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:23h2-datacenter-core:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen1"
+    },
+    {
+      "OS": "WindowsServer",
+      "Location": "uksouth",
+      "Publisher": "MicrosoftWindowsServer",
+      "Offer": "WindowsServer",
+      "Sku": "23h2-datacenter-core-g2",
+      "Version": "latest",
+      "Urn": "MicrosoftWindowsServer:WindowsServer:23h2-datacenter-core-g2:latest",
+      "Architecture": "amd64",
+      "Generation": "Gen2"
+    }
+  ],
+  "Lifecycles": [
+    {
+      "Product": "almalinux",
+      "Cycle": "10",
+      "ReleaseDate": "2025-05-27",
+      "Eol": "2035-05-31"
+    },
+    {
+      "Product": "almalinux",
+      "Cycle": "8",
+      "ReleaseDate": "2021-03-30",
+      "Eol": "2029-05-31"
+    },
+    {
+      "Product": "almalinux",
+      "Cycle": "9",
+      "ReleaseDate": "2022-05-26",
+      "Eol": "2032-05-31"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "1.1",
+      "ReleaseDate": "1996-06-17",
+      "Eol": "1996-12-12"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "1.2",
+      "ReleaseDate": "1996-12-12",
+      "Eol": "1997-10-23"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "1.3",
+      "ReleaseDate": "1997-07-02",
+      "Eol": "1998-12-08"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "10",
+      "ReleaseDate": "2019-07-06",
+      "Eol": "2024-06-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "11",
+      "ReleaseDate": "2021-08-14",
+      "Eol": "2026-08-31"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "12",
+      "ReleaseDate": "2023-06-10",
+      "Eol": "2028-06-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "13",
+      "ReleaseDate": "2025-08-09",
+      "Eol": "2030-06-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "2.0",
+      "ReleaseDate": "1998-07-24",
+      "Eol": "1999-02-15"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "2.1",
+      "ReleaseDate": "1999-03-09",
+      "Eol": "2000-10-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "2.2",
+      "ReleaseDate": "2000-08-15",
+      "Eol": "2003-06-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "3.0",
+      "ReleaseDate": "2002-07-19",
+      "Eol": "2006-06-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "3.1",
+      "ReleaseDate": "2005-06-06",
+      "Eol": "2008-03-31"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "4",
+      "ReleaseDate": "2007-04-08",
+      "Eol": "2010-02-15"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "5",
+      "ReleaseDate": "2009-02-14",
+      "Eol": "2012-02-06"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "6",
+      "ReleaseDate": "2011-02-06",
+      "Eol": "2016-02-29"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "7",
+      "ReleaseDate": "2013-05-04",
+      "Eol": "2018-05-31"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "8",
+      "ReleaseDate": "2015-04-25",
+      "Eol": "2020-06-30"
+    },
+    {
+      "Product": "debian",
+      "Cycle": "9",
+      "ReleaseDate": "2017-06-17",
+      "Eol": "2022-07-01"
+    },
+    {
+      "Product": "flatcar",
+      "Cycle": "stable",
+      "ReleaseDate": "2026-10-23",
+      "Eol": false
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "1.0",
+      "ReleaseDate": "1993-11-30",
+      "Eol": "1994-08-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "1.1",
+      "ReleaseDate": "1994-05-31",
+      "Eol": "1995-05-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "10",
+      "ReleaseDate": "2014-01-20",
+      "Eol": "2018-10-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "10.0",
+      "ReleaseDate": "2014-01-20",
+      "Eol": "2015-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "10.1",
+      "ReleaseDate": "2014-11-14",
+      "Eol": "2016-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "10.2",
+      "ReleaseDate": "2015-08-13",
+      "Eol": "2016-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "10.3",
+      "ReleaseDate": "2016-04-04",
+      "Eol": "2018-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "10.4",
+      "ReleaseDate": "2017-10-03",
+      "Eol": "2018-10-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "11",
+      "ReleaseDate": "2016-10-10",
+      "Eol": "2021-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "11.0",
+      "ReleaseDate": "2016-10-10",
+      "Eol": "2017-11-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "11.1",
+      "ReleaseDate": "2017-07-26",
+      "Eol": "2018-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "11.2",
+      "ReleaseDate": "2018-06-28",
+      "Eol": "2019-10-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "11.3",
+      "ReleaseDate": "2019-07-09",
+      "Eol": "2020-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "11.4",
+      "ReleaseDate": "2020-06-16",
+      "Eol": "2021-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "12",
+      "ReleaseDate": "2018-12-11",
+      "Eol": "2023-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "12.0",
+      "ReleaseDate": "2018-12-11",
+      "Eol": "2020-02-29"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "12.1",
+      "ReleaseDate": "2019-11-04",
+      "Eol": "2021-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "12.2",
+      "ReleaseDate": "2020-10-27",
+      "Eol": "2022-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "12.3",
+      "ReleaseDate": "2021-12-07",
+      "Eol": "2023-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "12.4",
+      "ReleaseDate": "2022-12-05",
+      "Eol": "2023-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13",
+      "ReleaseDate": "2021-04-13",
+      "Eol": "2026-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13.0",
+      "ReleaseDate": "2021-04-13",
+      "Eol": "2022-08-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13.1",
+      "ReleaseDate": "2022-05-16",
+      "Eol": "2023-07-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13.2",
+      "ReleaseDate": "2023-04-11",
+      "Eol": "2024-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13.3",
+      "ReleaseDate": "2024-03-05",
+      "Eol": "2024-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13.4",
+      "ReleaseDate": "2024-09-17",
+      "Eol": "2025-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "13.5",
+      "ReleaseDate": "2025-03-11",
+      "Eol": "2026-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14",
+      "ReleaseDate": "2023-11-20",
+      "Eol": "2028-11-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14.0",
+      "ReleaseDate": "2023-11-20",
+      "Eol": "2024-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14.1",
+      "ReleaseDate": "2024-06-04",
+      "Eol": "2025-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14.2",
+      "ReleaseDate": "2024-12-03",
+      "Eol": "2025-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14.3",
+      "ReleaseDate": "2025-06-10",
+      "Eol": "2026-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14.4",
+      "ReleaseDate": "2026-03-10",
+      "Eol": "2026-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "14.5",
+      "ReleaseDate": "2026-09-08",
+      "Eol": "2027-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "15",
+      "ReleaseDate": "2025-12-02",
+      "Eol": "2029-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "15.0",
+      "ReleaseDate": "2025-12-02",
+      "Eol": "2026-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "15.1",
+      "ReleaseDate": "2026-06-16",
+      "Eol": "2027-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "2.0",
+      "ReleaseDate": "1994-11-22",
+      "Eol": "1996-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "2.1",
+      "ReleaseDate": "1995-11-30",
+      "Eol": "1997-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "2.2",
+      "ReleaseDate": "1997-03-31",
+      "Eol": "1998-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "3.0",
+      "ReleaseDate": "1998-10-16",
+      "Eol": "1999-05-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "3.1",
+      "ReleaseDate": "1999-02-28",
+      "Eol": "1999-08-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "3.2",
+      "ReleaseDate": "1999-05-31",
+      "Eol": "1999-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "3.3",
+      "ReleaseDate": "1999-09-30",
+      "Eol": "2000-02-29"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "3.4",
+      "ReleaseDate": "1999-12-31",
+      "Eol": "2000-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "3.5",
+      "ReleaseDate": "2000-06-30",
+      "Eol": "2001-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4",
+      "ReleaseDate": "2000-03-14",
+      "Eol": "2007-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.0",
+      "ReleaseDate": "2000-03-14",
+      "Eol": "2000-10-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.1",
+      "ReleaseDate": "2000-07-27",
+      "Eol": "2001-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.10",
+      "ReleaseDate": "2004-05-27",
+      "Eol": "2007-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.11",
+      "ReleaseDate": "2005-01-25",
+      "Eol": "2007-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.2",
+      "ReleaseDate": "2000-11-21",
+      "Eol": "2001-07-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.3",
+      "ReleaseDate": "2001-04-20",
+      "Eol": "2001-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.4",
+      "ReleaseDate": "2001-09-20",
+      "Eol": "2002-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.5",
+      "ReleaseDate": "2002-01-29",
+      "Eol": "2002-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.6",
+      "ReleaseDate": "2002-06-15",
+      "Eol": "2003-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.7",
+      "ReleaseDate": "2002-10-10",
+      "Eol": "2003-07-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.8",
+      "ReleaseDate": "2003-04-03",
+      "Eol": "2004-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "4.9",
+      "ReleaseDate": "2003-10-28",
+      "Eol": "2004-08-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5",
+      "ReleaseDate": "2003-01-14",
+      "Eol": "2008-05-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5.0",
+      "ReleaseDate": "2003-01-14",
+      "Eol": "2003-09-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5.1",
+      "ReleaseDate": "2003-06-09",
+      "Eol": "2004-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5.2",
+      "ReleaseDate": "2004-01-09",
+      "Eol": "2005-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5.3",
+      "ReleaseDate": "2004-11-06",
+      "Eol": "2006-10-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5.4",
+      "ReleaseDate": "2005-05-09",
+      "Eol": "2006-10-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "5.5",
+      "ReleaseDate": "2006-05-25",
+      "Eol": "2008-05-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "6",
+      "ReleaseDate": "2005-11-04",
+      "Eol": "2010-11-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "6.0",
+      "ReleaseDate": "2005-11-04",
+      "Eol": "2007-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "6.1",
+      "ReleaseDate": "2006-05-09",
+      "Eol": "2008-05-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "6.2",
+      "ReleaseDate": "2007-01-15",
+      "Eol": "2008-05-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "6.3",
+      "ReleaseDate": "2008-01-18",
+      "Eol": "2010-01-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "6.4",
+      "ReleaseDate": "2008-11-28",
+      "Eol": "2010-11-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "7",
+      "ReleaseDate": "2008-02-27",
+      "Eol": "2013-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "7.0",
+      "ReleaseDate": "2008-02-27",
+      "Eol": "2009-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "7.1",
+      "ReleaseDate": "2009-01-04",
+      "Eol": "2011-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "7.2",
+      "ReleaseDate": "2009-05-04",
+      "Eol": "2010-06-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "7.3",
+      "ReleaseDate": "2010-03-23",
+      "Eol": "2012-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "7.4",
+      "ReleaseDate": "2011-02-24",
+      "Eol": "2013-02-28"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "8",
+      "ReleaseDate": "2009-11-25",
+      "Eol": "2015-08-01"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "8.0",
+      "ReleaseDate": "2009-11-25",
+      "Eol": "2010-11-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "8.1",
+      "ReleaseDate": "2010-07-23",
+      "Eol": "2012-07-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "8.2",
+      "ReleaseDate": "2011-02-24",
+      "Eol": "2012-07-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "8.3",
+      "ReleaseDate": "2012-04-18",
+      "Eol": "2014-04-30"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "8.4",
+      "ReleaseDate": "2013-06-09",
+      "Eol": "2015-08-01"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "9",
+      "ReleaseDate": "2012-01-10",
+      "Eol": "2016-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "9.0",
+      "ReleaseDate": "2012-01-10",
+      "Eol": "2013-03-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "9.1",
+      "ReleaseDate": "2012-12-30",
+      "Eol": "2014-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "9.2",
+      "ReleaseDate": "2013-09-30",
+      "Eol": "2014-12-31"
+    },
+    {
+      "Product": "freebsd",
+      "Cycle": "9.3",
+      "ReleaseDate": "2014-07-16",
+      "Eol": "2016-12-31"
+    },
+    {
+      "Product": "oracle-linux",
+      "Cycle": "10",
+      "ReleaseDate": "2025-06-26",
+      "Eol": "2035-06-30"
+    },
+    {
+      "Product": "oracle-linux",
+      "Cycle": "6",
+      "ReleaseDate": "2011-02-12",
+      "Eol": "2021-03-31"
+    },
+    {
+      "Product": "oracle-linux",
+      "Cycle": "7",
+      "ReleaseDate": "2014-07-23",
+      "Eol": "2024-12-31"
+    },
+    {
+      "Product": "oracle-linux",
+      "Cycle": "8",
+      "ReleaseDate": "2019-07-19",
+      "Eol": "2029-07-31"
+    },
+    {
+      "Product": "oracle-linux",
+      "Cycle": "9",
+      "ReleaseDate": "2022-07-06",
+      "Eol": "2032-06-30"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "10",
+      "ReleaseDate": "2025-05-20",
+      "Eol": "2035-05-31"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "4",
+      "ReleaseDate": "2005-02-15",
+      "Eol": "2012-02-29"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "5",
+      "ReleaseDate": "2007-03-15",
+      "Eol": "2017-03-31"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "6",
+      "ReleaseDate": "2010-11-10",
+      "Eol": "2020-11-30"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "7",
+      "ReleaseDate": "2014-06-10",
+      "Eol": "2024-06-30"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "8",
+      "ReleaseDate": "2019-05-07",
+      "Eol": "2029-05-31"
+    },
+    {
+      "Product": "rhel",
+      "Cycle": "9",
+      "ReleaseDate": "2022-05-18",
+      "Eol": "2032-05-31"
+    },
+    {
+      "Product": "rocky-linux",
+      "Cycle": "10",
+      "ReleaseDate": "2025-06-11",
+      "Eol": "2035-05-31"
+    },
+    {
+      "Product": "rocky-linux",
+      "Cycle": "8",
+      "ReleaseDate": "2021-05-01",
+      "Eol": "2029-05-31"
+    },
+    {
+      "Product": "rocky-linux",
+      "Cycle": "9",
+      "ReleaseDate": "2022-07-14",
+      "Eol": "2032-05-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "10.0",
+      "ReleaseDate": "2006-07-17",
+      "Eol": "2007-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "10.1",
+      "ReleaseDate": "2007-06-18",
+      "Eol": "2008-11-30"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "10.2",
+      "ReleaseDate": "2008-05-19",
+      "Eol": "2010-04-11"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "10.3",
+      "ReleaseDate": "2009-10-12",
+      "Eol": "2011-10-11"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "10.4",
+      "ReleaseDate": "2011-04-12",
+      "Eol": "2013-07-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "11.0",
+      "ReleaseDate": "2009-03-24",
+      "Eol": "2010-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "11.1",
+      "ReleaseDate": "2010-06-02",
+      "Eol": "2012-08-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "11.2",
+      "ReleaseDate": "2012-02-29",
+      "Eol": "2014-01-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "11.3",
+      "ReleaseDate": "2013-07-01",
+      "Eol": "2016-01-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "11.4",
+      "ReleaseDate": "2015-07-15",
+      "Eol": "2019-03-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "12.0",
+      "ReleaseDate": "2014-10-27",
+      "Eol": "2016-06-30"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "12.1",
+      "ReleaseDate": "2015-12-15",
+      "Eol": "2017-05-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "12.2",
+      "ReleaseDate": "2016-11-08",
+      "Eol": "2018-03-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "12.3",
+      "ReleaseDate": "2017-09-07",
+      "Eol": "2019-06-30"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "12.4",
+      "ReleaseDate": "2018-12-12",
+      "Eol": "2020-06-30"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "12.5",
+      "ReleaseDate": "2019-12-09",
+      "Eol": "2024-10-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.0",
+      "ReleaseDate": "2018-07-16",
+      "Eol": "2019-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.1",
+      "ReleaseDate": "2019-06-24",
+      "Eol": "2021-01-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.2",
+      "ReleaseDate": "2020-07-21",
+      "Eol": "2021-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.3",
+      "ReleaseDate": "2021-06-22",
+      "Eol": "2022-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.4",
+      "ReleaseDate": "2022-06-21",
+      "Eol": "2023-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.5",
+      "ReleaseDate": "2023-06-20",
+      "Eol": "2024-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.6",
+      "ReleaseDate": "2024-06-26",
+      "Eol": "2025-12-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "15.7",
+      "ReleaseDate": "2025-06-17",
+      "Eol": "2031-07-31"
+    },
+    {
+      "Product": "sles",
+      "Cycle": "16.0",
+      "ReleaseDate": "2025-11-04",
+      "Eol": "2027-11-30"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "10.04",
+      "ReleaseDate": "2010-04-29",
+      "Eol": "2013-05-09"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "10.10",
+      "ReleaseDate": "2010-10-10",
+      "Eol": "2012-04-10"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "11.04",
+      "ReleaseDate": "2011-04-28",
+      "Eol": "2012-10-28"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "11.10",
+      "ReleaseDate": "2011-10-13",
+      "Eol": "2013-05-09"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "12.04",
+      "ReleaseDate": "2012-04-26",
+      "Eol": "2017-04-28"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "12.10",
+      "ReleaseDate": "2012-10-18",
+      "Eol": "2014-05-16"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "13.04",
+      "ReleaseDate": "2013-04-25",
+      "Eol": "2014-01-27"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "13.10",
+      "ReleaseDate": "2013-10-17",
+      "Eol": "2014-07-17"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "14.04",
+      "ReleaseDate": "2014-04-17",
+      "Eol": "2019-04-02"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "14.10",
+      "ReleaseDate": "2014-10-23",
+      "Eol": "2015-07-23"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "15.04",
+      "ReleaseDate": "2015-04-23",
+      "Eol": "2016-02-04"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "15.10",
+      "ReleaseDate": "2015-10-22",
+      "Eol": "2016-07-28"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "16.04",
+      "ReleaseDate": "2016-04-21",
+      "Eol": "2021-04-02"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "16.10",
+      "ReleaseDate": "2016-10-13",
+      "Eol": "2017-07-20"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "17.04",
+      "ReleaseDate": "2017-04-13",
+      "Eol": "2018-01-13"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "17.10",
+      "ReleaseDate": "2017-10-19",
+      "Eol": "2018-07-19"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "18.04",
+      "ReleaseDate": "2018-04-26",
+      "Eol": "2023-05-31"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "18.10",
+      "ReleaseDate": "2018-10-18",
+      "Eol": "2019-07-18"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "19.04",
+      "ReleaseDate": "2019-04-18",
+      "Eol": "2020-01-23"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "19.10",
+      "ReleaseDate": "2019-10-17",
+      "Eol": "2020-07-06"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "20.04",
+      "ReleaseDate": "2020-04-23",
+      "Eol": "2025-05-31"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "20.10",
+      "ReleaseDate": "2020-10-22",
+      "Eol": "2021-07-22"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "21.04",
+      "ReleaseDate": "2021-04-22",
+      "Eol": "2022-01-20"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "21.10",
+      "ReleaseDate": "2021-10-14",
+      "Eol": "2022-07-14"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "22.04",
+      "ReleaseDate": "2022-04-21",
+      "Eol": "2027-06-01"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "22.10",
+      "ReleaseDate": "2022-10-20",
+      "Eol": "2023-07-20"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "23.04",
+      "ReleaseDate": "2023-04-20",
+      "Eol": "2024-01-20"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "23.10",
+      "ReleaseDate": "2023-10-12",
+      "Eol": "2024-07-12"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "24.04",
+      "ReleaseDate": "2024-04-25",
+      "Eol": "2029-05-31"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "24.10",
+      "ReleaseDate": "2024-10-10",
+      "Eol": "2025-07-10"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "25.04",
+      "ReleaseDate": "2025-04-17",
+      "Eol": "2026-01-17"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "25.10",
+      "ReleaseDate": "2025-10-09",
+      "Eol": "2026-07-01"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "26.04",
+      "ReleaseDate": "2026-04-23",
+      "Eol": "2031-05-29"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "26.10",
+      "ReleaseDate": "2026-10-15",
+      "Eol": "2027-07-01"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "4.10",
+      "ReleaseDate": "2004-10-26",
+      "Eol": "2006-04-30"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "5.04",
+      "ReleaseDate": "2005-04-08",
+      "Eol": "2006-10-31"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "5.10",
+      "ReleaseDate": "2005-10-12",
+      "Eol": "2007-04-13"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "6.06",
+      "ReleaseDate": "2006-06-01",
+      "Eol": "2011-06-01"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "6.10",
+      "ReleaseDate": "2006-10-26",
+      "Eol": "2008-04-26"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "7.04",
+      "ReleaseDate": "2007-04-19",
+      "Eol": "2008-10-19"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "7.10",
+      "ReleaseDate": "2007-10-18",
+      "Eol": "2009-04-18"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "8.04",
+      "ReleaseDate": "2008-04-24",
+      "Eol": "2013-05-09"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "8.10",
+      "ReleaseDate": "2008-10-30",
+      "Eol": "2010-04-30"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "9.04",
+      "ReleaseDate": "2009-04-23",
+      "Eol": "2010-10-23"
+    },
+    {
+      "Product": "ubuntu",
+      "Cycle": "9.10",
+      "ReleaseDate": "2009-10-29",
+      "Eol": "2011-04-30"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1507",
+      "ReleaseDate": "2015-07-29",
+      "Eol": "2017-05-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1507-e-lts",
+      "ReleaseDate": "2015-07-29",
+      "Eol": "2025-10-14"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1507-iot",
+      "ReleaseDate": "2015-04-29",
+      "Eol": "2020-11-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1511",
+      "ReleaseDate": "2015-11-10",
+      "Eol": "2017-10-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1607-e",
+      "ReleaseDate": "2016-08-02",
+      "Eol": "2019-04-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1607-e-lts",
+      "ReleaseDate": "2016-08-02",
+      "Eol": "2026-10-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1607-w",
+      "ReleaseDate": "2016-08-02",
+      "Eol": "2018-04-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1703-e",
+      "ReleaseDate": "2017-04-11",
+      "Eol": "2019-10-08"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1703-w",
+      "ReleaseDate": "2017-04-11",
+      "Eol": "2018-10-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1709-e",
+      "ReleaseDate": "2017-10-17",
+      "Eol": "2020-10-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1709-w",
+      "ReleaseDate": "2017-10-17",
+      "Eol": "2019-04-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1803-e",
+      "ReleaseDate": "2018-04-30",
+      "Eol": "2021-05-11"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1803-w",
+      "ReleaseDate": "2018-04-30",
+      "Eol": "2019-11-12"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1809-e",
+      "ReleaseDate": "2018-11-13",
+      "Eol": "2021-05-11"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1809-e-lts",
+      "ReleaseDate": "2018-11-13",
+      "Eol": "2029-01-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1809-w",
+      "ReleaseDate": "2018-11-13",
+      "Eol": "2020-11-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1903",
+      "ReleaseDate": "2019-05-21",
+      "Eol": "2020-12-08"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1909-e",
+      "ReleaseDate": "2019-11-12",
+      "Eol": "2022-05-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-1909-w",
+      "ReleaseDate": "2019-11-12",
+      "Eol": "2021-05-11"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-2004",
+      "ReleaseDate": "2020-05-27",
+      "Eol": "2021-12-14"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-20h2-e",
+      "ReleaseDate": "2020-10-20",
+      "Eol": "2023-05-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-20h2-w",
+      "ReleaseDate": "2020-10-20",
+      "Eol": "2022-05-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-21h1",
+      "ReleaseDate": "2021-05-18",
+      "Eol": "2022-12-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-21h2-e",
+      "ReleaseDate": "2021-11-16",
+      "Eol": "2024-06-11"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-21h2-e-lts",
+      "ReleaseDate": "2021-11-16",
+      "Eol": "2027-01-12"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-21h2-iot-lts",
+      "ReleaseDate": "2021-11-16",
+      "Eol": "2032-01-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-21h2-w",
+      "ReleaseDate": "2021-11-16",
+      "Eol": "2023-06-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "10-22h2",
+      "ReleaseDate": "2022-10-18",
+      "Eol": "2025-10-14"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-21h2-e",
+      "ReleaseDate": "2021-10-04",
+      "Eol": "2024-10-08"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-21h2-w",
+      "ReleaseDate": "2021-10-04",
+      "Eol": "2023-10-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-22h2-e",
+      "ReleaseDate": "2022-09-20",
+      "Eol": "2025-10-14"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-22h2-w",
+      "ReleaseDate": "2022-09-20",
+      "Eol": "2024-10-08"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-23h2-e",
+      "ReleaseDate": "2023-10-31",
+      "Eol": "2026-11-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-23h2-w",
+      "ReleaseDate": "2023-10-31",
+      "Eol": "2025-11-11"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-24h2-e",
+      "ReleaseDate": "2024-10-01",
+      "Eol": "2027-10-12"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-24h2-e-lts",
+      "ReleaseDate": "2024-10-01",
+      "Eol": "2029-10-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-24h2-iot-lts",
+      "ReleaseDate": "2024-10-01",
+      "Eol": "2034-10-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-24h2-w",
+      "ReleaseDate": "2024-10-01",
+      "Eol": "2026-10-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-25h2-e",
+      "ReleaseDate": "2025-09-30",
+      "Eol": "2028-10-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-25h2-w",
+      "ReleaseDate": "2025-09-30",
+      "Eol": "2027-10-12"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-26h1-e",
+      "ReleaseDate": "2026-02-10",
+      "Eol": "2029-03-13"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-26h1-w",
+      "ReleaseDate": "2026-02-10",
+      "Eol": "2028-03-14"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-26h2-e",
+      "ReleaseDate": "2026-09-29",
+      "Eol": "2029-10-09"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "11-26h2-w",
+      "ReleaseDate": "2026-09-29",
+      "Eol": "2028-10-10"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "5-sp3",
+      "ReleaseDate": "2008-04-21",
+      "Eol": "2014-04-08"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "6-sp2",
+      "ReleaseDate": "2009-04-29",
+      "Eol": "2017-04-11"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "7-sp1",
+      "ReleaseDate": "2011-02-22",
+      "Eol": "2020-01-14"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "8",
+      "ReleaseDate": "2012-10-30",
+      "Eol": "2016-01-12"
+    },
+    {
+      "Product": "windows",
+      "Cycle": "8.1",
+      "ReleaseDate": "2013-11-13",
+      "Eol": "2023-01-10"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "1709-sac",
+      "ReleaseDate": "2017-10-17",
+      "Eol": "2019-04-09"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "1803-sac",
+      "ReleaseDate": "2018-04-30",
+      "Eol": "2019-11-12"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "1809-sac",
+      "ReleaseDate": "2018-11-13",
+      "Eol": "2020-11-10"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "1903-sac",
+      "ReleaseDate": "2019-05-21",
+      "Eol": "2020-12-08"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "1909-sac",
+      "ReleaseDate": "2019-11-12",
+      "Eol": "2021-05-11"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2000",
+      "ReleaseDate": "2000-02-17",
+      "Eol": "2010-07-13"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2003",
+      "ReleaseDate": "2003-04-24",
+      "Eol": "2007-04-10"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2003-sp1",
+      "ReleaseDate": "2005-03-30",
+      "Eol": "2009-04-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2003-sp2",
+      "ReleaseDate": "2007-03-13",
+      "Eol": "2015-07-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2004-sac",
+      "ReleaseDate": "2020-05-27",
+      "Eol": "2021-12-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2008-r2-sp1",
+      "ReleaseDate": "2011-02-22",
+      "Eol": "2020-01-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2008-sp2",
+      "ReleaseDate": "2009-04-29",
+      "Eol": "2020-01-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2012",
+      "ReleaseDate": "2012-10-30",
+      "Eol": "2023-10-10"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2012-r2",
+      "ReleaseDate": "2013-11-25",
+      "Eol": "2023-10-10"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2016",
+      "ReleaseDate": "2016-10-15",
+      "Eol": "2027-01-12"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2019",
+      "ReleaseDate": "2018-11-13",
+      "Eol": "2029-01-09"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2022",
+      "ReleaseDate": "2021-08-18",
+      "Eol": "2031-10-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "2025",
+      "ReleaseDate": "2024-11-01",
+      "Eol": "2034-11-14"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "20h2-sac",
+      "ReleaseDate": "2020-10-20",
+      "Eol": "2022-08-09"
+    },
+    {
+      "Product": "windows-server",
+      "Cycle": "23h2-ac",
+      "ReleaseDate": "2023-10-24",
+      "Eol": "2026-05-12"
+    }
+  ]
+}
+'@ | ConvertFrom-Json
+
+function Invoke-AzureImagesCli {
+  param([string[]] $Arguments)
+
+  $azCommand = Get-Command -Name az -ErrorAction Ignore
+  if (-not $azCommand) {
+    throw 'Azure CLI (az) was not found. Install Azure CLI and sign in with az login, then try again.'
+  }
+
+  $ErrorActionPreference = 'Continue'
+  $PSNativeCommandUseErrorActionPreference = $false
+  $output = & $azCommand @Arguments --output json --only-show-errors 2>&1
+  if ($LASTEXITCODE -ne 0) {
+    $exception = [System.InvalidOperationException]::new("Azure image lookup failed. $(($output | Out-String).Trim())")
+    $exception.Data['AzureCliExitCode'] = $LASTEXITCODE
+    throw $exception
+  }
+
+  $json = ($output | Where-Object { $_ -isnot [System.Management.Automation.ErrorRecord] } | Out-String).Trim()
+  try {
+    if (-not $json) { throw 'Empty response.' }
+    $result = ConvertFrom-Json -InputObject $json -ErrorAction Stop
+    if ($json -notmatch '^\[') { throw 'Expected an array.' }
+    $result
+  } catch {
+    throw "Azure CLI returned invalid JSON for the image lookup. $($_.Exception.Message)"
+  }
+}
+
+function Test-AzureImageStandard {
+  param([string] $Publisher, [string] $Offer, [string] $Sku)
+  $name = "$Offer-$Sku"
+  if ($name -match '(^|[-_.])(cis|hardened|fips|minimal)([-_.]|$)') { return $false }
+  if ($Publisher -eq 'Canonical' -and $name -match '(^|[-_.])pro([-_.]|$)') { return $false }
+  return $true
+}
+
+$script:AzureImageLifecycleCache = @{}
+$script:AzureImageLifecycleProducts = @('windows', 'windows-server', 'ubuntu', 'debian', 'rhel', 'sles', 'oracle-linux', 'rocky-linux', 'almalinux', 'freebsd', 'flatcar')
+
+function Get-AzureImageLifecycleReference {
+  param([string] $Publisher, [string] $Offer, [string] $Sku)
+
+  if ("$Offer-$Sku" -match '(^|[-_.])(preview|insider|beta|rc|eus|els|esu|esm|ltss)([-_.]|$)') { return }
+  $product = $null
+  $cycle = $null
+  switch ($Publisher) {
+    'MicrosoftWindowsDesktop' {
+      $windowsVersion = if ($Offer -match '^windows-(10|11)$') { $Matches[1] }
+      elseif ($Offer -eq 'office-365' -and $Sku -match '^win(10|11)-') { $Matches[1] }
+      if ($windowsVersion) {
+        if ($Sku -match '^(?:win(?:10|11)-)?(?<release>\d{2}h[12]|\d{4})-(?<edition>.+)$') {
+          $release = $Matches.release.ToLowerInvariant()
+          $edition = $Matches.edition
+          $aliases = @{ '19h1' = '1903'; '19h2' = '1909'; '20h1' = '2004' }
+          if ($aliases.ContainsKey($release)) { $release = $aliases[$release] }
+          $channel = if ($edition -match '^(ent|entn|enterprise|evd|avd|edu|education)(-|$)') { 'e' }
+          elseif ($edition -match '^(pro|pron|home)(-|$)') { 'w' }
+          if ($edition -match '(^|-)(lts|ltsc|ltsb)(-|$)') {
+            $ltsAliases = @{ '2015' = '1507'; '2016' = '1607'; '2019' = '1809'; '2021' = '21h2'; '2024' = '24h2' }
+            if ($ltsAliases.ContainsKey($release)) { $release = $ltsAliases[$release] }
+            $channel = if ($edition -match '(^|-)iot(-|$)') { 'iot-lts' } elseif ($channel -eq 'e') { 'e-lts' }
+          } elseif ($edition -match '(^|-)iot(-|$)') { $channel = $null }
+          if ($channel) {
+            $product = 'windows'
+            $cycle = "$windowsVersion-$release-$channel"
+            if ($windowsVersion -eq '10' -and $release -eq '22h2' -and $channel -in @('e', 'w')) { $cycle = '10-22h2' }
+          }
+        }
+      }
+    }
+    'MicrosoftWindowsServer' {
+      if ($Offer -eq 'WindowsServer' -and $Sku -match '^(\d{4}(?:-r2)?)-') {
+        $product = 'windows-server'; $cycle = $Matches[1]
+      }
+    }
+    'Canonical' {
+      if ($Offer -like '*ubuntu*' -and "$Offer-$Sku" -match '(?:^|[-_])(?<release>\d{2}[._]\d{2})(?:[-_]|$)') {
+        $product = 'ubuntu'; $cycle = $Matches.release.Replace('_', '.')
+      }
+    }
+    'Debian' {
+      if ($Offer -match '^debian[-_](\d+)(?:[-_]|$)') { $product = 'debian'; $cycle = $Matches[1] }
+    }
+    'RedHat' {
+      if ($Offer -like 'rhel*' -and $Sku -match '^(\d+)(?:[._-]|$)') { $product = 'rhel'; $cycle = $Matches[1] }
+    }
+    'SUSE' {
+      if ($Offer -match '^sles-(?:sap-)?(?<major>\d+)-sp(?<minor>\d+)(?:-|$)') {
+        $product = 'sles'; $cycle = '{0}.{1}' -f $Matches.major, $Matches.minor
+      } elseif ($Offer -match '^sles-(?<major>\d+)-(?<minor>\d+)(?:-|$)') {
+        $product = 'sles'; $cycle = '{0}.{1}' -f $Matches.major, $Matches.minor
+      } elseif ($Offer -match '^sles-(?<major>\d+)(?:-|$)' -and $Sku -match '^(?<major>\d+)[._-](?<minor>\d+)(?:[._-]|$)') {
+        $product = 'sles'; $cycle = '{0}.{1}' -f $Matches.major, $Matches.minor
+      }
+    }
+    'Oracle' {
+      if ($Offer -like 'Oracle-Linux*' -and $Sku -match '^(?:ol)?(\d+)(?:[._-]|$)') { $product = 'oracle-linux'; $cycle = $Matches[1] }
+    }
+    'resf' {
+      if ($Offer -match '^rockylinux[-_](\d+)(?:[._-]|$)') { $product = 'rocky-linux'; $cycle = $Matches[1] }
+      elseif ($Offer -like 'rockylinux*' -and $Sku -match '^(\d+)(?:[._-]|$)') { $product = 'rocky-linux'; $cycle = $Matches[1] }
+    }
+    'almalinux' {
+      if ($Offer -like 'almalinux*' -and $Sku -match '^(\d+)(?:[._-]|$)') { $product = 'almalinux'; $cycle = $Matches[1] }
+    }
+    'ciq' {
+      if ($Offer -eq 'rocky-community-editions' -and $Sku -match '^rocky-community-(\d+)(?:-|$)') {
+        $product = 'rocky-linux'; $cycle = $Matches[1]
+      }
+    }
+    'kinvolk' {
+      if ($Offer -like 'flatcar-container-linux*' -and $Sku -match '^stable(?:-|$)') {
+        $product = 'flatcar'; $cycle = 'stable'
+      }
+    }
+    { $_ -in @('FreeBSD', 'TheFreeBSDFoundation') } {
+      if ("$Offer-$Sku" -match '(?:^|[-_])(?<major>\d{2})[._-](?<minor>\d+)(?:[-_]|$)') {
+        $product = 'freebsd'; $cycle = '{0}.{1}' -f $Matches.major, $Matches.minor
+      }
+    }
+  }
+  if ($product -and $cycle) { [pscustomobject]@{ Product = $product; Cycle = $cycle } }
+}
+
+function Get-AzureImageLifecycleData {
+  param([string] $Product)
+
+  $cached = $script:AzureImageLifecycleCache[$Product]
+  if ($cached -and $cached.Expires -gt [datetime]::UtcNow) { return $cached.Entries }
+  try {
+    if ($Product -eq 'flatcar') {
+      $feed = Invoke-RestMethod -Uri 'https://www.flatcar.org/releases-json/releases-stable.json' -Headers @{ 'User-Agent' = 'pwsh-profile-azure-images' } -TimeoutSec 30 -ErrorAction Stop
+      $releaseDate = [datetimeoffset]::MinValue
+      if ($feed.current.channel -ne 'stable' -or -not [datetimeoffset]::TryParse([string]$feed.current.release_date, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$releaseDate)) {
+        throw 'Invalid Flatcar stable channel response.'
+      }
+      $response = @([pscustomobject]@{ cycle = 'stable'; releaseDate = $releaseDate.UtcDateTime.ToString('yyyy-MM-dd'); eol = $false })
+    } else {
+      $response = Invoke-RestMethod -Uri "https://endoflife.date/api/$Product.json" -Headers @{ 'User-Agent' = 'pwsh-profile-azure-images' } -TimeoutSec 30 -ErrorAction Stop
+    }
+    if ($response -isnot [array]) { throw 'Expected a lifecycle array response.' }
+    $entries = @($response)
+    if (-not $entries.Count) { throw 'Empty lifecycle response.' }
+    $cycles = @{}
+    $normalized = @(foreach ($entry in $entries) {
+        if (-not $entry.cycle -or $cycles.ContainsKey([string]$entry.cycle)) { throw 'Missing or duplicate lifecycle cycle.' }
+        $cycles[[string]$entry.cycle] = $true
+        $parsedDate = [datetime]::MinValue
+        if (-not [datetime]::TryParseExact([string]$entry.releaseDate, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$parsedDate)) { throw 'Invalid lifecycle release date.' }
+        if ($entry.eol -isnot [bool] -and -not [datetime]::TryParseExact([string]$entry.eol, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$parsedDate)) { throw 'Invalid lifecycle end-of-life date.' }
+        [pscustomobject][ordered]@{ Product = $Product; Cycle = [string]$entry.cycle; ReleaseDate = $entry.releaseDate; Eol = $entry.eol }
+      })
+  } catch {
+    throw "Unable to retrieve lifecycle data for '$Product'. No supported-only results can be verified. Use -IncludeUnsupported to bypass lifecycle filtering. $($_.Exception.Message)"
+  }
+  $script:AzureImageLifecycleCache[$Product] = @{ Entries = $normalized; Expires = [datetime]::UtcNow.AddHours(1) }
+  $normalized
+}
+
+function Test-AzureImageSupported {
+  param([string] $Publisher, [string] $Offer, [string] $Sku, [switch] $Catalog, [datetime] $CurrentDate = [datetime]::UtcNow)
+
+  $reference = Get-AzureImageLifecycleReference $Publisher $Offer $Sku
+  if (-not $reference) { return $false }
+  $entries = if ($Catalog) { $script:AzureImagesCatalog.Lifecycles } else { Get-AzureImageLifecycleData -Product $reference.Product }
+  $cycle = @($entries | Where-Object { $_.Product -eq $reference.Product -and $_.Cycle -eq $reference.Cycle })
+  if ($cycle.Count -ne 1) { return $false }
+  $releaseDate = [datetime]::MinValue
+  if (-not [datetime]::TryParseExact([string]$cycle[0].ReleaseDate, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$releaseDate) -or $releaseDate.Date -gt $CurrentDate.Date) { return $false }
+  $eol = $cycle[0].Eol
+  if ($eol -is [bool]) { return -not $eol }
+  $endDate = [datetime]::MinValue
+  if (-not [datetime]::TryParseExact([string]$eol, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$endDate)) { return $false }
+  return $endDate.Date -ge $CurrentDate.Date
+}
+
+function Get-AzureImagePlatform {
+  param([string] $Architecture, [string] $Generation)
+  [pscustomobject]@{
+    Architecture = switch ($Architecture) {
+      { $_ -in @('x64', 'amd64') } { 'amd64'; break }
+      { $_ -in @('arm', 'arm64') } { 'arm64'; break }
+      default { 'Unknown' }
+    }
+    Generation   = switch ($Generation) {
+      { $_ -in @('V1', 'Gen1') } { 'Gen1'; break }
+      { $_ -in @('V2', 'Gen2') } { 'Gen2'; break }
+      default { 'Unknown' }
+    }
+  }
+}
+
+function Get-AzureVmImage {
+  <#
+  .SYNOPSIS
+      Finds Azure Marketplace VM image SKUs available in a region.
+  .DESCRIPTION
+      Queries Azure CLI using its signed-in account. Returns one object per offer/SKU
+      with the unresolved version alias latest. Does not enumerate all image
+      versions unless -ListVersions is specified with one exact SKU.
+      Catalog searches the bundled snapshot without Azure calls; it is not live availability.
+    By default, returns only released OS cycles within normal security support,
+    using endoflife.date and the official Flatcar stable feed. Unknown and preview images are excluded.
+    Paid extended support is not included. Live lifecycle data is cached for one hour.
+  .PARAMETER Location
+      Azure region, for example uksouth. Required for live queries, optional for Catalog.
+  .PARAMETER OS
+      OS preset from the bundled catalogue. Defaults to WindowsServer for live
+      queries, or all OS families for Catalog. All queries every configured preset.
+      Use tab completion for supported names or Publisher for other vendors.
+  .PARAMETER Catalog
+      Search the bundled catalogue without authentication. Results have Source=Catalog
+      and must be checked live in the target region before deployment.
+  .PARAMETER Publisher
+      Exact Marketplace publisher, instead of OS. Discovers its offers when Offer is omitted.
+  .PARAMETER Offer
+      Marketplace offer name or wildcard pattern. Defaults to all offers for Publisher.
+  .PARAMETER Sku
+      SKU wildcard pattern, or an exact SKU when listing versions.
+  .PARAMETER Search
+      Case-insensitive literal substring to find in the offer or SKU name.
+      Dots and underscores are equivalent, so 22.04 also matches 22_04.
+  .PARAMETER Expanded
+      Include Ubuntu Pro, CIS, hardened, FIPS and minimal offer/SKU variants.
+      Default filtering is name-based, not a licensing or security classification.
+  .PARAMETER IncludeUnsupported
+      Bypass lifecycle filtering, including end-of-life and unclassified images.
+      Does not enable specialised variants; combine with Expanded for those.
+      Also bypasses lifecycle HTTP requests. Catalog always uses bundled lifecycle data.
+  .PARAMETER Arch
+      Filter verified image architecture: amd64 (alias x64) or arm64 (alias arm).
+      Live queries fetch image metadata; unknown values do not match a filter.
+  .PARAMETER Generation
+      Filter verified Hyper-V generation, Gen1 or Gen2. ARM is an architecture,
+      not a generation; combine Arch and Generation when needed.
+  .PARAMETER IncludeMetadata
+      Architecture and generation are fetched by default for each matching live image.
+      Adds one image-details request per candidate. Use -IncludeMetadata:$false for
+      a quicker name-only lookup; Arch or Generation filters always fetch metadata.
+      Warns and skips SKUs whose latest version Azure cannot resolve. Other lookup
+      errors still stop discovery, as do failures when listing explicit versions.
+  .PARAMETER ListVersions
+      Query published versions of one exact SKU instead of returning latest,
+      sorted newest first within each offer. Use Publisher and Offer to select
+      one Ubuntu release when SKU names are shared across offers.
+  .PARAMETER Subscription
+      Subscription name or ID. Defaults to the Azure CLI active subscription.
+  .EXAMPLE
+      Get-AzureVmImage -Location uksouth -OS WindowsServer -Search 2025
+  .EXAMPLE
+      Get-AzureVmImage -Location uksouth -OS Ubuntu
+  .EXAMPLE
+      Get-AzureVmImage -Location uksouth -OS Ubuntu -Search 26.04
+  .EXAMPLE
+      Get-AzureVmImage -Location uksouth -Publisher MicrosoftWindowsServer -Offer WindowsServer -Sku '*2025*'
+  .EXAMPLE
+      Get-AzureVmImage -Location uksouth -Sku '2025-datacenter-azure-edition' -ListVersions
+  #>
+  [CmdletBinding(DefaultParameterSetName = 'Preset')]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidDefaultValueSwitchParameter', '', Justification = 'Metadata is intentionally enabled by default; callers can explicitly opt out.')]
+  [OutputType([pscustomobject])]
+  param (
+    [Parameter(Mandatory, Position = 0, ParameterSetName = 'Preset')]
+    [Parameter(Mandatory, Position = 0, ParameterSetName = 'Custom')]
+    [Parameter(Position = 0, ParameterSetName = 'Catalog')]
+    [ValidateNotNullOrEmpty()]
+    [string] $Location,
+
+    [Parameter(ParameterSetName = 'Preset')]
+    [Parameter(ParameterSetName = 'Catalog')]
+    [ValidateNotNullOrEmpty()]
+    [string] $OS = 'WindowsServer',
+
+    [Parameter(Mandatory, ParameterSetName = 'Custom')]
+    [Parameter(ParameterSetName = 'Catalog')]
+    [ValidateNotNullOrEmpty()]
+    [string] $Publisher,
+
+    [Parameter(ParameterSetName = 'Custom')]
+    [Parameter(ParameterSetName = 'Catalog')]
+    [ValidateNotNullOrEmpty()]
+    [string] $Offer = '*',
+
+    [ValidateNotNullOrEmpty()]
+    [string] $Sku = '*',
+
+    [ValidateNotNullOrEmpty()]
+    [string] $Search,
+
+    [switch] $Expanded,
+
+    [switch] $IncludeUnsupported,
+
+    [Alias('Architecture')]
+    [ValidateSet('amd64', 'x64', 'arm64', 'arm')]
+    [string] $Arch,
+
+    [ValidateSet('Gen1', 'Gen2')]
+    [string] $Generation,
+
+    [Parameter(ParameterSetName = 'Preset')]
+    [Parameter(ParameterSetName = 'Custom')]
+    [switch] $IncludeMetadata = $true,
+
+    [Parameter(Mandatory, ParameterSetName = 'Catalog')]
+    [switch] $Catalog,
+
+    [Parameter(ParameterSetName = 'Preset')]
+    [Parameter(ParameterSetName = 'Custom')]
+    [switch] $ListVersions,
+
+    [Parameter(ParameterSetName = 'Preset')]
+    [Parameter(ParameterSetName = 'Custom')]
+    [ValidateNotNullOrEmpty()]
+    [string] $Subscription
+  )
+
+  if ($ListVersions -and [System.Management.Automation.WildcardPattern]::ContainsWildcardCharacters($Sku)) {
+    throw 'Use -ListVersions with one exact -Sku (no wildcards).'
+  }
+  if ($PSCmdlet.ParameterSetName -ne 'Custom' -and $OS -ne 'All' -and $OS -notin $script:AzureImagesCatalog.Presets.OS) {
+    throw "Unknown OS '$OS'. Use OS tab completion, All, or -Publisher for an unlisted vendor."
+  }
+  if ($PSCmdlet.ParameterSetName -eq 'Preset') {
+    $queryParameters = @{}
+    foreach ($key in $PSBoundParameters.Keys) {
+      if ($key -ne 'OS') { $queryParameters[$key] = $PSBoundParameters[$key] }
+    }
+    $presets = @($script:AzureImagesCatalog.Presets | Where-Object { $OS -eq 'All' -or $_.OS -eq $OS })
+    if (@($presets.Publisher | Select-Object -Unique).Count -gt 1) {
+      $publisherArguments = @('vm', 'image', 'list-publishers', '--location', $Location)
+      if ($Subscription) { $publisherArguments += @('--subscription', $Subscription) }
+      $publishers = @(Invoke-AzureImagesCli -Arguments $publisherArguments)
+      $presets = @($presets | Where-Object { $_.Publisher -in $publishers.name })
+    }
+    foreach ($preset in $presets) {
+      $queryParameters.Publisher = $preset.Publisher
+      $queryParameters.Offer = $preset.Offer
+      Get-AzureVmImage @queryParameters
+    }
+    return
+  }
+  $searchText = if ($Search) { $Search.Replace('_', '.') } else { $null }
+  $requestedPlatform = Get-AzureImagePlatform -Architecture $Arch -Generation $Generation
+  if ($PSCmdlet.ParameterSetName -eq 'Catalog') {
+    if (-not @($script:AzureImagesCatalog.Images).Count) {
+      throw 'The bundled image catalogue has not been populated. Run the catalogue update workflow or omit -Catalog to query Azure live.'
+    }
+    if (-not $IncludeUnsupported -and -not @($script:AzureImagesCatalog.Lifecycles).Count) {
+      throw 'The bundled catalogue has no lifecycle data. Refresh the catalogue or use -IncludeUnsupported.'
+    }
+    foreach ($image in $script:AzureImagesCatalog.Images) {
+      if ($PSBoundParameters.ContainsKey('OS') -and $OS -ne 'All' -and $image.OS -ne $OS) { continue }
+      if ($Location -and $image.Location -ne $Location) { continue }
+      if ($Publisher -and $image.Publisher -ne $Publisher) { continue }
+      if ($image.Offer -notlike $Offer -or $image.Sku -notlike $Sku) { continue }
+      if (-not $Expanded -and -not (Test-AzureImageStandard $image.Publisher $image.Offer $image.Sku)) { continue }
+      $platform = Get-AzureImagePlatform -Architecture $image.Architecture -Generation $image.Generation
+      if ($Arch -and $platform.Architecture -ne $requestedPlatform.Architecture) { continue }
+      if ($Generation -and $platform.Generation -ne $requestedPlatform.Generation) { continue }
+      $searchable = '{0}:{1}:{2}:{3}' -f $image.OS, $image.Publisher, $image.Offer, $image.Sku
+      if ($searchText -and $searchable.Replace('_', '.').IndexOf($searchText, [StringComparison]::OrdinalIgnoreCase) -lt 0) { continue }
+      if (-not $IncludeUnsupported -and -not (Test-AzureImageSupported $image.Publisher $image.Offer $image.Sku -Catalog)) { continue }
+      $result = $image | Select-Object Location, Publisher, Offer, Sku, Version, Urn, OS,
+      @{ Name = 'Architecture'; Expression = { $platform.Architecture } },
+      @{ Name = 'Generation'; Expression = { $platform.Generation } },
+      @{ Name = 'Source'; Expression = { 'Catalog' } }
+      $result.PSObject.TypeNames.Insert(0, 'PwshProfile.AzureVmImage')
+      $result
+    }
+    return
+  }
+
+  $scopeArguments = @('--location', $Location, '--publisher', $Publisher)
+  if ($PSBoundParameters.ContainsKey('Subscription')) {
+    $scopeArguments += @('--subscription', $Subscription)
+  }
+  Write-Progress -Activity 'Get-AzureVmImage' -Status "Querying images in '$Location'..."
+  try {
+    $offers = @($Offer)
+    if ([System.Management.Automation.WildcardPattern]::ContainsWildcardCharacters($Offer)) {
+      $offers = @(Invoke-AzureImagesCli -Arguments (@('vm', 'image', 'list-offers') + $scopeArguments) |
+        Where-Object { $_.name -like $Offer } |
+        Select-Object -ExpandProperty name | Sort-Object -Unique)
+    }
+    foreach ($imageOffer in $offers) {
+      if (-not $Expanded -and -not (Test-AzureImageStandard $Publisher $imageOffer '')) { continue }
+      Write-Progress -Activity 'Get-AzureVmImage' -Status "Querying '$imageOffer' in '$Location'..."
+      $arguments = @('vm', 'image', 'list-skus') + $scopeArguments + @('--offer', $imageOffer)
+      if ($ListVersions) {
+        $arguments[2] = 'list'
+        $arguments += @('--sku', $Sku, '--all')
+      }
+      $images = @(Invoke-AzureImagesCli -Arguments $arguments)
+      if ($ListVersions) {
+        $images = @($images | Where-Object {
+            $_.publisher -eq $Publisher -and $_.offer -eq $imageOffer -and $_.sku -eq $Sku
+          } | Sort-Object { [version]$_.version } -Descending)
+      } else {
+        $images = @($images | Sort-Object name)
+      }
+
+      foreach ($image in $images) {
+        $imageSku = if ($ListVersions) { [string]$image.sku } else { [string]$image.name }
+        if (-not $imageSku) { throw 'Azure CLI returned an image without a SKU name.' }
+        if ($imageSku -notlike $Sku) { continue }
+        if (-not $Expanded -and -not (Test-AzureImageStandard $Publisher $imageOffer $imageSku)) { continue }
+        if ($searchText -and
+          $imageSku.Replace('_', '.').IndexOf($searchText, [StringComparison]::OrdinalIgnoreCase) -lt 0 -and
+          $imageOffer.Replace('_', '.').IndexOf($searchText, [StringComparison]::OrdinalIgnoreCase) -lt 0) { continue }
+        if (-not $IncludeUnsupported -and -not (Test-AzureImageSupported $Publisher $imageOffer $imageSku)) { continue }
+        $imageVersion = if ($ListVersions) { [string]$image.version } else { 'latest' }
+        $urn = '{0}:{1}:{2}:{3}' -f $Publisher, $imageOffer, $imageSku, $imageVersion
+        $platform = Get-AzureImagePlatform
+        if ($IncludeMetadata -or $Arch -or $Generation) {
+          $metadataArguments = @('vm', 'image', 'show', '--location', $Location, '--urn', $urn, '--query', '[@]')
+          if ($Subscription) { $metadataArguments += @('--subscription', $Subscription) }
+          try {
+            $metadata = @(Invoke-AzureImagesCli -Arguments $metadataArguments)
+          } catch {
+            $unresolvedMessage = "ERROR: Can't resolve the version of '{0}:{1}:{2}'" -f $Publisher, $imageOffer, $imageSku
+            if (-not $ListVersions -and $_.Exception.Data['AzureCliExitCode'] -and $_.Exception.Message.Contains($unresolvedMessage)) {
+              Write-Warning "Skipping '$urn' in '$Location': Azure cannot resolve its latest image version."
+              continue
+            }
+            throw
+          }
+          if ($metadata.Count -ne 1 -or $null -eq $metadata[0]) { throw "Azure returned no unique metadata for '$urn'." }
+          $platform = Get-AzureImagePlatform -Architecture $metadata[0].architecture -Generation $metadata[0].hyperVGeneration
+        }
+        if ($Arch -and $platform.Architecture -ne $requestedPlatform.Architecture) { continue }
+        if ($Generation -and $platform.Generation -ne $requestedPlatform.Generation) { continue }
+        $result = [pscustomobject][ordered]@{
+          PSTypeName   = 'PwshProfile.AzureVmImage'
+          Location     = $Location
+          Publisher    = $Publisher
+          Offer        = $imageOffer
+          Sku          = $imageSku
+          Version      = $imageVersion
+          Urn          = $urn
+          Architecture = $platform.Architecture
+          Generation   = $platform.Generation
+          Source       = 'Live'
+        }
+        $result
+      }
+    }
+  } finally {
+    Write-Progress -Activity 'Get-AzureVmImage' -Completed
+  }
+}
+
+function ConvertTo-AzureVmImageBicep {
+  <#
+  .SYNOPSIS
+      Formats an image object as a Bicep imageReference property.
+  .DESCRIPTION
+      Accepts selected Get-AzureVmImage results. Does not resolve latest or
+      validate VM compatibility. Marketplace purchase plans and terms, when
+      required, must be handled separately.
+  .PARAMETER InputObject
+      An object with Publisher, Offer, Sku and Version properties.
+  .EXAMPLE
+      Get-AzureVmImage -Location uksouth -Sku '2025-datacenter-azure-edition' | ConvertTo-AzureVmImageBicep
+  #>
+  [CmdletBinding()]
+  [OutputType([string])]
+  param (
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [ValidateNotNull()]
+    [psobject] $InputObject
+  )
+  process {
+    foreach ($property in @('Publisher', 'Offer', 'Sku', 'Version')) {
+      if ([string]$InputObject.$property -notmatch '\A[a-zA-Z0-9._-]+\z') {
+        throw "Image $property must be a non-empty Marketplace identifier containing only letters, digits, dots, underscores or hyphens."
+      }
+    }
+    "imageReference: {`n  publisher: '$($InputObject.Publisher)'`n  offer: '$($InputObject.Offer)'`n  sku: '$($InputObject.Sku)'`n  version: '$($InputObject.Version)'`n}"
+  }
+}
+
+Register-ArgumentCompleter -CommandName Get-AzureVmImage -ParameterName Location -ScriptBlock {
+  param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+  @($script:AzureImagesCatalog.AvailableLocations + $script:AzureImagesCatalog.Locations | Sort-Object -Unique) |
+  Where-Object { $_ -like "$wordToComplete*" } |
+  ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+}
+
+Register-ArgumentCompleter -CommandName Get-AzureVmImage -ParameterName OS -ScriptBlock {
+  param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+  @(@('All') + @($script:AzureImagesCatalog.Presets.OS) | Sort-Object -Unique) |
+  Where-Object { $_ -like "$wordToComplete*" } |
+  ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+}
+
+Export-ModuleMember -Function Get-AzureVmImage, ConvertTo-AzureVmImageBicep

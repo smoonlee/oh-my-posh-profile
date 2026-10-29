@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>PwshProfile.AzureVmImage</Name>
+      <ViewSelectedBy>
+        <TypeName>PwshProfile.AzureVmImage</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>'{0} | {1} | {2} | {3}' -f $_.Publisher, $_.Offer, $_.Location, $_.Source</ScriptBlock>
+        <Label>Images</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Arch</Label><Width>7</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Gen</Label><Width>7</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Version</Label><Width>14</Width></TableColumnHeader>
+          <TableColumnHeader><Label>SKU</Label><Width>32767</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Architecture</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Generation</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Version</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Sku</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

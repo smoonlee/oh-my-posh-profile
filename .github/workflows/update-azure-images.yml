@@ -1,0 +1,92 @@
+name: Update Azure Images Catalog
+
+on:
+  schedule:
+    - cron: '0 8 * * 0'
+  workflow_dispatch:
+    inputs:
+      allow_large_removal:
+        description: 'Allow region/lifecycle removals or over 25% image removals after investigation'
+        type: boolean
+        default: false
+
+permissions: {}
+
+concurrency:
+  group: update-azure-images-catalog
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      vars.AZURE_CLIENT_ID != '' &&
+      vars.AZURE_TENANT_ID != '' &&
+      vars.AZURE_SUBSCRIPTION_ID != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Sign in to Azure using OIDC
+        uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Refresh regions, lifecycles, image metadata and module release
+        shell: pwsh
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          ALLOW_LARGE_REMOVAL: ${{ inputs.allow_large_removal || false }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $allowRemoval = $env:ALLOW_LARGE_REMOVAL -eq 'true'
+          ./scripts/Update-AzureImagesCatalog.ps1 -Subscription $env:AZURE_SUBSCRIPTION_ID -PrepareRelease -AllowLargeRemoval:$allowRemoval
+
+      - name: Validate refreshed catalogue and module
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          ./scripts/Test-AzureDiscovery.ps1 -Module Images
+          ./scripts/Test-AzureDiscovery.ps1 -Module Compute
+          ./scripts/Test-ModuleReleases.ps1
+
+      - name: Create Azure image catalogue update pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/update-azure-images
+          delete-branch: true
+          add-paths: |
+            AzureImagesCatalog.json
+            src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psm1
+            src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psd1
+            src/modules/PwshProfile.AzureImages/CHANGELOG.md
+            src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psm1
+            src/modules/PwshProfile.AzureCompute/PwshProfile.AzureCompute.psd1
+            src/modules/PwshProfile.AzureCompute/CHANGELOG.md
+          commit-message: 'Update Azure image catalogue'
+          title: '[GitHub Action]: Update Azure Image Catalog'
+          body: |
+            Refresh all reported physical regions for location completion and the configured
+            OS publishers, expanded offers, SKUs, architectures and generations for snapshot regions.
+            Refresh normal security-support dates from endoflife.date for offline filtering.
+
+            Review AvailableLocations, Lifecycles and image changes in AzureImagesCatalog.json.
+            New regions or changed lifecycle dates prepare this PR even when images are unchanged.
+            Snapshot Locations are separate from completion regions to keep scans bounded.
+            Data is a regional
+            snapshot, not a deployment availability, quota, compatibility or licensing guarantee.
+
+            Semantic changes include a PwshProfile.AzureImages patch-version bump and changelog
+            entry. Region changes also prepare an independent PwshProfile.AzureCompute patch.
+            Merging this PR publishes the changed modules through the existing independent
+            module release workflow. The profile version is unchanged.
+          assignees: smoonlee

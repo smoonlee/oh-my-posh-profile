@@ -56,7 +56,7 @@ jobs:
           Get-Command oh-my-posh, openssl -ErrorAction Stop | Select-Object Name, Source
           $tests = @(
             'Test-ReleaseWorkflows.ps1', 'Test-ModuleReleases.ps1', 'Test-RuntimeGuards.ps1', 'Test-UpdateTransactions.ps1',
-            'Test-PoshResize.ps1', 'Test-AzureCompletion.ps1',
+            'Test-PoshResize.ps1', 'Test-AzureCompletion.ps1', 'Test-AzureDiscovery.ps1',
             'Test-BundleRollback.ps1', 'Test-ModuleRollback.ps1',
             'Test-EndOfLifeRelease.ps1', 'Test-ModuleFixes.ps1'
           )
@@ -70,6 +70,8 @@ jobs:
         run: |
           & "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File ./scripts/Test-RuntimeGuards.ps1
           if ($LASTEXITCODE -ne 0) { throw 'PowerShell 5.1 fallback checks failed.' }
+          & "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File ./scripts/Test-AzureDiscovery.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'PowerShell 5.1 Azure discovery checks failed.' }
 
       - name: Render prompt theme
         run: |

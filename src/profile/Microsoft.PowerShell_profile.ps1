@@ -96,6 +96,8 @@ function global:Get-PwshProfile {
   $enableNetworkCidr = $false
   $enableEndOfLife = $false
   $enableAzureKubernetes = $false
+  $enableAzureImages = $false
+  $enableAzureCompute = $false
   $enableDns = $false
   $enableTlsCertificate = $false
   if (Test-Path -LiteralPath $configPath -PathType Leaf) {
@@ -107,6 +109,8 @@ function global:Get-PwshProfile {
       $enableNetworkCidr = [bool]$settings.enableNetworkCidr
       $enableEndOfLife = [bool]$settings.enableEndOfLife
       $enableAzureKubernetes = [bool]$settings.enableAzureKubernetes
+      $enableAzureImages = [bool]$settings.enableAzureImages
+      $enableAzureCompute = [bool]$settings.enableAzureCompute
       $enableDns = [bool]$settings.enableDns
       $enableTlsCertificate = [bool]$settings.enableTlsCertificate
     } catch {
@@ -181,6 +185,16 @@ function global:Get-PwshProfile {
       Name        = 'PwshProfile.AzureKubernetes'
       Enabled     = $enableAzureKubernetes
       Description = 'AKS version and upgrade helper'
+    }
+    [pscustomobject]@{
+      Name        = 'PwshProfile.AzureImages'
+      Enabled     = $enableAzureImages
+      Description = 'Azure VM image discovery and Bicep references'
+    }
+    [pscustomobject]@{
+      Name        = 'PwshProfile.AzureCompute'
+      Enabled     = $enableAzureCompute
+      Description = 'Azure VM sizes and subscription restrictions'
     }
     [pscustomobject]@{
       Name        = 'PwshProfile.Dns'
@@ -292,6 +306,8 @@ function global:Get-PwshProfile {
     EnableNetworkCidr         = $enableNetworkCidr
     EnableEndOfLife           = $enableEndOfLife
     EnableAzureKubernetes     = $enableAzureKubernetes
+    EnableAzureImages         = $enableAzureImages
+    EnableAzureCompute        = $enableAzureCompute
     EnableDns                 = $enableDns
     EnableTlsCertificate      = $enableTlsCertificate
     UpdateChannel             = if ($enablePreReleaseUpdate) { 'prerelease' } else { 'stable' }
@@ -337,6 +353,12 @@ function global:Set-PwshProfile {
     [Parameter(ParameterSetName = 'AzureKubernetes')]
     [switch] $EnableAzureKubernetes,
 
+    [Parameter(ParameterSetName = 'AzureImages')]
+    [switch] $EnableAzureImages,
+
+    [Parameter(ParameterSetName = 'AzureCompute')]
+    [switch] $EnableAzureCompute,
+
     [Parameter(ParameterSetName = 'Dns')]
     [switch] $EnableDns,
 
@@ -352,6 +374,8 @@ function global:Set-PwshProfile {
     -not $PSBoundParameters.ContainsKey('EnableNetworkCidr') -and
     -not $PSBoundParameters.ContainsKey('EnableEndOfLife') -and
     -not $PSBoundParameters.ContainsKey('EnableAzureKubernetes') -and
+    -not $PSBoundParameters.ContainsKey('EnableAzureImages') -and
+    -not $PSBoundParameters.ContainsKey('EnableAzureCompute') -and
     -not $PSBoundParameters.ContainsKey('EnableDns') -and
     -not $PSBoundParameters.ContainsKey('EnableTlsCertificate')) {
     return Get-PwshProfile
@@ -363,6 +387,8 @@ function global:Set-PwshProfile {
   $useNetworkCidr = [bool]$current.EnableNetworkCidr
   $useEndOfLife = [bool]$current.EnableEndOfLife
   $useAzureKubernetes = [bool]$current.EnableAzureKubernetes
+  $useAzureImages = [bool]$current.EnableAzureImages
+  $useAzureCompute = [bool]$current.EnableAzureCompute
   $useDns = [bool]$current.EnableDns
   $useTlsCertificate = [bool]$current.EnableTlsCertificate
   $changedModuleName = $null
@@ -387,6 +413,14 @@ function global:Set-PwshProfile {
     $useAzureKubernetes = [bool]$EnableAzureKubernetes
     $changedModuleName = 'PwshProfile.AzureKubernetes'
     $changedModuleEnabled = $useAzureKubernetes
+  } elseif ($PSBoundParameters.ContainsKey('EnableAzureImages')) {
+    $useAzureImages = [bool]$EnableAzureImages
+    $changedModuleName = 'PwshProfile.AzureImages'
+    $changedModuleEnabled = $useAzureImages
+  } elseif ($PSBoundParameters.ContainsKey('EnableAzureCompute')) {
+    $useAzureCompute = [bool]$EnableAzureCompute
+    $changedModuleName = 'PwshProfile.AzureCompute'
+    $changedModuleEnabled = $useAzureCompute
   } elseif ($PSBoundParameters.ContainsKey('EnableDns')) {
     $useDns = [bool]$EnableDns
     $changedModuleName = 'PwshProfile.Dns'
@@ -409,6 +443,8 @@ function global:Set-PwshProfile {
     enableNetworkCidr      = $useNetworkCidr
     enableEndOfLife        = $useEndOfLife
     enableAzureKubernetes  = $useAzureKubernetes
+    enableAzureImages      = $useAzureImages
+    enableAzureCompute     = $useAzureCompute
     enableDns              = $useDns
     enableTlsCertificate   = $useTlsCertificate
     updatedAt              = [DateTimeOffset]::UtcNow.ToString('o')
@@ -554,6 +590,14 @@ function Import-PwshProfileModules {
       Enabled = [bool]$Settings.EnableAzureKubernetes
     }
     [pscustomobject]@{
+      Name    = 'PwshProfile.AzureImages'
+      Enabled = [bool]$Settings.EnableAzureImages
+    }
+    [pscustomobject]@{
+      Name    = 'PwshProfile.AzureCompute'
+      Enabled = [bool]$Settings.EnableAzureCompute
+    }
+    [pscustomobject]@{
       Name    = 'PwshProfile.Dns'
       Enabled = [bool]$Settings.EnableDns
     }
@@ -664,15 +708,15 @@ function Start-PwshProfileUpdateCheck {
 
   $updateAttemptId = [guid]::NewGuid().ToString('n')
   $pendingState = [ordered]@{
-    schemaVersion = 3
+    schemaVersion   = 3
     updateAttemptId = $updateAttemptId
-    channel       = $channel
-    checkedAt     = [DateTimeOffset]::UtcNow.ToString('o')
-    latestVersion = if ($state -and $state.channel -eq $channel) { $state.latestVersion } else { $null }
-    latestTag     = if ($state -and $state.channel -eq $channel) { $state.latestTag } else { $null }
-    releaseUrl    = if ($state -and $state.channel -eq $channel) { $state.releaseUrl } else { $null }
-    latestModules = if ($state -and $state.latestModules) { $state.latestModules } else { [ordered]@{} }
-    error         = $null
+    channel         = $channel
+    checkedAt       = [DateTimeOffset]::UtcNow.ToString('o')
+    latestVersion   = if ($state -and $state.channel -eq $channel) { $state.latestVersion } else { $null }
+    latestTag       = if ($state -and $state.channel -eq $channel) { $state.latestTag } else { $null }
+    releaseUrl      = if ($state -and $state.channel -eq $channel) { $state.releaseUrl } else { $null }
+    latestModules   = if ($state -and $state.latestModules) { $state.latestModules } else { [ordered]@{} }
+    error           = $null
   }
   $pendingJson = $pendingState | ConvertTo-Json -Depth 3
   [System.IO.File]::WriteAllText($statePath, "$pendingJson`n", [System.Text.UTF8Encoding]::new($false))
