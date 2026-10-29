@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>PwshProfile.AzureVmSize.Priced</Name>
+      <ViewSelectedBy>
+        <TypeName>PwshProfile.AzureVmSize.Priced</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>'{0} | {1} | {2}' -f $_.Location, $_.PriceOS, $_.Currency</ScriptBlock>
+        <Label>PAYG retail estimates</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Name</Label><Width>26</Width></TableColumnHeader>
+          <TableColumnHeader><Label>vCPUs</Label><Width>5</Width><Alignment>Right</Alignment></TableColumnHeader>
+          <TableColumnHeader><Label>RAM (GB)</Label><Width>8</Width><Alignment>Right</Alignment></TableColumnHeader>
+          <TableColumnHeader><Label>PAYG/hour</Label><Width>10</Width><Alignment>Right</Alignment></TableColumnHeader>
+          <TableColumnHeader><Label>Est/730h</Label><Width>11</Width><Alignment>Right</Alignment></TableColumnHeader>
+          <TableColumnHeader><Label>Restriction</Label><Width>32767</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>VCpus</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>MemoryGB</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>PAYG/hour</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Est/730h</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Restriction</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>PwshProfile.AzureVmSize</Name>
+      <ViewSelectedBy>
+        <TypeName>PwshProfile.AzureVmSize</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>Location</PropertyName>
+        <Label>Region</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Name</Label><Width>26</Width></TableColumnHeader>
+          <TableColumnHeader><Label>vCPUs</Label><Width>5</Width><Alignment>Right</Alignment></TableColumnHeader>
+          <TableColumnHeader><Label>RAM (GB)</Label><Width>8</Width><Alignment>Right</Alignment></TableColumnHeader>
+          <TableColumnHeader><Label>Arch</Label><Width>7</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Restriction</Label><Width>32767</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>VCpus</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>MemoryGB</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Architecture</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Restriction</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

@@ -22,7 +22,7 @@ Pushing a tag alone does not run `.github/workflows/publish-profile-release.yml`
 4. Create an annotated tag on that exact commit and push the tag.
 5. Create a draft GitHub Release for the tag and dispatch the packaging workflow.
 6. Verify that **Publish Pwsh Profile Release** succeeds, publishes the draft, and uploads all
-   twenty-one release assets.
+  twenty-seven release assets.
 
 If changes go through a pull request, merge the PR first, update local `main`
 with a fast-forward pull, and tag the resulting merge commit. Never tag the
@@ -84,6 +84,12 @@ A successful release contains:
 - `PwshProfile.EndOfLife.Format.ps1xml`
 - `PwshProfile.AzureKubernetes.psd1`
 - `PwshProfile.AzureKubernetes.psm1`
+- `PwshProfile.AzureImages.psd1`
+- `PwshProfile.AzureImages.psm1`
+- `PwshProfile.AzureImages.Format.ps1xml`
+- `PwshProfile.AzureCompute.psd1`
+- `PwshProfile.AzureCompute.psm1`
+- `PwshProfile.AzureCompute.Format.ps1xml`
 - `PwshProfile.Dns.psd1`
 - `PwshProfile.Dns.psm1`
 - `PwshProfile.Dns.Format.ps1xml`

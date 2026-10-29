@@ -55,6 +55,122 @@ Run `pwsh -NoProfile -File scripts/Test-EndOfLifeRelease.ps1` to verify catalog
 versioning, profile/module tag isolation, and independent module installation
 without network access.
 
+## Azure image catalogue
+
+[Update Azure Images Catalog](../.github/workflows/update-azure-images.yml) runs
+Sundays at 08:00 UTC and supports manual dispatch on `main`. It refreshes
+[AzureImagesCatalog.json](../AzureImagesCatalog.json) and opens a PR on
+`automation/update-azure-images`; it never commits directly to `main` or deploys
+Azure resources. The bundled catalogue already contains an image snapshot for
+`uksouth` and `eastus`, so offline discovery does not require workflow setup.
+Configuring authentication enables future refreshes; the job skips while its
+required repository variables are absent.
+
+### Authentication setup
+
+1. Use a dedicated Entra application/service principal or user-assigned managed
+   identity with read access to the Azure subscription. The built-in **Reader**
+   role at subscription scope is sufficient; Contributor and Microsoft Graph API
+   permissions are not required for these catalogue queries.
+2. Configure a GitHub OIDC federated credential with issuer
+   `https://token.actions.githubusercontent.com`, audience `api://AzureADTokenExchange`,
+   and subject `repo:<owner>/<repository>:ref:refs/heads/main`. For this repository,
+   the subject is `repo:smoonlee/oh-my-posh-profile:ref:refs/heads/main`.
+   Restrict the credential to this repository and branch, not pull requests.
+3. In repository **Settings > Secrets and variables > Actions > Variables**, set
+   `AZURE_CLIENT_ID`, `AZURE_TENANT_ID` and `AZURE_SUBSCRIPTION_ID` to that identity's
+   client ID, tenant ID and target subscription ID. These are identifiers, not a
+   client secret. No Azure credential is stored in this repository.
+4. Allow GitHub Actions to create pull requests in the repository's workflow
+   permissions settings. The workflow grants its job `contents: write`,
+   `pull-requests: write` and `id-token: write`; all actions are commit-pinned.
+5. Dispatch **Update Azure Images Catalog** from `main`, review the generated PR,
+   and merge it. The job skips until all three variables exist. Authentication or
+   query failures fail the job without creating a partial catalogue update PR.
+
+See the [Azure Login OIDC documentation](https://github.com/Azure/login#login-with-openid-connect-oidc-recommended)
+for identity setup. No identities, federated credentials, role assignments or
+repository variables are provisioned by this change. A real authenticated Actions
+run is required to verify the selected tenant/subscription configuration.
+
+### Refresh behaviour
+
+The JSON catalogue configures snapshot `Locations` (initially `uksouth` and
+`eastus`) and OS, publisher and offer-pattern mappings. Separately,
+`AvailableLocations` stores all physical-region names returned by
+`az account list-locations` for the workflow subscription. It drives both modules' location
+completion and starts with 63 names read from Azure, including restricted or preview
+regions that are not necessarily deployable. New names trigger the same update PR
+and independent patches for both modules even if images are unchanged. They do not automatically expand
+the expensive image snapshot scan; edit `Locations` deliberately to do that.
+The catalogue targets public `AzureCloud`; the updater
+rejects a different active CLI cloud. Other-cloud queries can still use the module's
+live publisher discovery, but the bundled catalogue is not a sovereign-cloud index.
+
+The updater discovers available publishers in each region and enumerates matching
+offers and SKUs with `-Expanded -IncludeMetadata -IncludeUnsupported`. This retains Pro/CIS and other
+specialised variants for opt-in searches and records Azure-reported architecture
+and Hyper-V generation. Metadata adds one details request per candidate, and the
+workflow has a 120-minute timeout. Missing publishers are reported and skipped. It does not enumerate
+every image version, accept purchase terms, inspect your deployed VMs, or check
+quota, price, capacity or image/VM compatibility. All entries use the unresolved
+`latest` version alias. New releases matching an existing mapping are discovered
+automatically; entirely new vendors/OS families require a reviewed mapping change.
+
+The updater also retrieves validated lifecycle records from endoflife.date and
+the official Flatcar stable-channel feed, then
+embeds them as `Lifecycles` (product, cycle, release date and normal EOL date).
+Paid extension deadlines are deliberately not used. Supported-only queries use
+those records offline and current, hourly-cached lifecycle data for live searches.
+The image snapshot retains older releases for `-IncludeUnsupported`; expiry is
+evaluated at query time rather than permanently removing them from the snapshot.
+Lifecycle-only changes prepare a module update PR even when images are unchanged.
+Lifecycle HTTP failures or invalid dates stop the update before any files are written.
+
+Queries must finish successfully before files are written. Empty or malformed
+region lists, empty snapshot regions, removal of any previously reported physical
+region or lifecycle record, and removal of more than 25% of image entries stop the refresh. After investigating
+an expected removal, manually dispatch with `allow_large_removal` enabled; normal
+scheduled runs cannot enable it. Diff review remains required for smaller removals
+and for publisher/offer classification. Entries are sorted and no refresh timestamp
+is written, so identical data does not produce repeated PRs or version bumps.
+
+The script embeds the validated JSON in the module, keeping both bundle and
+independent module releases self-contained without a separate JSON runtime asset.
+The module's wrapped table view is a declared `.Format.ps1xml` asset, included in
+both the full bundle and independent releases. Install a new full bundle (or use
+local setup) first when upgrading an installation that does not track that file.
+Semantic changes prepare the next `PwshProfile.AzureImages` patch version and its
+changelog. Existing independent-release automation publishes it when the PR merges.
+Region changes additionally prepare a `PwshProfile.AzureCompute` patch and embed
+the updated completion list in that module, without a runtime dependency on Images.
+Image-only and lifecycle-only changes leave Compute's version unchanged.
+The profile version and unrelated modules are unchanged. Git history records snapshot
+changes; `-Catalog` is discovery data, not a claim of current regional availability.
+
+For a local refresh using an already signed-in Azure CLI:
+
+```powershell
+./scripts/Update-AzureImagesCatalog.ps1 -Subscription '<subscription-id>' -PrepareRelease
+Import-Module ./src/modules/PwshProfile.AzureImages/PwshProfile.AzureImages.psd1 -Force
+Get-AzureVmImage -Catalog -Search 26.04
+Get-AzureVmImage -Location uksouth -OS Ubuntu -Search 26.04
+```
+
+After intentionally editing catalogue mappings without a live refresh, use
+`./scripts/Update-AzureImagesCatalog.ps1 -EmbedOnly -PrepareRelease` to validate and
+embed the edited catalogue. Existing entries must still match its mappings.
+This mode makes no Azure calls and does not populate missing images.
+It also validates existing lifecycle records without contacting endoflife.date.
+
+`scripts/Test-AzureDiscovery.ps1` exercises live discovery with mocked Azure CLI,
+offline catalogue queries, wrapped output at 80/120 columns, standard/expanded
+variants, platform metadata filters, physical-region discovery, region-only PR
+preparation, cloud mismatch, query failure, large removals, deterministic output,
+version preparation and local installation.
+It runs in CI on PowerShell 7 and Windows PowerShell 5.1. The refresh workflow also
+runs the image tests and independent module release checks before opening a PR.
+
 ## v4 update safety and limits
 
 Independent updates may replace only files already tracked in the installed

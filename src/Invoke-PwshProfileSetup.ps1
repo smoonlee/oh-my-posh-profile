@@ -2247,6 +2247,12 @@ function Install-PwshProfileLocalSource {
     endOfLifeFormat         = Join-Path $sourceRootPath 'modules\PwshProfile.EndOfLife\PwshProfile.EndOfLife.Format.ps1xml'
     azureKubernetesManifest = Join-Path $sourceRootPath 'modules\PwshProfile.AzureKubernetes\PwshProfile.AzureKubernetes.psd1'
     azureKubernetesScript   = Join-Path $sourceRootPath 'modules\PwshProfile.AzureKubernetes\PwshProfile.AzureKubernetes.psm1'
+    azureImagesManifest     = Join-Path $sourceRootPath 'modules\PwshProfile.AzureImages\PwshProfile.AzureImages.psd1'
+    azureImagesScript       = Join-Path $sourceRootPath 'modules\PwshProfile.AzureImages\PwshProfile.AzureImages.psm1'
+    azureImagesFormat       = Join-Path $sourceRootPath 'modules\PwshProfile.AzureImages\PwshProfile.AzureImages.Format.ps1xml'
+    azureComputeManifest    = Join-Path $sourceRootPath 'modules\PwshProfile.AzureCompute\PwshProfile.AzureCompute.psd1'
+    azureComputeScript      = Join-Path $sourceRootPath 'modules\PwshProfile.AzureCompute\PwshProfile.AzureCompute.psm1'
+    azureComputeFormat      = Join-Path $sourceRootPath 'modules\PwshProfile.AzureCompute\PwshProfile.AzureCompute.Format.ps1xml'
     dnsManifest             = Join-Path $sourceRootPath 'modules\PwshProfile.Dns\PwshProfile.Dns.psd1'
     dnsScript               = Join-Path $sourceRootPath 'modules\PwshProfile.Dns\PwshProfile.Dns.psm1'
     dnsFormat               = Join-Path $sourceRootPath 'modules\PwshProfile.Dns\PwshProfile.Dns.Format.ps1xml'
@@ -2281,6 +2287,12 @@ function Install-PwshProfileLocalSource {
     endOfLifeFormat         = Join-Path $paths.Modules 'PwshProfile.EndOfLife\PwshProfile.EndOfLife.Format.ps1xml'
     azureKubernetesManifest = Join-Path $paths.Modules 'PwshProfile.AzureKubernetes\PwshProfile.AzureKubernetes.psd1'
     azureKubernetesScript   = Join-Path $paths.Modules 'PwshProfile.AzureKubernetes\PwshProfile.AzureKubernetes.psm1'
+    azureImagesManifest     = Join-Path $paths.Modules 'PwshProfile.AzureImages\PwshProfile.AzureImages.psd1'
+    azureImagesScript       = Join-Path $paths.Modules 'PwshProfile.AzureImages\PwshProfile.AzureImages.psm1'
+    azureImagesFormat       = Join-Path $paths.Modules 'PwshProfile.AzureImages\PwshProfile.AzureImages.Format.ps1xml'
+    azureComputeManifest    = Join-Path $paths.Modules 'PwshProfile.AzureCompute\PwshProfile.AzureCompute.psd1'
+    azureComputeScript      = Join-Path $paths.Modules 'PwshProfile.AzureCompute\PwshProfile.AzureCompute.psm1'
+    azureComputeFormat      = Join-Path $paths.Modules 'PwshProfile.AzureCompute\PwshProfile.AzureCompute.Format.ps1xml'
     dnsManifest             = Join-Path $paths.Modules 'PwshProfile.Dns\PwshProfile.Dns.psd1'
     dnsScript               = Join-Path $paths.Modules 'PwshProfile.Dns\PwshProfile.Dns.psm1'
     dnsFormat               = Join-Path $paths.Modules 'PwshProfile.Dns\PwshProfile.Dns.Format.ps1xml'
@@ -2306,6 +2318,12 @@ function Install-PwshProfileLocalSource {
     $null = [xml](Get-Content -LiteralPath $sourcePaths.endOfLifeFormat -Raw -ErrorAction Stop)
     Test-PwshProfileScriptFile -Path $sourcePaths.azureKubernetesScript -Label 'Local AzureKubernetes module'
     $null = Import-PowerShellDataFile -LiteralPath $sourcePaths.azureKubernetesManifest -ErrorAction Stop
+    Test-PwshProfileScriptFile -Path $sourcePaths.azureImagesScript -Label 'Local AzureImages module'
+    $null = Import-PowerShellDataFile -LiteralPath $sourcePaths.azureImagesManifest -ErrorAction Stop
+    $null = [xml](Get-Content -LiteralPath $sourcePaths.azureImagesFormat -Raw -ErrorAction Stop)
+    Test-PwshProfileScriptFile -Path $sourcePaths.azureComputeScript -Label 'Local AzureCompute module'
+    $null = [xml](Get-Content -LiteralPath $sourcePaths.azureComputeFormat -Raw -ErrorAction Stop)
+    $null = Import-PowerShellDataFile -LiteralPath $sourcePaths.azureComputeManifest -ErrorAction Stop
     Test-PwshProfileScriptFile -Path $sourcePaths.dnsScript -Label 'Local Dns module'
     $null = Import-PowerShellDataFile -LiteralPath $sourcePaths.dnsManifest -ErrorAction Stop
     $null = [xml](Get-Content -LiteralPath $sourcePaths.dnsFormat -Raw -ErrorAction Stop)
@@ -2338,6 +2356,12 @@ function Install-PwshProfileLocalSource {
     endOfLifeFormat         = 'PwshProfile.EndOfLife.Format.ps1xml'
     azureKubernetesManifest = 'PwshProfile.AzureKubernetes.psd1'
     azureKubernetesScript   = 'PwshProfile.AzureKubernetes.psm1'
+    azureImagesManifest     = 'PwshProfile.AzureImages.psd1'
+    azureImagesScript       = 'PwshProfile.AzureImages.psm1'
+    azureImagesFormat       = 'PwshProfile.AzureImages.Format.ps1xml'
+    azureComputeManifest    = 'PwshProfile.AzureCompute.psd1'
+    azureComputeScript      = 'PwshProfile.AzureCompute.psm1'
+    azureComputeFormat      = 'PwshProfile.AzureCompute.Format.ps1xml'
     dnsManifest             = 'PwshProfile.Dns.psd1'
     dnsScript               = 'PwshProfile.Dns.psm1'
     dnsFormat               = 'PwshProfile.Dns.Format.ps1xml'
@@ -2531,6 +2555,12 @@ function Invoke-PwshProfileUpdateCore {
   $endOfLifeFormatPath = Join-Path $paths.Modules 'PwshProfile.EndOfLife\PwshProfile.EndOfLife.Format.ps1xml'
   $azureKubernetesManifestPath = Join-Path $paths.Modules 'PwshProfile.AzureKubernetes\PwshProfile.AzureKubernetes.psd1'
   $azureKubernetesScriptPath = Join-Path $paths.Modules 'PwshProfile.AzureKubernetes\PwshProfile.AzureKubernetes.psm1'
+  $azureImagesManifestPath = Join-Path $paths.Modules 'PwshProfile.AzureImages\PwshProfile.AzureImages.psd1'
+  $azureImagesScriptPath = Join-Path $paths.Modules 'PwshProfile.AzureImages\PwshProfile.AzureImages.psm1'
+  $azureImagesFormatPath = Join-Path $paths.Modules 'PwshProfile.AzureImages\PwshProfile.AzureImages.Format.ps1xml'
+  $azureComputeManifestPath = Join-Path $paths.Modules 'PwshProfile.AzureCompute\PwshProfile.AzureCompute.psd1'
+  $azureComputeScriptPath = Join-Path $paths.Modules 'PwshProfile.AzureCompute\PwshProfile.AzureCompute.psm1'
+  $azureComputeFormatPath = Join-Path $paths.Modules 'PwshProfile.AzureCompute\PwshProfile.AzureCompute.Format.ps1xml'
   $dnsManifestPath = Join-Path $paths.Modules 'PwshProfile.Dns\PwshProfile.Dns.psd1'
   $dnsScriptPath = Join-Path $paths.Modules 'PwshProfile.Dns\PwshProfile.Dns.psm1'
   $dnsFormatPath = Join-Path $paths.Modules 'PwshProfile.Dns\PwshProfile.Dns.Format.ps1xml'
@@ -2551,6 +2581,12 @@ function Invoke-PwshProfileUpdateCore {
     endOfLifeFormat         = $endOfLifeFormatPath
     azureKubernetesManifest = $azureKubernetesManifestPath
     azureKubernetesScript   = $azureKubernetesScriptPath
+    azureImagesManifest     = $azureImagesManifestPath
+    azureImagesScript       = $azureImagesScriptPath
+    azureImagesFormat       = $azureImagesFormatPath
+    azureComputeManifest    = $azureComputeManifestPath
+    azureComputeScript      = $azureComputeScriptPath
+    azureComputeFormat      = $azureComputeFormatPath
     dnsManifest             = $dnsManifestPath
     dnsScript               = $dnsScriptPath
     dnsFormat               = $dnsFormatPath
@@ -2729,6 +2765,12 @@ function Invoke-PwshProfileUpdateCore {
     endOfLifeFormat         = 'PwshProfile.EndOfLife.Format.ps1xml'
     azureKubernetesManifest = 'PwshProfile.AzureKubernetes.psd1'
     azureKubernetesScript   = 'PwshProfile.AzureKubernetes.psm1'
+    azureImagesManifest     = 'PwshProfile.AzureImages.psd1'
+    azureImagesScript       = 'PwshProfile.AzureImages.psm1'
+    azureImagesFormat       = 'PwshProfile.AzureImages.Format.ps1xml'
+    azureComputeManifest    = 'PwshProfile.AzureCompute.psd1'
+    azureComputeScript      = 'PwshProfile.AzureCompute.psm1'
+    azureComputeFormat      = 'PwshProfile.AzureCompute.Format.ps1xml'
     dnsManifest             = 'PwshProfile.Dns.psd1'
     dnsScript               = 'PwshProfile.Dns.psm1'
     dnsFormat               = 'PwshProfile.Dns.Format.ps1xml'
@@ -2774,6 +2816,12 @@ function Invoke-PwshProfileUpdateCore {
     $null = [xml](Get-Content -LiteralPath $stagedPaths.endOfLifeFormat -Raw -ErrorAction Stop)
     Test-PwshProfileScriptFile -Path $stagedPaths.azureKubernetesScript -Label 'AzureKubernetes module'
     $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureKubernetesManifest -ErrorAction Stop
+    Test-PwshProfileScriptFile -Path $stagedPaths.azureImagesScript -Label 'AzureImages module'
+    $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureImagesManifest -ErrorAction Stop
+    $null = [xml](Get-Content -LiteralPath $stagedPaths.azureImagesFormat -Raw -ErrorAction Stop)
+    Test-PwshProfileScriptFile -Path $stagedPaths.azureComputeScript -Label 'AzureCompute module'
+    $null = [xml](Get-Content -LiteralPath $stagedPaths.azureComputeFormat -Raw -ErrorAction Stop)
+    $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureComputeManifest -ErrorAction Stop
     Test-PwshProfileScriptFile -Path $stagedPaths.dnsScript -Label 'Dns module'
     $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.dnsManifest -ErrorAction Stop
     $null = [xml](Get-Content -LiteralPath $stagedPaths.dnsFormat -Raw -ErrorAction Stop)
