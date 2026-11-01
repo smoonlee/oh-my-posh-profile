@@ -2,6 +2,12 @@
 
 All notable changes to the independently released module are documented here.
 
+## [1.3.0] - 2026-11-01
+
+- Refresh the supported product catalog and tab completion from endoflife.date.
+- Added products: `git`, `livewire`.
+- Lifecycle dates continue to be fetched live when queried.
+
 ## [1.2.0] - 2026-10-25
 
 - Refresh the supported product catalog and tab completion from endoflife.date.
