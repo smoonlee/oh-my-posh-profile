@@ -329,13 +329,13 @@
     {
       "FriendlyName": "Noto",
       "ArchiveName": "Noto",
-      "FontVersion": "div",
+      "FontVersion": "2.015 / 2.014 / 1.000",
       "DownloadUrl": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Noto.zip"
     },
     {
       "FriendlyName": "OpenDyslexic",
       "ArchiveName": "OpenDyslexic",
-      "FontVersion": "2.001/1.001",
+      "FontVersion": "2.001 / 1.001",
       "DownloadUrl": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/OpenDyslexic.zip"
     },
     {
@@ -347,7 +347,7 @@
     {
       "FriendlyName": "ProFont",
       "ArchiveName": "ProFont",
-      "FontVersion": "2.3/2.2",
+      "FontVersion": "2.3 / 2.2",
       "DownloadUrl": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/ProFont.zip"
     },
     {
