@@ -1,6 +1,6 @@
 {
   "SourceUrl": "https://endoflife.date/api/all.json",
-  "ProductCount": 485,
+  "ProductCount": 487,
   "Products": [
     "adonisjs",
     "akeneo-pim",
@@ -175,6 +175,7 @@
     "gatekeeper",
     "gerrit",
     "ghc",
+    "git",
     "github-actions-runner-images",
     "gitlab",
     "gitlab-runner",
@@ -260,6 +261,7 @@
     "linuxmint",
     "liquibase",
     "liquibase-secure",
+    "livewire",
     "log4j",
     "logstash",
     "longhorn",
