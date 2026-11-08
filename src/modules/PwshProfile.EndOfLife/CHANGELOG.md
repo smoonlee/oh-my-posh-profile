@@ -2,6 +2,12 @@
 
 All notable changes to the independently released module are documented here.
 
+## [1.4.0] - 2026-11-08
+
+- Refresh the supported product catalog and tab completion from endoflife.date.
+- Added products: `geoserver`, `nestjs`.
+- Lifecycle dates continue to be fetched live when queried.
+
 ## [1.3.0] - 2026-11-01
 
 - Refresh the supported product catalog and tab completion from endoflife.date.
