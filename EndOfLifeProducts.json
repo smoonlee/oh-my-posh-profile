@@ -1,6 +1,6 @@
 {
   "SourceUrl": "https://endoflife.date/api/all.json",
-  "ProductCount": 487,
+  "ProductCount": 489,
   "Products": [
     "adonisjs",
     "akeneo-pim",
@@ -173,6 +173,7 @@
     "freebsd",
     "freedesktop-sdk",
     "gatekeeper",
+    "geoserver",
     "gerrit",
     "ghc",
     "git",
@@ -293,6 +294,7 @@
     "mysql",
     "neo4j",
     "neos",
+    "nestjs",
     "netapp-ontap",
     "netbackup-appliance-os",
     "netbsd",
