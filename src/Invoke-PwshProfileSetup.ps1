@@ -1,85 +1,85 @@
 [CmdletBinding()]
 param (
   # This region is refreshed by scripts/Update-NerdFontsCatalog.ps1.
-	# BEGIN GENERATED NERD FONT VALIDATESET
-	[ValidateSet(
-		'0xProto',
-		'3270',
-		'AdwaitaMono',
-		'Agave',
-		'AnnotationM',
-		'AnonymicePro',
-		'Arimo',
-		'AtkynsonMono',
-		'AurulentSansM',
-		'BigBlueTerm',
-		'BitstromWera',
-		'BlexMono',
-		'CaskaydiaCove',
-		'CaskaydiaMono',
-		'CodeNewRoman',
-		'ComicShannsMono',
-		'CommitMono',
-		'Cousine',
-		'D2KodingLigature',
-		'DaddyTimeMono',
-		'DejaVuSansM',
-		'DepartureMono',
-		'DroidSansM',
-		'EnvyCodeR',
-		'FantasqueSansM',
-		'FiraCode',
-		'FiraMono',
-		'GeistMono',
-		'GohuFont',
-		'GoMono',
-		'GoogleSansCode',
-		'Hack',
-		'Hasklug',
-		'HeavyData',
-		'Hurmit',
-		'iMWriting',
-		'Inconsolata',
-		'Inconsolata LGC',
-		'InconsolataGo',
-		'IntoneMono',
-		'Iosevka',
-		'IosevkaTerm',
-		'IosevkaTermSlab',
-		'JetBrainsMono',
-		'Lekton',
-		'Lilex',
-		'LiterationMono',
-		'M+',
-		'MartianMono',
-		'MesloLG',
-		'Monaspice',
-		'Monofur',
-		'Monoid',
-		'Mononoki',
-		'Noto',
-		'OpenDyslexic',
-		'Overpass',
-		'ProFont',
-		'ProggyClean',
-		'RecMono',
-		'RobotoMono',
-		'SauceCodePro',
-		'ShureTechMono',
-		'SpaceMono',
-		'Symbols',
-		'Terminess',
-		'Tinos',
-		'Ubuntu',
-		'UbuntuMono',
-		'UbuntuSans',
-		'VictorMono',
-		'ZedMono'
-	)]
-	[Parameter(Position = 0)]
-	[Alias('NerdFont')]
-	[string] $nerdFontName = ''
-	# END GENERATED NERD FONT VALIDATESET
+  # BEGIN GENERATED NERD FONT VALIDATESET
+  [ValidateSet(
+    '0xProto',
+    '3270',
+    'AdwaitaMono',
+    'Agave',
+    'AnnotationM',
+    'AnonymicePro',
+    'Arimo',
+    'AtkynsonMono',
+    'AurulentSansM',
+    'BigBlueTerm',
+    'BitstromWera',
+    'BlexMono',
+    'CaskaydiaCove',
+    'CaskaydiaMono',
+    'CodeNewRoman',
+    'ComicShannsMono',
+    'CommitMono',
+    'Cousine',
+    'D2KodingLigature',
+    'DaddyTimeMono',
+    'DejaVuSansM',
+    'DepartureMono',
+    'DroidSansM',
+    'EnvyCodeR',
+    'FantasqueSansM',
+    'FiraCode',
+    'FiraMono',
+    'GeistMono',
+    'GohuFont',
+    'GoMono',
+    'GoogleSansCode',
+    'Hack',
+    'Hasklug',
+    'HeavyData',
+    'Hurmit',
+    'iMWriting',
+    'Inconsolata',
+    'Inconsolata LGC',
+    'InconsolataGo',
+    'IntoneMono',
+    'Iosevka',
+    'IosevkaTerm',
+    'IosevkaTermSlab',
+    'JetBrainsMono',
+    'Lekton',
+    'Lilex',
+    'LiterationMono',
+    'M+',
+    'MartianMono',
+    'MesloLG',
+    'Monaspice',
+    'Monofur',
+    'Monoid',
+    'Mononoki',
+    'Noto',
+    'OpenDyslexic',
+    'Overpass',
+    'ProFont',
+    'ProggyClean',
+    'RecMono',
+    'RobotoMono',
+    'SauceCodePro',
+    'ShureTechMono',
+    'SpaceMono',
+    'Symbols',
+    'Terminess',
+    'Tinos',
+    'Ubuntu',
+    'UbuntuMono',
+    'UbuntuSans',
+    'VictorMono',
+    'ZedMono'
+  )]
+  [Parameter(Position = 0)]
+  [Alias('NerdFont')]
+  [string] $nerdFontName = ''
+  # END GENERATED NERD FONT VALIDATESET
 
   ,
   [ValidateSet('All', 'NerdFont', 'Winget', 'Modules', 'Profile', 'ProfileUpdate')]
@@ -2027,10 +2027,8 @@ function Import-PwshProfileConfiguration {
   }
 
   try {
-    Write-PwshProfileStatus -Stage 'Profile' -Type Action -Message "Reloading into the current session: $PROFILE"
-    # Reload via $PROFILE itself so the running session ends up in the exact
-    # state a brand new PowerShell window would start in.
-    . $PROFILE
+    Write-PwshProfileStatus -Stage 'Profile' -Type Action -Message "Reloading into the current session: $Path"
+    . $Path
     Write-PwshProfileStatus -Stage 'Profile' -Type Success -Message 'PowerShell profile loaded into the current session.'
   } catch {
     Write-PwshProfileStatus -Stage 'Profile' -Type Warning -Message "Could not load the PowerShell profile: $($_.Exception.Message)"
@@ -2695,31 +2693,6 @@ function Invoke-PwshProfileUpdateCore {
     Write-PwshProfileStatus -Stage 'Next' -Message 'Restore the tracked files or run the Profile setup phase to intentionally establish a new baseline.'
     return $false
   }
-  if (-not $Bootstrap) {
-    $versionComparison = Compare-PwshProfileSemanticVersion `
-      -Left $latestVersionText `
-      -Right $currentVersion
-    $missingBaselineArtifacts = @(
-      $destinations.Keys | Where-Object {
-        -not $installed.artifacts.PSObject.Properties[$_]
-      }
-    )
-
-    if ($versionComparison -lt 0 -or
-      ($versionComparison -eq 0 -and $missingBaselineArtifacts.Count -eq 0)) {
-      Write-PwshProfileStatus -Stage 'Update' -Type Current -Message 'Already up to date.'
-      Write-Host ''
-      return $true
-    }
-
-    if ($versionComparison -eq 0) {
-      Write-PwshProfileStatus `
-        -Stage 'Repair' `
-        -Type Action `
-        -Message "Restoring $($missingBaselineArtifacts.Count) newly tracked release asset(s)..."
-    }
-  }
-
   $releaseAssets = @{}
   foreach ($asset in @($release.assets)) {
     $releaseAssets[[string]$asset.name] = [string]$asset.browser_download_url
@@ -2778,6 +2751,39 @@ function Invoke-PwshProfileUpdateCore {
     tlsCertificateScript    = 'PwshProfile.TlsCertificate.psm1'
     tlsCertificateFormat    = 'PwshProfile.TlsCertificate.Format.ps1xml'
   }
+  foreach ($modulePrefix in @('azureImages', 'azureCompute')) {
+    $moduleArtifacts = @($artifactNames.Keys | Where-Object { $_ -like "$modulePrefix*" })
+    $publishedArtifacts = @($moduleArtifacts | Where-Object { $remoteManifest.artifacts.PSObject.Properties[$_] })
+    if ($publishedArtifacts.Count -eq 0) {
+      foreach ($name in $moduleArtifacts) {
+        $artifactNames.Remove($name)
+      }
+    }
+  }
+  if (-not $Bootstrap) {
+    $versionComparison = Compare-PwshProfileSemanticVersion `
+      -Left $latestVersionText `
+      -Right $currentVersion
+    $missingBaselineArtifacts = @(
+      $artifactNames.Keys | Where-Object {
+        -not $installed.artifacts.PSObject.Properties[$_]
+      }
+    )
+
+    if ($versionComparison -lt 0 -or
+      ($versionComparison -eq 0 -and $missingBaselineArtifacts.Count -eq 0)) {
+      Write-PwshProfileStatus -Stage 'Update' -Type Current -Message 'Already up to date.'
+      Write-Host ''
+      return $true
+    }
+
+    if ($versionComparison -eq 0) {
+      Write-PwshProfileStatus `
+        -Stage 'Repair' `
+        -Type Action `
+        -Message "Restoring $($missingBaselineArtifacts.Count) newly tracked release asset(s)..."
+    }
+  }
   $stagedPaths = @{}
   try {
     foreach ($name in $artifactNames.Keys) {
@@ -2816,12 +2822,16 @@ function Invoke-PwshProfileUpdateCore {
     $null = [xml](Get-Content -LiteralPath $stagedPaths.endOfLifeFormat -Raw -ErrorAction Stop)
     Test-PwshProfileScriptFile -Path $stagedPaths.azureKubernetesScript -Label 'AzureKubernetes module'
     $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureKubernetesManifest -ErrorAction Stop
-    Test-PwshProfileScriptFile -Path $stagedPaths.azureImagesScript -Label 'AzureImages module'
-    $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureImagesManifest -ErrorAction Stop
-    $null = [xml](Get-Content -LiteralPath $stagedPaths.azureImagesFormat -Raw -ErrorAction Stop)
-    Test-PwshProfileScriptFile -Path $stagedPaths.azureComputeScript -Label 'AzureCompute module'
-    $null = [xml](Get-Content -LiteralPath $stagedPaths.azureComputeFormat -Raw -ErrorAction Stop)
-    $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureComputeManifest -ErrorAction Stop
+    if ($artifactNames.Contains('azureImagesManifest')) {
+      Test-PwshProfileScriptFile -Path $stagedPaths.azureImagesScript -Label 'AzureImages module'
+      $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureImagesManifest -ErrorAction Stop
+      $null = [xml](Get-Content -LiteralPath $stagedPaths.azureImagesFormat -Raw -ErrorAction Stop)
+    }
+    if ($artifactNames.Contains('azureComputeManifest')) {
+      Test-PwshProfileScriptFile -Path $stagedPaths.azureComputeScript -Label 'AzureCompute module'
+      $null = [xml](Get-Content -LiteralPath $stagedPaths.azureComputeFormat -Raw -ErrorAction Stop)
+      $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.azureComputeManifest -ErrorAction Stop
+    }
     Test-PwshProfileScriptFile -Path $stagedPaths.dnsScript -Label 'Dns module'
     $null = Import-PowerShellDataFile -LiteralPath $stagedPaths.dnsManifest -ErrorAction Stop
     $null = [xml](Get-Content -LiteralPath $stagedPaths.dnsFormat -Raw -ErrorAction Stop)
