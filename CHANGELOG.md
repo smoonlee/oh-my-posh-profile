@@ -20,6 +20,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Integrate both modules with profile settings, local installation, verified
   release bundles, and offline regression checks on PowerShell 7 and 5.1.
 
+### Fixed
+
+- Allow fresh installation of stable `v4.0.0` bundles that predate Azure Images
+  and Azure Compute, while still rejecting partial modules and invalid assets.
+- Check same-version updates against published bundle assets rather than
+  repeatedly attempting to repair modules absent from older releases.
+- Reload the validated installed profile path after setup instead of a stale
+  session `$PROFILE` path, including redirected Documents locations.
+
 ## [4.0.0] - 2026-09-10
 
 ### General availability
