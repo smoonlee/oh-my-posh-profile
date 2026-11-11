@@ -3,7 +3,7 @@
     PowerShell profile configuration.
 #>
 
-$script:PwshProfileVersion = '4.0.0'
+$script:PwshProfileVersion = '4.0.1'
 $script:PwshProfileRepository = 'smoonlee/oh-my-posh-profile'
 $script:PwshProfileStorePath = Join-Path $env:APPDATA 'PwshProfile'
 $global:PwshProfileVersion = $script:PwshProfileVersion

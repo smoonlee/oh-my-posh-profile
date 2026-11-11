@@ -7,6 +7,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [4.0.1] - 2026-11-10
+
 ### Added
 
 - Add disabled-by-default `PwshProfile.AzureImages` with regional image SKU
