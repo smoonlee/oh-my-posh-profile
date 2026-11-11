@@ -3,7 +3,8 @@ function Invoke-TlsCertificateOpenSsl {
   $OutputEncoding = [Text.UTF8Encoding]::new($false)
   $ErrorActionPreference = 'Continue'
   $PSNativeCommandUseErrorActionPreference = $false
-  $output = @($InputLines | & $Command @Arguments 2>&1)
+  $inputText = ($InputLines -join "`n") + "`n"
+  $output = @($inputText | & $Command @Arguments 2>&1)
   [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output }
 }
 

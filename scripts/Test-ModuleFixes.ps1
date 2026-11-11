@@ -76,7 +76,7 @@ try {
     $OutputEncoding = [Text.UTF8Encoding]::new($false)
     $ErrorActionPreference = 'Continue'
     $PSNativeCommandUseErrorActionPreference = $false
-    $null = @($passwordText) | & openssl pkcs12 -in $path -nokeys -noout -passin stdin 2>&1
+    $null = @($passwordText + "`n") | & openssl pkcs12 -in $path -nokeys -noout -passin stdin 2>&1
     $LASTEXITCODE -eq 0
   } $unicodePfx.OutputPath $unicodeText
   if (-not $utf8Accepted) { throw 'PFX must accept the requested Unicode password as UTF-8.' }
