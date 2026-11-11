@@ -1,3 +1,42 @@
+function Invoke-TlsCertificateOpenSsl {
+  param([string] $Command, [string[]] $Arguments, [string[]] $InputLines = @())
+  $OutputEncoding = [Text.UTF8Encoding]::new($false)
+  $ErrorActionPreference = 'Continue'
+  $PSNativeCommandUseErrorActionPreference = $false
+  $inputText = ($InputLines -join "`n") + "`n"
+  $commandInfo = Microsoft.PowerShell.Core\Get-Command -Name $Command -ErrorAction Stop
+  if ($commandInfo.CommandType -ne 'Application') {
+    $output = @($inputText | & $Command @Arguments 2>&1)
+    return [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output }
+  }
+  $info = [Diagnostics.ProcessStartInfo]::new()
+  $info.FileName = $commandInfo.Source
+  $info.UseShellExecute = $false
+  $info.CreateNoWindow = $true
+  $info.RedirectStandardInput = $true
+  $info.RedirectStandardOutput = $true
+  $info.RedirectStandardError = $true
+  if ($PSVersionTable.PSVersion.Major -ge 6) {
+    foreach ($argument in $Arguments) { $info.ArgumentList.Add($argument) }
+  } else {
+    $quoted = foreach ($argument in $Arguments) {
+      '"' + [regex]::Replace([regex]::Replace($argument, '(\\*)"', '$1$1\"'), '(\\+)$', '$1$1') + '"'
+    }
+    $info.Arguments = $quoted -join ' '
+  }
+  $process = [Diagnostics.Process]::Start($info)
+  try {
+    $stdout = $process.StandardOutput.ReadToEndAsync()
+    $stderr = $process.StandardError.ReadToEndAsync()
+    $inputBytes = [Text.UTF8Encoding]::new($false).GetBytes($inputText)
+    $process.StandardInput.BaseStream.Write($inputBytes, 0, $inputBytes.Length)
+    $process.StandardInput.BaseStream.Close()
+    $process.WaitForExit()
+    $text = $stdout.GetAwaiter().GetResult() + "`n" + $stderr.GetAwaiter().GetResult()
+    [pscustomobject]@{ ExitCode = $process.ExitCode; Output = @($text -split '\r?\n' | Where-Object { $_ }) }
+  } finally { $process.Dispose() }
+}
+
 function Get-TlsCertificateFingerprint {
   param([System.Security.Cryptography.X509Certificates.X509Certificate2] $Certificate)
   $sha256 = [System.Security.Cryptography.SHA256]::Create()
@@ -253,8 +292,9 @@ function Get-TlsCertificateFromFile {
   }
 
   $arguments = @('x509', '-in', $Path, '-noout', '-subject', '-issuer', '-startdate', '-enddate', '-fingerprint', '-sha256', '-nameopt', 'oneline')
-  $output = & $opensslCommand.Name @arguments 2>&1
-  if ($LASTEXITCODE -ne 0) {
+  $commandResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments $arguments
+  $output = $commandResult.Output
+  if ($commandResult.ExitCode -ne 0) {
     throw "OpenSSL could not parse certificate '$Path'. $(($output | Out-String).Trim())"
   }
 
@@ -481,22 +521,25 @@ function Split-PfxCertificate {
     $keyPath = $staged[$outputPaths.Key]
     $certPath = $staged[$outputPaths.Certificate]
     $chainPath = $staged[$outputPaths.Chain]
-    $certOutput = @($plainPassword) | & $opensslCommand.Name pkcs12 -in $resolvedPath -clcerts -nokeys -out $certPath -passin stdin 2>&1
-    if ($LASTEXITCODE -ne 0) {
+    $certResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments @('pkcs12', '-in', $resolvedPath, '-clcerts', '-nokeys', '-out', $certPath, '-passin', 'stdin') -InputLines @($plainPassword)
+    $certOutput = $certResult.Output
+    if ($certResult.ExitCode -ne 0) {
       throw "OpenSSL could not extract the certificate from '$resolvedPath'. $(($certOutput | Out-String).Trim())"
     }
 
-    $chainOutput = @($plainPassword) | & $opensslCommand.Name pkcs12 -in $resolvedPath -cacerts -nokeys -chain -out $chainPath -passin stdin 2>&1
-    if ($LASTEXITCODE -ne 0) {
+    $chainResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments @('pkcs12', '-in', $resolvedPath, '-cacerts', '-nokeys', '-chain', '-out', $chainPath, '-passin', 'stdin') -InputLines @($plainPassword)
+    $chainOutput = $chainResult.Output
+    if ($chainResult.ExitCode -ne 0) {
       throw "OpenSSL could not extract the certificate chain from '$resolvedPath'. $(($chainOutput | Out-String).Trim())"
     }
 
     if ($NoKeyPassword) {
-      $keyOutput = @($plainPassword) | & $opensslCommand.Name pkcs12 -in $resolvedPath -nocerts -nodes -out $keyPath -passin stdin 2>&1
+      $keyResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments @('pkcs12', '-in', $resolvedPath, '-nocerts', '-nodes', '-out', $keyPath, '-passin', 'stdin') -InputLines @($plainPassword)
     } else {
-      $keyOutput = @($plainPassword, $plainPassword) | & $opensslCommand.Name pkcs12 -in $resolvedPath -nocerts -out $keyPath -passin stdin -passout stdin 2>&1
+      $keyResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments @('pkcs12', '-in', $resolvedPath, '-nocerts', '-out', $keyPath, '-passin', 'stdin', '-passout', 'stdin') -InputLines @($plainPassword, $plainPassword)
     }
-    if ($LASTEXITCODE -ne 0) {
+    $keyOutput = $keyResult.Output
+    if ($keyResult.ExitCode -ne 0) {
       throw "OpenSSL could not extract the private key from '$resolvedPath'. $(($keyOutput | Out-String).Trim())"
     }
 
@@ -612,6 +655,7 @@ function New-PfxCertificate {
     $baseName = [System.IO.Path]::GetFileNameWithoutExtension($resolvedCertPath)
     $OutputPath = Join-Path $outputDirectory "$baseName.pfx"
   }
+  $OutputPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
   if ((Test-Path -LiteralPath $OutputPath -PathType Leaf) -and -not $Force) {
     throw "'$OutputPath' already exists. Use -Force to overwrite it."
   }
@@ -631,9 +675,16 @@ function New-PfxCertificate {
   $arguments += @('-passout', 'stdin')
   $stdinLines += $plainPassword
 
-  $output = @($stdinLines) | & $opensslCommand.Name @arguments 2>&1
-  if ($LASTEXITCODE -ne 0) {
-    throw "OpenSSL could not create the PFX file at '$OutputPath'. $(($output | Out-String).Trim())"
+  Invoke-TlsCertificateFileTransaction -Paths @($OutputPath) -Force:$Force -Action {
+    param($staged)
+    $stagedArguments = @($arguments | ForEach-Object {
+        if ($_ -eq $OutputPath) { $staged[$OutputPath] } else { $_ }
+      })
+    $commandResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments $stagedArguments -InputLines $stdinLines
+    $output = $commandResult.Output
+    if ($commandResult.ExitCode -ne 0) {
+      throw "OpenSSL could not create the PFX file at '$OutputPath'. $(($output | Out-String).Trim())"
+    }
   }
 
   [pscustomobject][ordered]@{
@@ -703,8 +754,9 @@ function Test-CertificateKeyMatch {
   $resolvedCertPath = (Resolve-Path -LiteralPath $CertificatePath).ProviderPath
   $resolvedKeyPath = (Resolve-Path -LiteralPath $PrivateKeyPath).ProviderPath
 
-  $certPublicKeyOutput = & $opensslCommand.Name x509 -in $resolvedCertPath -noout -pubkey 2>&1
-  if ($LASTEXITCODE -ne 0) {
+  $certResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments @('x509', '-in', $resolvedCertPath, '-noout', '-pubkey')
+  $certPublicKeyOutput = $certResult.Output
+  if ($certResult.ExitCode -ne 0) {
     throw "OpenSSL could not read the public key from '$resolvedCertPath'. $(($certPublicKeyOutput | Out-String).Trim())"
   }
 
@@ -714,8 +766,9 @@ function Test-CertificateKeyMatch {
     $keyArguments += @('-passin', 'stdin')
     $stdinLines += [System.Net.NetworkCredential]::new('', $KeyPassword).Password
   }
-  $keyPublicKeyOutput = @($stdinLines) | & $opensslCommand.Name @keyArguments 2>&1
-  if ($LASTEXITCODE -ne 0) {
+  $keyResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments $keyArguments -InputLines $stdinLines
+  $keyPublicKeyOutput = $keyResult.Output
+  if ($keyResult.ExitCode -ne 0) {
     throw "OpenSSL could not read the public key from '$resolvedKeyPath'. $(($keyPublicKeyOutput | Out-String).Trim())"
   }
 
@@ -840,8 +893,9 @@ function New-SelfSignedTlsCertificate {
         elseif ($_ -eq $certPath) { $staged[$certPath] }
         else { $_ }
       })
-    $output = @($stdinLines) | & $opensslCommand.Name @stagedArguments 2>&1
-    if ($LASTEXITCODE -ne 0) {
+    $commandResult = Invoke-TlsCertificateOpenSsl -Command $opensslCommand.Name -Arguments $stagedArguments -InputLines $stdinLines
+    $output = $commandResult.Output
+    if ($commandResult.ExitCode -ne 0) {
       throw "OpenSSL could not create a self-signed certificate for '$CommonName'. $(($output | Out-String).Trim())"
     }
 
