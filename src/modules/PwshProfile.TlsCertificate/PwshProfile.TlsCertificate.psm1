@@ -4,8 +4,37 @@ function Invoke-TlsCertificateOpenSsl {
   $ErrorActionPreference = 'Continue'
   $PSNativeCommandUseErrorActionPreference = $false
   $inputText = ($InputLines -join "`n") + "`n"
-  $output = @($inputText | & $Command @Arguments 2>&1)
-  [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output }
+  $commandInfo = Microsoft.PowerShell.Core\Get-Command -Name $Command -ErrorAction Stop
+  if ($commandInfo.CommandType -ne 'Application') {
+    $output = @($inputText | & $Command @Arguments 2>&1)
+    return [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output }
+  }
+  $info = [Diagnostics.ProcessStartInfo]::new()
+  $info.FileName = $commandInfo.Source
+  $info.UseShellExecute = $false
+  $info.CreateNoWindow = $true
+  $info.RedirectStandardInput = $true
+  $info.RedirectStandardOutput = $true
+  $info.RedirectStandardError = $true
+  if ($PSVersionTable.PSVersion.Major -ge 6) {
+    foreach ($argument in $Arguments) { $info.ArgumentList.Add($argument) }
+  } else {
+    $quoted = foreach ($argument in $Arguments) {
+      '"' + [regex]::Replace([regex]::Replace($argument, '(\\*)"', '$1$1\"'), '(\\+)$', '$1$1') + '"'
+    }
+    $info.Arguments = $quoted -join ' '
+  }
+  $process = [Diagnostics.Process]::Start($info)
+  try {
+    $stdout = $process.StandardOutput.ReadToEndAsync()
+    $stderr = $process.StandardError.ReadToEndAsync()
+    $inputBytes = [Text.UTF8Encoding]::new($false).GetBytes($inputText)
+    $process.StandardInput.BaseStream.Write($inputBytes, 0, $inputBytes.Length)
+    $process.StandardInput.BaseStream.Close()
+    $process.WaitForExit()
+    $text = $stdout.GetAwaiter().GetResult() + "`n" + $stderr.GetAwaiter().GetResult()
+    [pscustomobject]@{ ExitCode = $process.ExitCode; Output = @($text -split '\r?\n' | Where-Object { $_ }) }
+  } finally { $process.Dispose() }
 }
 
 function Get-TlsCertificateFingerprint {
