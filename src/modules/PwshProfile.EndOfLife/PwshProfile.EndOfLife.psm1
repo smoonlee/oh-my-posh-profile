@@ -42,8 +42,8 @@ function Test-EndOfLifeDateIsActive {
   }
 
   $date = [datetime]::MinValue
-  if ([datetime]::TryParse($text, [ref]$date)) {
-    return $date.Date -gt $CurrentDate.Date
+  if ([datetime]::TryParseExact($text, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$date)) {
+    return $date.Date -ge $CurrentDate.Date
   }
 
   return $false
@@ -108,7 +108,8 @@ function Get-EolInfo {
       The endoflife.date product slug, such as powershell, dotnet, nodejs, or ubuntu.
 
   .PARAMETER ActiveSupport
-      Return only cycles whose EOL value is empty, false, or a future date.
+      Return only cycles whose EOL value is empty, false, today, or a future
+      date. Date boundaries use UTC; support includes the listed EOL date.
 
   .PARAMETER LtsSupport
       Return only cycles marked as LTS by endoflife.date.
@@ -691,7 +692,7 @@ function Get-EolInfo {
       throw "Unable to retrieve end-of-life information for '$ProductName'. $($_.Exception.Message)"
     }
 
-    $currentDate = Get-Date
+    $currentDate = [datetime]::UtcNow
     $results = foreach ($entry in @($entries)) {
       $isLts = Test-EndOfLifeLtsValue -Value $entry.lts
       $isSupported = Test-EndOfLifeDateIsActive -Value $entry.eol -CurrentDate $currentDate

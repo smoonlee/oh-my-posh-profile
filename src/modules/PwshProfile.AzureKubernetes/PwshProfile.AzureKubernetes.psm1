@@ -123,9 +123,15 @@ function Get-AksVersion {
     throw "Azure CLI returned invalid JSON for AKS versions in '$Location'. $($_.Exception.Message)"
   }
 
-  if ($null -ne $result.orchestrators) {
+  $invalidResponse = "Azure CLI returned an invalid AKS version response for '$Location'."
+  if ($result -isnot [pscustomobject]) { throw $invalidResponse }
+  if ($result.PSObject.Properties['orchestrators']) {
+    if ($result.orchestrators -isnot [array]) { throw $invalidResponse }
     # Older az CLI versions return a flat orchestrators array with per-patch metadata.
     foreach ($version in @($result.orchestrators)) {
+      if ([string]$version.orchestratorVersion -notmatch '\A\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?\z') {
+        throw $invalidResponse
+      }
       $isPreview = [bool]$version.isPreview
       if ($isPreview -and -not $IncludePreview) {
         continue
@@ -141,15 +147,22 @@ function Get-AksVersion {
     return
   }
 
+  if (-not $result.PSObject.Properties['values'] -or $result.values -isnot [array]) {
+    throw $invalidResponse
+  }
   # Current az CLI versions group patch versions under each minor version entry.
   foreach ($minorVersion in @($result.values)) {
+    if ($minorVersion.patchVersions -isnot [pscustomobject]) { throw $invalidResponse }
     $isPreview = [bool]$minorVersion.isPreview
     if ($isPreview -and -not $IncludePreview) {
       continue
     }
     $isDefault = [bool]$minorVersion.isDefault
 
-    foreach ($patchVersion in @($minorVersion.patchVersions.PSObject.Properties.Name)) {
+    foreach ($patchVersion in @($minorVersion.patchVersions.PSObject.Properties | Select-Object -ExpandProperty Name)) {
+      if ($patchVersion -notmatch '\A\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?\z') {
+        throw $invalidResponse
+      }
       [pscustomobject][ordered]@{
         Location = $Location
         KubernetesVersion = $patchVersion
