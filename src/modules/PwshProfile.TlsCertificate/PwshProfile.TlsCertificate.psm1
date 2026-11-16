@@ -209,7 +209,7 @@ function Get-TlsCertificateFromEndpoint {
     }
 
     $validationCallback = {
-      param($sender, $certificate, $chain, $sslPolicyErrors)
+      param($callbackSender, $certificate, $chain, $sslPolicyErrors)
       $capturedChain.Clear()
       if ($chain -and $chain.ChainElements) {
         foreach ($element in $chain.ChainElements) {

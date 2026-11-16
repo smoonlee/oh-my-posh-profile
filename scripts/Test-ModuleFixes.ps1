@@ -198,7 +198,8 @@ $aks = Get-Module PwshProfile.AzureKubernetes
 foreach ($fixture in @(
     '{"unexpectedSchema":true}', 'null', '[]', '{"values":null}', '{"values":{}}',
     '{"values":[{}]}', '{"values":[{"patchVersions":[]}]}', '{"values":[{"patchVersions":{"invalid":{}}}]}',
-    '{"orchestrators":{}}', '{"orchestrators":[{}]}'
+    '{"orchestrators":{}}', '{"orchestrators":[{}]}', '{"orchestrators":[{"orchestratorVersion":"not-a-version"}]}',
+    '{"values":[{"patchVersions":{"not-a-version":{}}}]}'
   )) {
   & $aks { param($json) $script:AksFixture = $json } $fixture
   Assert-Throws { Get-AksVersion eastus } '*invalid AKS version response*'

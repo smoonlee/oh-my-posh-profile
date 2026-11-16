@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PwshProfile.AzureImages.psm1'
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '1.0.1'
     GUID              = '8718491f-9629-4aeb-ae5a-d0563ad75628'
     Author            = 'smoonlee'
     Description       = 'Optional Pwsh Profile module for discovering Azure VM images and formatting Bicep image references.'
