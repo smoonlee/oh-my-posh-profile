@@ -136,7 +136,8 @@ try {
     $info.RedirectStandardOutput = $true; $info.RedirectStandardError = $true
     foreach ($argument in @('s_server', '-accept', "127.0.0.1:$port", '-cert', $cert.CertificatePath, '-key', $cert.PrivateKeyPath)) { $info.ArgumentList.Add($argument) }
     $server = [Diagnostics.Process]::Start($info)
-    $outRead = $server.StandardOutput.ReadToEndAsync()
+    $serverOutputLines = [System.Collections.Generic.List[string]]::new()
+    $outRead = $server.StandardOutput.ReadLineAsync()
     $errRead = $server.StandardError.ReadToEndAsync()
     $loopbackFailure = $null
     $serverOutput = ''
@@ -147,16 +148,16 @@ try {
       $serverReady = $false
       while (-not $serverReady -and $startupTimer.Elapsed.TotalSeconds -lt 5) {
         if ($server.HasExited) { throw "OpenSSL test server exited with code $($server.ExitCode)." }
-        $probe = [Net.Sockets.TcpClient]::new()
-        try {
-          $connectTask = $probe.ConnectAsync('127.0.0.1', $port)
-          $serverReady = $connectTask.Wait(250) -and $probe.Connected
-        } catch {
-          $serverReady = $false
-        } finally { $probe.Dispose() }
-        if (-not $serverReady) { Start-Sleep -Milliseconds 50 }
+        if ($outRead.Wait(100)) {
+          $line = $outRead.GetAwaiter().GetResult()
+          if ($null -eq $line) { throw 'OpenSSL test server closed stdout before listening.' }
+          $serverOutputLines.Add($line)
+          $serverReady = $line.Trim() -eq 'ACCEPT'
+          if (-not $serverReady) { $outRead = $server.StandardOutput.ReadLineAsync() }
+        }
       }
       if (-not $serverReady) { throw "OpenSSL test server did not listen on port $port within 5 seconds." }
+      $outRead = $server.StandardOutput.ReadToEndAsync()
       $remote = Get-TlsCertificate 127.0.0.1 -Port $port -ShowChain -TimeoutSec 5
       if ($remote.Thumbprint -ne $hash -or @($remote.Chain).Count -lt 1) { throw 'Live local TLS fingerprint/chain mismatch' }
       'PASS: real loopback TLS handshake, chain data, and matching remote/file fingerprint.'
@@ -167,9 +168,10 @@ try {
       if (-not $server.HasExited) { $server.Kill(); $null = $server.WaitForExit(1000) }
       if ($server.HasExited) {
         $serverExitCode = $server.ExitCode
-        if ($outRead.Wait(1000)) { $serverOutput = $outRead.GetAwaiter().GetResult() }
+        if ($outRead.Wait(1000)) { $serverOutputLines.Add($outRead.GetAwaiter().GetResult()) }
         if ($errRead.Wait(1000)) { $serverError = $errRead.GetAwaiter().GetResult() }
       }
+      $serverOutput = $serverOutputLines -join "`n"
       $server.Dispose()
     }
     if ($loopbackFailure) {
