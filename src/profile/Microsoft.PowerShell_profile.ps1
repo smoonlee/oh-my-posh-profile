@@ -3,7 +3,7 @@
     PowerShell profile configuration.
 #>
 
-$script:PwshProfileVersion = '4.0.1'
+$script:PwshProfileVersion = '4.0.2'
 $script:PwshProfileRepository = 'smoonlee/oh-my-posh-profile'
 $script:PwshProfileStorePath = Join-Path $env:APPDATA 'PwshProfile'
 $global:PwshProfileVersion = $script:PwshProfileVersion
@@ -689,9 +689,28 @@ function Start-PwshProfileUpdateCheck {
 
   $checkedAt = [DateTimeOffset]::MinValue
   if ($state -and $state.checkedAt) {
-    [void][DateTimeOffset]::TryParse([string]$state.checkedAt, [ref]$checkedAt)
+    if ($state.checkedAt -is [DateTimeOffset]) {
+      $checkedAt = $state.checkedAt
+    } elseif ($state.checkedAt -is [datetime]) {
+      $checkedAt = if ($state.checkedAt.Kind -eq [DateTimeKind]::Unspecified) {
+        [DateTimeOffset]::new($state.checkedAt, [TimeSpan]::Zero)
+      } else {
+        [DateTimeOffset]$state.checkedAt
+      }
+    } else {
+      [void][DateTimeOffset]::TryParse(
+        [string]$state.checkedAt,
+        [Globalization.CultureInfo]::InvariantCulture,
+        [Globalization.DateTimeStyles]::AssumeUniversal,
+        [ref]$checkedAt
+      )
+    }
   }
-  if ($state -and $state.channel -eq $channel -and
+  if ($state -and $state.channel -eq $channel -and $state.updateAttemptId) {
+    if ([DateTimeOffset]::UtcNow - $checkedAt -lt [TimeSpan]::FromMinutes(15)) {
+      return
+    }
+  } elseif ($state -and $state.channel -eq $channel -and
     [DateTimeOffset]::UtcNow - $checkedAt -lt [TimeSpan]::FromDays(1)) {
     return
   }
@@ -807,7 +826,7 @@ catch {
 $json = $state | ConvertTo-Json -Depth 3
 $temporaryPath = "$statePath.$PID.tmp"
 [System.IO.File]::WriteAllText($temporaryPath, "$json`n", [System.Text.UTF8Encoding]::new($false))
-Move-Item -LiteralPath $temporaryPath -Destination $statePath -Force
+Move-Item -LiteralPath $temporaryPath -Destination $statePath -Force -ErrorAction Stop
 '@
   $checkScript = $checkTemplate.
   Replace('__COMPARE_FUNCTION_BODY__', $compareFunctionBody).
@@ -968,8 +987,15 @@ function global:Invoke-PwshProfileCompletionProcess {
 
     # Argcomplete writes candidates to its temporary file. Drain diagnostic
     # pipes concurrently so a full pipe cannot stall the child until timeout.
-    $stdoutDrain = $process.StandardOutput.BaseStream.CopyToAsync([System.IO.Stream]::Null)
-    $stderrDrain = $process.StandardError.BaseStream.CopyToAsync([System.IO.Stream]::Null)
+    if (-not [System.Threading.Tasks.Task]::WaitAll(
+        [System.Threading.Tasks.Task[]]@(
+          $process.StandardOutput.BaseStream.CopyToAsync([System.IO.Stream]::Null)
+          $process.StandardError.BaseStream.CopyToAsync([System.IO.Stream]::Null)
+        ),
+        $TimeoutMilliseconds
+      )) {
+      return $false
+    }
     if (-not $process.WaitForExit($TimeoutMilliseconds)) { return $false }
     return $process.ExitCode -eq 0
   } catch {

@@ -4,7 +4,7 @@ $parseErrors = $null
 $setupAst = [System.Management.Automation.Language.Parser]::ParseFile(
     (Join-Path $PSScriptRoot '../src/Invoke-PwshProfileSetup.ps1'), [ref]$tokens, [ref]$parseErrors)
 if ($parseErrors.Count) { throw ($parseErrors | Out-String) }
-foreach ($functionName in @('Invoke-PwshProfileUpdateCore', 'Test-PwshProfileScriptFile', 'Install-PwshProfileAtomicFile', 'Compare-PwshProfileSemanticVersion', 'Protect-PwshProfileNewerModules')) {
+foreach ($functionName in @('Invoke-PwshProfileUpdateCore', 'Install-PwshProfileLocalSource', 'Test-PwshProfileScriptFile', 'Install-PwshProfileAtomicFile', 'Compare-PwshProfileSemanticVersion', 'Protect-PwshProfileNewerModules')) {
     $definition = $setupAst.Find({
             param($node)
             $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $functionName
@@ -147,6 +147,70 @@ try {
             }
             "PASS: $scenario bundle rejected without installing files."
         }
+    }
+    $script:StoreRoot = Join-Path $testRoot 'local-path-resolution'
+    $script:Messages.Clear()
+    $sourceRoot = Join-Path $PSScriptRoot '../src'
+    if ((Install-PwshProfileLocalSource -SourceRoot $sourceRoot -Bootstrap) -ne $true) {
+        throw "Fresh local installation failed: $($script:Messages -join '; ')"
+    }
+    $script:ProfileDestination = Join-Path $script:StoreRoot 'Microsoft.PowerShell_profile.ps1'
+    function Get-FileHash {
+        [CmdletBinding(DefaultParameterSetName = 'Path')]
+        param(
+            [Parameter(ParameterSetName = 'Path')][string]$LiteralPath,
+            [Parameter(ParameterSetName = 'Stream')][System.IO.Stream]$InputStream,
+            [string]$Algorithm = 'SHA256'
+        )
+        if ($PSCmdlet.ParameterSetName -eq 'Path') {
+            if ($LiteralPath -eq $script:ProfileDestination) {
+                throw 'The name of the file cannot be resolved by the system.'
+            }
+            Microsoft.PowerShell.Utility\Get-FileHash -LiteralPath $LiteralPath -Algorithm $Algorithm
+        } else {
+            Microsoft.PowerShell.Utility\Get-FileHash -InputStream $InputStream -Algorithm $Algorithm
+        }
+    }
+    try {
+        foreach ($scenario in @('unchanged', 'changed')) {
+            if ($scenario -eq 'changed') {
+                [IO.File]::AppendAllText($script:ProfileDestination, "`n# Local test change`n")
+            }
+            $script:Messages.Clear()
+            if ((Install-PwshProfileLocalSource -SourceRoot $sourceRoot -Bootstrap) -ne $true) {
+                throw "Local $scenario installation must tolerate provider path-resolution failures: $($script:Messages -join '; ')"
+            }
+            $expected = Microsoft.PowerShell.Utility\Get-FileHash -LiteralPath (Join-Path $sourceRoot 'profile/Microsoft.PowerShell_profile.ps1')
+            $actual = Microsoft.PowerShell.Utility\Get-FileHash -LiteralPath $script:ProfileDestination
+            if ($actual.Hash -ne $expected.Hash) { throw 'Installed local profile hash mismatch.' }
+            if ($scenario -eq 'unchanged' -and $script:Messages -notcontains "Already verified: $script:ProfileDestination") {
+                throw 'An unchanged local profile must not be replaced.'
+            }
+            "PASS: local $scenario installation hashes readable files without provider path resolution."
+        }
+        $versionPath = Join-Path $script:StoreRoot 'version.json'
+        $previousVersion = [IO.File]::ReadAllText($versionPath)
+        $previousProfile = [IO.File]::ReadAllText($script:ProfileDestination)
+        $profileLock = [IO.File]::Open($script:ProfileDestination, 'Open', 'ReadWrite', 'None')
+        try {
+            $script:Messages.Clear()
+            if ((Install-PwshProfileLocalSource -SourceRoot $sourceRoot -Bootstrap) -ne $false) {
+                throw 'An unreadable existing profile must stop local installation.'
+            }
+            if ($script:Messages[-1] -notlike '*Local installation failed*' -or
+                $script:Messages[-1] -like '*null-valued expression*') {
+                throw 'An unreadable profile must report the original file read error.'
+            }
+        } finally {
+            $profileLock.Dispose()
+        }
+        if ([IO.File]::ReadAllText($versionPath) -ne $previousVersion -or
+            [IO.File]::ReadAllText($script:ProfileDestination) -ne $previousProfile) {
+            throw 'An unreadable profile must not change installed profile content or version metadata.'
+        }
+        'PASS: unreadable existing profile retains the original error and leaves installed files unchanged.'
+    } finally {
+        Remove-Item Function:/Get-FileHash
     }
 } finally {
     Remove-Item -LiteralPath $testRoot -Recurse -Force -ErrorAction SilentlyContinue

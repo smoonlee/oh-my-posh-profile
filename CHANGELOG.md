@@ -7,6 +7,21 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [4.0.2] - 2026-11-16
+
+### Fixed
+
+- Hash existing local-installation files through a file stream to avoid
+  provider path-resolution failures on redirected profile paths, and preserve
+  the original error when an installed file cannot be read.
+- Roll back Nerd Font files, registry registrations, and install metadata when
+  replacement fails; retain recovery files if rollback is incomplete.
+- Preserve existing profile contents when symbolic-link setup fails, and
+  report profile configuration and update failures instead of treating them as
+  success.
+- Parse update-check timestamps invariantly, retry incomplete checks sooner,
+  and bound profile completion output draining.
+
 ## [4.0.1] - 2026-11-10
 
 ### Added

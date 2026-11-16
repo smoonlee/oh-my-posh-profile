@@ -623,15 +623,15 @@ try {
             [pscustomobject]@{ Items = @([pscustomobject]$windowsPrice); NextPageLink = $null }
         )
         $prices = & $computeModule { Get-AzureComputeRetailPrices uksouth USD }
-        Assert-Discovery ($prices['Standard_D4s_v5|Linux'].Hourly -eq 0.2 -and $prices['Standard_D4s_v5|Windows'].Hourly -eq 0.4) 'PAYG must distinguish base Linux and Windows rates and exclude Spot.'
+        Assert-Discovery ($prices['Standard_D4s_v5|Linux'].Hourly -eq [decimal]::Parse('0.2', [Globalization.CultureInfo]::InvariantCulture) -and $prices['Standard_D4s_v5|Windows'].Hourly -eq [decimal]::Parse('0.4', [Globalization.CultureInfo]::InvariantCulture)) 'PAYG must distinguish base Linux and Windows rates and exclude Spot.'
         Assert-Discovery ($global:AzureDiscoveryTestState.PriceCalls -eq 2) 'Pricing must follow pagination.'
         $null = & $computeModule { Get-AzureComputeRetailPrices UKSouth usd }
         Assert-Discovery ($global:AzureDiscoveryTestState.PriceCalls -eq 2) 'Region and currency cache keys must be case insensitive.'
         $priced = @(Get-AzureVmSize uksouth -IncludePrice)
         $linux = $priced | Where-Object Name -EQ Standard_D4s_v5
-        Assert-Discovery ($priced.Count -eq 5 -and $linux.RetailHourly -is [decimal] -and $linux.RetailHourly -eq 0.2 -and $linux.RetailMonthly -eq 146) 'Optional retail estimates must preserve all SKUs and calculate 730-hour months.'
+        Assert-Discovery ($priced.Count -eq 5 -and $linux.RetailHourly -is [decimal] -and $linux.RetailHourly -eq [decimal]::Parse('0.2', [Globalization.CultureInfo]::InvariantCulture) -and $linux.RetailMonthly -eq [decimal]::Parse('146', [Globalization.CultureInfo]::InvariantCulture)) 'Optional retail estimates must preserve all SKUs and calculate 730-hour months.'
         $windows = Get-AzureVmSize uksouth -Name Standard_D4s_v5 -IncludePrice -PriceOS Windows
-        Assert-Discovery ($windows.RetailHourly -eq 0.4 -and $windows.RetailMonthly -eq 292 -and $windows.PriceOS -eq 'Windows' -and $windows.Currency -eq 'USD') 'Windows pricing must not use Linux rates.'
+        Assert-Discovery ($windows.RetailHourly -eq [decimal]::Parse('0.4', [Globalization.CultureInfo]::InvariantCulture) -and $windows.RetailMonthly -eq [decimal]::Parse('292', [Globalization.CultureInfo]::InvariantCulture) -and $windows.PriceOS -eq 'Windows' -and $windows.Currency -eq 'USD') 'Windows pricing must not use Linux rates.'
         Assert-Discovery ($global:AzureDiscoveryTestState.PriceCalls -eq 2) 'A regional cache must be shared across SKUs and OS selections.'
         $unpriced = @($priced | Where-Object PriceStatus -EQ Unknown)
         Assert-Discovery ($unpriced.Count -eq 4 -and @($unpriced | Where-Object { $null -ne $_.RetailHourly -or $null -ne $_.RetailMonthly }).Count -eq 0) 'Missing prices must remain Unknown with null numeric values.'
@@ -650,7 +650,7 @@ try {
         $gbp.retailPrice = 0.15
         $global:AzureDiscoveryTestState.PricePages = @([pscustomobject]@{ Items = @([pscustomobject]$gbp); NextPageLink = $null })
         $british = Get-AzureVmSize uksouth -Name Standard_D4s_v5 -IncludePrice -Currency gbp
-        Assert-Discovery ($british.RetailHourly -eq 0.15 -and $british.Currency -eq 'GBP') 'Failed requests must not poison the cache or mix currencies.'
+        Assert-Discovery ($british.RetailHourly -eq [decimal]::Parse('0.15', [Globalization.CultureInfo]::InvariantCulture) -and $british.Currency -eq 'GBP') 'Failed requests must not poison the cache or mix currencies.'
         foreach ($width in @(80, 120, 160)) {
             $formatted = $priced | Out-String -Width $width
             Assert-Discovery ($formatted.Contains('PAYG/hour') -and $formatted.Contains('Est/730h') -and $formatted.Contains('0.20000') -and $formatted.Contains('Unknown')) "Default pricing display must retain estimates and unknown values at width $width."
@@ -678,7 +678,7 @@ try {
         $global:AzureDiscoveryTestState.PricePages = @([pscustomobject]@{ Items = @([pscustomobject]$basePrice) + $distractors; NextPageLink = $null })
         & $computeModule { $script:AzureComputePriceCache.Clear() }
         $clean = Get-AzureVmSize uksouth -Name Standard_D4s_v5 -IncludePrice
-        Assert-Discovery ($clean.RetailHourly -eq 0.2) 'Only current, matching, primary hourly PAYG base-compute meters may be used.'
+        Assert-Discovery ($clean.RetailHourly -eq [decimal]::Parse('0.2', [Globalization.CultureInfo]::InvariantCulture)) 'Only current, matching, primary hourly PAYG base-compute meters may be used.'
         $conflict = $basePrice.Clone()
         $conflict.retailPrice = 0.3
         $global:AzureDiscoveryTestState.PricePages[0].Items += [pscustomobject]$conflict
@@ -691,13 +691,13 @@ try {
         $global:AzureDiscoveryTestState.PricePages[0].Items += [pscustomobject]$newPrice
         & $computeModule { $script:AzureComputePriceCache['uksouth|USD'].Expires = [datetime]::UtcNow.AddSeconds(-1) }
         $currentPrice = Get-AzureVmSize uksouth -Name Standard_D4s_v5 -IncludePrice
-        Assert-Discovery ($currentPrice.RetailHourly -eq 0.00123 -and $currentPrice.'PAYG/hour' -eq '0.00123' -and $currentPrice.RetailMonthly -eq 0.90) 'Expired cache entries must refresh and select the newest effective price without rounding hourly data.'
+        Assert-Discovery ($currentPrice.RetailHourly -eq [decimal]::Parse('0.00123', [Globalization.CultureInfo]::InvariantCulture) -and $currentPrice.'PAYG/hour' -eq '0.00123' -and $currentPrice.RetailMonthly -eq [decimal]::Parse('0.90', [Globalization.CultureInfo]::InvariantCulture)) 'Expired cache entries must refresh and select the newest effective price without rounding hourly data.'
         $regionPrice = $basePrice.Clone()
         $regionPrice.armRegionName = 'eastus'
         $regionPrice.retailPrice = 0.5
         $global:AzureDiscoveryTestState.PricePages = @([pscustomobject]@{ Items = @([pscustomobject]$regionPrice); NextPageLink = $null })
         $eastPrices = & $computeModule { Get-AzureComputeRetailPrices eastus USD }
-        Assert-Discovery ($eastPrices['Standard_D4s_v5|Linux'].Hourly -eq 0.5) 'The cache must not mix regions.'
+        Assert-Discovery ($eastPrices['Standard_D4s_v5|Linux'].Hourly -eq [decimal]::Parse('0.5', [Globalization.CultureInfo]::InvariantCulture)) 'The cache must not mix regions.'
         foreach ($badPage in @(
                 [pscustomobject]@{ Items = @([pscustomobject]$basePrice); NextPageLink = 'https://example.com/prices' }
                 [pscustomobject]@{ Items = @([pscustomobject]$basePrice); NextPageLink = 'https://prices.azure.com/api/retail/prices?page=2' }
