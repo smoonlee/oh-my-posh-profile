@@ -68,8 +68,13 @@ try {
   $wrong = New-TestSecureString 'WrongSyntheticPassword'
   Assert-Throws { Split-PfxCertificate $pfx.OutputPath -Password $wrong -Force } '*OpenSSL could not*'
   if ((Get-FileHash $split.PrivateKeyPath).Hash -ne $splitHash) { throw 'Failed split changed output' }
-  $split = Split-PfxCertificate $pfx.OutputPath -Password $password -Force
-  if (-not (Test-CertificateKeyMatch $split.CertificatePath $split.PrivateKeyPath -KeyPassword $password).IsMatch) { throw 'Split key mismatch' }
+  $split = Split-PfxCertificate $pfx.OutputPath -Password $password -Force -NoKeyPassword:$FileOperationsOnly
+  $keyMatch = if ($FileOperationsOnly) {
+    Test-CertificateKeyMatch $split.CertificatePath $split.PrivateKeyPath
+  } else {
+    Test-CertificateKeyMatch $split.CertificatePath $split.PrivateKeyPath -KeyPassword $password
+  }
+  if (-not $keyMatch.IsMatch) { throw 'Split key mismatch' }
   $originalEncoding = $OutputEncoding.CodePage
   $unicodeText = 'Synthetic' + [char]0xE9 + 'Regression42'
   $unicodePassword = ConvertTo-SecureString $unicodeText -AsPlainText -Force
