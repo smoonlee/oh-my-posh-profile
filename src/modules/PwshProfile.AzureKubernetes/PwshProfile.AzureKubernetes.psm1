@@ -123,9 +123,16 @@ function Get-AksVersion {
     throw "Azure CLI returned invalid JSON for AKS versions in '$Location'. $($_.Exception.Message)"
   }
 
-  if ($null -ne $result.orchestrators) {
+  $invalidResponse = "Azure CLI returned an invalid AKS version response for '$Location'."
+  if ($result -isnot [pscustomobject]) { throw $invalidResponse }
+  $orchestratorsProperty = $result.PSObject.Properties['orchestrators']
+  if ($orchestratorsProperty) {
+    if ($orchestratorsProperty.Value -isnot [array]) { throw $invalidResponse }
     # Older az CLI versions return a flat orchestrators array with per-patch metadata.
-    foreach ($version in @($result.orchestrators)) {
+    foreach ($version in @($orchestratorsProperty.Value)) {
+      if ($null -eq $version -or [string]$version.orchestratorVersion -notmatch '\A\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?\z') {
+        throw $invalidResponse
+      }
       $isPreview = [bool]$version.isPreview
       if ($isPreview -and -not $IncludePreview) {
         continue
@@ -141,15 +148,28 @@ function Get-AksVersion {
     return
   }
 
+  $valuesProperty = $result.PSObject.Properties['values']
+  if (-not $valuesProperty -or $valuesProperty.Value -isnot [array]) {
+    throw $invalidResponse
+  }
   # Current az CLI versions group patch versions under each minor version entry.
-  foreach ($minorVersion in @($result.values)) {
+  foreach ($minorVersion in @($valuesProperty.Value)) {
+    if ($minorVersion -isnot [pscustomobject]) { throw $invalidResponse }
+    $patchVersionsProperty = $minorVersion.PSObject.Properties['patchVersions']
+    if (-not $patchVersionsProperty -or $patchVersionsProperty.Value -isnot [pscustomobject]) {
+      throw $invalidResponse
+    }
     $isPreview = [bool]$minorVersion.isPreview
     if ($isPreview -and -not $IncludePreview) {
       continue
     }
     $isDefault = [bool]$minorVersion.isDefault
 
-    foreach ($patchVersion in @($minorVersion.patchVersions.PSObject.Properties.Name)) {
+    $patchVersions = @($patchVersionsProperty.Value.PSObject.Properties | ForEach-Object { $_.Name })
+    foreach ($patchVersion in $patchVersions) {
+      if ($patchVersion -notmatch '\A\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?\z') {
+        throw $invalidResponse
+      }
       [pscustomobject][ordered]@{
         Location = $Location
         KubernetesVersion = $patchVersion

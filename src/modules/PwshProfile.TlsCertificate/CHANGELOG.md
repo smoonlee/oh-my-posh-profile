@@ -1,5 +1,14 @@
 # PwshProfile.TlsCertificate changelog
 
+## [1.0.3] - 2026-11-11
+
+- Stage PFX creation and preserve an existing destination when OpenSSL fails,
+  including forced replacements.
+- Pass passwords to OpenSSL as UTF-8 on PowerShell 7 and Windows PowerShell 5.1,
+  without changing the caller's encoding or exposing passwords in arguments.
+- Capture normal OpenSSL stderr output and use the native exit code so progress
+  output does not terminate certificate operations on Windows PowerShell 5.1.
+
 ## [1.0.2] - 2026-09-08
 
 - `-ShowChain` now prints the certificate chain table automatically instead of

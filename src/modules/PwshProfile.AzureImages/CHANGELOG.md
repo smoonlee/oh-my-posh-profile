@@ -1,5 +1,9 @@
 # PwshProfile.AzureImages changelog
 
+## [1.0.1] - 2026-11-16
+
+- Normalize lifecycle API responses so a single cycle is handled like an array response.
+
 ## [1.0.0]
 
 - Add regional image SKU discovery with Windows Server and dynamic Canonical Ubuntu presets.

@@ -41,6 +41,12 @@ jobs:
           $destination = Join-Path $bin 'oh-my-posh.exe'
           Invoke-WebRequest $asset.browser_download_url -OutFile $destination
           if ((Get-FileHash $destination -Algorithm SHA256).Hash -ine $expectedHash) { throw 'OMP hash mismatch.' }
+          winget install --id FireDaemon.OpenSSL --exact --silent --accept-source-agreements --accept-package-agreements --disable-interactivity
+          if ($LASTEXITCODE -ne 0) { throw 'Could not install FireDaemon.OpenSSL.' }
+          $openssl = Get-ChildItem -Path (Join-Path $env:ProgramFiles 'FireDaemon OpenSSL*\bin\openssl.exe') -File |
+            Sort-Object FullName -Descending | Select-Object -First 1
+          if (-not $openssl) { throw 'Could not find the installed FireDaemon OpenSSL executable.' }
+          "FIREDAEMON_OPENSSL_EXE=$($openssl.FullName)" >> $env:GITHUB_ENV
           $bin >> $env:GITHUB_PATH
           'C:\Program Files\Git\usr\bin' >> $env:GITHUB_PATH
           python -m pip install PyYAML==6.0.3
@@ -53,6 +59,9 @@ jobs:
 
       - name: PowerShell 7 regression tests
         run: |
+          $env:PATH = "$(Split-Path $env:FIREDAEMON_OPENSSL_EXE);$env:PATH"
+          $selectedOpenSsl = Get-Command openssl -ErrorAction Stop
+          if ([IO.Path]::GetFullPath($selectedOpenSsl.Source) -ne [IO.Path]::GetFullPath($env:FIREDAEMON_OPENSSL_EXE)) { throw 'Regression tests must use FireDaemon.OpenSSL.' }
           Get-Command oh-my-posh, openssl -ErrorAction Stop | Select-Object Name, Source
           $tests = @(
             'Test-ReleaseWorkflows.ps1', 'Test-ModuleReleases.ps1', 'Test-RuntimeGuards.ps1', 'Test-UpdateTransactions.ps1',
@@ -68,10 +77,15 @@ jobs:
 
       - name: Windows PowerShell 5.1 fallback checks
         run: |
+          $env:PATH = "$(Split-Path $env:FIREDAEMON_OPENSSL_EXE);$env:PATH"
+          $selectedOpenSsl = Get-Command openssl -ErrorAction Stop
+          if ([IO.Path]::GetFullPath($selectedOpenSsl.Source) -ne [IO.Path]::GetFullPath($env:FIREDAEMON_OPENSSL_EXE)) { throw 'Regression tests must use FireDaemon.OpenSSL.' }
           & "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File ./scripts/Test-RuntimeGuards.ps1
           if ($LASTEXITCODE -ne 0) { throw 'PowerShell 5.1 fallback checks failed.' }
           & "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File ./scripts/Test-AzureDiscovery.ps1
           if ($LASTEXITCODE -ne 0) { throw 'PowerShell 5.1 Azure discovery checks failed.' }
+          & "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File ./scripts/Test-ModuleFixes.ps1 -FileOperationsOnly
+          if ($LASTEXITCODE -ne 0) { throw 'PowerShell 5.1 module file-operation checks failed.' }
 
       - name: Render prompt theme
         run: |

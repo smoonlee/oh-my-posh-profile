@@ -92,6 +92,9 @@ function global:Invoke-RestMethod {
     }
     $product = [IO.Path]::GetFileNameWithoutExtension($Uri.AbsolutePath)
     if ($global:AzureDiscoveryTestState.LifecycleResponses.ContainsKey($product)) {
+        if ($global:AzureDiscoveryTestState.ScalarLifecycleProduct -eq $product) {
+            return $global:AzureDiscoveryTestState.LifecycleResponses[$product][0]
+        }
         return , $global:AzureDiscoveryTestState.LifecycleResponses[$product]
     }
     return , @([pscustomobject]@{ cycle = 'test'; releaseDate = '2000-01-01'; eol = '2999-01-01' })
@@ -113,6 +116,14 @@ try {
                 [pscustomobject]@{ cycle = '10-21h2-e-lts'; releaseDate = '2000-01-01'; eol = '2999-01-01' }
             )
         }
+        $global:AzureDiscoveryTestState.LifecycleResponses['single-cycle-test'] = @(
+            [pscustomobject]@{ cycle = 'only'; releaseDate = '2025-01-01'; eol = $false }
+        )
+        $global:AzureDiscoveryTestState.ScalarLifecycleProduct = 'single-cycle-test'
+        $singleCycle = @(& $imageModule { Get-AzureImageLifecycleData -Product 'single-cycle-test' })
+        Assert-Discovery ($singleCycle.Count -eq 1 -and $singleCycle[0].Cycle -eq 'only') 'A single lifecycle cycle must survive Invoke-RestMethod pipeline enumeration.'
+        $global:AzureDiscoveryTestState.Remove('ScalarLifecycleProduct')
+        $global:AzureDiscoveryTestState.LifecycleCalls = 0
         $global:AzureDiscoveryTestState.ImageOffers = [ordered]@{
             'Windows-10' = '[{"name":"22h2-pro"},{"name":"win10-21h2-ent-ltsc"}]'
             'windows-11' = '[{"name":"win11-23h2-pro"},{"name":"win11-23h2-ent"},{"name":"win11-99h2-pro"},{"name":"win11-23h2-ent-preview"},{"name":"unknown"}]'

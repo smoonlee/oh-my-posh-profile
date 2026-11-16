@@ -2,6 +2,12 @@
 
 All notable changes to the independently released module are documented here.
 
+## [1.4.1] - 2026-11-11
+
+- Treat the listed EOL date as the final supported day, matching Azure Images.
+- Evaluate lifecycle boundaries in UTC and parse API dates in an invariant
+  format to avoid local-time and culture-dependent differences.
+
 ## [1.4.0] - 2026-11-08
 
 - Refresh the supported product catalog and tab completion from endoflife.date.

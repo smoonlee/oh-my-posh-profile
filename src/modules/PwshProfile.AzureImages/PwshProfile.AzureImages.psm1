@@ -28950,7 +28950,6 @@ function Get-AzureImageLifecycleData {
     } else {
       $response = Invoke-RestMethod -Uri "https://endoflife.date/api/$Product.json" -Headers @{ 'User-Agent' = 'pwsh-profile-azure-images' } -TimeoutSec 30 -ErrorAction Stop
     }
-    if ($response -isnot [array]) { throw 'Expected a lifecycle array response.' }
     $entries = @($response)
     if (-not $entries.Count) { throw 'Empty lifecycle response.' }
     $cycles = @{}
