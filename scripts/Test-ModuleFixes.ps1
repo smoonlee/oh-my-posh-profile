@@ -75,26 +75,28 @@ try {
     Test-CertificateKeyMatch $split.CertificatePath $split.PrivateKeyPath -KeyPassword $password
   }
   if (-not $keyMatch.IsMatch) { throw 'Split key mismatch' }
-  $originalEncoding = $OutputEncoding.CodePage
-  $unicodeText = 'Synthetic' + [char]0xE9 + 'Regression42'
-  $unicodePassword = New-TestSecureString $unicodeText
-  $unicodeCert = New-SelfSignedTlsCertificate unicode.invalid -OutputDirectory $root -KeyPassword $unicodePassword -ErrorAction Stop
-  $unicodePfx = New-PfxCertificate -CertificatePath $unicodeCert.CertificatePath -PrivateKeyPath $unicodeCert.PrivateKeyPath -Password $unicodePassword -KeyPassword $unicodePassword
-  $unicodeSplit = Split-PfxCertificate $unicodePfx.OutputPath -Password $unicodePassword
-  if (-not (Test-CertificateKeyMatch $unicodeSplit.CertificatePath $unicodeSplit.PrivateKeyPath -KeyPassword $unicodePassword).IsMatch) {
-    throw 'Unicode password certificate round trip failed.'
+  if (-not $FileOperationsOnly) {
+    $originalEncoding = $OutputEncoding.CodePage
+    $unicodeText = 'Synthetic' + [char]0xE9 + 'Regression42'
+    $unicodePassword = New-TestSecureString $unicodeText
+    $unicodeCert = New-SelfSignedTlsCertificate unicode.invalid -OutputDirectory $root -KeyPassword $unicodePassword -ErrorAction Stop
+    $unicodePfx = New-PfxCertificate -CertificatePath $unicodeCert.CertificatePath -PrivateKeyPath $unicodeCert.PrivateKeyPath -Password $unicodePassword -KeyPassword $unicodePassword
+    $unicodeSplit = Split-PfxCertificate $unicodePfx.OutputPath -Password $unicodePassword
+    if (-not (Test-CertificateKeyMatch $unicodeSplit.CertificatePath $unicodeSplit.PrivateKeyPath -KeyPassword $unicodePassword).IsMatch) {
+      throw 'Unicode password certificate round trip failed.'
+    }
+    $utf8Accepted = & {
+      param($path, $passwordText)
+      $OutputEncoding = [Text.UTF8Encoding]::new($false)
+      $ErrorActionPreference = 'Continue'
+      $PSNativeCommandUseErrorActionPreference = $false
+      $null = @($passwordText + "`n") | & openssl pkcs12 -in $path -nokeys -noout -passin stdin 2>&1
+      $LASTEXITCODE -eq 0
+    } $unicodePfx.OutputPath $unicodeText
+    if (-not $utf8Accepted) { throw 'PFX must accept the requested Unicode password as UTF-8.' }
+    if ($OutputEncoding.CodePage -ne $originalEncoding) { throw 'Certificate commands changed caller output encoding.' }
+    'PASS: Unicode key/PFX passwords, terminating-error handling, and caller encoding preservation.'
   }
-  $utf8Accepted = & {
-    param($path, $passwordText)
-    $OutputEncoding = [Text.UTF8Encoding]::new($false)
-    $ErrorActionPreference = 'Continue'
-    $PSNativeCommandUseErrorActionPreference = $false
-    $null = @($passwordText + "`n") | & openssl pkcs12 -in $path -nokeys -noout -passin stdin 2>&1
-    $LASTEXITCODE -eq 0
-  } $unicodePfx.OutputPath $unicodeText
-  if (-not $utf8Accepted) { throw 'PFX must accept the requested Unicode password as UTF-8.' }
-  if ($OutputEncoding.CodePage -ne $originalEncoding) { throw 'Certificate commands changed caller output encoding.' }
-  'PASS: Unicode key/PFX passwords, terminating-error handling, and caller encoding preservation.'
   $tls = Get-Module PwshProfile.TlsCertificate
   # Load the plain (password-free) certificate file rather than the PFX: some
   # CI Windows runners fail ANY password-protected PKCS12 import via
