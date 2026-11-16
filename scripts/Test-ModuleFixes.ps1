@@ -15,6 +15,14 @@ function Assert-Throws([scriptblock]$Action, [string]$Pattern) {
   try { & $Action; throw 'Expected failure was not raised' }
   catch { if ($_.Exception.Message -notlike $Pattern) { throw } }
 }
+function New-TestSecureString([string] $Value) {
+  $secureString = [System.Security.SecureString]::new()
+  foreach ($character in $Value.ToCharArray()) {
+    $secureString.AppendChar($character)
+  }
+  $secureString.MakeReadOnly()
+  $secureString
+}
 function New-LoopbackTcpListener {
   # Some CI Windows runners block loopback socket construction outright,
   # raising a misleading "network password is not correct" WinSock error.
@@ -33,7 +41,7 @@ try {
   if ((Get-FileHash $cert.PrivateKeyPath).Hash -ne $keyHash) { throw 'Key was overwritten' }
   $cert = New-SelfSignedTlsCertificate test.invalid -DnsName test.invalid -OutputDirectory $root -Force
   if ((Get-FileHash $cert.PrivateKeyPath).Hash -eq $keyHash) { throw 'Force did not replace key' }
-  $password = ConvertTo-SecureString 'SyntheticRegression42' -AsPlainText -Force
+  $password = New-TestSecureString 'SyntheticRegression42'
   $pfx = New-PfxCertificate -CertificatePath $cert.CertificatePath -PrivateKeyPath $cert.PrivateKeyPath -Password $password
   $originalPfxHash = (Get-FileHash $pfx.OutputPath).Hash
   $tls = Get-Module PwshProfile.TlsCertificate
@@ -57,7 +65,7 @@ try {
   $split = Split-PfxCertificate $pfx.OutputPath -Password $password
   $splitHash = (Get-FileHash $split.PrivateKeyPath).Hash
   Assert-Throws { Split-PfxCertificate $pfx.OutputPath -Password $password } '*Use -Force*'
-  $wrong = ConvertTo-SecureString 'WrongSyntheticPassword' -AsPlainText -Force
+  $wrong = New-TestSecureString 'WrongSyntheticPassword'
   Assert-Throws { Split-PfxCertificate $pfx.OutputPath -Password $wrong -Force } '*OpenSSL could not*'
   if ((Get-FileHash $split.PrivateKeyPath).Hash -ne $splitHash) { throw 'Failed split changed output' }
   $split = Split-PfxCertificate $pfx.OutputPath -Password $password -Force
