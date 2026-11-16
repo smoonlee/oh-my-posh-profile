@@ -133,9 +133,11 @@ try {
     $info = [Diagnostics.ProcessStartInfo]::new()
     $info.FileName = (Get-Command openssl).Source
     $info.UseShellExecute = $false; $info.CreateNoWindow = $true
+    $info.RedirectStandardInput = $true
     $info.RedirectStandardOutput = $true; $info.RedirectStandardError = $true
-    foreach ($argument in @('s_server', '-accept', "127.0.0.1:$port", '-cert', $cert.CertificatePath, '-key', $cert.PrivateKeyPath)) { $info.ArgumentList.Add($argument) }
+    foreach ($argument in @('s_server', '-www', '-accept', "127.0.0.1:$port", '-cert', $cert.CertificatePath, '-key', $cert.PrivateKeyPath)) { $info.ArgumentList.Add($argument) }
     $server = [Diagnostics.Process]::Start($info)
+    $server.StandardInput.Close()
     $serverOutputLines = [System.Collections.Generic.List[string]]::new()
     $outRead = $server.StandardOutput.ReadLineAsync()
     $errRead = $server.StandardError.ReadToEndAsync()
