@@ -561,7 +561,7 @@ function Set-NerdFontInstallState {
   )
 
   if (-not (Test-Path -LiteralPath $RegistryPath)) {
-    New-Item -Path $RegistryPath -Force | Out-Null
+    New-Item -Path $RegistryPath -Force -ErrorAction Stop | Out-Null
   }
 
   $state = [ordered]@{
@@ -570,7 +570,7 @@ function Set-NerdFontInstallState {
     InstalledAt      = [DateTimeOffset]::UtcNow.ToString('o')
   } | ConvertTo-Json -Compress
 
-  New-ItemProperty -LiteralPath $RegistryPath -Name ([string]$Font.ArchiveName) -Value $state -PropertyType String -Force | Out-Null
+  New-ItemProperty -LiteralPath $RegistryPath -Name ([string]$Font.ArchiveName) -Value $state -PropertyType String -Force -ErrorAction Stop | Out-Null
 }
 
 function Select-NerdFontInstallFiles {
@@ -624,14 +624,14 @@ function Remove-NerdFontRegistration {
       continue
     }
 
-    $properties = (Get-ItemProperty -LiteralPath $registryPath).PSObject.Properties
+    $properties = (Get-ItemProperty -LiteralPath $registryPath -ErrorAction Stop).PSObject.Properties
     foreach ($fontFile in $FontFiles) {
       $properties | Where-Object {
         $_.Name -notmatch '^PS' -and
         ([System.IO.Path]::GetFileName([string]$_.Value) -eq $fontFile.Name -or
         [string]$_.Value -eq $fontFile.FullName)
       } | ForEach-Object {
-        Remove-ItemProperty -LiteralPath $registryPath -Name $_.Name -ErrorAction SilentlyContinue
+        Remove-ItemProperty -LiteralPath $registryPath -Name $_.Name -ErrorAction Stop
       }
     }
   }
@@ -872,16 +872,16 @@ function Set-WindowsTerminalProfileOrder {
   foreach ($definition in $profileDefinitions) {
     $matchingIndexes = [System.Collections.Generic.List[int]]::new()
     for ($index = 0; $index -lt $Profiles.Count; $index++) {
-      $profile = $Profiles[$index]
-      $guid = ([string]$profile.guid).Trim('{}')
+      $terminalProfile = $Profiles[$index]
+      $guid = ([string]$terminalProfile.guid).Trim('{}')
       $role = if ($guid -ieq '574e775e-4f2a-5b96-ac1e-a2962a402336' -or
-        [string]$profile.source -eq 'Windows.Terminal.PowershellCore') {
+        [string]$terminalProfile.source -eq 'Windows.Terminal.PowershellCore') {
         'Pwsh7'
       } elseif ($guid -ieq '61c54bbd-c2c6-5271-96e7-009a87ff44bf') {
         'Pwsh5'
       } elseif ($guid -ieq '0caa0dad-35be-5f56-a8ff-afceeeaa6101') {
         'CommandPrompt'
-      } elseif ([string]$profile.source -eq 'Windows.Terminal.Azure') {
+      } elseif ([string]$terminalProfile.source -eq 'Windows.Terminal.Azure') {
         'AzureCloudShell'
       }
 
@@ -903,17 +903,17 @@ function Set-WindowsTerminalProfileOrder {
       $selectedIndex = $selectedIndex[0]
     }
 
-    $profile = $Profiles[$selectedIndex]
-    $selectedGuid = ([string]$profile.guid).Trim('{}')
-    if ($profile.name -ne $definition.Name) {
-      Set-ObjectPropertyValue -InputObject $profile -Name 'name' -Value $definition.Name
+    $terminalProfile = $Profiles[$selectedIndex]
+    $selectedGuid = ([string]$terminalProfile.guid).Trim('{}')
+    if ($terminalProfile.name -ne $definition.Name) {
+      Set-ObjectPropertyValue -InputObject $terminalProfile -Name 'name' -Value $definition.Name
       $changed = $true
     }
     if ($selectedIndex -ne $orderedProfiles.Count) {
       $changed = $true
     }
 
-    $orderedProfiles.Add($profile)
+    $orderedProfiles.Add($terminalProfile)
     foreach ($matchingIndex in $matchingIndexes) {
       [void]$selectedIndexes.Add($matchingIndex)
       if ($matchingIndex -eq $selectedIndex) {
@@ -1185,6 +1185,7 @@ function Install-NerdFont {
 
   $tempRoot = Join-Path $env:TEMP "NerdFont-$($Font.ArchiveName)-$([guid]::NewGuid().ToString('N'))"
   $archivePath = "$tempRoot.zip"
+  $retainRecoveryFiles = $false
   New-Item -ItemType Directory -Path $tempRoot -Force | Out-Null
 
   try {
@@ -1197,6 +1198,87 @@ function Install-NerdFont {
       throw "No installable Nerd Font files were found in '$($Font.DownloadUrl)'."
     }
 
+    $systemFontDirectory = Join-Path $env:WINDIR 'Fonts'
+    $systemFontRegistry = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
+    $fontRegistryPaths = @(
+      'HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
+      $systemFontRegistry
+    )
+    $registrySnapshots = [System.Collections.Generic.List[object]]::new()
+    $registrySnapshotKeys = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    $snapshotRegistryValue = {
+      param([string] $RegistryPath, [string] $Name)
+
+      $snapshotKey = "$RegistryPath`n$Name"
+      if (-not $registrySnapshotKeys.Add($snapshotKey)) {
+        return
+      }
+
+      $exists = $false
+      $value = $null
+      if (Test-Path -LiteralPath $RegistryPath) {
+        $registryState = Get-ItemProperty -LiteralPath $RegistryPath -ErrorAction Stop
+        $property = $registryState.PSObject.Properties[$Name]
+        if ($property) {
+          $exists = $true
+          $value = $property.Value
+        }
+      }
+      $registrySnapshots.Add([pscustomobject]@{
+          Path   = $RegistryPath
+          Name   = $Name
+          Exists = $exists
+          Value  = $value
+        })
+    }
+
+    foreach ($registryPath in $fontRegistryPaths) {
+      if (-not (Test-Path -LiteralPath $registryPath)) {
+        continue
+      }
+
+      $properties = (Get-ItemProperty -LiteralPath $registryPath -ErrorAction Stop).PSObject.Properties
+      foreach ($existingFile in $ExistingFiles) {
+        $properties | Where-Object {
+          $_.Name -notmatch '^PS' -and
+          ([System.IO.Path]::GetFileName([string]$_.Value) -eq $existingFile.Name -or
+          [string]$_.Value -eq $existingFile.FullName)
+        } | ForEach-Object {
+          & $snapshotRegistryValue -RegistryPath $registryPath -Name $_.Name
+        }
+      }
+    }
+
+    $newFontPaths = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($fontFile in $installFiles) {
+      $destination = [System.IO.Path]::GetFullPath((Join-Path $systemFontDirectory $fontFile.Name))
+      [void]$newFontPaths.Add($destination)
+      $fontType = if ($fontFile.Extension -ieq '.otf') { 'OpenType' } else { 'TrueType' }
+      & $snapshotRegistryValue -RegistryPath $systemFontRegistry -Name "$($fontFile.BaseName) ($fontType)"
+    }
+    & $snapshotRegistryValue -RegistryPath $StateRegistryPath -Name ([string]$Font.ArchiveName)
+
+    $fontFilePaths = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($existingFile in $ExistingFiles) {
+      [void]$fontFilePaths.Add([System.IO.Path]::GetFullPath($existingFile.FullName))
+    }
+    foreach ($destination in $newFontPaths) {
+      [void]$fontFilePaths.Add($destination)
+    }
+
+    $backupDirectory = Join-Path $tempRoot 'backup'
+    New-Item -ItemType Directory -Path $backupDirectory -Force -ErrorAction Stop | Out-Null
+    $fileBackups = @{}
+    foreach ($fontFilePath in $fontFilePaths) {
+      if (Test-Path -LiteralPath $fontFilePath -PathType Leaf) {
+        $backupPath = Join-Path $backupDirectory ([guid]::NewGuid().ToString('N'))
+        Copy-Item -LiteralPath $fontFilePath -Destination $backupPath -ErrorAction Stop
+        $fileBackups[$fontFilePath] = $backupPath
+      }
+    }
+
+    $installedFiles = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
+    try {
     if ($ExistingFiles.Count -gt 0) {
       Remove-NerdFontRegistration -FontFiles $ExistingFiles
       foreach ($existingFile in $ExistingFiles) {
@@ -1204,25 +1286,92 @@ function Install-NerdFont {
       }
     }
 
-    $systemFontDirectory = Join-Path $env:WINDIR 'Fonts'
-    $systemFontRegistry = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts'
-    $installedFiles = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
     foreach ($fontFile in $installFiles) {
       $destination = Join-Path $systemFontDirectory $fontFile.Name
       Copy-Item -LiteralPath $fontFile.FullName -Destination $destination -Force -ErrorAction Stop
+      }
+
+      foreach ($fontFile in $installFiles) {
+        $destination = Join-Path $systemFontDirectory $fontFile.Name
       $fontType = if ($fontFile.Extension -ieq '.otf') { 'OpenType' } else { 'TrueType' }
       $registryName = "$($fontFile.BaseName) ($fontType)"
-      New-ItemProperty -LiteralPath $systemFontRegistry -Name $registryName -Value $fontFile.Name -PropertyType String -Force | Out-Null
+        New-ItemProperty -LiteralPath $systemFontRegistry -Name $registryName -Value $fontFile.Name -PropertyType String -Force -ErrorAction Stop | Out-Null
       Write-PwshProfileStatus -Stage 'Install' -Type Success -Message $destination
       $installedFiles.Add((Get-Item -LiteralPath $destination))
     }
 
-    Send-WindowsFontChange
     Set-NerdFontInstallState -RegistryPath $StateRegistryPath -Font $Font -NerdFontsVersion $NerdFontsVersion
+
+      Send-WindowsFontChange
     $installedFiles
+    } catch {
+      $installFailure = $_
+      $rollbackErrors = [System.Collections.Generic.List[string]]::new()
+      foreach ($fontFilePath in $fontFilePaths) {
+        try {
+          if ($fileBackups.ContainsKey($fontFilePath)) {
+            $backupHash = (Get-FileHash -LiteralPath $fileBackups[$fontFilePath] -Algorithm SHA256 -ErrorAction Stop).Hash
+            $destinationHash = if (Test-Path -LiteralPath $fontFilePath -PathType Leaf) {
+              (Get-FileHash -LiteralPath $fontFilePath -Algorithm SHA256 -ErrorAction Stop).Hash
+            }
+            if ($destinationHash -ine $backupHash) {
+              Copy-Item -LiteralPath $fileBackups[$fontFilePath] -Destination $fontFilePath -Force -ErrorAction Stop
+            }
+          } elseif (Test-Path -LiteralPath $fontFilePath) {
+            Remove-Item -LiteralPath $fontFilePath -Force -ErrorAction Stop
+          }
+        } catch {
+          $rollbackErrors.Add("$fontFilePath`: $($_.Exception.Message)")
+        }
+      }
+
+      foreach ($registrySnapshot in $registrySnapshots) {
+        try {
+          $currentRegistryState = if (Test-Path -LiteralPath $registrySnapshot.Path) {
+            Get-ItemProperty -LiteralPath $registrySnapshot.Path -ErrorAction Stop
+          }
+          $currentRegistryValue = if ($currentRegistryState) {
+            $currentRegistryState.PSObject.Properties[$registrySnapshot.Name]
+          }
+          if ($registrySnapshot.Exists) {
+            if ($currentRegistryValue -and [string]$currentRegistryValue.Value -ceq [string]$registrySnapshot.Value) {
+              continue
+            }
+            if (-not (Test-Path -LiteralPath $registrySnapshot.Path)) {
+              New-Item -Path $registrySnapshot.Path -Force -ErrorAction Stop | Out-Null
+            }
+            New-ItemProperty `
+              -LiteralPath $registrySnapshot.Path `
+              -Name $registrySnapshot.Name `
+              -Value $registrySnapshot.Value `
+              -PropertyType String `
+              -Force `
+              -ErrorAction Stop | Out-Null
+          } elseif ($currentRegistryValue) {
+            Remove-ItemProperty -LiteralPath $registrySnapshot.Path -Name $registrySnapshot.Name -ErrorAction Stop
+          }
+        } catch {
+          $rollbackErrors.Add("$($registrySnapshot.Path)\$($registrySnapshot.Name): $($_.Exception.Message)")
+        }
+      }
+
+      try {
+        Send-WindowsFontChange
+      } catch {
+        $rollbackErrors.Add("Font cache notification: $($_.Exception.Message)")
+      }
+
+      if ($rollbackErrors.Count -gt 0) {
+        $retainRecoveryFiles = $true
+        throw "Nerd Font installation failed: $($installFailure.Exception.Message) Rollback was incomplete: $($rollbackErrors -join '; '). Recovery files retained at '$backupDirectory'."
+      }
+      throw "Nerd Font installation failed; previous font files and registry state were restored. $($installFailure.Exception.Message)"
+    }
   } finally {
     Remove-Item -LiteralPath $archivePath -Force -ErrorAction SilentlyContinue
+    if (-not $retainRecoveryFiles) {
     Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue
+  }
   }
 }
 
@@ -2398,7 +2547,12 @@ function Install-PwshProfileLocalSource {
     foreach ($name in $artifactNames.Keys) {
       $destinationExisted[$name] = Test-Path -LiteralPath $destinations[$name] -PathType Leaf
       if ($destinationExisted[$name]) {
-        $localHash = (Get-FileHash -LiteralPath $destinations[$name] -Algorithm SHA256).Hash.ToLowerInvariant()
+        $destinationStream = [System.IO.File]::OpenRead([System.IO.Path]::GetFullPath($destinations[$name]))
+        try {
+          $localHash = (Get-FileHash -InputStream $destinationStream -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant()
+        } finally {
+          $destinationStream.Dispose()
+        }
         if ($localHash -ieq $artifactHashes[$name]) {
           Write-PwshProfileStatus -Stage 'Install' -Type Current -Message "Already verified: $($destinations[$name])"
           continue
@@ -2479,7 +2633,7 @@ function Invoke-PwshProfileUpdateTransaction {
   $journalPath = Join-Path $paths.Root 'update-journal.json'
   try {
     if (Test-Path -LiteralPath $journalPath) {
-      $journal = Get-Content $journalPath -Raw | ConvertFrom-Json -ErrorAction Stop
+      $null = Get-Content $journalPath -Raw | ConvertFrom-Json -ErrorAction Stop
       # Recovery is deliberately explicit: never overwrite files edited after a crash.
       throw "An interrupted update requires recovery. Journal: $journalPath. Restore the backups listed there, then remove the journal before retrying."
     }
@@ -3376,11 +3530,12 @@ function Invoke-PwshProfileConfiguration {
     -LocalSource:$LocalSource
   if (-not $releaseInstalled) {
     Write-PwshProfileStatus -Stage 'Profile' -Type Warning -Message 'Profile configuration stopped because no validated profile source was installed.'
-    return
+    return $false
   }
   Invoke-CrossPlatformProfileConfiguration
   Invoke-GitHubConfiguration
   Import-PwshProfileConfiguration
+  return $true
 }
 
 function Invoke-PowerShellModuleConfiguration {
@@ -3471,7 +3626,8 @@ function Set-PwshSymbolicLink {
         }
         Remove-Item -LiteralPath $Path -Force -ErrorAction Stop
       } else {
-        Remove-Item -LiteralPath $Path -Force -ErrorAction Stop
+        $backupPath = "$Path.$([DateTimeOffset]::UtcNow.ToString('yyyyMMddHHmmss')).$([guid]::NewGuid().ToString('N')).bak"
+        Move-Item -LiteralPath $Path -Destination $backupPath -ErrorAction Stop
       }
     }
 
@@ -3481,10 +3637,24 @@ function Set-PwshSymbolicLink {
     }
 
     New-Item -ItemType SymbolicLink -Path $Path -Target $Target -Force -ErrorAction Stop | Out-Null
-    Write-PwshProfileStatus -Stage 'Profile' -Type Success -Message "Linked '$Path' -> '$Target'."
+    $backupMessage = if ($backupPath) { " Original file backup: $backupPath" } else { '' }
+    Write-PwshProfileStatus -Stage 'Profile' -Type Success -Message "Linked '$Path' -> '$Target'.$backupMessage"
     return $true
   } catch {
-    Write-PwshProfileStatus -Stage 'Profile' -Type Warning -Message "Failed to link '$Path' -> '$Target': $($_.Exception.Message) (creating symbolic links requires Administrator or Developer Mode)."
+    $failureMessage = $_.Exception.Message
+    if ($backupPath -and (Test-Path -LiteralPath $backupPath -PathType Leaf)) {
+      try {
+        if (-not (Test-Path -LiteralPath $Path)) {
+          Move-Item -LiteralPath $backupPath -Destination $Path -ErrorAction Stop
+          $backupPath = $null
+        } else {
+          $failureMessage += " Original file retained at '$backupPath' because the destination now exists."
+        }
+      } catch {
+        $failureMessage += " Could not restore the original file; backup retained at '$backupPath'. $($_.Exception.Message)"
+      }
+    }
+    Write-PwshProfileStatus -Stage 'Profile' -Type Warning -Message "Failed to link '$Path' -> '$Target': $failureMessage (creating symbolic links requires Administrator or Developer Mode)."
     return $false
   }
 }
@@ -4064,12 +4234,18 @@ if ($RunPhase -in @('All', 'Modules')) {
 }
 
 if ($RunPhase -in @('All', 'Profile')) {
-  Invoke-PwshProfileConfiguration -Prerelease:$Prerelease -LocalSource:$LocalSource
+  if (-not (Invoke-PwshProfileConfiguration -Prerelease:$Prerelease -LocalSource:$LocalSource)) {
+    throw 'Profile configuration failed; see the warnings above.'
+  }
 }
 
 if ($RunPhase -eq 'ProfileUpdate') {
-  [void](Invoke-PwshProfileUpdate -Prerelease:$Prerelease -LocalSource:$LocalSource)
+  $profileUpdateSucceeded = [bool](Invoke-PwshProfileUpdate -Prerelease:$Prerelease -LocalSource:$LocalSource)
+  $moduleUpdatesSucceeded = $true
   if (-not $LocalSource) {
-    [void](Invoke-PwshProfileIndependentModuleUpdates -Prerelease:$Prerelease)
+    $moduleUpdatesSucceeded = [bool](Invoke-PwshProfileIndependentModuleUpdates -Prerelease:$Prerelease)
+  }
+  if (-not $profileUpdateSucceeded -or -not $moduleUpdatesSucceeded) {
+    throw 'Profile update failed; see the warnings above.'
   }
 }

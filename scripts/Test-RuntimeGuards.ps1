@@ -96,14 +96,43 @@ $updateCheck = $ast.Find({ param($n) $n -is [Management.Automation.Language.Func
 . ([scriptblock]::Create($updateCheck.Extent.Text))
 function global:Compare-PwshProfileSemanticVersion { return 0 }
 function global:Get-PwshProfileReleasePages { return @() }
-function Start-Process { throw 'Synthetic process launch failure' }
+function Start-Process {
+  [CmdletBinding()]
+  param([string] $FilePath, [string[]] $ArgumentList, [string] $WindowStyle)
+  if ($script:FailProcessStart) { throw 'Synthetic process launch failure' }
+  $script:ProcessLaunches++
+}
 $updateCheckRoot = Join-Path ([System.IO.Path]::GetTempPath()) "PwshProfileLaunchFailure-$([guid]::NewGuid().ToString('n'))"
 try {
   New-Item -ItemType Directory -Path $updateCheckRoot -ErrorAction Stop | Out-Null
+  $script:FailProcessStart = $true
   Start-PwshProfileUpdateCheck -StorePath $updateCheckRoot -Repository 'owner/repository' -CurrentVersion '1.0.0'
   if (Test-Path -LiteralPath (Join-Path $updateCheckRoot 'update-state.json')) {
     throw 'A failed background-process launch left a throttling state file.'
   }
+  $script:FailProcessStart = $false
+  $script:ProcessLaunches = 0
+  $statePath = Join-Path $updateCheckRoot 'update-state.json'
+  [ordered]@{
+    schemaVersion = 3
+    channel = 'stable'
+    checkedAt = [DateTimeOffset]::UtcNow.AddDays(-2).ToString('o')
+    latestVersion = '1.0.0'
+    latestTag = 'v1.0.0'
+    releaseUrl = 'https://example.invalid/release'
+    latestModules = [ordered]@{}
+  } | ConvertTo-Json -Depth 3 | Set-Content -LiteralPath $statePath
+  Start-PwshProfileUpdateCheck -StorePath $updateCheckRoot -Repository 'owner/repository' -CurrentVersion '1.0.0'
+  if ($script:ProcessLaunches -ne 1) { throw 'A stale completed check must start a background refresh.' }
+  Start-PwshProfileUpdateCheck -StorePath $updateCheckRoot -Repository 'owner/repository' -CurrentVersion '1.0.0'
+  if ($script:ProcessLaunches -ne 1) { throw 'A fresh pending check must suppress duplicate workers.' }
+  $pendingJson = Get-Content -LiteralPath $statePath -Raw
+  $staleTimestamp = [DateTimeOffset]::UtcNow.AddMinutes(-16).ToString('o')
+  $staleTimestampJson = '"checkedAt": "' + $staleTimestamp + '"'
+  $pendingJson = [regex]::Replace($pendingJson, '"checkedAt"\s*:\s*"[^"]+"', $staleTimestampJson, 1)
+  [IO.File]::WriteAllText($statePath, $pendingJson)
+  Start-PwshProfileUpdateCheck -StorePath $updateCheckRoot -Repository 'owner/repository' -CurrentVersion '1.0.0'
+  if ($script:ProcessLaunches -ne 2) { throw 'An abandoned pending check must be retried after its lease expires.' }
 } finally {
   Remove-Item -LiteralPath $updateCheckRoot -Recurse -Force -ErrorAction Ignore
   Remove-Item Function:Start-Process -ErrorAction Ignore
@@ -112,6 +141,7 @@ try {
   Remove-Item Function:global:Get-PwshProfileReleasePages -ErrorAction Ignore
 }
 'PASS: failed update-check launch does not suppress retries.'
+'PASS: abandoned update-check workers are retried after the pending lease expires.'
 if (Get-Command oh-my-posh -ErrorAction Ignore) {
   $theme = Join-Path $root 'src/themes/quick-term-cloud.omp.json'
   foreach ($iteration in 1..2) {
