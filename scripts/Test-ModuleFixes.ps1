@@ -139,7 +139,20 @@ try {
     $outDrain = $server.StandardOutput.BaseStream.CopyToAsync([IO.Stream]::Null)
     $errDrain = $server.StandardError.BaseStream.CopyToAsync([IO.Stream]::Null)
     try {
-      Start-Sleep -Milliseconds 300
+      $startupTimer = [Diagnostics.Stopwatch]::StartNew()
+      $serverReady = $false
+      while (-not $serverReady -and $startupTimer.Elapsed.TotalSeconds -lt 5) {
+        if ($server.HasExited) { throw "OpenSSL test server exited with code $($server.ExitCode)." }
+        $probe = [Net.Sockets.TcpClient]::new()
+        try {
+          $connectTask = $probe.ConnectAsync('127.0.0.1', $port)
+          $serverReady = $connectTask.Wait(250) -and $probe.Connected
+        } catch {
+          $serverReady = $false
+        } finally { $probe.Dispose() }
+        if (-not $serverReady) { Start-Sleep -Milliseconds 50 }
+      }
+      if (-not $serverReady) { throw "OpenSSL test server did not listen on port $port within 5 seconds." }
       $remote = Get-TlsCertificate 127.0.0.1 -Port $port -ShowChain -TimeoutSec 5
       if ($remote.Thumbprint -ne $hash -or @($remote.Chain).Count -lt 1) { throw 'Live local TLS fingerprint/chain mismatch' }
       'PASS: real loopback TLS handshake, chain data, and matching remote/file fingerprint.'
