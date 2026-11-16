@@ -134,10 +134,14 @@ try {
     $info.FileName = (Get-Command openssl).Source
     $info.UseShellExecute = $false; $info.CreateNoWindow = $true
     $info.RedirectStandardOutput = $true; $info.RedirectStandardError = $true
-    foreach ($argument in @('s_server', '-quiet', '-accept', "127.0.0.1:$port", '-cert', $cert.CertificatePath, '-key', $cert.PrivateKeyPath)) { $info.ArgumentList.Add($argument) }
+    foreach ($argument in @('s_server', '-accept', "127.0.0.1:$port", '-cert', $cert.CertificatePath, '-key', $cert.PrivateKeyPath)) { $info.ArgumentList.Add($argument) }
     $server = [Diagnostics.Process]::Start($info)
-    $outDrain = $server.StandardOutput.BaseStream.CopyToAsync([IO.Stream]::Null)
-    $errDrain = $server.StandardError.BaseStream.CopyToAsync([IO.Stream]::Null)
+    $outRead = $server.StandardOutput.ReadToEndAsync()
+    $errRead = $server.StandardError.ReadToEndAsync()
+    $loopbackFailure = $null
+    $serverOutput = ''
+    $serverError = ''
+    $serverExitCode = $null
     try {
       $startupTimer = [Diagnostics.Stopwatch]::StartNew()
       $serverReady = $false
@@ -156,10 +160,20 @@ try {
       $remote = Get-TlsCertificate 127.0.0.1 -Port $port -ShowChain -TimeoutSec 5
       if ($remote.Thumbprint -ne $hash -or @($remote.Chain).Count -lt 1) { throw 'Live local TLS fingerprint/chain mismatch' }
       'PASS: real loopback TLS handshake, chain data, and matching remote/file fingerprint.'
+    } catch {
+      $loopbackFailure = $_.Exception.Message
     }
     finally {
       if (-not $server.HasExited) { $server.Kill(); $null = $server.WaitForExit(1000) }
+      if ($server.HasExited) {
+        $serverExitCode = $server.ExitCode
+        if ($outRead.Wait(1000)) { $serverOutput = $outRead.GetAwaiter().GetResult() }
+        if ($errRead.Wait(1000)) { $serverError = $errRead.GetAwaiter().GetResult() }
+      }
       $server.Dispose()
+    }
+    if ($loopbackFailure) {
+      throw "OpenSSL loopback test failed: $loopbackFailure`nServer exit code: $serverExitCode`nServer stdout: $serverOutput`nServer stderr: $serverError"
     }
   }
   & $tls {
