@@ -77,7 +77,7 @@ try {
   if (-not $keyMatch.IsMatch) { throw 'Split key mismatch' }
   $originalEncoding = $OutputEncoding.CodePage
   $unicodeText = 'Synthetic' + [char]0xE9 + 'Regression42'
-  $unicodePassword = ConvertTo-SecureString $unicodeText -AsPlainText -Force
+  $unicodePassword = New-TestSecureString $unicodeText
   $unicodeCert = New-SelfSignedTlsCertificate unicode.invalid -OutputDirectory $root -KeyPassword $unicodePassword -ErrorAction Stop
   $unicodePfx = New-PfxCertificate -CertificatePath $unicodeCert.CertificatePath -PrivateKeyPath $unicodeCert.PrivateKeyPath -Password $unicodePassword -KeyPassword $unicodePassword
   $unicodeSplit = Split-PfxCertificate $unicodePfx.OutputPath -Password $unicodePassword
